@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lesson.title %>
+</p>
+
+<p>
+  <strong>Duration in seconds:</strong>
+  <%= @lesson.duration_in_seconds %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @lesson.level %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @lesson.description %>
+</p>
+
+<p>
+  <strong>Curriculum concepts:</strong>
+  <%= @lesson.curriculum_concepts %>
+</p>
+
+<p>
+  <strong>Prep:</strong>
+  <%= @lesson.prep %>
+</p>
+
+<p>
+  <strong>Programming concepts:</strong>
+  <%= @lesson.programming_concepts %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @lesson.content %>
+</p>
+
+<p>
+  <strong>Extensions:</strong>
+  <%= @lesson.extensions %>
+</p>
+
+<p>
+  <strong>Answers:</strong>
+  <%= @lesson.answers %>
+</p>
+
+<p>
+  <strong>Video link:</strong>
+  <%= @lesson.video_link %>
+</p>
+
+<p>
+  <strong>Profile:</strong>
+  <%= @lesson.profile %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+<%= link_to 'Back', lessons_path %>

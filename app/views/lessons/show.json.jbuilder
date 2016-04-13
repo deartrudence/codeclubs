@@ -1,0 +1,1 @@
+json.extract! @lesson, :id, :title, :duration_in_seconds, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :created_at, :updated_at
