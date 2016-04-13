@@ -9,12 +9,6 @@
       <th>Duration in seconds</th>
       <th>Level</th>
       <th>Description</th>
-      <th>Curriculum concepts</th>
-      <th>Prep</th>
-      <th>Programming concepts</th>
-      <th>Content</th>
-      <th>Extensions</th>
-      <th>Answers</th>
       <th>Video link</th>
       <th>Profile</th>
       <th colspan="3"></th>
@@ -28,14 +22,8 @@
         <td><%= lesson.duration_in_seconds %></td>
         <td><%= lesson.level %></td>
         <td><%= lesson.description %></td>
-        <td><%= lesson.curriculum_concepts %></td>
-        <td><%= lesson.prep %></td>
-        <td><%= lesson.programming_concepts %></td>
-        <td><%= lesson.content %></td>
-        <td><%= lesson.extensions %></td>
-        <td><%= lesson.answers %></td>
         <td><%= lesson.video_link %></td>
-        <td><%= lesson.profile %></td>
+        <td><%= lesson.profile.first_name %> <%= lesson.profile.last_name %></td>
         <td><%= link_to 'Show', lesson %></td>
         <td><%= link_to 'Edit', edit_lesson_path(lesson) %></td>
         <td><%= link_to 'Destroy', lesson, method: :delete, data: { confirm: 'Are you sure?' } %></td>

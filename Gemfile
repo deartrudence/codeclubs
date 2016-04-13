@@ -28,6 +28,13 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'table_print'
 
+gem 'acts_as_votable', '~> 0.10.0'
+
+# for image management
+gem 'paperclip'
+gem 'aws-sdk-v1'
+gem 'aws-s3'
+
 # Use Unicorn as the app server
 gem 'unicorn'
 

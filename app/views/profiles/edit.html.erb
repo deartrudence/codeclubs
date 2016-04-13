@@ -2,5 +2,7 @@
 
 <%= render 'form' %>
 
+<%= image_tag @profile.avatar.url(:medium) %>
+
 <%= link_to 'Show', @profile %> |
 <%= link_to 'Back', profiles_path %>

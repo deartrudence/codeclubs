@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413145723) do
+ActiveRecord::Schema.define(version: 20160413174336) do
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
@@ -26,8 +26,16 @@ ActiveRecord::Schema.define(version: 20160413145723) do
     t.text     "answers"
     t.string   "video_link"
     t.integer  "profile_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.string   "feature_image_file_name"
+    t.string   "feature_image_content_type"
+    t.integer  "feature_image_file_size"
+    t.datetime "feature_image_updated_at"
+    t.string   "file_upload_file_name"
+    t.string   "file_upload_content_type"
+    t.integer  "file_upload_file_size"
+    t.datetime "file_upload_updated_at"
   end
 
   add_index "lessons", ["profile_id"], name: "index_lessons_on_profile_id"
@@ -39,9 +47,13 @@ ActiveRecord::Schema.define(version: 20160413145723) do
     t.string   "role"
     t.string   "grade"
     t.boolean  "mailing_list"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.integer  "user_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"

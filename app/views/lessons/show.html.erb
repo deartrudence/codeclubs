@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 
+<%= image_tag @lesson.feature_image.url(:medium) %>
 <p>
   <strong>Title:</strong>
   <%= @lesson.title %>
@@ -58,6 +59,9 @@
 <p>
   <strong>Profile:</strong>
   <%= @lesson.profile %>
+</p>
+<p>
+  <%= link_to 'file upload', @lesson.file_upload.url, target: '_blank' %>
 </p>
 
 <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
