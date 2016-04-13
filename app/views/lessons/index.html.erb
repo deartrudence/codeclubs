@@ -2,6 +2,25 @@
 
 <h1>Listing Lessons</h1>
 
+<h4>Subject</h4>
+<ul>
+  <% ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).each do |subject| %>
+  <li><%= subject %></li>
+  <% end %>
+</ul>
+<h4>Code Concept</h4>
+<ul>
+  <% ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).each do |code_concept| %>
+  <li><%= code_concept %></li>
+  <% end %>
+</ul>
+<h4>Grade</h4>
+<ul>
+  <% ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).each do |grade| %>
+  <li><%= grade %></li>
+  <% end %>
+</ul>
+
 <table>
   <thead>
     <tr>

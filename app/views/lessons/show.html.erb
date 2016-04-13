@@ -55,10 +55,34 @@
   <strong>Video link:</strong>
   <%= @lesson.video_link %>
 </p>
+<p>
+  <strong>Subject</strong>
+  <ul>
+    <% @lesson.subject_list.each do |subject| %>
+      <li><%= subject %></li>
+    <% end %>
+  </ul>
+</p>
+<p>
+  <strong>code_concept</strong>
+  <ul>
+    <% @lesson.code_concept_list.each do |code_concept| %>
+      <li><%= code_concept %></li>
+    <% end %>
+  </ul>
+</p>
+<p>
+  <strong>grade</strong>
+  <ul>
+    <% @lesson.grade_list.each do |grade| %>
+      <li><%= grade %></li>
+    <% end %>
+  </ul>
+</p>
 
 <p>
   <strong>Profile:</strong>
-  <%= @lesson.profile %>
+  <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %>
 </p>
 <p>
   <%= link_to 'file upload', @lesson.file_upload.url, target: '_blank' %>

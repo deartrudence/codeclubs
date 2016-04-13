@@ -38,6 +38,10 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.profile = current_user.profile
+    @lesson.subject_list.add(params[:subject_list], parse: true)
+    @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
+    @lesson.grade_list.add(params[:grade_list], parse: true)
+
 
     respond_to do |format|
       if @lesson.save
@@ -82,6 +86,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :duration_in_seconds, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload)
+      params.require(:lesson).permit(:title, :duration_in_seconds, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list)
     end
 end
