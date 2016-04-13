@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
   root 'lessons#index'
-  resources :lessons
+  resources :lessons do
+    member do
+      put "like", to: "lessons#upvote"
+      put "dislike", to: "lessons#downvote"
+    end
+  end
   resources :profiles
   # devise_for :users
   devise_for :users, :controllers => { :registrations => "my_devise/registrations" }

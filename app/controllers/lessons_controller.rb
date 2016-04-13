@@ -1,7 +1,17 @@
 class LessonsController < ApplicationController
-  before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+  before_action :set_lesson, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
   skip_before_action :authenticate_user!, only: [:index]
+
+  def upvote
+    @lesson.upvote_by current_user
+    redirect_to :back
+  end
+
+  def downvote
+    @lesson.downvote_by current_user
+    redirect_to :back
+  end
 
   # GET /lessons
   # GET /lessons.json

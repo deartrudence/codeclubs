@@ -30,6 +30,8 @@ gem 'table_print'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
+gem 'acts-as-taggable-on', '~> 3.4'
+
 # for image management
 gem 'paperclip'
 gem 'aws-sdk-v1'
