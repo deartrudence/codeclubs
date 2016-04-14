@@ -3,6 +3,8 @@ class LessonsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index]
 
+  autocomplete :subject, :name, :class_name => 'ActsAsTaggableOn::Tag'
+
   def upvote
     @lesson.upvote_by current_user
     redirect_to :back

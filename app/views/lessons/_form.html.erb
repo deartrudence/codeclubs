@@ -1,4 +1,4 @@
-<%= form_for(@lesson) do |f| %>
+<%= simple_form_for(@lesson) do |f| %>
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
@@ -18,7 +18,7 @@
   <hr>
   <div class="field">
     <%= f.label :subject %><br>
-    <%= f.text_field :subject_list %>
+    <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
 
   <hr>
