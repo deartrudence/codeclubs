@@ -37,7 +37,7 @@
   </div>
 
   <div class="lesson--short-description">
-    <p><%= lesson.short_description %></p>
+    <p><%= lesson.short_description.html_safe %></p>
     <%= link_to 'Learn More', lesson, class: 'button button--primary' %>
 
     <span class="lesson--likes">
