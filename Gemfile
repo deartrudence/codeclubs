@@ -16,6 +16,7 @@ gem 'coffee-rails', '~> 4.1.0'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+gem "jquery-ui-rails"
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
@@ -30,7 +31,10 @@ gem 'table_print'
 
 gem 'acts_as_votable', '~> 0.10.0'
 
+# autocomplete for tagging gems (3gems)
 gem 'acts-as-taggable-on', '~> 3.4'
+gem 'rails4-autocomplete'
+gem 'simple_form'
 
 # for image management
 gem 'paperclip'

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'lessons#index'
   resources :lessons do
+    get :autocomplete_subject_name, :on => :collection
     member do
       put "like", to: "lessons#upvote"
       put "dislike", to: "lessons#downvote"
