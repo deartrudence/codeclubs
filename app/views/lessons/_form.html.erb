@@ -16,15 +16,12 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :subject %><br>
     <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
   <div class="field">
-    <%= f.label :code_concept %><br>
     <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
   <div class="field">
-    <%= f.label :grade %><br>
     <%= f.input :grade_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
   <div class="field">
@@ -51,28 +48,22 @@
     <%= f.input :description, as: :bootsy %>
   </div>
   <div class="field">
-    <%= f.label :curriculum_concepts %><br>
-    <%= f.text_area :curriculum_concepts %>
+    <%= f.input :curriculum_concepts, as: :bootsy %>
   </div>
   <div class="field">
-    <%= f.label :prep %><br>
-    <%= f.text_area :prep %>
+    <%= f.input :prep, as: :bootsy %>
   </div>
   <div class="field">
-    <%= f.label :programming_concepts %><br>
-    <%= f.text_area :programming_concepts %>
+    <%= f.input :programming_concepts, as: :bootsy %>
   </div>
   <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
+    <%= f.input :content, as: :bootsy %>
   </div>
   <div class="field">
-    <%= f.label :extensions %><br>
-    <%= f.text_area :extensions %>
+    <%= f.input :extensions, as: :bootsy %>
   </div>
   <div class="field">
-    <%= f.label :answers %><br>
-    <%= f.text_area :answers %>
+    <%= f.input :answers, as: :bootsy %>
   </div>
   <div class="actions">
     <%= f.submit "submit", class: "button button--primary" %>
