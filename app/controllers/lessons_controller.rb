@@ -3,25 +3,31 @@ class LessonsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index]
 
+
   autocomplete :subject, :name, :class_name => 'ActsAsTaggableOn::Tag'
   autocomplete :code_concept, :name, :class_name => 'ActsAsTaggableOn::Tag'
   autocomplete :grade, :name, :class_name => 'ActsAsTaggableOn::Tag'
 
   def upvote
     @lesson.upvote_by current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { count: @lesson.get_upvotes.size } }
+    end
   end
 
   def downvote
     @lesson.downvote_by current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { count: @lesson.get_upvotes.size } }
+    end
   end
 
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all.includes(:profile)
-    
+    @lessons = Lesson.order(:cached_votes_up => :desc).first(6)
   end
 
   # GET /lessons/1

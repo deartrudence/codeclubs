@@ -6,8 +6,8 @@ Rails.application.routes.draw do
     get :autocomplete_code_concept_name, :on => :collection
     get :autocomplete_grade_name, :on => :collection
     member do
-      put "like", to: "lessons#upvote"
-      put "dislike", to: "lessons#downvote"
+      get "like", to: "lessons#upvote"
+      get "dislike", to: "lessons#downvote"
     end
   end
   resources :profiles

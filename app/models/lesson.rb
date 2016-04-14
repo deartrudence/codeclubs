@@ -14,7 +14,16 @@ class Lesson < ActiveRecord::Base
   has_attached_file :file_upload
   validates_attachment :file_upload, content_type: { content_type: "application/pdf" }
 
-  def likes
-    self.get_likes.size
+  def short_description
+    self.description.first(400)
+  end
+
+  def liked_by_user(current_user)
+    liked = current_user.voted_as_when_voted_for self
+    if liked == nil
+      return false
+    else
+      return liked
+    end
   end
 end
