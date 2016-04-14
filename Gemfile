@@ -29,6 +29,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'table_print'
 
+# wysiwyg
+gem 'bootsy'
+
 gem 'acts_as_votable', '~> 0.10.0'
 
 # autocomplete for tagging gems (3gems)

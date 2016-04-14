@@ -15,38 +15,40 @@
     <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
-  <hr>
   <div class="field">
     <%= f.label :subject %><br>
     <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
-
-  <hr>
   <div class="field">
     <%= f.label :code_concept %><br>
-    <%= f.text_field :code_concept_list %>
+    <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
-
-
-  <hr>
   <div class="field">
     <%= f.label :grade %><br>
-    <%= f.text_field :grade_list %>
-  </div>
-
-
-  <hr>
-  <div class="field">
-    <%= f.label :duration_in_seconds %><br>
-    <%= f.number_field :duration_in_seconds %>
+    <%= f.input :grade_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
   </div>
   <div class="field">
     <%= f.label :level %><br>
     <%= f.number_field :level %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
+    <%= f.label :duration_in_seconds %><br>
+    <%= f.number_field :duration_in_seconds %>
+  </div>
+  <div class="field">
+    <%= f.label :video_link %><br>
+    <%= f.text_field :video_link %>
+  </div>
+  <div class="field">
+    <%= f.label :feature_image %><br>
+    <%= f.file_field :feature_image, class: "button button--primary" %>
+  </div>
+  <div class="field">
+    <%= f.label :file_upload %><br>
+    <%= f.file_field :file_upload, class: "button button--primary" %>
+  </div>
+  <div class="field">
+    <%= f.input :description, as: :bootsy %>
   </div>
   <div class="field">
     <%= f.label :curriculum_concepts %><br>
@@ -72,19 +74,7 @@
     <%= f.label :answers %><br>
     <%= f.text_area :answers %>
   </div>
-  <div class="field">
-    <%= f.label :video_link %><br>
-    <%= f.text_field :video_link %>
-  </div>
-  <div class="field">
-    <%= f.label :feature_image %><br>
-    <%= f.file_field :feature_image %>
-  </div>
-  <div class="field">
-    <%= f.label :file_upload %><br>
-    <%= f.file_field :file_upload %>
-  </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "submit", class: "button button--primary" %>
   </div>
 <% end %>
