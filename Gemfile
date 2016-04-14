@@ -32,6 +32,7 @@ gem 'table_print'
 
 # wysiwyg
 gem 'bootsy'
+gem 'fog'
 
 gem 'acts_as_votable', '~> 0.10.0'
 

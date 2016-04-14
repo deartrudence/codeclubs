@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <%= image_tag @lesson.feature_image.url(:medium) %>
+  <h3>Title:</h3>
 <p>
-  <strong>Title:</strong>
   <%= @lesson.title %>
 </p>
 
@@ -11,28 +11,35 @@
   <%= @lesson.duration_in_seconds %>
 </p>
 
+  <h3>Level:</h3>
 <p>
-  <strong>Level:</strong>
   <%= @lesson.level %>
 </p>
 
+  <h3>Description:</h3>
 <p>
-  <strong>Description:</strong>
   <%= @lesson.description.html_safe %>
 </p>
 
-<p>
-  <strong>Curriculum concepts:</strong>
-  <%= @lesson.curriculum_concepts.html_safe %>
-</p>
+<div>
+    <h3>Curriculum concepts:</h3>
+  <p>
+    <%= @lesson.curriculum_concepts.html_safe %>
+  </p>
 
+</div>
+
+<div class="clearfix">
+  <h3>Prep:</h3>
 <p>
-  <strong>Prep:</strong>
   <%= @lesson.prep.html_safe %>
 </p>
 
+</div>
+
+
+  <h3>Programming concepts:</h3>
 <p>
-  <strong>Programming concepts:</strong>
   <%= @lesson.programming_concepts.html_safe %>
 </p>
 
