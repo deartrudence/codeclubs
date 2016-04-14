@@ -11,7 +11,7 @@ class Lesson < ActiveRecord::Base
   has_attached_file :file_upload
   validates_attachment :file_upload, content_type: { content_type: "application/pdf" }
 
-  def likes
-    self.get_likes.size
+  def short_description
+    self.description.first(400)
   end
 end

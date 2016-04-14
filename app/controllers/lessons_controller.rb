@@ -16,8 +16,7 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    # @lessons = Lesson.all.includes(:profile)
-    @lessons = Lesson.order(:cached_votes_up => :desc).includes(:profile).first(6)
+    @lessons = Lesson.order(:cached_votes_up => :desc).first(6)
   end
 
   # GET /lessons/1
