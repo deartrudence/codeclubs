@@ -3,8 +3,6 @@ class LessonsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index]
 
-  autocomplete :subject, :name, :class_name => 'ActsAsTaggableOn::Tag'
-
   def upvote
     @lesson.upvote_by current_user
     redirect_to :back
@@ -18,8 +16,8 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.all.includes(:profile)
-    
+    # @lessons = Lesson.all.includes(:profile)
+    @lessons = Lesson.order(:cached_votes_up => :desc).includes(:profile).first(6)
   end
 
   # GET /lessons/1
