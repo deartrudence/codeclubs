@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   root 'lessons#index'
   resources :lessons do
     get :autocomplete_subject_name, :on => :collection
+    get :autocomplete_code_concept_name, :on => :collection
+    get :autocomplete_grade_name, :on => :collection
     member do
       get "like", to: "lessons#upvote"
       get "dislike", to: "lessons#downvote"

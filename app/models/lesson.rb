@@ -1,4 +1,7 @@
 class Lesson < ActiveRecord::Base
+  include Bootsy::Container
+
+
   belongs_to :profile
 
   acts_as_votable

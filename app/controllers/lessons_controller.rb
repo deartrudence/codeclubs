@@ -3,6 +3,11 @@ class LessonsController < ApplicationController
 
   skip_before_action :authenticate_user!, only: [:index]
 
+
+  autocomplete :subject, :name, :class_name => 'ActsAsTaggableOn::Tag'
+  autocomplete :code_concept, :name, :class_name => 'ActsAsTaggableOn::Tag'
+  autocomplete :grade, :name, :class_name => 'ActsAsTaggableOn::Tag'
+
   def upvote
     @lesson.upvote_by current_user
     respond_to do |format|
@@ -92,6 +97,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :duration_in_seconds, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list)
+      params.require(:lesson).permit(:title, :duration_in_seconds, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id)
     end
 end

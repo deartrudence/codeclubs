@@ -18,37 +18,37 @@
 
 <p>
   <strong>Description:</strong>
-  <%= @lesson.description %>
+  <%= @lesson.description.html_safe %>
 </p>
 
 <p>
   <strong>Curriculum concepts:</strong>
-  <%= @lesson.curriculum_concepts %>
+  <%= @lesson.curriculum_concepts.html_safe %>
 </p>
 
 <p>
   <strong>Prep:</strong>
-  <%= @lesson.prep %>
+  <%= @lesson.prep.html_safe %>
 </p>
 
 <p>
   <strong>Programming concepts:</strong>
-  <%= @lesson.programming_concepts %>
+  <%= @lesson.programming_concepts.html_safe %>
 </p>
 
 <p>
   <strong>Content:</strong>
-  <%= @lesson.content %>
+  <%= @lesson.content.html_safe %>
 </p>
 
 <p>
   <strong>Extensions:</strong>
-  <%= @lesson.extensions %>
+  <%= @lesson.extensions.html_safe %>
 </p>
 
 <p>
   <strong>Answers:</strong>
-  <%= @lesson.answers %>
+  <%= @lesson.answers.html_safe %>
 </p>
 
 <p>
