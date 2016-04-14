@@ -12,7 +12,9 @@
 
 <div>
   <%= link_to 'Lessons', lessons_path %>
-  <%= link_to 'My Profile', profile_path(current_user) %>
+  <% if user_signed_in? %>
+    <%= link_to 'My Profile', profile_path(current_user) %>
+  <% end %>
 </div>
 
 <%= yield %>
