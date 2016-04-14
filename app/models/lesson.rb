@@ -1,5 +1,6 @@
 class Lesson < ActiveRecord::Base
-  # include Bootsy::Container
+  include Bootsy::Container
+
 
   belongs_to :profile
 
