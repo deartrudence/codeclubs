@@ -6,4 +6,5 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :lessons, through: :profile
+  acts_as_voter
 end

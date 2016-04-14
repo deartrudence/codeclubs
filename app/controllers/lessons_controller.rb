@@ -5,12 +5,18 @@ class LessonsController < ApplicationController
 
   def upvote
     @lesson.upvote_by current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { count: @lesson.get_upvotes.size } }
+    end
   end
 
   def downvote
     @lesson.downvote_by current_user
-    redirect_to :back
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.json { render json: { count: @lesson.get_upvotes.size } }
+    end
   end
 
   # GET /lessons

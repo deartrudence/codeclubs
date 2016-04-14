@@ -3,8 +3,8 @@ Rails.application.routes.draw do
   resources :lessons do
     get :autocomplete_subject_name, :on => :collection
     member do
-      put "like", to: "lessons#upvote"
-      put "dislike", to: "lessons#downvote"
+      get "like", to: "lessons#upvote"
+      get "dislike", to: "lessons#downvote"
     end
   end
   resources :profiles
