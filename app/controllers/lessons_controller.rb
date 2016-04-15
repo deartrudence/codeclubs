@@ -52,8 +52,6 @@ class LessonsController < ApplicationController
     @lesson.subject_list.add(params[:subject_list], parse: true)
     @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
     @lesson.grade_list.add(params[:grade_list], parse: true)
-
-
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }

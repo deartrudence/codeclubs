@@ -26,4 +26,5 @@ class Lesson < ActiveRecord::Base
       return liked
     end
   end
+
 end
