@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160415160942) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|

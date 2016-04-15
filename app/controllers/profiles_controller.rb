@@ -4,7 +4,11 @@ class ProfilesController < ApplicationController
   # GET /profiles
   # GET /profiles.json
   def index
-    @profiles = Profile.all
+    if current_user.profile.is_admin?
+      @profiles = Profile.all
+    else
+      redirect_to profile_path(current_user.profile)
+    end
   end
 
   # GET /profiles/1
