@@ -15,9 +15,9 @@
  *= require bootsy
  */
 
-form {
+/*form {
   margin: 0 15%;
-}
+}*/
 
 .field input {
   border: 1px solid lightgrey;
