@@ -28,6 +28,26 @@ class LessonsController < ApplicationController
   # GET /lessons.json
   def index
     @lessons = Lesson.order(:cached_votes_up => :desc).first(6)
+    if params[:search_complete]
+      tags = []
+      # make sure to not search against blank fields
+      if params[:subject] != ''
+        tags.push(params[:subject])
+      end
+      if params[:code_concept] != ''
+        tags.push(params[:code_concept])
+      end
+      if params[:grade] != ''
+        tags.push(params[:grade])
+      end
+      @tags = tags
+      @lessons = Lesson.tagged_with(@tags).order(:cached_votes_up => :desc)
+
+      respond_to do |format|
+        format.js { render :partial => "lessons_js" }
+      end
+
+    end
   end
 
   # GET /lessons/1
@@ -52,8 +72,6 @@ class LessonsController < ApplicationController
     @lesson.subject_list.add(params[:subject_list], parse: true)
     @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
     @lesson.grade_list.add(params[:grade_list], parse: true)
-
-
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
@@ -97,6 +115,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :duration_in_seconds, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id)
+      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id)
     end
 end
