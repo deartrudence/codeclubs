@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <h2><%= f.label :title %></h2><br>
+    <%= f.label :title %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
@@ -45,27 +45,34 @@
     <%= f.file_field :file_upload, class: "button button--primary" %>
   </div>
   <div class="field">
-    <%= f.input :description, as: :bootsy %>
+  <h3>Description</h3>
+    <%= f.bootsy_area :description, editor_options: { link: false,  image: false }  %>
   </div>
   <div class="field">
-    <%= f.input :curriculum_concepts, as: :bootsy %>
+    <h3>Curriculum Concepts</h3>
+    <%= f.bootsy_area :curriculum_concepts %>
   </div>
   <div class="field">
-    <%= f.input :prep, as: :bootsy %>
+    <h3>Prep</h3>
+    <%= f.bootsy_area :prep %>
   </div>
   <div class="field">
-    <%= f.input :programming_concepts, as: :bootsy %>
+    <h3>Programming Concepts</h3>
+    <%= f.bootsy_area :programming_concepts %>
   </div>
   <div class="field">
-    <%= f.input :content, as: :bootsy %>
+    <h3>Content</h3>
+    <%= f.bootsy_area :content %>
   </div>
   <div class="field">
-    <%= f.input :extensions, as: :bootsy %>
+    <h3>Extensions</h3>
+    <%= f.bootsy_area :extensions %>
   </div>
   <div class="field">
-    <%= f.input :answers, as: :bootsy %>
+    <h3>Answers</h3>
+    <%= f.bootsy_area :answers %>
   </div>
   <div class="actions">
-    <%= f.submit "submit", class: "button button--primary" %>
+    <%= f.submit "submit", class: "button button--secondary" %>
   </div>
 <% end %>
