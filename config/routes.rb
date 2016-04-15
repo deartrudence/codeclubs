@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'admin' => 'admin#panel'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   root 'lessons#index'
   resources :lessons do

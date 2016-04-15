@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160414143442) do
+ActiveRecord::Schema.define(version: 20160415160942) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 20160414143442) do
     t.integer  "cached_weighted_score",      default: 0
     t.integer  "cached_weighted_total",      default: 0
     t.float    "cached_weighted_average",    default: 0.0
+    t.boolean  "approved"
   end
 
   add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down"

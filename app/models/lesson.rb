@@ -19,11 +19,13 @@ class Lesson < ActiveRecord::Base
   end
 
   def liked_by_user(current_user)
-    liked = current_user.voted_as_when_voted_for self
-    if liked == nil
-      return false
-    else
-      return liked
+    if current_user.present?
+      liked = current_user.voted_as_when_voted_for self
+      if liked == nil
+        return false
+      else
+        return liked
+      end
     end
   end
 end
