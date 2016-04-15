@@ -28,6 +28,26 @@ class LessonsController < ApplicationController
   # GET /lessons.json
   def index
     @lessons = Lesson.order(:cached_votes_up => :desc).first(6)
+    if params[:search_complete]
+      tags = []
+      # make sure to not search against blank fields
+      if params[:subject] != ''
+        tags.push(params[:subject])
+      end
+      if params[:code_concept] != ''
+        tags.push(params[:code_concept])
+      end
+      if params[:grade] != ''
+        tags.push(params[:grade])
+      end
+      @tags = tags
+      @lessons = Lesson.tagged_with(@tags).order(:cached_votes_up => :desc)
+
+      respond_to do |format|
+        format.js { render :partial => "lessons_js" }
+      end
+
+    end
   end
 
   # GET /lessons/1
