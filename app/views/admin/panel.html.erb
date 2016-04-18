@@ -15,7 +15,7 @@
       <% @lessons.find_each do |lesson| %>
       <li>
       <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>
-        <%= f.check_box :approved, class: "lesson_approved_check-#{lesson.id}"  %>
+        <%= f.check_box :approved, data: lesson.id, class: "lesson_approved_check"  %>
       <% end %>
 
       <%= lesson.title%>
@@ -48,8 +48,19 @@
 <script>
   $(document).ready(function(){
 
-      $('.lesson_approved_check-1').change(function(){
-        $('.edit_lesson').submit();
+      $('.lesson_approved_check').change(function(){
+        lesson = $(this).attr('data')
+        approved = $(this)[0].checked
+        console.log(lesson)
+        console.log(approved)
+        $.ajax({
+          url: '',
+          type: 'get',
+          data: {
+            lesson: lesson,
+            approved: approved
+          }
+        })
       });
 
     $('ul.tabs li').click(function(){
