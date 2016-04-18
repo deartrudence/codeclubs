@@ -41,6 +41,9 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails4-autocomplete'
 gem 'simple_form'
 
+# for better url ids
+gem 'friendly_id', '~> 5.1.0'
+
 # for image management
 gem 'paperclip'
 gem 'aws-sdk-v1'
@@ -88,4 +91,3 @@ group :test do
   gem 'guard-rspec'
   gem 'launchy'
 end
-

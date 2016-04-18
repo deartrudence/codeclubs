@@ -8,6 +8,8 @@ class Lesson < ActiveRecord::Base
 
   acts_as_taggable_on :subject, :code_concept, :grade
 
+  extend FriendlyId
+  friendly_id :name, use: :slugged
 
 
   has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"

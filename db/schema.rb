@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160415160942) do
+ActiveRecord::Schema.define(version: 20160418131448) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20160415160942) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "friendly_id_slugs", force: :cascade do |t|
+    t.string   "slug",                      null: false
+    t.integer  "sluggable_id",              null: false
+    t.string   "sluggable_type", limit: 50
+    t.string   "scope"
+    t.datetime "created_at"
+  end
+
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
@@ -58,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160415160942) do
     t.integer  "cached_weighted_total",      default: 0
     t.float    "cached_weighted_average",    default: 0.0
     t.boolean  "approved"
+    t.string   "slug"
   end
 
   add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down"
@@ -68,6 +82,7 @@ ActiveRecord::Schema.define(version: 20160415160942) do
   add_index "lessons", ["cached_weighted_score"], name: "index_lessons_on_cached_weighted_score"
   add_index "lessons", ["cached_weighted_total"], name: "index_lessons_on_cached_weighted_total"
   add_index "lessons", ["profile_id"], name: "index_lessons_on_profile_id"
+  add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
@@ -83,8 +98,10 @@ ActiveRecord::Schema.define(version: 20160415160942) do
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
+    t.string   "slug"
   end
 
+  add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "taggings", force: :cascade do |t|

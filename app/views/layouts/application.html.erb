@@ -24,7 +24,7 @@
 <div>
   <%= link_to 'Lessons', lessons_path %>
   <% if user_signed_in? %>
-    <%= link_to 'My Profile', profile_path(current_user) %>
+    <%= link_to 'My Profile', profile_path(current_user.profile) %>
   <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
   <% end %>
 </div>
