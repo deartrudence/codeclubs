@@ -10,19 +10,13 @@
 
   <div id="lessons-tab" class="tab-content current">
     <h2>Lessons</h2>
+    <%= form_tag(admin_path, method: :get, remote: true) do %>
+      <%= select_tag :search, options_for_select([ "all","approved", "unapproved" ], "all"), include_blank: true, class: "lesson_filter" %>
+    <% end %>
+    <div id="lessons-admin">
+      <%= render 'lessons_admin' %>
+    </div>
 
-    <ul>
-      <% @lessons.find_each do |lesson| %>
-      <li>
-      <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>
-        <%= f.check_box :approved, data: lesson.id, class: "lesson_approved_check"  %>
-      <% end %>
-
-      <%= lesson.title%>
-      </li>
-      <hr>
-      <% end %>
-    </ul>
   </div>
 
   <div id="users-tab" class="tab-content">
@@ -59,6 +53,17 @@
           data: {
             lesson: lesson,
             approved: approved
+          }
+        })
+      });
+
+      $('.lesson_filter').on('change', function(){
+        filter = $(this).val()
+        $.ajax({
+          url: '',
+          type: 'get',
+          data: {
+            filter: filter
           }
         })
       });

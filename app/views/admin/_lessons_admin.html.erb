@@ -1,0 +1,11 @@
+<ul>
+  <% @lessons.find_each do |lesson| %>
+  <li>
+  <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>
+    <%= f.check_box :approved, data: lesson.id, class: "lesson_approved_check"  %>
+  <% end %>
+  <%= link_to lesson.title, lesson %> - <%= lesson.profile.name %>
+  </li>
+  <hr/>
+  <% end %>
+</ul>
