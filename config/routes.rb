@@ -14,6 +14,8 @@ Rails.application.routes.draw do
     end
   end
   resources :profiles
+
+  get "about" => "pages#about"
   # devise_for :users
   devise_for :users, :controllers => { :registrations => "my_devise/registrations" }
 
