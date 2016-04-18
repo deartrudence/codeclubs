@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :mailing_lists
   get 'admin' => 'admin#panel'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'

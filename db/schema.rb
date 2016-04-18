@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418131448) do
+ActiveRecord::Schema.define(version: 20160418141141) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -83,6 +83,14 @@ ActiveRecord::Schema.define(version: 20160418131448) do
   add_index "lessons", ["cached_weighted_total"], name: "index_lessons_on_cached_weighted_total"
   add_index "lessons", ["profile_id"], name: "index_lessons_on_profile_id"
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
+
+  create_table "mailing_lists", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.boolean  "opt_in"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
