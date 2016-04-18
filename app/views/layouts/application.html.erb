@@ -4,7 +4,7 @@
   <title>Codeclubs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
+
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <!-- Latest compiled and minified CSS -->
@@ -12,7 +12,7 @@
 
   <!-- Optional theme -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <%= csrf_meta_tags %>
@@ -22,18 +22,22 @@
 <p class="alert"><%= alert %></p> -->
 
 <nav class="nav--main">
-  <span class="logo">
-    <%= image_tag 'logo.png'%>
-    <span class="font-quicksand">code:clubs</span>
-  </span>
-  <span class="nav--links">
-    <%= link_to 'Lessons', lessons_path %>
-    <% if user_signed_in? %>
-      <%= link_to 'My Profile', profile_path(current_user.profile) %>
-      <%= image_tag current_user.profile.avatar.url %>
-    <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
-    <% end %>
-  </span>
+  <div class="wrapper">
+    <span class="logo">
+      <%= image_tag 'logo.png'%>
+      <span class="font-quicksand">code:clubs</span>
+    </span>
+    <span class="nav--links">
+      <%= link_to 'About', about_path %> |
+      <% if user_signed_in? %>
+        <%= image_tag current_user.profile.avatar.url %>
+        <%= link_to 'My Profile', profile_path(current_user.profile) %> |
+        <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
+      <% else %>
+        <%= link_to 'Sing In', new_user_session_path, method: :get%>
+      <% end %>
+    </span>
+  </div>
 </nav>
 
 <div class="container-codeclubs">
