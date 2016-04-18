@@ -1,99 +1,102 @@
 <p id="notice"><%= notice %></p>
 
-<%= image_tag @lesson.feature_image.url(:medium) %>
-  <h3>Title:</h3>
-<p>
-  <%= @lesson.title %>
-</p>
+<div class="wrapper">
 
-<p>
-  <strong>Duration in seconds:</strong>
-  <%= @lesson.duration_in_minutes %>
-</p>
-
-  <h3>Level:</h3>
-<p>
-  <%= @lesson.level %>
-</p>
-
-  <h3>Description:</h3>
-<p>
-  <%= @lesson.description.html_safe %>
-</p>
-
-<div>
-    <h3>Curriculum concepts:</h3>
+  <%= image_tag @lesson.feature_image.url(:medium) %>
+    <h3>Title:</h3>
   <p>
-    <%= @lesson.curriculum_concepts.html_safe %>
+    <%= @lesson.title %>
   </p>
 
+  <p>
+    <strong>Duration in seconds:</strong>
+    <%= @lesson.duration_in_minutes %>
+  </p>
+
+    <h3>Level:</h3>
+  <p>
+    <%= @lesson.level %>
+  </p>
+
+    <h3>Description:</h3>
+  <p>
+    <%= @lesson.description.html_safe %>
+  </p>
+
+  <div>
+      <h3>Curriculum concepts:</h3>
+    <p>
+      <%= @lesson.curriculum_concepts.html_safe %>
+    </p>
+
+  </div>
+
+  <div class="clearfix">
+    <h3>Prep:</h3>
+  <p>
+    <%= @lesson.prep.html_safe %>
+  </p>
+
+  </div>
+
+
+    <h3>Programming concepts:</h3>
+  <p>
+    <%= @lesson.programming_concepts.html_safe %>
+  </p>
+
+  <p>
+    <strong>Content:</strong>
+    <%= @lesson.content.html_safe %>
+  </p>
+
+  <p>
+    <strong>Extensions:</strong>
+    <%= @lesson.extensions.html_safe %>
+  </p>
+
+  <p>
+    <strong>Answers:</strong>
+    <%= @lesson.answers.html_safe %>
+  </p>
+
+  <p>
+    <strong>Video link:</strong>
+    <%= @lesson.video_link %>
+  </p>
+  <p>
+    <strong>Subject</strong>
+    <ul>
+      <% @lesson.subject_list.each do |subject| %>
+        <li><%= subject %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    <strong>code_concept</strong>
+    <ul>
+      <% @lesson.code_concept_list.each do |code_concept| %>
+        <li><%= code_concept %></li>
+      <% end %>
+    </ul>
+  </p>
+  <p>
+    <strong>grade</strong>
+    <ul>
+      <% @lesson.grade_list.each do |grade| %>
+        <li><%= grade %></li>
+      <% end %>
+    </ul>
+  </p>
+
+  <p>
+    <strong>Profile:</strong>
+    <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %>
+  </p>
+  <p>
+    <%= link_to 'file upload', @lesson.file_upload.url, target: '_blank' %>
+  </p>
+
+  <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
+  <%= link_to 'Back', lessons_path %>
 </div>
-
-<div class="clearfix">
-  <h3>Prep:</h3>
-<p>
-  <%= @lesson.prep.html_safe %>
-</p>
-
-</div>
-
-
-  <h3>Programming concepts:</h3>
-<p>
-  <%= @lesson.programming_concepts.html_safe %>
-</p>
-
-<p>
-  <strong>Content:</strong>
-  <%= @lesson.content.html_safe %>
-</p>
-
-<p>
-  <strong>Extensions:</strong>
-  <%= @lesson.extensions.html_safe %>
-</p>
-
-<p>
-  <strong>Answers:</strong>
-  <%= @lesson.answers.html_safe %>
-</p>
-
-<p>
-  <strong>Video link:</strong>
-  <%= @lesson.video_link %>
-</p>
-<p>
-  <strong>Subject</strong>
-  <ul>
-    <% @lesson.subject_list.each do |subject| %>
-      <li><%= subject %></li>
-    <% end %>
-  </ul>
-</p>
-<p>
-  <strong>code_concept</strong>
-  <ul>
-    <% @lesson.code_concept_list.each do |code_concept| %>
-      <li><%= code_concept %></li>
-    <% end %>
-  </ul>
-</p>
-<p>
-  <strong>grade</strong>
-  <ul>
-    <% @lesson.grade_list.each do |grade| %>
-      <li><%= grade %></li>
-    <% end %>
-  </ul>
-</p>
-
-<p>
-  <strong>Profile:</strong>
-  <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %>
-</p>
-<p>
-  <%= link_to 'file upload', @lesson.file_upload.url, target: '_blank' %>
-</p>
-
-<%= link_to 'Edit', edit_lesson_path(@lesson) %> |
-<%= link_to 'Back', lessons_path %>
