@@ -1,2 +1,66 @@
-<h1>Admin#panel</h1>
-<p>Find me in app/views/admin/panel.html.erb</p>
+<div class="wrapper">
+
+  <h1>Admin#panel</h1>
+
+  <ul class="tabs">
+    <li class="tab-link current" data-tab="lessons-tab">Lessons</li>
+    <li class="tab-link" data-tab="users-tab">Users</li>
+    <li class="tab-link" data-tab="mailing-tab">Mailing List</li>
+  </ul>
+
+  <div id="lessons-tab" class="tab-content current">
+    <h2>Lessons</h2>
+
+    <ul>
+      <% @lessons.find_each do |lesson| %>
+      <li>
+      <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>
+        <%= f.check_box :approved, class: "lesson_approved_check-#{lesson.id}"  %>
+      <% end %>
+
+      <%= lesson.title%>
+      </li>
+      <hr>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="users-tab" class="tab-content">
+    <h2>Users</h2>
+
+    <ul>
+      <% @users.find_each do |user| %>
+      <li><%= user.first_name %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div id="mailing-tab" class="tab-content">
+    <h2>Mailing List</h2>
+    <ul>
+      <% %>
+      <li></li>
+    </ul>
+  </div>
+</div>
+
+
+<script>
+  $(document).ready(function(){
+
+      $('.lesson_approved_check-1').change(function(){
+        $('.edit_lesson').submit();
+      });
+
+    $('ul.tabs li').click(function(){
+      var tab_id = $(this).attr('data-tab');
+
+      $('ul.tabs li').removeClass('current');
+      $('.tab-content').removeClass('current');
+
+      $(this).addClass('current');
+      $("#"+tab_id).addClass('current');
+    })
+
+  })
+</script>
