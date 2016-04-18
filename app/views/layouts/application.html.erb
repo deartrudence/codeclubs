@@ -18,16 +18,23 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+<!-- <p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p> -->
 
-<div>
-  <%= link_to 'Lessons', lessons_path %>
-  <% if user_signed_in? %>
-    <%= link_to 'My Profile', profile_path(current_user.profile) %>
-  <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
-  <% end %>
-</div>
+<nav class="nav--main">
+  <span class="logo">
+    <%= image_tag 'logo.png'%>
+    <span class="font-quicksand">code:clubs</span>
+  </span>
+  <span class="nav--links">
+    <%= link_to 'Lessons', lessons_path %>
+    <% if user_signed_in? %>
+      <%= link_to 'My Profile', profile_path(current_user.profile) %>
+      <%= image_tag current_user.profile.avatar.url %>
+    <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
+    <% end %>
+  </span>
+</nav>
 
 <div class="container-codeclubs">
   <%= yield %>
