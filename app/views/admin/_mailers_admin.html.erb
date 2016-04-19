@@ -1,0 +1,6 @@
+<ul>
+  <% @email.find_each do |email|%>
+    <li><%= email.name %> - <%= email.email %></li>
+    <hr>
+  <% end %>
+</ul>

@@ -35,5 +35,9 @@ class Lesson < ActiveRecord::Base
     end
   end
 
+  def self.search(query)
+    where("title like ?", "%#{query}%")
+  end
+
 
 end

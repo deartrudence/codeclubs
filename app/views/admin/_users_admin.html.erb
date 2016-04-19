@@ -1,0 +1,6 @@
+<ul>
+  <% @users.find_each do |user| %>
+  <li><%= user.name %></li>
+  <hr>
+  <% end %>
+</ul>

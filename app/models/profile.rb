@@ -26,4 +26,8 @@ class Profile < ActiveRecord::Base
       "#{first_name} #{last_name}"
     end
 
+    def self.search(query)
+      where("first_name like :search OR last_name like :search", search: "#{query}")
+    end
+
 end
