@@ -1,13 +1,20 @@
 <% if @lessons.present? %>
   <% @lessons.each do |lesson| %>
-    <div class="lesson col--two">
+    <div class="lesson col--two lesson--level-<%= lesson.level %>">
       <div class="lesson--bar">
-        <% ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).each do |grade| %>
-        <span>Grade:  <%= grade %></span>
+        <% lesson.grade_list.each do |grade| %>
+        <span>Grade :  <%= grade %></span>
         <% end %>
       </div>
-
-      <div class="lesson--title">
+      <% if lesson.level == 2 %>
+        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(69, 69, 131, 0.85) 0%, rgba(69, 69, 131, 0.6) 59%, rgba(69, 69, 131, 0.5)100%), url(<%= lesson.feature_image.url %>)">
+      <% elsif lesson.level == 3 %>
+      <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(93, 88, 129, 0.85) 0%, rgba(93, 88, 129, 0.6) 59%, rgba(93, 88, 129, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
+      <% elsif lesson.level == 4 %>
+        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(0, 117, 86, 0.85) 0%, rgba(0, 117, 86, 0.6) 59%, rgba(0, 117, 86, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
+      <% else %>
+        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(0, 160, 118, 0.85) 0%, rgba(0, 160, 118, 0.6) 59%, rgba(0, 160, 118, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
+      <% end %>
         <span>
           <p>Time: <%= lesson.duration_in_minutes %></p>
           <p>Level: <%= lesson.level%></p>
@@ -28,10 +35,12 @@
         </span>
       </div>
     </div>
+
   <% end %>
 <% else %>
   <p>No lessons match this search parameter</p>
 <% end %>
+
 
 <script>
   function updateVotable(){

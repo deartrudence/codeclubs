@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
-<%= image_tag @profile.avatar.url(:thumb) %>
+
+<div class="wrapper center">
+  <%= image_tag @profile.avatar.url(:thumbnail), class: 'as--profile-avatar' %>
+  <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
+  <h4>grade: <%= @profile.grade %></h4>
+  <h4>school: <%= @profile.school %></h4>
+</div>
 
 <p>
   <strong>First name:</strong>

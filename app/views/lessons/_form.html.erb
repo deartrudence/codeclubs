@@ -26,7 +26,10 @@
   </div>
   <div class="field">
     <%= f.label :level %><br>
-    <%= f.number_field :level %>
+    <span>1</span><%= f.radio_button :level, '1' %><br>
+    <span>2</span><%= f.radio_button :level, '2' %><br>
+    <span>3</span><%= f.radio_button :level, '3' %><br>
+    <span>4</span><%= f.radio_button :level, '4' %><br>
   </div>
   <div class="field">
     <%= f.label :duration_in_minutes %><br>

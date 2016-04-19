@@ -28,6 +28,9 @@ class LessonsController < ApplicationController
   # GET /lessons.json
   def index
     @lessons = Lesson.order(:cached_votes_up => :desc).first(6)
+    @grade =  params[:grade] != ''? params[:grade] : 'all grades'
+    @subject = params[:subject] != ''? params[:subject] : 'all subjects'
+    @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
     if params[:search_complete]
       tags = []
       # make sure to not search against blank fields
@@ -44,7 +47,7 @@ class LessonsController < ApplicationController
       @lessons = Lesson.tagged_with(@tags).order(:cached_votes_up => :desc)
 
       respond_to do |format|
-        format.js { render :partial => "lessons_js" }
+        format.js { render :partial => "lessons_js", locals: {grade: @grade} }
       end
 
     end
@@ -62,6 +65,7 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
+    # @lesson.level = params[:level].to_i
   end
 
   # POST /lessons
@@ -72,6 +76,7 @@ class LessonsController < ApplicationController
     @lesson.subject_list.add(params[:subject_list], parse: true)
     @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
     @lesson.grade_list.add(params[:grade_list], parse: true)
+    @lesson.level = params[:level].to_i
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }

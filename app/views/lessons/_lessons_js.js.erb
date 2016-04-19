@@ -1,1 +1,2 @@
 $("#lessons-listing").html("<%= escape_javascript render('lessons_listing') %>");
+$("#lesson-search-results").html("grade <%= escape_javascript @grade%> | <%= escape_javascript @subject%> | <%= escape_javascript @code_concept%>")

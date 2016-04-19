@@ -3,7 +3,7 @@
 <head>
   <title>Codeclubs</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
 
 
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
@@ -24,14 +24,16 @@
 <nav class="nav--main">
   <div class="wrapper">
     <span class="logo">
-      <%= image_tag 'logo.png'%>
-      <span class="font-quicksand">code:clubs</span>
+      <%= link_to lessons_path do%>
+        <%= image_tag 'logo.png'%>
+        <span class="font-quicksand">code:clubs</span>
+      <% end %>
     </span>
     <span class="nav--links">
-      <%= link_to 'About', about_path %> |
+      <%= link_to 'About', about_path %> 
       <% if user_signed_in? %>
-        <%= image_tag current_user.profile.avatar.url %>
-        <%= link_to 'My Profile', profile_path(current_user.profile) %> |
+        <%= image_tag current_user.profile.avatar.url(:thumbnail) %>
+        <%= link_to 'My Profile', profile_path(current_user.profile) %>
         <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sing In', new_user_session_path, method: :get%>
