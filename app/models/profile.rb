@@ -22,4 +22,8 @@ class Profile < ActiveRecord::Base
       self.role == 'admin'
     end
 
+    def name
+      "#{first_name} #{last_name}"
+    end
+
 end
