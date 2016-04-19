@@ -44,8 +44,11 @@ class LessonsController < ApplicationController
         tags.push(params[:grade])
       end
       @tags = tags
-      @lessons = Lesson.tagged_with(@tags).order(:cached_votes_up => :desc)
-
+      if @tags.length > 0
+        @lessons = Lesson.tagged_with(@tags).order(:cached_votes_up => :desc)
+      else
+        @lessons = @lessons
+      end   
       respond_to do |format|
         format.js { render :partial => "lessons_js", locals: {grade: @grade} }
       end
