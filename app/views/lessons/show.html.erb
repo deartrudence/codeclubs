@@ -18,20 +18,25 @@
     <div class="text-edit">
       <%= @lesson.content.html_safe %>
     </div>
+    <% if @lesson.extensions.present? %>
+      <h3 class="font-quicksand as--underlined">Extensions</h3>
+      <div class="text-edit">
+        <%= @lesson.extensions.html_safe %>
+      </div>
+    <% end %>
 
-    <h3 class="font-quicksand as--underlined">Extensions</h3>
-    <div class="text-edit">
-      <%= @lesson.extensions.html_safe %>
-    </div>
-
-    <h3 class="font-quicksand as--underlined">Answers</h3>
-    <div class="text-edit">
-      <%= @lesson.answers.html_safe %>
-    </div>
-
-    <%= @lesson.video_link %>
-
-    <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank' %>
+    <% if @lesson.answers.present? %>
+      <h3 class="font-quicksand as--underlined">Answers</h3>
+      <div class="text-edit">
+        <%= @lesson.answers.html_safe %>
+      </div>
+    <% end %>
+    <% if @lesson.video_link.present?%>
+      <%= @lesson.video_link %>
+    <% end %>
+    <% if @lesson.file_upload.file? %>
+      <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank' %>
+    <% end %>
   </div>
   <div class="sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
@@ -48,16 +53,26 @@
           <li><%= code_concept %></li>
         <% end %>
       </ul>
-      <h3>Key Curriculum Concepts</h3>
-      <div class="text-edit">
-        <%= @lesson.curriculum_concepts.html_safe %>
-      </div>
-      <h3>Key Coding Concepts</h3>
-      <div class="text-edit">
-        <%= @lesson.programming_concepts.html_safe %>
-      </div>
-      <h3>Prep</h3>
-      <%= @lesson.prep.html_safe %>
+      <% if @lesson.curriculum_concepts.present? %>
+        <h3>Key Curriculum Concepts</h3>
+        <div class="text-edit">
+          <%= @lesson.curriculum_concepts.html_safe %>
+        </div>
+      <% end %>
+
+      <% if @lesson.programming_concepts.present? %>
+        <h3>Key Coding Concepts</h3>
+        <div class="text-edit">
+          <%= @lesson.programming_concepts.html_safe %>
+        </div>
+      <% end %>
+
+      <% if @lesson.prep.present? %>
+        <h3>Prep</h3>
+        <div class="text-edit">
+          <%= @lesson.prep.html_safe %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
