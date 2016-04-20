@@ -70,10 +70,14 @@
   		<li><a href="http://jobs.ladieslearningcode.com/" target="_blank">Job Board</a></li>
   		<li><a href="http://ladieslearningcode.com/about#press">Press</a></li>
   	</ul>
-    <%= form_for(@mailing_list) do |f| %>
+    <div class="email-form">
+      <h3>Join Our Mailing List</h3>
+      <p class="small">SIGN UP NOW TO STAY IN THE LOOP</p>
+      <%= form_for(@mailing_list) do |f| %>
       <%= f.text_field :email,type: 'email', placeholder: 'enter email here' %>
-      <%= f.submit 'subscribe', class: 'button button--secondary' %>
-    <% end %>
+      <%= f.submit 'subscribe', class: 'button button--tertiary font-quicksand' %>
+      <% end %>
+    </div>
   </div>
 </footer>
 </body>
