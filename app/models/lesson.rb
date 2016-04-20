@@ -1,7 +1,6 @@
 class Lesson < ActiveRecord::Base
   include Bootsy::Container
 
-
   belongs_to :profile
 
   acts_as_votable
@@ -10,6 +9,8 @@ class Lesson < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  validates :title, :level, :duration_in_minutes, :description, :content, presence: true
 
 
   has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
