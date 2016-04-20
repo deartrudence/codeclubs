@@ -46,8 +46,8 @@
 
 
 <script>
-  $(document).ready(function(){
-
+  $(document).on('ready ajaxComplete',function(){
+      console.log("ajaxComplete")
       $('.lesson_approved_check').change(function(){
         lesson = $(this).attr('data')
         approved = $(this)[0].checked

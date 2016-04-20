@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160418141141) do
+ActiveRecord::Schema.define(version: 20160420135623) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -53,8 +53,8 @@ ActiveRecord::Schema.define(version: 20160418141141) do
     t.text     "answers"
     t.string   "video_link"
     t.integer  "profile_id"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
     t.string   "feature_image_file_name"
     t.string   "feature_image_content_type"
     t.integer  "feature_image_file_size"
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 20160418141141) do
     t.integer  "cached_weighted_score",      default: 0
     t.integer  "cached_weighted_total",      default: 0
     t.float    "cached_weighted_average",    default: 0.0
-    t.boolean  "approved"
+    t.boolean  "approved",                   default: false
     t.string   "slug"
   end
 

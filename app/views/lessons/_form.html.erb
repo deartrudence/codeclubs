@@ -16,13 +16,13 @@
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
+    <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
   </div>
   <div class="field">
-    <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
+    <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
   </div>
   <div class="field">
-    <%= f.input :grade_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {'data-delimiter' => ','} %>
+    <%= f.input :grade_list, :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
   </div>
   <div class="field">
     <%= f.label :level %><br>
