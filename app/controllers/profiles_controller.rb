@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1.json
   def show
     @lessons = @profile.lessons
+    @favourites = current_user.find_up_voted_items
   end
 
   # GET /profiles/new
