@@ -1,8 +1,8 @@
 <% locals[:lessons].each do |lesson|%>
   <div class="lesson col--two">
     <div class="lesson--bar">
-      <% ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).each do |grade| %>
-      <span>Grade:  <%= grade %></span>
+      <% lesson.grade_list.each do |grade| %>
+      <span>Grade :  <%= grade %></span>
       <% end %>
     </div>
 

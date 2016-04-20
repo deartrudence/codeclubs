@@ -10,6 +10,7 @@
     <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
     <h4>grade: <%= @profile.grade %></h4>
     <h4>school: <%= @profile.school %></h4>
+    <%= link_to 'Edit', edit_profile_path(@profile), class: 'button button--primary' %>
   </div>
   <div class="wrapper--flex tab-content" id="my-lessons-tab">
     <%= render 'lesson', locals: {lessons: @lessons}%>
@@ -20,11 +21,6 @@
 </div>
 
 
-
-<br>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
-<%= link_to 'Back', profiles_path %>
 
 <script>
   $('ul.tabs li').click(function(){
