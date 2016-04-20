@@ -24,7 +24,11 @@
 
     <div class="lesson--short-description">
       <p><%= lesson.short_description %></p>
+    <% if lesson.user_owns_lesson?(current_user) %>
+      <%= link_to 'Edit', edit_lesson_path(lesson), class: 'button button--primary' %>
+    <% else %>
       <%= link_to 'Learn More', lesson, class: 'button button--primary' %>
+    <% end %>
 
 
       <span class="lesson--likes">

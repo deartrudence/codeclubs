@@ -1,7 +1,8 @@
 class Lesson < ActiveRecord::Base
   include Bootsy::Container
 
-  belongs_to :profile
+  belongs_to :profile, -> { includes :user }
+  delegate :user, :to => :profile, :allow_nil => true
 
   acts_as_votable
 
@@ -33,6 +34,14 @@ class Lesson < ActiveRecord::Base
       else
         return liked
       end
+    end
+  end
+
+  def user_owns_lesson?(current_user)
+    if current_user.present?
+      self.user == current_user
+    else
+      return false
     end
   end
 
