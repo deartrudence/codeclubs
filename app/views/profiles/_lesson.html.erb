@@ -1,0 +1,29 @@
+<% locals[:lessons].each do |lesson|%>
+  <div class="lesson col--two">
+    <div class="lesson--bar">
+      <% ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).each do |grade| %>
+      <span>Grade:  <%= grade %></span>
+      <% end %>
+    </div>
+
+    <div class="lesson--title">
+      <span>
+        <p>Time: <%= lesson.duration_in_minutes %></p>
+        <p>Level: <%= lesson.level%></p>
+      </span>
+      <h2><%= lesson.title %></h2>
+    </div>
+
+
+    <div class="lesson--short-description">
+      <p><%= lesson.short_description %></p>
+      <%= link_to 'Learn More', lesson, class: 'button button--primary' %>
+
+
+      <span class="lesson--likes">
+        ♡
+        <span class="likes-count"><%= lesson.get_upvotes.size %></span>
+      </span>
+    </div>
+  </div>
+<% end %>
