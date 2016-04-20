@@ -35,48 +35,27 @@
         <li><%= code_concept %></li>
       <% end %>
     </ul>
+
+    <h2>The Lesson</h2>
+    <div class="text-edit">
+      <%= @lesson.content.html_safe %>
+    </div>
+
+    <h2>Extensions</h2>
+    <div class="text-edit">
+      <%= @lesson.extensions.html_safe %>
+    </div>
+
+    <h2>Answers</h2>
+    <div class="text-edit">
+      <%= @lesson.answers.html_safe %>
+    </div>
+
+    <%= @lesson.video_link %>
+
+    <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank' %>
   </div>
 </div>
-
-
-    <h3>Description:</h3>
-  <p>
-    <%= @lesson.description.html_safe %>
-  </p>
-
-
-
-
-
-
-
-
-  <p>
-    <strong>Content:</strong>
-    <%= @lesson.content.html_safe %>
-  </p>
-
-  <p>
-    <strong>Extensions:</strong>
-    <%= @lesson.extensions.html_safe %>
-  </p>
-
-  <p>
-    <strong>Answers:</strong>
-    <%= @lesson.answers.html_safe %>
-  </p>
-
-  <p>
-    <strong>Video link:</strong>
-    <%= @lesson.video_link %>
-  </p>
-
-
-
-
-  <p>
-    <%= link_to 'file upload', @lesson.file_upload.url, target: '_blank' %>
-  </p>
 
   <%= link_to 'Edit', edit_lesson_path(@lesson) %> |
   <%= link_to 'Back', lessons_path %>
