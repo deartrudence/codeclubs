@@ -1,8 +1,8 @@
 class Lesson < ActiveRecord::Base
   include Bootsy::Container
 
-
-  belongs_to :profile
+  belongs_to :profile, -> { includes :user }
+  delegate :user, :to => :profile, :allow_nil => true
 
   acts_as_votable
 
@@ -10,6 +10,8 @@ class Lesson < ActiveRecord::Base
 
   extend FriendlyId
   friendly_id :title, use: :slugged
+
+  validates :title, :level, :duration_in_minutes, :description, :content, presence: true
 
 
   has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
@@ -32,6 +34,14 @@ class Lesson < ActiveRecord::Base
       else
         return liked
       end
+    end
+  end
+
+  def user_owns_lesson?(current_user)
+    if current_user.present?
+      self.user == current_user
+    else
+      return false
     end
   end
 
