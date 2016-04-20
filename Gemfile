@@ -58,6 +58,9 @@ gem 'devise'
 # vanity URLs
 gem 'friendly_id', '~> 5.1.0'
 
+# for all the emails
+gem 'mailgun-ruby', '~>1.0.0'
+
 gem 'rack-mini-profiler', require: false
 gem 'rubocop', require: false
 

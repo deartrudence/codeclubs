@@ -1,59 +1,79 @@
 <p id="notice"><%= notice %></p>
 
-<div class="wrapper wrapper--flex">
-  <div class="sidebar">
-    <%= image_tag @lesson.feature_image.url(:medium) %>
-    <div class="sidebar--text">
-      <h3>Key Curriculum Concepts</h3>
-      <%= @lesson.curriculum_concepts.html_safe %>
-      <h3>Key Coding Concepts</h3>
-      <%= @lesson.programming_concepts.html_safe %>
-      <h3>Prep</h3>
-      <%= @lesson.prep.html_safe %>
-    </div>
-  </div>
-  <div class="lesson--single">
-    <h2><%= @lesson.title %></h2>
-    <h3>By: <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %></h3>
-    <p>
+<div class="wrapper wrapper--flex lesson--level-<%= @lesson.level %>">
+  <div class="lesson--single-title-bar">
+    <h2 class="font-quicksand as--no-top-margin"><%= @lesson.title %></h2>
+    <h3 class="font-quicksand as--no-top-margin">By: <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %></h3>
+    <h3 class="font-quicksand as--no-top-margin">
       Grade:
       <% @lesson.grade_list.each do |grade| %>
-        <%= grade %>
+      <%= grade %>
       <% end %>
-    </p>
-    <p>Time: <%= @lesson.duration_in_minutes %> minutes</p>
-    <p>Level: <%= @lesson.level %></p>
-    <ul>
-      <li>Subjects:</li>
-      <% @lesson.subject_list.each do |subject| %>
-        <li><%= subject %></li>
-      <% end %>
-    </ul>
-    <ul>
-      <li>Programming Concepts</li>
-      <% @lesson.code_concept_list.each do |code_concept| %>
-        <li><%= code_concept %></li>
-      <% end %>
-    </ul>
-
-    <h2>The Lesson</h2>
+      | Level: <%= @lesson.level %> | ~<%= @lesson.duration_in_minutes %> minutes
+    </h3>
+  </div>
+  <div class="lesson--single-title-img" style="background-image: url(<%= @lesson.feature_image.url(:medium) %>)"></div>
+  <div class="lesson--single-text">
+    <h3 class="font-quicksand as--underlined">The Lesson</h3>
     <div class="text-edit">
       <%= @lesson.content.html_safe %>
     </div>
+    <% if @lesson.extensions.present? %>
+      <h3 class="font-quicksand as--underlined">Extensions</h3>
+      <div class="text-edit">
+        <%= @lesson.extensions.html_safe %>
+      </div>
+    <% end %>
 
-    <h2>Extensions</h2>
-    <div class="text-edit">
-      <%= @lesson.extensions.html_safe %>
+    <% if @lesson.answers.present? %>
+      <h3 class="font-quicksand as--underlined">Answers</h3>
+      <div class="text-edit">
+        <%= @lesson.answers.html_safe %>
+      </div>
+    <% end %>
+    <% if @lesson.video_link.present?%>
+      <%= @lesson.video_link %>
+    <% end %>
+    <% if @lesson.file_upload.file? %>
+      <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank' %>
+    <% end %>
+  </div>
+  <div class="sidebar">
+    <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
+    <div class="sidebar--text">
+      <ul class="list--tags">
+        <li class="title">Subjects:</li>
+        <% @lesson.subject_list.each do |subject| %>
+          <li><%= subject %></li>
+        <% end %>
+      </ul>
+      <ul class="list--tags">
+        <li class="title">Programming Concepts:</li>
+        <% @lesson.code_concept_list.each do |code_concept| %>
+          <li><%= code_concept %></li>
+        <% end %>
+      </ul>
+      <% if @lesson.curriculum_concepts.present? %>
+        <h3>Key Curriculum Concepts</h3>
+        <div class="text-edit">
+          <%= @lesson.curriculum_concepts.html_safe %>
+        </div>
+      <% end %>
+
+      <% if @lesson.programming_concepts.present? %>
+        <h3>Key Coding Concepts</h3>
+        <div class="text-edit">
+          <%= @lesson.programming_concepts.html_safe %>
+        </div>
+      <% end %>
+
+      <% if @lesson.prep.present? %>
+        <h3>Prep</h3>
+        <div class="text-edit">
+          <%= @lesson.prep.html_safe %>
+        </div>
+      <% end %>
     </div>
-
-    <h2>Answers</h2>
-    <div class="text-edit">
-      <%= @lesson.answers.html_safe %>
-    </div>
-
-    <%= @lesson.video_link %>
-
-    <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank' %>
   </div>
 </div>
 

@@ -70,6 +70,10 @@
   		<li><a href="http://jobs.ladieslearningcode.com/" target="_blank">Job Board</a></li>
   		<li><a href="http://ladieslearningcode.com/about#press">Press</a></li>
   	</ul>
+    <%= form_for(@mailing_list) do |f| %>
+      <%= f.text_field :email,type: 'email', placeholder: 'enter email here' %>
+      <%= f.submit 'subscribe', class: 'button button--secondary' %>
+    <% end %>
   </div>
 </footer>
 </body>
