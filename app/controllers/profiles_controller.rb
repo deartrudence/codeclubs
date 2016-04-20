@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
+  before_action :require_permission
+
   # GET /profiles
   # GET /profiles.json
   def index
@@ -71,6 +73,17 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.friendly.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to(root_url, :notice => 'Record not found')
+    end
+
+    def require_permission
+      if current_user == Profile.friendly.find(params[:id]).user || current_user.admin?
+      else
+        redirect_to root_path
+      end
+      rescue ActiveRecord::RecordNotFound
+          redirect_to(root_url, :notice => 'Record not found')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

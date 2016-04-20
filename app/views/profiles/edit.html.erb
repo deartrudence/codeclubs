@@ -1,11 +1,13 @@
-<h1>Edit My Profile</h1>
+<div class="wrapper">
+  <h1 class="center">Edit My Profile</h1>
 
-<%= image_tag @profile.avatar.url(:thumb) %>
-<%= render 'form' %>
+  <%= image_tag @profile.avatar.url(:thumbnail), class: 'as--profile-avatar center' %>
+  <div>
+    <%= render 'form' %>
+  </div>
 
 
-<%= link_to 'Show', @profile %> |
-<%= link_to 'Back', profiles_path %>
+</div>
 
 
 

@@ -1,6 +1,8 @@
 class LessonsController < ApplicationController
   before_action :set_lesson, only: [:show, :edit, :update, :destroy, :upvote, :downvote]
 
+  before_action :require_permission, only: [:edit, :update, :destroy]
+
   skip_before_action :authenticate_user!, only: [:index]
 
 
@@ -48,7 +50,7 @@ class LessonsController < ApplicationController
         @lessons = Lesson.tagged_with(@tags).order(:cached_votes_up => :desc)
       else
         @lessons = @lessons
-      end   
+      end
       respond_to do |format|
         format.js { render :partial => "lessons_js", locals: {grade: @grade} }
       end
@@ -119,6 +121,17 @@ class LessonsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_lesson
       @lesson = Lesson.friendly.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        redirect_to(root_url, :notice => 'Record not found')
+    end
+
+    def require_permission
+      if current_user == Lesson.friendly.find(params[:id]).profile.user || current_user.admin?
+      else
+        redirect_to root_path
+      end
+      rescue ActiveRecord::RecordNotFound
+          redirect_to(root_url, :notice => 'Record not found')
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

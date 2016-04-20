@@ -4,7 +4,7 @@
   <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>
     <%= f.check_box :approved, data: lesson.id, class: "lesson_approved_check"  %>
   <% end %>
-  <%= link_to lesson.title, lesson %> - <%= lesson.profile.name %>
+  <%= link_to lesson.title, lesson %> - <%= link_to lesson.profile.name, lesson.profile %>
   </li>
   <hr/>
   <% end %>

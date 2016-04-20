@@ -1,13 +1,15 @@
-<h1>Editing Lesson</h1>
-
 <div class="wrapper">
+  <h1>Editing Lesson</h1>
+
+  <% if @lesson.feature_image.present? %>
+    <%= image_tag @lesson.feature_image.url(:medium)%>
+  <% end %>
+
   <%= render 'form' %>
 
+  <%= link_to 'Show', @lesson %> |
+  <%= link_to 'Back', lessons_path %>
 </div>
-
-
-<%= link_to 'Show', @lesson %> |
-<%= link_to 'Back', lessons_path %>
 
 <script>
 $( document ).ready(function() {

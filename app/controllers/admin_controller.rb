@@ -1,4 +1,7 @@
 class AdminController < ApplicationController
+
+  before_filter :authorize_admin
+
   def panel
     @users = Profile.all
     @lessons = Lesson.all.includes(:profile)
