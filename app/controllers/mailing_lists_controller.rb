@@ -28,7 +28,8 @@ class MailingListsController < ApplicationController
 
     respond_to do |format|
       if @mailing_list.save
-        format.html { redirect_to @mailing_list, notice: 'Mailing list was successfully created.' }
+        MailingListMailer.list_email(@mailing_list).deliver
+        format.html { redirect_to :back, notice: 'Thank you for joining our mailing list!' }
         format.json { render :show, status: :created, location: @mailing_list }
       else
         format.html { render :new }
