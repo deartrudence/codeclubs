@@ -22,7 +22,7 @@
   <% end %>
   </div>
   <div class="wrapper--flex tab-content" id="favourite-lessons-tab">
-  <% if @lessons.present? %>
+  <% if @favourites.present? %>
     <%= render 'lesson', locals: {lessons: @favourites}%>
   <% else %>
     <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
@@ -43,4 +43,3 @@
     $("#"+tab_id).addClass('current');
   })
 </script>
-
