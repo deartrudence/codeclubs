@@ -35,8 +35,10 @@
     <span class="nav--links">
       <%= link_to 'About', about_path %>
       <% if user_signed_in? %>
-        <%= image_tag current_user.profile ? current_user.profile.avatar.url(:thumbnail) : '' %>
-        <%= link_to 'My Profile', profile_path(current_user.profile) %>
+        <% if current_user.profile.present? %>
+          <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
+          <%= link_to 'My Profile', profile_path(current_user.profile) %>
+        <% end %>
         <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sing In', new_user_session_path, method: :get%>
