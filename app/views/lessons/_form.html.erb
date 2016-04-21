@@ -10,72 +10,68 @@
       </ul>
     </div>
   <% end %>
+  <div class="wrapper--flex">
+    <div class="content">
+      <h3>*Title</h3>
+      <%= f.text_field :title %>
+      <div class="textarea-description">
+        <h3>Description</h3>
+        <%= f.text_area :description %>
+      </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
-  </div>
-  <div class="field">
-    <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
-  </div>
-  <div class="field">
-    <%= f.input :grade_list, :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
-  </div>
-  <div class="field">
-    <%= f.label :level %><br>
-    <span>1</span><%= f.radio_button :level, '1' %><br>
-    <span>2</span><%= f.radio_button :level, '2' %><br>
-    <span>3</span><%= f.radio_button :level, '3' %><br>
-    <span>4</span><%= f.radio_button :level, '4' %><br>
-  </div>
-  <div class="field">
-    <%= f.label :duration_in_minutes %><br>
-    <%= f.number_field :duration_in_minutes %>
-  </div>
-  <div class="field">
-    <%= f.label :video_link %><br>
-    <%= f.text_field :video_link %>
-  </div>
-  <div class="field">
-    <%= f.label :feature_image %><br>
-    <%= f.file_field :feature_image, class: "button button--primary" %>
-  </div>
-  <div class="field">
-    <%= f.label :file_upload %><br>
-    <%= f.file_field :file_upload, class: "button button--primary" %>
-  </div>
-  <div class="field">
-  <h3>Description</h3>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <h3>Curriculum Concepts</h3>
-    <%= f.bootsy_area :curriculum_concepts %>
-  </div>
-  <div class="field">
-    <h3>Prep</h3>
-    <%= f.bootsy_area :prep %>
-  </div>
-  <div class="field">
-    <h3>Programming Concepts</h3>
-    <%= f.bootsy_area :programming_concepts %>
-  </div>
-  <div class="field">
-    <h3>Content</h3>
-    <%= f.bootsy_area :content %>
-  </div>
-  <div class="field">
-    <h3>Extensions</h3>
-    <%= f.bootsy_area :extensions %>
-  </div>
-  <div class="field">
-    <h3>Answers</h3>
-    <%= f.bootsy_area :answers %>
-  </div>
-  <div class="actions">
-    <%= f.submit "submit", class: "button button--secondary" %>
+      <h3>Curriculum Concepts</h3>
+      <%= f.bootsy_area :curriculum_concepts %>
+
+      <h3>Programming Concepts</h3>
+      <%= f.bootsy_area :programming_concepts %>
+
+      <h3>Prep</h3>
+      <%= f.bootsy_area :prep %>
+      <div class="textarea-content">
+        <h3>Content</h3>
+        <%= f.bootsy_area :content %>
+      </div>
+
+      <h3>Answers</h3>
+      <%= f.bootsy_area :answers %>
+
+      <h3>Extensions</h3>
+      <%= f.bootsy_area :extensions %>
+
+      <%= f.label :video_link %>
+      <%= f.text_field :video_link %>
+
+      <%= f.label :file_upload %>
+      <%= f.file_field :file_upload, class: "button button--primary" %>
+
+
+      <div class="actions">
+        <%= f.submit "submit", class: "button button--tertiary button--large font-quicksand" %>
+      </div>
+    </div>
+    <div class="sidebar">
+      <% if @lesson.feature_image.present? %>
+        <%= image_tag @lesson.feature_image.url(:medium)%>
+      <% end %>
+      <%= f.label :feature_image %>
+      <%= f.file_field :feature_image, class: "button button--primary" %>
+
+      <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
+
+      <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
+
+      <%= f.input :grade_list, :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
+
+      <%= f.label :duration_in_minutes %>
+      <%= f.number_field :duration_in_minutes %>
+
+      <div class="levels">
+        <%= f.label :level %><br>
+        <%= f.radio_button :level, '1' %><span>1</span><br>
+        <%= f.radio_button :level, '2' %><span>2</span><br>
+        <%= f.radio_button :level, '3' %><span>3</span><br>
+        <%= f.radio_button :level, '4' %><span>4</span><br>
+      </div>
+    </div>
   </div>
 <% end %>

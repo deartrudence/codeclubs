@@ -1,14 +1,7 @@
-<div class="wrapper">
-  <h1>Editing Lesson</h1>
-
-  <% if @lesson.feature_image.present? %>
-    <%= image_tag @lesson.feature_image.url(:medium)%>
-  <% end %>
+<div class="wrapper form--new-lesson">
 
   <%= render 'form' %>
 
-  <%= link_to 'Show', @lesson %> |
-  <%= link_to 'Back', lessons_path %>
 </div>
 
 <script>

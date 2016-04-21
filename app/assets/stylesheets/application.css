@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  *= require bootsy
+
  */
 
 /*form {
@@ -79,4 +80,7 @@ top: 0;
 
 body{
   background: #eaefec url('bg-balloons.png') no-repeat left 0 top 500px !important;
+}
+.bootsy_text_area{
+  background: white !important;
 }
