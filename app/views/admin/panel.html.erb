@@ -11,8 +11,9 @@
   <div id="lessons-tab" class="tab-content current">
     <h2>Lessons</h2>
     <%= form_tag(admin_path, method: :get, remote: true) do %>
-      <%= select_tag :filter, options_for_select([ "all","approved", "unapproved" ], "all"), class: "lesson_filter" %>
+        <%= select_tag :filter, options_for_select([ "all","approved", "unapproved" ], "all"), class: "lesson_filter" %>
       <%= text_field_tag :search,nil , class: 'lesson_search' %>
+      <%= submit_tag 'search', class:"button button--primary" %>
     <% end %>
     <div id="lessons-admin">
       <%= render 'lessons_admin' %>
@@ -25,6 +26,7 @@
 
     <%= form_tag(admin_path, method: :get, remote: true) do %>
       <%= text_field_tag :user_search, nil, class: 'user_search' %>
+      <%= submit_tag 'search', class:"button button--primary" %>
     <% end %>
     <div id="users-admin">
       <%= render 'users_admin' %>
@@ -36,7 +38,8 @@
     <h2>Mailing List</h2>
     <%= link_to 'Download', download_mailing_list_path(:format => 'csv'), class: "button button--primary" %>
     <%= form_tag(admin_path, method: :get, remote: true) do %>
-      <%= text_field_tag :user_search, nil, class: 'mailer_search' %>
+      <%= text_field_tag :user_search, nil,id: 'mailer_search', name: 'mailer_search', class: 'mailer_search' %>
+      <%= submit_tag 'search', class:"button button--primary mailer_search" %>
     <% end %>
     <div id="mailers-admin">
       <%= render 'mailers_admin' %>
@@ -75,7 +78,7 @@
         })
       });
 
-      $('.lesson_search').on('change', function(){
+      $('.lesson_search').on('submit', function(){
         query = $(this).val()
         $.ajax({
           url: '',
@@ -86,7 +89,7 @@
         })
       })
 
-      $('.user_search').on('change', function(){
+      $('.user_search').on('submit', function(){
         query = $(this).val()
         $.ajax({
           url: '',
@@ -97,7 +100,8 @@
         })
       })
 
-      $('.mailer_search').on('change', function(){
+      $('.mailer_search').on('submit', function(){
+        console.log('searching...')
         query = $(this).val()
         $.ajax({
           url: '',
