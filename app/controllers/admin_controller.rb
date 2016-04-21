@@ -42,13 +42,17 @@ class AdminController < ApplicationController
         format.js { render :partial => "mailers_admin_js" }
       end
     end
+
+  end
+
+  def download_mailing_list
+    @email = MailingList.all
     respond_to do |format|
       format.html
       format.csv {
         send_data MailingList.export_csv(@email), type: 'text/csv; charset=utf-8;header=present', disposition: 'attachement; filename=MailingList.csv'
       }
     end
-
   end
 
 
