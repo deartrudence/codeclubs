@@ -11,7 +11,7 @@
   <div id="lessons-tab" class="tab-content current">
     <h2>Lessons</h2>
     <%= form_tag(admin_path, method: :get, remote: true) do %>
-      <%= select_tag :filter, options_for_select([ "all","approved", "unapproved" ], "all"), class: "lesson_filter" %>
+        <%= select_tag :filter, options_for_select([ "all","approved", "unapproved" ], "all"), class: "lesson_filter" %>
       <%= text_field_tag :search,nil , class: 'lesson_search' %>
       <%= submit_tag 'search', class:"button button--primary" %>
     <% end %>
