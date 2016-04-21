@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
-  before_action :require_permission
+  before_action :require_permission, except: [:new, :create]
 
   # GET /profiles
   # GET /profiles.json
@@ -74,8 +74,6 @@ class ProfilesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
       @profile = Profile.friendly.find(params[:id])
-      rescue ActiveRecord::RecordNotFound
-        redirect_to(root_url, :notice => 'Record not found')
     end
 
     def require_permission
