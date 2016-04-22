@@ -24,7 +24,7 @@
   <% if current_user.profile.present? %>
     <% if current_user.profile.is_admin? %>
         <%= f.label :role %>
-        <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%>
+        <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%><br><br>
     <% end %>
   <% end %>
 
