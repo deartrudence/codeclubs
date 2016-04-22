@@ -11,37 +11,36 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
-  </div>
-  <div class="field">
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
-  </div>
-  <div class="field">
-    <%= f.label :school %><br>
-    <%= f.text_field :school %>
-  </div>
-  <% if current_user.profile.is_admin? %>
-    <div class="field">
-      <%= f.label :role %><br>
-      <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%>
-    </div>
+  <%= f.label :first_name %>
+  <%= f.text_field :first_name %>
+
+
+  <%= f.label :last_name %><br>
+  <%= f.text_field :last_name %>
+
+  <%= f.label :school %><br>
+  <%= f.text_field :school %>
+
+  <% if current_user.profile.present? %>
+    <% if current_user.profile.is_admin? %>
+        <%= f.label :role %>
+        <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%>
+    <% end %>
   <% end %>
-  <div class="field">
-    <%= f.label :grade %><br>
-    <%= f.text_field :grade %>
-  </div>
-  <div class="field">
-    <%= f.label :mailing_list %><br>
-    <%= f.check_box :mailing_list %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar %><br>
-    <%= f.file_field :avatar %>
-  </div>
+
+  <%= f.label :grade %>
+  <%= f.text_field :grade %>
+
+
+  <%= f.label :mailing_list %>
+  <%= f.check_box :mailing_list %><br><br>
+
+  <%= f.label :avatar %>
+  <%= f.file_field :avatar %>
+
+  <%= link_to 'edit account settings', edit_user_registration_path, class: 'button button--primary' %>
+
   <div class="actions">
-    <%= f.submit 'submit', class: "button button--primary center" %>
+    <%= f.submit 'submit', class: "button button--tertiary font-quicksand center" %>
   </div>
 <% end %>

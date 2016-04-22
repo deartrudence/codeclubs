@@ -15,7 +15,7 @@
 
   <!-- Optional theme -->
 
-    <!-- <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
+    <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <%= csrf_meta_tags %>
@@ -38,6 +38,8 @@
         <% if current_user.profile.present? %>
           <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
           <%= link_to 'My Profile', profile_path(current_user.profile) %>
+        <% else %>
+          <%= link_to 'Create Profile', new_profile_path%>
         <% end %>
         <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
       <% else %>
