@@ -23,10 +23,12 @@
     <%= f.label :school %><br>
     <%= f.text_field :school %>
   </div>
-  <div class="field">
-    <%= f.label :role %><br>
-    <%= f.text_field :role %>
-  </div>
+  <% if @profile.is_admin? %>
+    <div class="field">
+      <%= f.label :role %><br>
+      <%= f.text_field :role %>
+    </div>
+  <% end %>
   <div class="field">
     <%= f.label :grade %><br>
     <%= f.text_field :grade %>
@@ -43,4 +45,3 @@
     <%= f.submit 'submit', class: "button button--primary center" %>
   </div>
 <% end %>
-

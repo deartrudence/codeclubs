@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160420135623) do
+ActiveRecord::Schema.define(version: 20160422161356) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -96,11 +96,11 @@ ActiveRecord::Schema.define(version: 20160420135623) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "school"
-    t.string   "role"
+    t.string   "role",                default: "teacher"
     t.string   "grade"
     t.boolean  "mailing_list"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "user_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
