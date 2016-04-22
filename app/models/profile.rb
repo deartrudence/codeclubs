@@ -15,7 +15,7 @@ class Profile < ActiveRecord::Base
           thumbnail: " -gravity center -crop '100x100+0+0'",
           header: " -gravity center -crop '500x500+0+0'"
         },
-    default_url: "/images/:style/missing.png"
+    default_url: "avatar.jpg"
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
     def is_admin?
