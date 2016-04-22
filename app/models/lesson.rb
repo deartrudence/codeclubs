@@ -20,7 +20,7 @@ class Lesson < ActiveRecord::Base
   has_attached_file :file_upload
   validates_attachment :file_upload, content_type: { content_type: "application/pdf" }
 
-    scope :is_approved, -> { where(approved: true) }
+  scope :is_approved, -> { where(approved: true) }
 
 
   def short_description

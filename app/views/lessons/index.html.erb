@@ -19,9 +19,19 @@
     <%= submit_tag 'Search', remote: true, class: 'button button--secondary font-quicksand' %>
   </div>
 <% end %>
-<div class="wrapper " >
+<div class="wrapper" id="search-area" >
   <h3 id="lesson-search-results" class="as--search-results"></h3>
   <div id="lessons-listing" class="wrapper--flex">
     <%= render 'lessons_listing'%>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('form').on('submit', function(){
+      $('html, body').animate({
+        scrollTop: $("#search-area").offset().top
+      }, 1000);
+    })
+  })
+</script>

@@ -3,4 +3,7 @@
     <li><%= email.name %> - <%= email.email %></li>
     <hr>
   <% end %>
+  <% @profile_email.find_each do |profile|%>
+    <li><%= profile.name %> - <%= profile.user.email %></li>
+  <% end %>
 </ul>

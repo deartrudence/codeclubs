@@ -27,6 +27,9 @@ class ProfilesController < ApplicationController
 
   # GET /profiles/1/edit
   def edit
+    # if @profile.mailing_list == true
+    #   MailingList.new(current_user)
+    # end
   end
 
   # POST /profiles

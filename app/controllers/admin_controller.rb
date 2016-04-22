@@ -6,6 +6,7 @@ class AdminController < ApplicationController
     @users = Profile.all
     @lessons = Lesson.all.includes(:profile)
     @email = MailingList.all
+    @profile_email = Profile.on_mailing_list
     if params[:lesson].present?
       lesson = Lesson.find(params[:lesson])
       lesson.update(approved: params[:approved])

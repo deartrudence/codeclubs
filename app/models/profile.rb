@@ -19,6 +19,8 @@ class Profile < ActiveRecord::Base
     default_url: "avatar.jpg"
     validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+    scope :on_mailing_list, -> { where(mailing_list: true) }
+
     def is_admin?
       self.role == 'admin'
     end
