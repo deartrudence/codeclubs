@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  ROLE = %w[admin teacher]
   has_many :lessons
   belongs_to :user
   validates :user, presence: true
