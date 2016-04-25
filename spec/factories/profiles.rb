@@ -6,5 +6,6 @@ FactoryGirl.define do
     role "MyString"
     grade "MyString"
     mailing_list false
+    association :user, factory: :user
   end
 end
