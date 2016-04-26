@@ -20,6 +20,11 @@ require 'rails_helper'
 
 RSpec.describe LessonsController, type: :controller do
 
+  before do
+    user = create(:user)
+    allow(controller).to receive(:authenticate_user!).and_return(true)
+    allow(controller).to receive(:current_user).and_return(user)
+  end
   # This should return the minimal set of attributes required to create a valid
   # Lesson. As you add validations to Lesson, be sure to
   # adjust the attributes here as well.

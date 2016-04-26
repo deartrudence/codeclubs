@@ -54,9 +54,23 @@ RSpec.describe Lesson, type: :model do
     expect(lesson.user_owns_lesson?(current_user)).to eq(true)
   end
 
-  # it "is searchable" do
-  #   lesson = build(:lesson)
-  #   lessons = Lesson.all
-  #   expect(lessons.search('MyString')).to include lesson
+  it "is searchable on title" do
+    user_one = create(:user, email: 'hello@internet.com', password: 'password')
+    user_two = create(:user, email: 'hi@email.com', password: 'password')
+    profile_one = create(:profile, user: user_one)
+    profile_two = create(:profile, user: user_two)
+    lesson1= create(:lesson, title: 'First', profile: profile_one)
+    lesson2= create(:lesson, title: 'Second', profile: profile_two)
+    lessons = Lesson.all
+    expect(lessons.search('Second')).to include lesson2
+  end
+
+  # it "is liked by current user" do
+  #   @current_user = create(:user)
+  #   user = build(:user, email: 'test@test.com', password: 'password')
+  #   profile = build(:profile, user: user)
+  #   @lesson = build(:lesson, profile: profile)
+  #   @lesson.liked_by @current_user
+  #   expect(@lesson.liked_by_user(@current_user)).to eq(true)
   # end
 end

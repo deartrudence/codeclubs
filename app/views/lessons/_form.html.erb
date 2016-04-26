@@ -70,7 +70,7 @@
 
       <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
 
-      <%= f.input :code_concept_list, :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
+      <%= f.input :code_concept_list, :label => 'Programming concept', :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
 
       <%= f.input :grade_list, :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
 
@@ -79,7 +79,7 @@
 
       <div class="levels">
         <%= f.label :level %><br>
-        <%= f.radio_button :level, '1' %><span>1</span><br>
+        <%= f.radio_button :level, '1', :checked => true %><span>1</span><br>
         <%= f.radio_button :level, '2' %><span>2</span><br>
         <%= f.radio_button :level, '3' %><span>3</span><br>
         <%= f.radio_button :level, '4' %><span>4</span><br>

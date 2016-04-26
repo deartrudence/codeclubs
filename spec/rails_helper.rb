@@ -55,6 +55,9 @@ RSpec.configure do |config|
   #add this line at the bottom of the config section
   #it saves us time when using FactoryGirl methods.
   config.include FactoryGirl::Syntax::Methods
+  #for authentication in controllers and views
+  config.include Devise::TestHelpers, type: :controller
+  config.include Devise::TestHelpers, type: :view
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 end

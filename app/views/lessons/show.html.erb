@@ -1,6 +1,8 @@
-<p id="notice"><%= notice %></p>
+<%if notice.present?%>
+  <p id="notice"><%= notice %></p>
+<% end %>  
 
-<div class="wrapper wrapper--flex lesson--level-<%= @lesson.level %>">
+<div class="wrapper wrapper--flex lesson--level-<%= @lesson.level %> as--lesson-wrapper">
   <div class="lesson--single-title-bar">
     <h2 class="font-quicksand as--no-top-margin"><%= @lesson.title %></h2>
     <h3 class="font-quicksand as--no-top-margin">By: <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %></h3>

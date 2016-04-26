@@ -15,14 +15,15 @@
 
   <!-- Optional theme -->
 
-    <!-- <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
+    <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<!-- <p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p> -->
+<% if alert.present? %>
+  <p class="alert"><%= alert %></p>
+<% end %>
 
 <nav class="nav--main">
   <div class="wrapper">
@@ -32,6 +33,7 @@
         <span class="font-quicksand">code:clubs</span>
       <% end %>
     </span>
+    <a class="nav--hamburger" id="nav-hamburger"><span></span></a>
     <span class="nav--links">
       <%= link_to 'About', about_path %>
       <% if user_signed_in? %>
@@ -86,5 +88,22 @@
     </div>
   </div>
 </footer>
+<script>
+  $(document).ready(function(){
+    setTimeout(function(){
+      $('#notice').remove();
+      $('.alert').remove()
+    }, 1500);
+    $('#nav-hamburger').on('click', function(){
+      var width = $(window).innerWidth()
+      var wrapper = $('.wrapper').width()
+      var left = (width - wrapper) / 2
+      $('.nav--links').css({'width': width + 'px', 'left': '-'+ left + 'px'});
+      console.log(width)
+      $('.nav--links').slideToggle(500)
+      $(this).toggleClass('active')
+    })
+  })
+</script>
 </body>
 </html>

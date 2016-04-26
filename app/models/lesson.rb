@@ -14,7 +14,7 @@ class Lesson < ActiveRecord::Base
   validates :title, :level, :duration_in_minutes, :description, :content, presence: true
 
 
-  has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "/images/:style/missing.png"
+  has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "klc.jpg"
   validates_attachment_content_type :feature_image, content_type: /\Aimage\/.*\Z/
 
   has_attached_file :file_upload

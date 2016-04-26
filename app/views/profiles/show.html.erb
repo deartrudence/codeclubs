@@ -1,4 +1,6 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present?%>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
 <div class="wrapper">
   <ul class="tabs">
@@ -9,8 +11,8 @@
   <div class="center tab-content current" id="profile-tab">
     <%= image_tag @profile.avatar.url(:thumbnail), class: 'as--profile-avatar' %>
     <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
-    <h4>grade: <%= @profile.grade %></h4>
-    <h4>school: <%= @profile.school %></h4>
+    <h4>Grade: <%= @profile.grade %></h4>
+    <h4>School: <%= @profile.school %></h4>
     <%= link_to 'Edit Profile', edit_profile_path(@profile), class: 'button button--primary' %>
     <%= link_to "Create New Lesson", new_lesson_path, class: 'button button--primary' %>
   </div>
