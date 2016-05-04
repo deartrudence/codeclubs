@@ -1,0 +1,3096 @@
+/* line 4, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/admin.scss */
+ul.tabs li {
+  background: none;
+  color: #222;
+  display: inline-block;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* line 12, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/admin.scss */
+ul.tabs li.current {
+  background: #00a076;
+  color: #222;
+}
+
+/* line 17, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/admin.scss */
+.tab-content {
+  display: none;
+  background: white;
+  padding: 15px;
+  margin-bottom: 20px;
+}
+
+/* line 24, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/admin.scss */
+.tab-content.current {
+  display: inherit;
+}
+
+/* line 28, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/admin.scss */
+hr {
+  color: white;
+}
+/* line 4, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/lessons.scss */
+.ui-autocomplete {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  display: none;
+  min-width: 160px;
+  _width: 160px;
+  padding: 4px;
+  margin: 2px 0 0 0;
+  list-style: none;
+  background-color: #ffffff;
+  border-color: #ccc;
+  border-color: rgba(0, 0, 0, 0.2);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 2px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding;
+  background-clip: padding-box;
+  *border-right-width: 2px;
+  *border-bottom-width: 2px;
+}
+/* line 29, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/lessons.scss */
+.ui-autocomplete .ui-menu-item > a.ui-corner-all {
+  display: block;
+  padding: 3px 15px;
+  clear: both;
+  font-weight: normal;
+  line-height: 18px;
+  color: #555555;
+  white-space: nowrap;
+}
+
+/* line 39, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/lessons.scss */
+.ui-widget-content .ui-state-focus {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #00a076;
+  border-radius: 0px;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  background-image: none;
+}
+@charset "UTF-8";
+/* line 1, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.green {
+  background: #00a076;
+}
+
+/* line 5, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.red {
+  background: red;
+}
+
+/* line 9, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li {
+  position: relative;
+  padding: 0;
+  margin-bottom: 0.9375em;
+}
+
+/* line 15, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li p {
+  position: absolute;
+  padding: 3px 13px;
+  color: #666;
+  background-color: #fff;
+  font-size: 12px;
+  bottom: 0;
+  left: 0.9375em;
+}
+
+/* line 25, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li .color {
+  height: 120px;
+  margin-right: 0.9375em;
+}
+
+/* line 30, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li:last-child {
+  margin-right: 0;
+}
+
+/* line 34, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 38, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 45, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 1146px;
+  }
+
+  /* line 48, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 55, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 936px;
+  }
+
+  /* line 58, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 65, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 744px;
+  }
+
+  /* line 68, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 75, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 480px;
+  }
+
+  /* line 78, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 85, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+/* line 92, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 98, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 104, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 110, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 116, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 122, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+}
+/* line 128, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+/* line 142, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content {
+  display: none;
+}
+
+/* line 146, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content.current {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 153, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--secondary {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 161, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 172, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li {
+  height: 100px;
+  background: lightgrey;
+  box-sizing: border-box;
+  width: 22.5%;
+}
+
+/* line 179, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li:nth-of-type(2n+1) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 183, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 187, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+body {
+  font-family: "Montserrat" !important;
+}
+
+/* line 191, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+h1 {
+  font-size: 80px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 198, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  h1 {
+    font-size: 40px;
+  }
+}
+/* line 203, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+h2 {
+  font-size: 48px;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 209, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  h2 {
+    font-size: 32px;
+  }
+}
+/* line 214, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+/* line 220, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: gray;
+}
+
+/* line 226, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+p.small {
+  font-size: 13px;
+}
+
+/* line 230, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.font-llc {
+  font-family: "Montserrat", "Helvetica", sans-serif;
+}
+
+/* line 234, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.font-quicksand {
+  font-family: "Quicksand", "Helvetica", sans-serif;
+}
+
+/* line 238, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.bold {
+  font-weight: 700;
+}
+
+/* line 242, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.italic {
+  font-style: italic;
+}
+
+/* line 246, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.center {
+  text-align: center;
+}
+
+/* line 250, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+a {
+  color: #333;
+}
+
+/* line 254, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+a:hover {
+  background: transparent;
+  text-decoration: none !important;
+  color: #4d4d4d;
+}
+
+/* line 260, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#typography h1,
+#typography h2,
+#typography h3,
+#typography h4,
+#typography h5,
+#typography h6,
+#typography p {
+  margin-top: 0;
+}
+
+/* line 270, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.green {
+  background: #00a076;
+}
+
+/* line 274, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.red {
+  background: red;
+}
+
+/* line 278, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li {
+  position: relative;
+  padding: 0;
+  margin-bottom: 0.9375em;
+}
+
+/* line 284, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li p {
+  position: absolute;
+  padding: 3px 13px;
+  color: #666;
+  background-color: #fff;
+  font-size: 12px;
+  bottom: 0;
+  left: 0.9375em;
+}
+
+/* line 294, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li .color {
+  height: 120px;
+  margin-right: 0.9375em;
+}
+
+/* line 299, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li:last-child {
+  margin-right: 0;
+}
+
+/* line 303, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-weight: bold;
+  text-align: center;
+  color: #333;
+  border: 1px solid #333;
+  background: transparent;
+  -webkit-transition: background-color 0.3s, opacity 0.3s;
+  transition: background-color 0.3s, opacity 0.3s;
+  margin-bottom: 16px;
+}
+
+/* line 317, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.button--primary {
+  font-size: 10px;
+  text-transform: uppercase;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 3px;
+  padding: 5px 14px;
+  line-height: 15px;
+  background: white;
+}
+
+/* line 328, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.button--secondary {
+  border: 2px solid #333;
+  border-radius: 5px;
+  text-transform: uppercase;
+  padding: 10px 12px;
+  font-size: 20px;
+}
+
+/* line 336, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.button--tertiary {
+  background: #00a076;
+  color: white;
+  text-transform: uppercase;
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  border: 1px solid #00a076;
+}
+
+/* line 346, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.button--large {
+  padding: 10px 12px;
+  font-size: 20px;
+}
+
+/* line 351, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#buttons .button {
+  margin-bottom: 20px;
+}
+
+/* line 355, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ol,
+ul {
+  margin: 0 0 12px 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* line 362, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ul.list li {
+  padding-left: 20px;
+  position: relative;
+}
+
+/* line 367, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ul.list li:before {
+  content: '•';
+  font-size: 24px;
+  top: 0;
+  color: #00a076;
+  position: absolute;
+  left: 0;
+  line-height: 30px;
+}
+
+/* line 377, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ol.list li {
+  counter-increment: step-counter;
+  padding-left: 20px;
+  position: relative;
+}
+
+/* line 383, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ol.list li:before {
+  content: counter(step-counter);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #00a076;
+}
+
+/* line 391, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ul.list--tags .title {
+  display: block;
+  background: transparent !important;
+  color: #333;
+  padding: 0;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+/* line 401, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ul.list--tags li {
+  padding: 4px 6px;
+  background: #00a076;
+  color: white;
+  text-transform: uppercase;
+  display: inline-block;
+  margin-right: 4px;
+  margin-bottom: 4px;
+}
+
+/* line 411, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+ul.list--tags li:last-of-type {
+  margin-right: 0;
+}
+
+/* line 415, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 419, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 426, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 1146px;
+  }
+
+  /* line 429, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 436, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 936px;
+  }
+
+  /* line 439, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 446, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 744px;
+  }
+
+  /* line 449, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 456, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 480px;
+  }
+
+  /* line 459, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 466, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+/* line 473, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 479, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 485, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 491, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 497, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 503, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+}
+/* line 509, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+/* line 523, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content {
+  display: none;
+}
+
+/* line 527, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content.current {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 534, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--secondary {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 542, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 553, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li {
+  height: 100px;
+  background: lightgrey;
+  box-sizing: border-box;
+  width: 22.5%;
+}
+
+/* line 560, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li:nth-of-type(2n+1) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 564, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 568, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+select {
+  padding: 10px 20px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  font-size: 14px;
+  background: lightgrey;
+  border-radius: 5px;
+}
+
+/* line 579, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+input {
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  margin-bottom: 16px;
+}
+
+/* line 587, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+input[type=checkbox] {
+  width: auto;
+}
+
+/* line 591, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.hint {
+  margin-top: -10px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+/* line 597, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson {
+  border-radius: 5px;
+  background: white;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 604, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson textarea {
+  height: 300px;
+  border: 1px solid #333;
+  border-radius: 5px;
+}
+
+/* line 610, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson input[type=submit] {
+  border: none;
+}
+
+/* line 614, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson img {
+  margin-bottom: 16px;
+}
+
+/* line 618, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson .textarea-description textarea {
+  height: 200px;
+}
+
+/* line 622, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson .textarea-content textarea {
+  height: 700px;
+}
+
+/* line 626, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson .wrapper--flex {
+  border-radius: 5px;
+}
+
+/* line 630, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson .content {
+  width: 70%;
+  padding: 25px;
+}
+
+/* line 635, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson .sidebar {
+  padding: 25px;
+  border-top-right-radius: 5px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 641, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper.form--new-lesson .sidebar {
+    border-top-right-radius: 0;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 647, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper.form--new-lesson .sidebar {
+    border-top-right-radius: 0;
+  }
+}
+/* line 652, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.form--new-lesson .sidebar .levels input {
+  margin: 0;
+  width: 10%;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+/* line 659, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
+}
+
+/* line 666, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table caption {
+  color: #000;
+  font: italic 85%/1 arial, sans-serif;
+  padding: 1em 0;
+  text-align: center;
+}
+
+/* line 673, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table td,
+table th {
+  border-left: 1px solid #cbcbcb;
+  border-width: 0 0 0 1px;
+  font-size: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: 0.5em 1em;
+}
+
+/* line 683, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table th {
+  font-family: 'HUGEAvantGardeBold', Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  border-bottom: 1px solid #cbcbcb;
+}
+
+/* line 689, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table td:first-child,
+table th:first-child {
+  border-left-width: 0;
+}
+
+/* line 694, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table thead {
+  background: #e0e0e0;
+  color: #000;
+  text-align: left;
+  vertical-align: bottom;
+}
+
+/* line 701, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table tr:nth-child(2n-1) td {
+  background-color: #f8f8f8;
+}
+
+/* line 705, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+table td {
+  border-bottom: 1px solid #cbcbcb;
+}
+
+/* line 709, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#tables table {
+  width: 90%;
+}
+
+/* line 713, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 717, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 724, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 1146px;
+  }
+
+  /* line 727, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 734, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 936px;
+  }
+
+  /* line 737, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 744, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 744px;
+  }
+
+  /* line 747, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 754, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 480px;
+  }
+
+  /* line 757, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 764, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+/* line 771, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 777, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 783, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 789, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 795, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 801, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+}
+/* line 807, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+/* line 821, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content {
+  display: none;
+}
+
+/* line 825, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content.current {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 832, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--secondary {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 840, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 851, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li {
+  height: 100px;
+  background: lightgrey;
+  box-sizing: border-box;
+  width: 22.5%;
+}
+
+/* line 858, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li:nth-of-type(2n+1) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 862, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 866, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson {
+  color: white;
+  max-width: 500px;
+  position: relative;
+  margin-right: 5%;
+  margin-bottom: 40px;
+}
+
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 875, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson {
+    width: 30%;
+  }
+
+  /* line 878, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson:nth-of-type(3n+3) {
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 1170px) {
+  /* line 884, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson {
+    width: 30%;
+  }
+
+  /* line 887, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson:nth-of-type(3n+3) {
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 893, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson {
+    width: 47.5%;
+  }
+
+  /* line 896, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson:nth-of-type(2n+2) {
+    margin-right: 0;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 902, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 909, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+/* line 915, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--bar {
+  background: #00a076;
+  text-transform: uppercase;
+  padding: 12px 15px;
+  border-radius: 5px 5px 0 0;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* line 924, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--title {
+  background: #00a076;
+  background-image: -webkit-linear-gradient(left, rgba(0, 160, 118, 0.4) 0%, rgba(0, 160, 118, 0.5) 59%, rgba(0, 160, 118, 0.65) 100%);
+  background-image: linear-gradient(to right, rgba(0, 160, 118, 0.4) 0%, rgba(0, 160, 118, 0.5) 59%, rgba(0, 160, 118, 0.65) 100%);
+  background-size: cover;
+  background-position: center;
+  padding: 20px;
+}
+
+/* line 933, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--title span {
+  display: block;
+  margin-bottom: 30px;
+}
+
+/* line 938, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--title span p {
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 18px;
+  color: white;
+}
+
+/* line 948, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--title h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+
+/* line 954, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--short-description {
+  background: white;
+  border-radius: 0 0 5px 5px;
+  color: #555;
+  padding: 0 20px 30px 20px;
+  position: relative;
+}
+
+/* line 962, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--short-description a.short-description {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  color: #555;
+  background: transparent;
+}
+
+/* line 972, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--short-description a.short-description:hover {
+  color: white;
+}
+
+/* line 976, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--short-description p {
+  margin-top: 0;
+  margin-bottom: 30px;
+  padding-top: 15px;
+  border-top: 1px solid transparent;
+}
+
+/* line 983, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--likes {
+  position: absolute;
+  right: 20px;
+  bottom: 34px;
+}
+
+/* line 989, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--likes a {
+  color: #b55757;
+}
+
+/* line 993, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--likes a:hover {
+  color: rgba(181, 87, 87, 0.6);
+}
+
+/* line 997, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--likes a:focus {
+  text-decoration: none;
+}
+
+/* line 1001, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--likes a .likes-count {
+  color: #333;
+}
+
+/* line 1005, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-1 a.button:hover {
+  border: 2px solid #00a076;
+  color: #00a076;
+}
+
+/* line 1010, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-1 .lesson--single-title-bar {
+  background: #00a076;
+}
+
+/* line 1014, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-1 .list--tags li {
+  background: #00a076;
+}
+
+/* line 1018, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-2 .lesson--bar {
+  background: #454583;
+}
+
+/* line 1022, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-2 .lesson--title {
+  background-color: #454583;
+}
+
+/* line 1026, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-2 a.button:hover {
+  border: 2px solid #454583;
+  color: #454583;
+}
+
+/* line 1031, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-2 .lesson--single-title-bar {
+  background: #454583;
+}
+
+/* line 1035, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-2 .list--tags li {
+  background: #454583;
+}
+
+/* line 1039, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-3 .lesson--bar {
+  background: #5d5881;
+}
+
+/* line 1043, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-3 .lesson--title {
+  background-color: #5d5881;
+}
+
+/* line 1047, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-3 a.button:hover {
+  border: 2px solid #5d5881;
+  color: #5d5881;
+}
+
+/* line 1052, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-3 .lesson--single-title-bar {
+  background: #5d5881;
+}
+
+/* line 1056, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-3 .list--tags li {
+  background: #5d5881;
+}
+
+/* line 1060, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-4 .lesson--bar {
+  background: #007556;
+}
+
+/* line 1064, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-4 .lesson--title {
+  background-color: #007556;
+}
+
+/* line 1068, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-4 a.button:hover {
+  border: 2px solid #007556;
+  color: #007556;
+}
+
+/* line 1073, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-4 .lesson--single-title-bar {
+  background: #007556;
+}
+
+/* line 1077, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--level-4 .list--tags li {
+  background: #007556;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1082, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-title-bar,
+  .lesson--single-text,
+  .lesson--single-title-img,
+  .sidebar {
+    width: 100% !important;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1091, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-title-bar,
+  .lesson--single-text,
+  .lesson--single-title-img,
+  .sidebar {
+    width: 100% !important;
+  }
+}
+/* line 1099, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--single-title-bar {
+  width: 70%;
+  border-top-left-radius: 5px;
+  padding: 25px;
+  color: white;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1107, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-title-bar {
+    border-top-right-radius: 5px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1113, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-title-bar {
+    border-top-right-radius: 5px;
+  }
+}
+/* line 1118, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--single-text {
+  background: white;
+  width: 70%;
+  border-bottom-left-radius: 5px;
+  padding: 25px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1126, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-text {
+    border-bottom-left-radius: 0;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1132, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-text {
+    border-bottom-left-radius: 0;
+  }
+}
+/* line 1137, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.lesson--single-title-img {
+  width: 30%;
+  border-top-right-radius: 5px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: grey;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1147, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-title-img {
+    border-top-right-radius: 0;
+    height: 200px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1154, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .lesson--single-title-img {
+    border-top-right-radius: 0;
+    height: 200px;
+  }
+}
+/* line 1160, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.sidebar {
+  width: 30%;
+  background: #dee6e1;
+  border-bottom-right-radius: 5px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1167, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .sidebar {
+    border-bottom-left-radius: 5px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1173, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .sidebar {
+    border-bottom-left-radius: 5px;
+  }
+}
+/* line 1178, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.sidebar--text {
+  padding: 25px;
+}
+
+/* line 1182, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.box {
+  background: white;
+  border-radius: 5px;
+  width: 60%;
+  min-width: 600px;
+  margin: 100px auto;
+  padding: 25px;
+}
+
+/* line 1191, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.box--large {
+  width: 80%;
+}
+
+/* line 1195, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 1199, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1206, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 1146px;
+  }
+
+  /* line 1209, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1216, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 936px;
+  }
+
+  /* line 1219, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1226, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 744px;
+  }
+
+  /* line 1229, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1236, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 480px;
+  }
+
+  /* line 1239, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1246, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+/* line 1253, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1259, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1265, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1271, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1277, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1283, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+}
+/* line 1289, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+/* line 1303, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content {
+  display: none;
+}
+
+/* line 1307, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content.current {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 1314, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--secondary {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 1322, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 1333, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li {
+  height: 100px;
+  background: lightgrey;
+  box-sizing: border-box;
+  width: 22.5%;
+}
+
+/* line 1340, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li:nth-of-type(2n+1) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 1344, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 1348, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 1352, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1359, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 1146px;
+  }
+
+  /* line 1362, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1369, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 936px;
+  }
+
+  /* line 1372, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1379, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 744px;
+  }
+
+  /* line 1382, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1389, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 480px;
+  }
+
+  /* line 1392, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1399, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+/* line 1406, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1412, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1418, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1424, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1430, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1436, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+}
+/* line 1442, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+/* line 1456, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content {
+  display: none;
+}
+
+/* line 1460, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content.current {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 1467, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--secondary {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 1475, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 1486, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li {
+  height: 100px;
+  background: lightgrey;
+  box-sizing: border-box;
+  width: 22.5%;
+}
+
+/* line 1493, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li:nth-of-type(2n+1) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 1497, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 1501, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--home-form select {
+  width: 100%;
+  background: #00a076;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: -2px 2px 0 0 #00d39c;
+}
+
+/* line 1511, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--home-form .select {
+  position: relative;
+  width: 30%;
+  margin-right: 5%;
+  margin-bottom: 70px;
+}
+
+/* line 1518, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--home-form .select:nth-of-type(3n+3) {
+  margin-right: 0;
+}
+
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1523, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .as--home-form .select {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1531, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .as--home-form .select {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1539, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .as--home-form .select {
+    width: 100%;
+    margin-right: 0;
+    margin-bottom: 30px;
+  }
+}
+/* line 1546, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--home-form .select:after {
+  content: '\25BC';
+  position: absolute;
+  right: 14px;
+  top: 34%;
+  color: white;
+  font-size: 12px;
+  pointer-events: none;
+}
+
+/* line 1556, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--home-form input[type=submit] {
+  display: block;
+  width: 100%;
+  margin-bottom: 70px;
+}
+
+/* line 1562, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.as--home-intro {
+  padding: 50px 0 70px 0;
+}
+
+/* line 1566, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.as--home-intro p {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* line 1571, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--search-results {
+  margin-bottom: 60px;
+}
+
+/* line 1575, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--profile-avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border: 2px solid rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  display: block;
+}
+
+/* line 1584, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--underlined {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 10px;
+}
+
+/* line 1589, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.as--no-top-margin {
+  margin-top: 0;
+}
+
+/* line 1593, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper.as--lesson-wrapper {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 1599, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper.as--lesson-wrapper {
+    width: 100% !important;
+  }
+}
+/* line 1604, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+label[for=user_remember_me] {
+  margin-left: 25px;
+}
+
+/* line 1608, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.green {
+  background: #00a076;
+}
+
+/* line 1612, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.red {
+  background: red;
+}
+
+/* line 1616, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li {
+  position: relative;
+  padding: 0;
+  margin-bottom: 0.9375em;
+}
+
+/* line 1622, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li p {
+  position: absolute;
+  padding: 3px 13px;
+  color: #666;
+  background-color: #fff;
+  font-size: 12px;
+  bottom: 0;
+  left: 0.9375em;
+}
+
+/* line 1632, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li .color {
+  height: 120px;
+  margin-right: 0.9375em;
+}
+
+/* line 1637, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li:last-child {
+  margin-right: 0;
+}
+
+/* line 1641, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+html {
+  box-sizing: border-box;
+}
+
+/* line 1645, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1652, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 1146px;
+  }
+
+  /* line 1655, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1662, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 936px;
+  }
+
+  /* line 1665, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1672, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 744px;
+  }
+
+  /* line 1675, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1682, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: 480px;
+  }
+
+  /* line 1685, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper:margin {
+    left: 12px;
+    right: 12px;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1692, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    width: auto;
+    margin-left: 8px;
+    margin-right: 8px;
+  }
+}
+/* line 1699, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1705, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1711, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1717, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1723, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1729, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .wrapper {
+    margin: 0;
+    padding: 0 12px;
+  }
+}
+/* line 1735, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+  -webkit-align-items: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  -webkit-flex-flow: row wrap;
+  -ms-flex-flow: row wrap;
+  flex-flow: row wrap;
+}
+
+/* line 1749, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content {
+  display: none;
+}
+
+/* line 1753, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--flex.tab-content.current {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+/* line 1760, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.wrapper--secondary {
+  background: white;
+  border-radius: 5px;
+  padding: 25px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+/* line 1768, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide ul {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+}
+
+/* line 1779, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li {
+  height: 100px;
+  background: lightgrey;
+  box-sizing: border-box;
+  width: 22.5%;
+}
+
+/* line 1786, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.container--style-guide li:nth-of-type(2n+1) {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+/* line 1790, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+img {
+  max-width: 100%;
+}
+
+/* line 1794, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main {
+  background: #1a1a1a;
+  padding: 12px 0;
+  color: white;
+  line-height: 30px;
+}
+
+/* line 1801, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main a {
+  color: white;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+/* line 1808, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .logo {
+  font-size: 20px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1813, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .logo {
+    z-index: 20;
+    display: block;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1820, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .logo {
+    z-index: 20;
+    display: block;
+  }
+}
+/* line 1826, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .logo a {
+  text-transform: lowercase;
+}
+
+/* line 1830, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .logo span {
+  font-size: 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+/* line 1836, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .logo img {
+  width: 30px;
+  margin-right: 6px;
+}
+
+/* line 1841, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--links {
+  font-size: 12px;
+  font-weight: 100;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1847, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links {
+    float: right;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1853, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links {
+    float: right;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1859, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links {
+    float: right;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1865, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    background: #1a1a1a;
+    display: none;
+    height: 100vh;
+    padding-top: 20vh;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1878, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    background: #1a1a1a;
+    display: none;
+    height: 100vh;
+    padding-top: 20vh;
+  }
+}
+/* line 1890, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--links a {
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 33px;
+  -webkit-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1898, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* line 1901, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a:last-of-type {
+    border: none;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1907, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* line 1910, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a:last-of-type {
+    border: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1916, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a {
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  /* line 1919, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a:last-of-type {
+    border: none;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1925, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a {
+    display: block;
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 32px;
+    color: white;
+    text-align: center;
+  }
+
+  /* line 1933, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1939, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a {
+    display: block;
+    width: 100%;
+    padding: 20px 10px;
+    font-size: 32px;
+    color: white;
+    text-align: center;
+  }
+
+  /* line 1947, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links a:hover {
+    color: rgba(255, 255, 255, 0.6);
+  }
+}
+/* line 1952, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--links img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 1960, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links img {
+    display: none;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 1966, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--links img {
+    display: none;
+  }
+}
+/* line 1971, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger {
+  position: absolute;
+  top: 18px;
+  right: 46px;
+  z-index: 20;
+}
+
+@media screen and (min-width: 1170px) {
+  /* line 1979, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--hamburger {
+    display: none;
+  }
+}
+@media screen and (min-width: 960px) and (max-width: 1169px) {
+  /* line 1985, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--hamburger {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 959px) {
+  /* line 1991, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--main .nav--hamburger {
+    display: none;
+  }
+}
+/* line 1996, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger span,
+.nav--main .nav--hamburger span:before,
+.nav--main .nav--hamburger span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 3px;
+  width: 35px;
+  background: white;
+  position: absolute;
+  display: block;
+  content: '';
+  -webkit-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
+}
+
+/* line 2011, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger span:before {
+  top: -10px;
+}
+
+/* line 2015, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger span:after {
+  bottom: -10px;
+}
+
+/* line 2019, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger.active span {
+  background-color: transparent;
+}
+
+/* line 2023, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger.active span:before,
+.nav--main .nav--hamburger.active span:after {
+  top: 0;
+}
+
+/* line 2028, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger.active span:before {
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+/* line 2033, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.nav--main .nav--hamburger.active span:after {
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 2039, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--links.active {
+    display: block;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 2045, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  .nav--links.active {
+    display: block;
+  }
+}
+/* line 2050, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer {
+  background: white;
+  padding: 40px;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 2056, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer {
+    padding: 0;
+  }
+}
+/* line 2061, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer h3 {
+  margin-top: 0;
+}
+
+/* line 2065, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer .email-form {
+  width: 40%;
+  padding-left: 28px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 2071, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer .email-form {
+    padding-left: 0;
+    padding: 20px 0;
+    width: 100%;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 2079, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer .email-form {
+    padding-left: 0;
+    padding: 20px 0;
+    width: 100%;
+  }
+}
+/* line 2086, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer .email-form input {
+  width: 80%;
+}
+
+/* line 2090, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer .email-form input[type=email] {
+  border: 1px solid #333;
+  padding: 6px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+/* line 2097, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer ul {
+  width: 30%;
+}
+
+/* line 2101, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer ul:last-of-type {
+  border-left: 1px solid grey;
+  border-right: 1px solid grey;
+  padding-left: 28px;
+}
+
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 2108, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer ul:last-of-type {
+    padding-left: 0;
+    border-right: none;
+    border-left: none;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 2116, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer ul:last-of-type {
+    padding-left: 0;
+    border-right: none;
+    border-left: none;
+  }
+}
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  /* line 2124, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer ul {
+    width: 100%;
+    border-bottom: 1px solid grey;
+    padding: 20px 0;
+  }
+}
+@media screen and (max-width: 499px) {
+  /* line 2132, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--footer ul {
+    width: 100%;
+    border-bottom: 1px solid grey;
+    padding: 20px 0;
+  }
+}
+/* line 2139, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer ul a,
+footer.nav--footer ul input[type=submit] {
+  color: #00a076;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* line 2146, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer ul a:hover,
+footer.nav--footer ul input[type=submit]:hover {
+  color: #4d4d4d;
+}
+
+/* line 2151, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer ul input[type=submit] {
+  border: none;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+/* line 2158, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--footer ul form {
+  display: inline-block;
+}
+
+/* line 2162, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--sponsor {
+  background: #eaefec;
+  padding: 20px 0;
+}
+
+/* line 2167, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--sponsor p,
+footer.nav--sponsor img {
+  display: inline-block;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 2173, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--sponsor p,
+  footer.nav--sponsor img {
+    width: 100%;
+  }
+}
+/* line 2179, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--sponsor img {
+  width: 30%;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 2184, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--sponsor img {
+    max-width: 250px;
+  }
+}
+/* line 2189, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+footer.nav--sponsor p {
+  margin-right: 10%;
+}
+
+@media screen and (max-width: 499px) {
+  /* line 2194, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+  footer.nav--sponsor p {
+    margin-right: 0;
+  }
+}
+/* line 2199, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.text-edit h1 {
+  font-size: 20px;
+}
+
+/* line 2203, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.text-edit h2 {
+  font-size: 18px;
+}
+
+/* line 2207, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.text-edit h3 {
+  font-size: 16px;
+}
+
+/* line 2211, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.text-edit ul {
+  list-style: disc;
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
+/* line 2217, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.text-edit ol {
+  list-style: decimal;
+  margin-left: 10px;
+  padding-left: 20px;
+}
+
+/* line 2223, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.green {
+  background: #00a076;
+}
+
+/* line 2227, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.red {
+  background: red;
+}
+
+/* line 2231, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li {
+  position: relative;
+  padding: 0;
+  margin-bottom: 0.9375em;
+}
+
+/* line 2237, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li p {
+  position: absolute;
+  padding: 3px 13px;
+  color: #666;
+  background-color: #fff;
+  font-size: 12px;
+  bottom: 0;
+  left: 0.9375em;
+}
+
+/* line 2247, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li .color {
+  height: 120px;
+  margin-right: 0.9375em;
+}
+
+/* line 2252, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#colors li:last-child {
+  margin-right: 0;
+}
+
+/* line 2256, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#notice,
+.alert {
+  color: #333;
+  position: absolute;
+  width: 60%;
+  max-width: 500px;
+  background: white;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  padding: 50px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+/* line 2273, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+.alert {
+  background: #e0a6a6;
+}
+
+/* line 2277, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#error_explanation {
+  background: rgba(178, 34, 34, 0.4);
+  border-radius: 5px;
+  padding: 10px 25px;
+}
+
+/* line 2283, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#error_explanation h2 {
+  font-size: 18px;
+}
+
+/* line 2287, /Users/jordandeutsch/Documents/current projects/UA5/codeclubs/app/assets/stylesheets/scaffolds.scss */
+#error_explanation ul {
+  list-style: disc;
+  padding: 20px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+
+
+ */
+
+/*form {
+  margin: 0 15%;
+}*/
+
+
+.field input {
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+  width: 50%;
+  margin-left: 10px;
+  padding: 7px;
+  
+}
+
+textarea {
+  width: 100%;
+  height: 600px;
+}
+
+label {
+  margin-right: 10px;
+}
+
+.liked-true {
+  color: red;
+}
+
+.field-drop {
+  width: 50%;
+  height: 50px;
+  background: no-repeat left center white;
+  /*padding-top: 2%;*/
+  margin: 0;
+}
+.file-upload {
+  width: 50%;
+  height: 50px;
+}
+.field-drop p {
+  text-align: center;
+  width: 88%;
+  margin: 0 auto;
+  margin-top: 2%;
+  border: 2px solid #333;
+}
+
+.choose_file {
+overflow: hidden;
+position: relative;
+}
+.choose_file [type=file] {
+cursor: inherit;
+display: block;
+font-size: 999px;
+filter: alpha(opacity=0);
+min-height: 100%;
+min-width: 100%;
+opacity: 0;
+position: absolute;
+right: 0;
+text-align: right;
+top: 0;
+}
+
+body{
+  background: #eaefec url('bg-balloons.png') no-repeat left 0 top 500px !important;
+}
+.bootsy_text_area{
+  background: white !important;
+}
+/*
+  Bootstrap-submenu
+*/
+
+
+.dropdown-submenu {
+  position:relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  -webkit-border-radius: 0 6px 6px 6px;
+  -moz-border-radius: 0 6px 6px 6px;
+  border-radius: 0 6px 6px 6px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+  display:block;
+}
+
+.dropdown-submenu > a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+
+.dropdown-submenu:hover > a:after {
+  border-left-color: #ffffff;
+}
+
+.dropdown-submenu.pull-left {
+  float:none;
+}
+
+.dropdown-submenu.pull-left > .dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  -webkit-border-radius: 6px 0 6px 6px;
+  -moz-border-radius: 6px 0 6px 6px;
+  border-radius: 6px 0 6px 6px;
+}
+
+/*
+  Bootstrap-wysihtml5
+*/
+
+ul.wysihtml5-toolbar {
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+
+ul.wysihtml5-toolbar::after {
+  clear: both;
+  display: table;
+  content: "";
+}
+
+ul.wysihtml5-toolbar > li {
+  float: left;
+  display: list-item;
+  list-style: none;
+  margin: 0 5px 10px 0;
+}
+
+ul.wysihtml5-toolbar a[data-wysihtml5-command=bold] {
+  font-weight: bold;
+}
+
+ul.wysihtml5-toolbar a[data-wysihtml5-command=italic] {
+  font-style: italic;
+}
+
+ul.wysihtml5-toolbar a[data-wysihtml5-command=underline] {
+  text-decoration: underline;
+}
+
+ul.wysihtml5-toolbar a.btn.wysihtml5-command-active {
+  background-image: none;
+  -webkit-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),0 1px 2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15),0 1px 2px rgba(0, 0, 0, 0.05);
+  background-color: #E6E6E6;
+  background-color: #D9D9D9;
+  outline: 0;
+}
+
+ul.wysihtml5-commands-disabled .dropdown-menu {
+  display: none !important;
+}
+
+ul.wysihtml5-toolbar div.wysihtml5-colors {
+  display:block;
+  width: 50px;
+  height: 20px;
+  margin-top: 2px;
+  margin-left: 5px;
+  position: absolute;
+  pointer-events: none;
+}
+
+ul.wysihtml5-toolbar a.wysihtml5-colors-title {
+  padding-left: 70px;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="black"] {
+  background: black !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="silver"] {
+  background: silver !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="gray"] {
+  background: gray !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="maroon"] {
+  background: maroon !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="red"] {
+  background: red !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="purple"] {
+  background: purple !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="green"] {
+  background: green !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="olive"] {
+  background: olive !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="navy"] {
+  background: navy !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="blue"] {
+  background: blue !important;
+}
+
+ul.wysihtml5-toolbar div[data-wysihtml5-command-value="orange"] {
+  background: orange !important;
+}
+
+/*
+  Bootsy
+*/
+
+.wysiwyg-color-black {
+  color: black;
+}
+
+.wysiwyg-color-silver {
+  color: silver;
+}
+
+.wysiwyg-color-gray {
+  color: gray;
+}
+
+.wysiwyg-color-white {
+  color: white;
+}
+
+.wysiwyg-color-maroon {
+  color: maroon;
+}
+
+.wysiwyg-color-red {
+  color: red;
+}
+
+.wysiwyg-color-purple {
+  color: purple;
+}
+
+.wysiwyg-color-fuchsia {
+  color: fuchsia;
+}
+
+.wysiwyg-color-green {
+  color: green;
+}
+
+.wysiwyg-color-lime {
+  color: lime;
+}
+
+.wysiwyg-color-olive {
+  color: olive;
+}
+
+.wysiwyg-color-orange {
+  color: orange;
+}
+
+.wysiwyg-color-yellow {
+  color: yellow;
+}
+
+.wysiwyg-color-navy {
+  color: navy;
+}
+
+.wysiwyg-color-blue {
+  color: blue;
+}
+
+.wysiwyg-color-teal {
+  color: teal;
+}
+
+.wysiwyg-color-aqua {
+  color: aqua;
+}
+
+.wysiwyg-float-left {
+  float: left;
+  margin: 0 8px 8px 0;
+}
+
+.wysiwyg-float-right {
+  float: right;
+  margin: 0 0 8px 8px;
+}
+
+.bootsy blockquote {
+  padding: 10px 20px;
+  margin: 0 0 20px;
+  font-size: 17.5px;
+  border-left: 5px solid #eee;
+}
+.bootsy blockquote p:last-child,
+.bootsy blockquote ul:last-child,
+.bootsy blockquote ol:last-child {
+  margin-bottom: 0;
+}
+.bootsy blockquote footer,
+.bootsy blockquote small,
+.bootsy blockquote .small {
+  display: block;
+  font-size: 80%;
+  line-height: 1.42857143;
+  color: #777;
+}
+.bootsy blockquote footer:before,
+.bootsy blockquote small:before,
+.bootsy blockquote .small:before {
+  content: '\2014 \00A0';
+}
+.bootsy .blockquote-reverse,
+.bootsy blockquote.pull-right {
+  padding-right: 15px;
+  padding-left: 0;
+  text-align: right;
+  border-right: 5px solid #eee;
+  border-left: 0;
+}
+.bootsy .blockquote-reverse footer:before,
+.bootsy blockquote.pull-right footer:before,
+.blockquote-reverse small:before,
+.bootsy blockquote.pull-right small:before,
+.bootsy .blockquote-reverse .small:before,
+.bootsy blockquote.pull-right .small:before {
+  content: '';
+}
+.bootsy .blockquote-reverse footer:after,
+.bootsy blockquote.pull-right footer:after,
+.bootsy .blockquote-reverse small:after,
+.bootsy blockquote.pull-right small:after,
+.bootsy .blockquote-reverse .small:after,
+.bootsy blockquote.pull-right .small:after {
+  content: '\00A0 \2014';
+}
+.bootsy blockquote:before,
+.bootsy blockquote:after {
+  content: "";
+}
+
+textarea.bootsy:required:invalid {
+  color: inherit;
+}
+
+/*Modal Design Styles*/
+
+.bootsy-modal .file-input-name {display: none;}  /*Hide the input file name from showing as it's not needed and ruins design*/
+
+/*Set a min-height on the modal body to prevent jumping up and down of modal when adding content*/
+.bootsy-modal .modal-body {
+  min-height: 120px;
+}
+
+.bootsy-image {
+  margin-bottom: 15px;
+}
+
+.bootsy-upload-loader {
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.bootsy-upload-spacer {
+  padding: 0 10px 0 10px;
+}
+
+.bootsy-gallery-loader {
+  display: block;
+  margin: 0 auto;
+}
+
+/*The below code is needed for capybara to be able to find the input, as it*/
+/*does not work*/
+.file-input-wrapper input[type=file], .file-input-wrapper input[type=file]:focus, .file-input-wrapper input[type=file]:hover {
+  opacity: .01;
+}
+
+/* Avoid Boostrap input borders */
+body.bootsy_text_area.form-control {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
