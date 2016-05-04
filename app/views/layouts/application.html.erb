@@ -43,6 +43,9 @@
         <% else %>
           <%= link_to 'Create Profile', new_profile_path%>
         <% end %>
+        <% if current_user.admin? %>
+          <%= link_to 'Admin', admin_path%>
+        <% end %>
         <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
       <% else %>
         <%= link_to 'Sing In', new_user_session_path, method: :get%>
