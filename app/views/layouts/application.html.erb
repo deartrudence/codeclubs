@@ -15,7 +15,7 @@
 
   <!-- Optional theme -->
 
-    <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
+    <!-- <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   <%= csrf_meta_tags %>
@@ -103,7 +103,11 @@
       var width = $(window).innerWidth()
       var wrapper = $('.wrapper').width()
       var left = (width - wrapper) / 2
-      $('.nav--links').css({'width': width + 'px', 'left': '-'+ left + 'px'});
+      if(left == 12 ){
+        $('.nav--links').css({'width': width + 'px'});
+      }else{
+        $('.nav--links').css({'width': width + 'px', 'left': '-'+ left + 'px'});
+      }
       console.log(width)
       $('.nav--links').slideToggle(500)
       $(this).toggleClass('active')
