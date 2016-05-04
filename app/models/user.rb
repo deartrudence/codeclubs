@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   acts_as_voter
 
   def admin?
-    self.profile.role == 'admin'
+    if profile.present?
+      self.profile.role == 'admin'
+    end  
   end
 end

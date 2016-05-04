@@ -36,6 +36,11 @@ RSpec.describe ProfilesController, type: :controller do
   # ProfilesController. Be sure to keep this updated too.
   let(:valid_session) { {} }
 
+  before(:each) do
+      request.env["devise.mapping"] = Devise.mappings[:user]
+      sign_in FactoryGirl.create(:user)
+  end
+
   describe "GET #index" do
     it "assigns all profiles as @profiles" do
       profile = Profile.create! valid_attributes
@@ -56,7 +61,7 @@ RSpec.describe ProfilesController, type: :controller do
     it "assigns a new profile as @profile" do
       get :new, {}, valid_session
       expect(assigns(:profile)).to be_a_new(Profile)
-    end
+    end  
   end
 
   describe "GET #edit" do
@@ -85,6 +90,11 @@ RSpec.describe ProfilesController, type: :controller do
         post :create, {:profile => valid_attributes}, valid_session
         expect(response).to redirect_to(Profile.last)
       end
+
+      it "adds email to MailingList if mailing_list is true" do
+        post :create, profile: attributes_for(:profile)
+        expect(MailingList.count).to eq(1)
+      end
     end
 
     context "with invalid params" do
@@ -111,6 +121,17 @@ RSpec.describe ProfilesController, type: :controller do
         put :update, {:id => profile.to_param, :profile => new_attributes}, valid_session
         profile.reload
         skip("Add assertions for updated state")
+      end
+
+
+      it "removes email from MailingList if it is already there and is now set to false" do
+        user = create(:user, email: 'hello@email.com', password: 'password')
+        # mailing_list = create(:mailing_list, email: 'hello@email.com')
+        profile = create(:profile, user: user, mailing_list: 'false')
+
+        put :update, {:id => profile.id, :profile => profile}, valid_session
+        # put :update, profile: attributes_for(:profile, email: 'hello@email.com', mailing_list: 'false')
+        expect(MailingList.count).to eq(0)
       end
 
       it "assigns the requested profile as @profile" do

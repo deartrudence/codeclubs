@@ -37,6 +37,9 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @profile.user = current_user
+    if @profile.mailing_list == true
+      MailingList.new(email: @profile.user.email).save
+    end  
 
     respond_to do |format|
       if @profile.save
@@ -52,8 +55,16 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1
   # PATCH/PUT /profiles/1.json
   def update
+
+    # raise 'hell'
     respond_to do |format|
       if @profile.update(profile_params)
+        if @profile.mailing_list == false && MailingList.where(email: @profile.user.email).present?
+          MailingList.where(email: @profile.user.email).destroy_all
+        end
+        if @profile.mailing_list == true && MailingList.where(email: @profile.user.email).blank?
+          MailingList.new(email: @profile.user.email).save
+        end 
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { render :show, status: :ok, location: @profile }
       else
