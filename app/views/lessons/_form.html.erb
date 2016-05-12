@@ -12,48 +12,57 @@
   <% end %>
   <div class="wrapper--flex">
     <div class="content">
-      <h3>*Title</h3>
+      <h3>*Lesson Title</h3>
       <%= f.text_field :title %>
       <div class="textarea-description">
         <h3>Description</h3>
+        <p class="small">This will show up on the listings page with all the lessons and is just a short overview of what your lesson will cover.</p>
         <%= f.text_area :description %>
       </div>
 
       <div>
         <h3>Curriculum Concepts</h3>
+        <p class="small">What areas of the standard curriculum does your lesson touch on? Maybe you focus on reading comprehension or Fractions. Provide a bit of context for other educators as to where your lesson could fit in to their classrooms.</p>
         <%= f.bootsy_area :curriculum_concepts %>
       </div>
 
       <div>
         <h3>Programming Concepts</h3>
+        <p class="small">What programming concepts and terminology does this lesson touch on. Are you going over conditional statements or maybe making use of variables? Feel free to share both term specific and conceptual definitions.</p>
         <%= f.bootsy_area :programming_concepts %>
       </div>
 
       <div>
         <h3>Prep</h3>
+        <p class="small">All the behind the scenes work to get the lesson ready.</p>
         <%= f.bootsy_area :prep %>
       </div>
 
 
       <div class="textarea-content">
         <h3>Content</h3>
+        <p class="small">The actual meat of the lesson! This could take form of a step by step guide or maybe a series of little exercises, completely up to you!</p>
         <%= f.bootsy_area :content %>
       </div>
 
       <div>
         <h3>Answers</h3>
+        <p class="small">Either then asnwers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.</p>
         <%= f.bootsy_area :answers %>
       </div>
 
       <div>
         <h3>Extensions</h3>
+        <p class="small">Additional questions and challenges that build on content reviewed in the lesson.</p>
         <%= f.bootsy_area :extensions %>
       </div>
 
       <%= f.label :video_link %>
+      <p class="small">The embed link for any video material you may have that goes along with the lesson</p>
       <%= f.text_field :video_link %>
 
       <%= f.label :file_upload %>
+      <p class="small">Upload additonal learning materials, reading, or slides.</p>
       <%= f.file_field :file_upload, class: "button button--primary" %>
 
 
@@ -67,18 +76,20 @@
       <% end %>
       <%= f.label :feature_image %>
       <%= f.file_field :feature_image, class: "button button--primary" %>
-
-      <%= f.input :subject_list, :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
+      <h3>Tags</h3>
+      <p class="small">Add comma seperated tags for associated curriculum subjects and programming concepts (Ex. Math, English OR Javascript, Conditional Statements)</p>
+      <%= f.input :subject_list, :label => 'Curriculum Subjects',  :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
 
       <%= f.input :code_concept_list, :label => 'Programming concept', :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
 
-      <%= f.input :grade_list, :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
+      <%= f.input :grade_list, :label => 'Grade', :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
 
       <%= f.label :duration_in_minutes %>
       <%= f.number_field :duration_in_minutes %>
 
       <div class="levels">
         <%= f.label :level %><br>
+        <p class="small">An indicator of the difficulty of the lesson. Could be related to programming concepts or curriculum concepts covered.</p>
         <%= f.radio_button :level, '1', :checked => true %><span>1</span><br>
         <%= f.radio_button :level, '2' %><span>2</span><br>
         <%= f.radio_button :level, '3' %><span>3</span><br>
