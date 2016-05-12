@@ -113,8 +113,10 @@ RSpec.describe ProfilesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        # skip("Add a hash of attributes valid for your model")
+        FactoryGirl.attributes_for(:profile, mailing_list: 'false')
       }
+      # let(:mail_attributes) { FactoryGirl.attributes_for(:profile, mailing_list: 'false') }
 
       it "updates the requested profile" do
         profile = Profile.create! valid_attributes
@@ -125,13 +127,13 @@ RSpec.describe ProfilesController, type: :controller do
 
 
       it "removes email from MailingList if it is already there and is now set to false" do
+        
         user = create(:user, email: 'hello@email.com', password: 'password')
-        # mailing_list = create(:mailing_list, email: 'hello@email.com')
-        profile = create(:profile, user: user, mailing_list: 'false')
-
-        put :update, {:id => profile.id, :profile => profile}, valid_session
-        # put :update, profile: attributes_for(:profile, email: 'hello@email.com', mailing_list: 'false')
-        expect(MailingList.count).to eq(0)
+        mailing_list = create(:mailing_list, email: 'hello@email.com')
+        profile = create(:profile, user: user, mailing_list: 'true')
+        mail_attributes = {:mailing_list => false}
+        put :update, {:id => profile.to_param, :profile => mail_attributes}, valid_session
+        expect(profile.mailing_list).to eq('helo@email.com')
       end
 
       it "assigns the requested profile as @profile" do

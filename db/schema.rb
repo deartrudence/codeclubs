@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160422161356) do
+ActiveRecord::Schema.define(version: 20160512141718) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 20160422161356) do
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.integer  "duration_in_minutes"
-    t.integer  "level"
+    t.integer  "level",                      default: 1
     t.text     "description"
     t.text     "curriculum_concepts"
     t.text     "prep"

@@ -80,8 +80,8 @@ class LessonsController < ApplicationController
     @lesson.profile = current_user.profile
     @lesson.subject_list.add(params[:subject_list], parse: true)
     @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
-    @lesson.grade_list.add(params[:grade_list], parse: true)
-    @lesson.level = params[:level].to_i
+    @lesson.grade_list.add(params[:grade_list], parse: true) 
+    @lesson.level = params[:lesson][:level].to_i
     respond_to do |format|
       if @lesson.save
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
