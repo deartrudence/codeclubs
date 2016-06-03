@@ -1,6 +1,6 @@
 <div class="wrapper">
 
-  <h1>Admin</h1>
+  <h1 class="as--admin-title">Admin</h1>
 
   <ul class="tabs">
     <li class="tab-link current" data-tab="lessons-tab">Lessons</li>
@@ -11,11 +11,17 @@
   <div id="lessons-tab" class="tab-content current">
     <h2>Lessons</h2>
     <%= form_tag(admin_path, method: :get, remote: true) do %>
-        <%= select_tag :filter, options_for_select([ "all","approved", "unapproved" ], "all"), class: "lesson_filter" %>
-      <%= text_field_tag :search,nil , class: 'lesson_search' %>
-      <%= submit_tag 'search', class:"button button--primary" %>
+    <div class="as--filter-wrap">
+      <div >
+        <p>Status: <%= select_tag :filter, options_for_select([ "all","approved", "unapproved" ], "all"), class: "lesson_filter" %></p>
+      </div>
+      <div class="as--search-wrap">
+        <%= text_field_tag :search,nil , class: 'lesson_search' %>
+        <%= submit_tag 'search', class:"button button--primary" %>
+      </div>
+    </div>
     <% end %>
-    <div id="lessons-admin">
+    <div id="lessons-admin" class="as--lessons-admin">
       <%= render 'lessons_admin' %>
     </div>
 

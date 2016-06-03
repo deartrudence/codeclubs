@@ -7,13 +7,13 @@
         <% end %>
       </div>
       <% if lesson.level == 2 %>
-        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(69, 69, 131, 0.85) 0%, rgba(69, 69, 131, 0.6) 59%, rgba(69, 69, 131, 0.5)100%), url(<%= lesson.feature_image.url %>)">
+        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(68, 141, 203, 0.9) 0%, rgba(68, 141, 203, 0.6) 59%, rgba(68, 141, 203, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
       <% elsif lesson.level == 3 %>
-      <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(93, 88, 129, 0.85) 0%, rgba(93, 88, 129, 0.6) 59%, rgba(93, 88, 129, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
+      <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(9, 83, 163, 0.9) 0%, rgba(9, 83, 163, 0.6) 59%, rgba(9, 83, 163, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
       <% elsif lesson.level == 4 %>
-        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(0, 117, 86, 0.85) 0%, rgba(0, 117, 86, 0.6) 59%, rgba(0, 117, 86, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
+        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(26, 57, 103, 0.9) 0%, rgba(26, 57, 103, 0.6) 59%, rgba(26, 57, 103, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
       <% else %>
-        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(0, 160, 118, 0.85) 0%, rgba(0, 160, 118, 0.6) 59%, rgba(0, 160, 118, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
+        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(94, 134, 155, 0.95) 0%, rgba(94, 134, 155, 0.65) 59%, rgba(94, 134, 155, 0.55) 100%), url(<%= lesson.feature_image.url %>)">
       <% end %>
         <span>
           <p>Time: <%= lesson.duration_in_minutes %></p>
@@ -38,7 +38,7 @@
 
   <% end %>
 <% else %>
-  <p>No lessons match this search parameter</p>
+  <p>No lessons match this search parameter.</p>
 <% end %>
 
 

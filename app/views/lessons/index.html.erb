@@ -2,26 +2,29 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="wrapper as--home-intro center">
-  <h1 class="font-quicksand">Code:Clubs</h1>
-  <p>A lesson planning resource for educators to introduce coding into the classroom or start a coding club. Explore Canadian curriculum-mapped coding lessons aimed at girls and boys in grades 3-8.</p>
+<div class="as--home-wrap">
+  <div class="wrapper as--home-intro center">
+      <div class="overlay"></div>
+      <h1>Introduce coding in your classroom. Start a coding club. Use technology to inspire kids. change the world.</h1>
+      <p>Explore and contribute to Canadian curriculum-mapped coding lessons aimed at girls and boys in grades 3-8.</p>
+    </div>
+    <%= form_tag(lessons_path, remote: true, method: :get) do %>
+      <div class="wrapper wrapper--flex as--home-form font-quicksand">
+        <div class="select">
+          <%= select_tag 'grade', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).map { |s| [s.humanize, s]}), {:include_blank => 'grade'}%>
+        </div>
+        <div class="select">
+          <%= select_tag 'subject', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).map { |s| [s.humanize, s]}), {:include_blank => 'subject'}%>
+        </div>
+        <div class="select">
+          <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
+        </div>
+    
+        <%= hidden_field_tag :search_complete, true %>
+        <%= submit_tag 'Search', remote: true, class: 'button button--secondary font-quicksand' %>
+      </div>
+    <% end %>
 </div>
-<%= form_tag(lessons_path, remote: true, method: :get) do %>
-  <div class="wrapper wrapper--flex as--home-form font-quicksand">
-    <div class="select">
-      <%= select_tag 'grade', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).map { |s| [s.humanize, s]}), {:include_blank => 'grade'}%>
-    </div>
-    <div class="select">
-      <%= select_tag 'subject', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).map { |s| [s.humanize, s]}), {:include_blank => 'subject'}%>
-    </div>
-    <div class="select">
-      <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
-    </div>
-
-    <%= hidden_field_tag :search_complete, true %>
-    <%= submit_tag 'Search', remote: true, class: 'button button--secondary font-quicksand' %>
-  </div>
-<% end %>
 <div class="wrapper" id="search-area" >
   <h3 id="lesson-search-results" class="as--search-results"></h3>
   <div id="lessons-listing" class="wrapper--flex">

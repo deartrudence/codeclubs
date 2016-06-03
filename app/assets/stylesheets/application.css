@@ -80,8 +80,16 @@ top: 0;
 }
 
 body{
-  background: #eaefec url('bg-balloons.png') no-repeat left 0 top 500px !important;
+/*    background: #666 url('bw-bg.png') no-repeat;
+    background-size: contain;
+    background-position: center top;*/
+    /*background: #666;*/
 }
 .bootsy_text_area{
   background: white !important;
+}
+.as--home-wrap {
+    background: #666 url('bw-bg.png') no-repeat;
+    background-position: center top;
+    background-size: cover;
 }

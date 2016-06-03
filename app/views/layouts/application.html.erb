@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Codeclubs</title>
+  <title>Teachers Learning Code</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -15,9 +15,9 @@
 
   <!-- Optional theme -->
 
-    <!-- <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -29,8 +29,8 @@
   <div class="wrapper">
     <span class="logo">
       <%= link_to lessons_path do%>
-        <%= image_tag 'logo.png'%>
-        <span class="font-quicksand">code:clubs</span>
+        <%= image_tag 'tlc-oneline-white.svg'%>
+        <!-- <span class="font-quicksand">code:clubs</span> -->
       <% end %>
     </span>
     <a class="nav--hamburger" id="nav-hamburger"><span></span></a>
@@ -48,7 +48,7 @@
         <% end %>
         <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= link_to 'Sing In', new_user_session_path, method: :get%>
+        <%= link_to 'Sign In', new_user_session_path, method: :get%>
       <% end %>
     </span>
   </div>
@@ -93,7 +93,15 @@
 </footer>
 <footer class="nav--sponsor">
   <div class="wrapper">
-    <p>code:clubs are powered by:</p><%= image_tag 'scotiabank-logo.png'%>
+    <div class="as--creds">
+      <p>Development by <a href="http://upatfive.ca" target="_blank">Up at Five</a></p>
+      <p>Design by <a href="http://natcooper.com" target="_blank">Nat Cooper</a></p>
+      <p>&copy; <a href="http://ladieslearningcode.com" target="_blank">Ladies Learning Code</a></p>
+    </div>
+    <div class="as--hashtag"><%= image_tag 'tlc-hashtag.svg'%></div>
+    <div>
+      <p>in partnership with:</p><%= image_tag 'scotiabank-logo-white.svg'%>
+    </div>
   </div>
 </footer>
 <script>

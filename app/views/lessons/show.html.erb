@@ -4,7 +4,7 @@
 
 <div class="wrapper wrapper--flex lesson--level-<%= @lesson.level %> as--lesson-wrapper">
   <div class="lesson--single-title-bar">
-    <h2 class="font-quicksand as--no-top-margin"><%= @lesson.title %></h2>
+    <h2 class="as--no-top-margin"><%= @lesson.title %></h2>
     <h3 class="font-quicksand as--no-top-margin">By: <%= @lesson.profile.first_name %> <%= @lesson.profile.last_name %></h3>
     <h3 class="font-quicksand as--no-top-margin">
       Grade:
@@ -16,25 +16,26 @@
   </div>
   <div class="lesson--single-title-img" style="background-image: url(<%= @lesson.feature_image.url(:medium) %>)"></div>
   <div class="lesson--single-text">
-    <h3 class="font-quicksand as--underlined">The Lesson</h3>
+    <h3 class="as--underlined">The Lesson</h3>
     <div class="text-edit">
       <%= @lesson.content.html_safe %>
     </div>
     <% if @lesson.extensions.present? %>
-      <h3 class="font-quicksand as--underlined">Extensions</h3>
+      <h3 class="as--underlined">Extensions</h3>
       <div class="text-edit">
         <%= @lesson.extensions.html_safe %>
       </div>
     <% end %>
 
     <% if @lesson.answers.present? %>
-      <h3 class="font-quicksand as--underlined">Answers</h3>
+      <h3 class="as--underlined">Answers</h3>
       <div class="text-edit">
         <%= @lesson.answers.html_safe %>
       </div>
     <% end %>
     <% if @lesson.video_link.present?%>
-      <%= @lesson.video_link %>
+      <iframe width="560" height="315" src="<%= @lesson.video_link %>" frameborder="0" allowfullscreen></iframe>
+
     <% end %>
     <% if @lesson.file_upload.file? %>
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
