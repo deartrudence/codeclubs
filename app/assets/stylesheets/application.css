@@ -89,7 +89,7 @@ body{
   background: white !important;
 }
 .as--home-wrap {
-    background: #666 url('bw-bg.png') no-repeat;
+    background: #666 image-url('bw-bg.png') no-repeat;
     background-position: center top;
     background-size: cover;
 }
