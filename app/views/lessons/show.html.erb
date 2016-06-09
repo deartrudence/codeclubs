@@ -34,8 +34,7 @@
       </div>
     <% end %>
     <% if @lesson.video_link.present?%>
-      <iframe width="560" height="315" src="<%= @lesson.video_link %>" frameborder="0" allowfullscreen></iframe>
-
+        <%= @lesson.video_link %>
     <% end %>
     <% if @lesson.file_upload.file? %>
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
