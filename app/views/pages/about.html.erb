@@ -27,88 +27,105 @@
         <p>Our training workshops across the country are led by industry leading experts and educators from our community. We’ll delve into our TLC guide and lesson plans while teaching educators how to use Scratch - a popular program to teach kids to code, how to map coding to the curriculum and how to introduce coding to your students!</p>
         <div>
           <a href="http://ladieslearningcode.com/" class="button button--tertiary as--about-buttons" target="_blank">upcoming<br>workshops</a>
-          <a href="#" class="button button--tertiary as--about-buttons" target="_blank">Request<br>a Workshop</a>
+          <a href="mailto:info@ladieslearningcode.com?Subject=Workshop%20Request" class="button button--tertiary as--about-buttons" target="_blank">Request<br>a Workshop</a>
         </div>
       </div>
       <div class="as--training">
         <h2>Join Our Online Network</h2>
         <p>Ladies Learning Code was built for the community by the community and it has made all of the difference for our learners’ success.  Join our Teachers Learning Code community forum, a Slack Team, to connect with other educators across the country, share resources and ask questions to our talented and generous community of developers and technical educators coast to coast.</p>
-        <a href="#" class="button button--tertiary as--about-buttons" target="_blank">Join<br>the Forum</a>
+        <a href="#" class="button button--tertiary as--about-buttons" target="_blank" data-open="slack">Join<br>the Forum</a>
       </div>
     </div>
   </div>
  
 </div>
 
+<div class="modal--overlay">
+  <div class="modal modal--about" id="slack">
+    <form action="https://script.google.com/macros/s/AKfycbyPQ7KkP-dG-Ubxq98uftLjVvacMDSmxJNtSFhLyc5tIijX3cE/exec" id="slack-form" method="post">
+      <label for="name">your name</label>
+      <input type="text" id="name" name="name" value="">
+      <label for="email">your email</label>
+      <input type="email" id="email" name="email" value="">
+      <input type="submit" value="join" class="button button--tertiary">
+    </form>
+  </div>
+  <div class="modal modal--about" id="thank-you">
+    <p class="center">Thank you! You will receive an invite to our Slack group shortly.</p>
+  </div>
+</div>
+
+
+
 <script>
-   // 1. Enter sheet name where data is to be written below
-          var SHEET_NAME = "Sheet1";
-           
-  //  2. Run > setup
-  //
-  //  3. Publish > Deploy as web app 
-  //    - enter Project Version name and click 'Save New Version' 
-  //    - set security level and enable service (most likely execute as 'me' and access 'anyone, even anonymously) 
-  //
-  //  4. Copy the 'Current web app URL' and post this in your form/script action 
-  //
-  //  5. Insert column names on your destination sheet matching the parameter names of the data you are passing in (exactly matching case)
-   
-  var SCRIPT_PROP = PropertiesService.getScriptProperties(); // new property service
-   
-  // If you don't want to expose either GET or POST methods you can comment out the appropriate function
-  function doGet(e){
-    return handleResponse(e);
-  }
-   
-  function doPost(e){
-    return handleResponse(e);
-  }
-   
-  function handleResponse(e) {
-    // shortly after my original solution Google announced the LockService[1]
-    // this prevents concurrent access overwritting data
-    // [1] http://googleappsdeveloper.blogspot.co.uk/2011/10/concurrency-and-google-apps-script.html
-    // we want a public lock, one that locks for all invocations
-    var lock = LockService.getPublicLock();
-    lock.waitLock(30000);  // wait 30 seconds before conceding defeat.
-     
-    try {
-      // next set where we write the data - you could write to multiple/alternate destinations
-      var doc = SpreadsheetApp.openById(SCRIPT_PROP.getProperty("key"));
-      var sheet = doc.getSheetByName(SHEET_NAME);
-       
-      // we'll assume header is in row 1 but you can override with header_row in GET/POST data
-      var headRow = e.parameter.header_row || 1;
-      var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-      var nextRow = sheet.getLastRow()+1; // get next row
-      var row = []; 
-      // loop through the header columns
-      for (i in headers){
-        if (headers[i] == "Timestamp"){ // special case if you include a 'Timestamp' column
-          row.push(new Date());
-        } else { // else use header name to get data
-          row.push(e.parameter[headers[i]]);
-        }
-      }
-      // more efficient to set values as [][] array than individually
-      sheet.getRange(nextRow, 1, 1, row.length).setValues([row]);
-      // return json success results
-      return ContentService
-            .createTextOutput(JSON.stringify({"result":"success", "row": nextRow}))
-            .setMimeType(ContentService.MimeType.JSON);
-    } catch(e){
-      // if error return this
-      return ContentService
-            .createTextOutput(JSON.stringify({"result":"error", "error": e}))
-            .setMimeType(ContentService.MimeType.JSON);
-    } finally { //release lock
-      lock.releaseLock();
+
+  $('[data-open]').on('click', function(e){
+    e.preventDefault()
+    var modal = $(this).data('open')
+    $('#' + modal +', .modal--overlay').css('display', 'block').addClass('active')
+  });
+
+  $('.modal--overlay').on('click', function(){
+    
+    if($('.modal').hasClass('active')){
+      $('.modal.active, .modal--overlay').removeClass('active').css('display', 'none');
     }
-  }
+  });
+  $('.modal').on('click', function(e){
+    e.stopPropagation();
+  });
+
+  (function ($) {
+      $.fn.serializeFormJSON = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+          if (o[this.name]) {
+            if (!o[this.name].push) { o[this.name] = [o[this.name]]; }
+            o[this.name].push(this.value || '');
+          } else { o[this.name] = this.value || ''; }
+        });
+        return o;
+      };
+    })(jQuery);
+  var request;
+  $('#slack-form').submit(function(e){
+    var $form = $(this)
+    var serializedData = $form.serializeFormJSON()
+    console.log(serializedData)
+    var $inputs = $form.find("input, select, button, textarea");
+    request = $.ajax({
+      url: 'https://script.google.com/macros/s/AKfycbyPQ7KkP-dG-Ubxq98uftLjVvacMDSmxJNtSFhLyc5tIijX3cE/exec', 
+      type: 'post', 
+      data: serializedData
+    });
+
+     // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        $('.modal.active').removeClass('active').css('display', 'none');
+        
+        $('#thank-you').css('display', 'block').addClass('active');
+        setTimeout(function(){
+          $('#thank-you').css('display', 'none').removeClass('active');
+          $('.modal--overlay').css('display', 'none').removeClass('active');
+        }, 2000)
+
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+    request.always(function () {
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+        });
+    e.preventDefault()
+  });
    
-  function setup() {
-      var doc = SpreadsheetApp.getActiveSpreadsheet();
-      SCRIPT_PROP.setProperty("key", doc.getId());
-  }
 </script>

@@ -83,6 +83,8 @@ Rails.application.configure do
     :bucket => 'teacherslearningcode'
   }
 
+  config.action_mailer.default_url_options = { :host => 'teacherslearningcode.herokuapp.com' }
+
   config.action_mailer.delivery_method = :smtp
   # SMTP settings for mailgun
   ActionMailer::Base.smtp_settings = {

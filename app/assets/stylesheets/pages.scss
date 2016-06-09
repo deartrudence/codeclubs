@@ -1,3 +1,24 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.modal--overlay{
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.2);
+	display:none;
+
+}
+.modal.modal--about{
+	background: white;
+	bottom: auto;
+	width: 80%;
+	margin: 0 auto;
+	top: 20%;
+	padding: 30px;
+	border-radius: 5px;
+	border: 1px solid lightgrey;
+	max-width: 500px;
+}
