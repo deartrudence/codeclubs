@@ -34,7 +34,7 @@
       </div>
     <% end %>
     <% if @lesson.video_link.present?%>
-        <%= @lesson.video_link %>
+        <%= @lesson.video_link.html_safe %>
     <% end %>
     <% if @lesson.file_upload.file? %>
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
