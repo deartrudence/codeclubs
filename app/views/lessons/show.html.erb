@@ -34,8 +34,7 @@
       </div>
     <% end %>
     <% if @lesson.video_link.present?%>
-      <iframe width="560" height="315" src="<%= @lesson.video_link %>" frameborder="0" allowfullscreen></iframe>
-
+        <%= @lesson.video_link.html_safe %>
     <% end %>
     <% if @lesson.file_upload.file? %>
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
@@ -43,7 +42,7 @@
   </div>
   <div class="sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
-    <div class="sidebar--text">
+    <div class="sidebar--text word-wrap">
       <ul class="list--tags">
         <li class="title">Subjects:</li>
         <% @lesson.subject_list.each do |subject| %>

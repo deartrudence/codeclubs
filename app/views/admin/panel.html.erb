@@ -56,7 +56,7 @@
 
 
 <script>
-  $(document).on('ready ajaxComplete',function(){
+  $(document).on('ready ajaxComplete page:load',function(){
       console.log("ajaxComplete")
       $('.lesson_approved_check').change(function(){
         lesson = $(this).attr('data')

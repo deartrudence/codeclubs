@@ -27,18 +27,105 @@
         <p>Our training workshops across the country are led by industry leading experts and educators from our community. We’ll delve into our TLC guide and lesson plans while teaching educators how to use Scratch - a popular program to teach kids to code, how to map coding to the curriculum and how to introduce coding to your students!</p>
         <div>
           <a href="http://ladieslearningcode.com/" class="button button--tertiary as--about-buttons" target="_blank">upcoming<br>workshops</a>
-          <a href="#" class="button button--tertiary as--about-buttons" target="_blank">Request<br>a Workshop</a>
+          <a href="mailto:info@ladieslearningcode.com?Subject=Workshop%20Request" class="button button--tertiary as--about-buttons" target="_blank">Request<br>a Workshop</a>
         </div>
       </div>
       <div class="as--training">
         <h2>Join Our Online Network</h2>
         <p>Ladies Learning Code was built for the community by the community and it has made all of the difference for our learners’ success.  Join our Teachers Learning Code community forum, a Slack Team, to connect with other educators across the country, share resources and ask questions to our talented and generous community of developers and technical educators coast to coast.</p>
-        <a href="#" class="button button--tertiary as--about-buttons" target="_blank">Join<br>the Forum</a>
+        <a href="#" class="button button--tertiary as--about-buttons" target="_blank" data-open="slack">Join<br>the Forum</a>
       </div>
     </div>
   </div>
-  
-  
-  
  
 </div>
+
+<div class="modal--overlay">
+  <div class="modal modal--about" id="slack">
+    <form action="https://script.google.com/macros/s/AKfycbyPQ7KkP-dG-Ubxq98uftLjVvacMDSmxJNtSFhLyc5tIijX3cE/exec" id="slack-form" method="post">
+      <label for="name">your name</label>
+      <input type="text" id="name" name="name" value="">
+      <label for="email">your email</label>
+      <input type="email" id="email" name="email" value="">
+      <input type="submit" value="join" class="button button--tertiary">
+    </form>
+  </div>
+  <div class="modal modal--about" id="thank-you">
+    <p class="center">Thank you! You will receive an invite to our Slack group shortly.</p>
+  </div>
+</div>
+
+
+
+<script>
+
+  $('[data-open]').on('click', function(e){
+    e.preventDefault()
+    var modal = $(this).data('open')
+    $('#' + modal +', .modal--overlay').css('display', 'block').addClass('active')
+  });
+
+  $('.modal--overlay').on('click', function(){
+    
+    if($('.modal').hasClass('active')){
+      $('.modal.active, .modal--overlay').removeClass('active').css('display', 'none');
+    }
+  });
+  $('.modal').on('click', function(e){
+    e.stopPropagation();
+  });
+
+  (function ($) {
+      $.fn.serializeFormJSON = function () {
+        var o = {};
+        var a = this.serializeArray();
+        $.each(a, function () {
+          if (o[this.name]) {
+            if (!o[this.name].push) { o[this.name] = [o[this.name]]; }
+            o[this.name].push(this.value || '');
+          } else { o[this.name] = this.value || ''; }
+        });
+        return o;
+      };
+    })(jQuery);
+  var request;
+  $('#slack-form').submit(function(e){
+    var $form = $(this)
+    var serializedData = $form.serializeFormJSON()
+    console.log(serializedData)
+    var $inputs = $form.find("input, select, button, textarea");
+    request = $.ajax({
+      url: 'https://script.google.com/macros/s/AKfycbyPQ7KkP-dG-Ubxq98uftLjVvacMDSmxJNtSFhLyc5tIijX3cE/exec', 
+      type: 'post', 
+      data: serializedData
+    });
+
+     // Callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // Log a message to the console
+        $('.modal.active').removeClass('active').css('display', 'none');
+        
+        $('#thank-you').css('display', 'block').addClass('active');
+        setTimeout(function(){
+          $('#thank-you').css('display', 'none').removeClass('active');
+          $('.modal--overlay').css('display', 'none').removeClass('active');
+        }, 2000)
+
+    });
+
+    // Callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // Log the error to the console
+        console.error(
+            "The following error occurred: "+
+            textStatus, errorThrown
+        );
+    });
+    request.always(function () {
+            // Reenable the inputs
+            $inputs.prop("disabled", false);
+        });
+    e.preventDefault()
+  });
+   
+</script>
