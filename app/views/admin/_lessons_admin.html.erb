@@ -1,4 +1,4 @@
-<ul>
+<ul class="main">
   <% @lessons.find_each do |lesson| %>
   <li>
   <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>

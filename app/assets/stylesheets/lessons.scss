@@ -45,3 +45,19 @@
       -moz-border-radius: 0px;
       background-image: none;
     }
+
+
+a.wysihtml5-command-active{
+  background: black;
+  color: white;
+} 
+
+
+.wysihtml5-sandbox{
+  ul{
+    list-style: disc !important;
+  }
+  ol{
+    list-style: initial;
+  }
+}
