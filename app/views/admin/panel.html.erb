@@ -56,7 +56,7 @@
 
 
 <script>
-  $(document).on('ajaxComplete page:load',function(){
+  // $(document).on('ajaxComplete page:load',function(){
       console.log("ajaxComplete")
       $('.lesson_approved_check').change(function(){
         lesson = $(this).attr('data')
@@ -128,5 +128,5 @@
       $("#"+tab_id).addClass('current');
     })
 
-  })
+  // })
 </script>
