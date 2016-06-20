@@ -12,4 +12,16 @@ $( document ).ready(function() {
     });
 });
 
+function imageModalDesc(){
+
+	var modalTitle = $('.modal-header')
+	var imageModal = modalTitle.each(function(i, obj){
+		var title = $(obj).find('.modal-title')
+		title = title[0]
+		title = $(title).html()
+		title == 'Images' ? $(obj).append('<p>select a photo to upload. Once it is in the gallery click on the photo and select the size and position. You can also insert a link to a photo somewhere else online and hit go.</p>') : null
+	})
+}
+imageModalDesc();
+
 </script>
