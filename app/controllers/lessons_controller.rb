@@ -29,7 +29,7 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.is_approved.order(:cached_votes_up => :desc).first(6)
+    @lessons = Lesson.is_approved.order(:cached_votes_up => :desc).first(21)
     @grade =  params[:grade] != ''? params[:grade] : 'all grades'
     @subject = params[:subject] != ''? params[:subject] : 'all subjects'
     @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
