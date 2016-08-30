@@ -83,8 +83,8 @@ Rails.application.configure do
     :bucket => 'teacherslearningcode'
   }
 
-  config.action_mailer.default_url_options = { :host => 'teacherslearningcode.herokuapp.com' }
-  Rails.application.routes.default_url_options[:host] =  'teacherslearningcode.herokuapp.com'
+  config.action_mailer.default_url_options = { :host => 'teacherslearningcode.com' }
+  Rails.application.routes.default_url_options[:host] =  'teacherslearningcode.com'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
@@ -95,7 +95,7 @@ Rails.application.configure do
    :address        => ENV['MAILGUN_SMTP_SERVER'],
    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-   :domain         => 'yourapp.heroku.com',
+   :domain         => 'teacherslearningcode.herokuapp.com',
    :authentication => :plain,
  }
  ActionMailer::Base.delivery_method = :smtp

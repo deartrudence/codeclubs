@@ -4,7 +4,7 @@ class MailingListMailer < ApplicationMailer
 	  @email = email.email
 	  mg_client = Mailgun::Client.new ENV['api_key']
 	  mail(
-	    :to => 'jordanbdeutsch@gmail.com',
+	    :to => 'info@teacherslearningcode.com',
 	    :subject => 'New Email Subscription'
 	    )
 	end

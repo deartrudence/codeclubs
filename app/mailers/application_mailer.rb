@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "hello@upatfive.ca"
+  default from: "info@teacherslearningcode.com"
   layout 'mailer'
 end
