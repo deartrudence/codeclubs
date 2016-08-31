@@ -56,15 +56,11 @@
 
 
 <script>
-  // $(document).on('ajaxComplete page:load',function(){
-      console.log("ajaxComplete")
       $('.lesson_approved_check').change(function(){
         lesson = $(this).attr('data')
         approved = $(this)[0].checked
-        console.log(lesson)
-        console.log(approved)
         $.ajax({
-          url: '',
+          url: '/admin',
           type: 'get',
           data: {
             lesson: lesson,
@@ -107,7 +103,6 @@
       })
 
       $('.mailer_search').on('submit', function(){
-        console.log('searching...')
         query = $(this).val()
         $.ajax({
           url: '',
