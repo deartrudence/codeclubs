@@ -6,13 +6,14 @@
   <div class="wrapper as--home-intro center">
       <div class="overlay"></div>
       <h1>Introduce coding in your classroom. Start a coding club. Use technology to inspire kids. change the world.</h1>
-      <p>Explore and contribute to Canadian curriculum-mapped coding lessons aimed at girls and boys in K through 12.</p>
+      <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdcAx7qCrrpuT9oZ8exKNwxc2DUst6Ubh9sDNHaSEVEX8Lw/viewform?c=0&w=1" target="_blank" class="as--header-link">here</a>.</p>
     </div>
     <%= form_tag(lessons_path, remote: true, method: :get) do %>
       <div class="wrapper wrapper--flex as--home-form font-quicksand">
-        <div class="select">
+        <!-- take out grade filtering on lessons for now -->
+        <!-- <div class="select">
           <%= select_tag 'grade', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'grade'}%>
-        </div>
+        </div> -->
         <div class="select">
           <%= select_tag 'subject', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'subject'}%>
         </div>
@@ -26,7 +27,7 @@
     <% end %>
 </div>
 <div class="wrapper" id="search-area" >
-  <h3 id="lesson-search-results" class="as--search-results"></h3>
+  <h3 id="lesson-search-results" class="as--search-results">Just some of the lessons we have available for you to integrate in your classrooms</h3>
   <div id="lessons-listing" class="wrapper--flex">
     <%= render 'lessons_listing'%>
   </div>

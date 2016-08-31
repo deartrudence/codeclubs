@@ -790,7 +790,8 @@ input {
     padding: 6px 4px;
     border: 1px solid #333;
     border-radius: 5px;
-    margin-bottom: 16px
+    margin-bottom: 16px;
+    color: black
 }
 
 input[type=checkbox] {
@@ -1821,6 +1822,10 @@ img {
     min-height: 70vh
 }
 
+.as--header-link {
+    color: #FFCE06
+}
+
 .as--home-form select {
     width: 100%;
     background: #FFCE06;
@@ -1837,7 +1842,7 @@ img {
 
 .as--home-form .select {
     position: relative;
-    width: 30%;
+    width: 45%;
     margin-right: 5%;
     margin-bottom: 70px
 }
@@ -2099,6 +2104,14 @@ img {
 
 .as--about-buttons {
     min-width: 158px
+}
+
+.as--request-button {
+    margin: 0
+}
+
+.nav--main .nav--links a.as--request-button {
+    color: black
 }
 
 .as--about-training {
@@ -3105,6 +3118,13 @@ img {
     font-size: 20px
 }
 
+@media screen and (min-width:768px) and (max-width:959px) {
+    .nav--main .logo {
+        z-index: 20;
+        display: block
+    }
+}
+
 @media screen and (min-width:500px) and (max-width:767px) {
     .nav--main .logo {
         z-index: 20;
@@ -3159,7 +3179,14 @@ img {
 
 @media screen and (min-width:768px) and (max-width:959px) {
     .nav--main .nav--links {
-        float: right
+        width: 100%;
+        position: absolute;
+        left: 0;
+        z-index: 10;
+        background: #1a1a1a;
+        display: none;
+        height: 100vh;
+        padding-top: 20vh
     }
 }
 
@@ -3222,10 +3249,15 @@ img {
 
 @media screen and (min-width:768px) and (max-width:959px) {
     .nav--main .nav--links a {
-        border-right: 1px solid rgba(255, 255, 255, 0.2)
+        display: block;
+        width: 100%;
+        padding: 20px 10px;
+        font-size: 32px;
+        color: white;
+        text-align: center
     }
-    .nav--main .nav--links a:last-of-type {
-        border: none
+    .nav--main .nav--links a:hover {
+        color: rgba(255, 255, 255, 0.6)
     }
 }
 
@@ -3264,6 +3296,12 @@ img {
     margin-left: 10px
 }
 
+@media screen and (min-width:768px) and (max-width:959px) {
+    .nav--main .nav--links img {
+        display: none
+    }
+}
+
 @media screen and (min-width:500px) and (max-width:767px) {
     .nav--main .nav--links img {
         display: none
@@ -3273,6 +3311,12 @@ img {
 @media screen and (max-width:499px) {
     .nav--main .nav--links img {
         display: none
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:959px) {
+    .nav--links.active {
+        display: block
     }
 }
 
@@ -3330,6 +3374,14 @@ footer.nav--footer .email-form {
 
 footer.nav--footer .email-form p {
     color: #ccc
+}
+
+@media screen and (min-width:768px) and (max-width:959px) {
+    footer.nav--footer .email-form {
+        padding-left: 0;
+        padding: 20px 0;
+        width: 100%
+    }
 }
 
 @media screen and (min-width:500px) and (max-width:767px) {
