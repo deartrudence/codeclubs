@@ -75,6 +75,13 @@
           <%= @lesson.prep.html_safe %>
         </div>
       <% end %>
+      <% if @lesson.references.present? %>
+        <h3>References</h3>
+        <div class="text-edit">
+          <%= @lesson.references.html_safe %>
+        </div>
+      <% end %>
+
     </div>
   </div>
 </div>
