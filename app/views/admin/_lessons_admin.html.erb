@@ -8,7 +8,8 @@
   </div>
   <% end %>
   <div class="as--lesson-title"><%= link_to lesson.title, edit_lesson_path(lesson) %></div>
-  <div class="as--lesson-author"><%= link_to lesson.profile.name, lesson.profile %></div>
+  <div class="as--lesson-author"><%= link_to lesson.profile.name, lesson.profile %>   <%= link_to 'Delete Lesson',  lesson_path(lesson),
+    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class:'as--lesson-delete' %></div>
   </li>
   <% end %>
 </ul>
