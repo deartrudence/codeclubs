@@ -26,9 +26,16 @@
       <div class="as--training">
         <h2>Request Training</h2>
         <p>Our training workshops across the country are led by industry leading experts and educators from our community. We’ll delve into our TLC guide and lesson plans while teaching educators how to use Scratch - a popular program to teach kids to code, how to map coding to the curriculum and how to introduce coding to your students!</p>
+        <h2>Upcoming Workshops</h2>
+        <p>Check out our list of upcomming workshops for one hosted in your area. To learn more and register click on any of the workshop links.</p>
+        <ul> 
+          <% @workshops.each do |workshop|%>
+            <li><a href="<%= workshop.link%>" target="_blank"><%= workshop.title%></a><li>
+          <% end %>
+        </ul>
         <div>
-          <a href="http://ladieslearningcode.com/" class="button button--tertiary as--about-buttons" target="_blank">upcoming<br>workshops</a>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdcAx7qCrrpuT9oZ8exKNwxc2DUst6Ubh9sDNHaSEVEX8Lw/viewform?c=0&w=1" class="button button--tertiary as--about-buttons" target="_blank">Request<br>a Workshop</a>
+          <!-- <a href="http://ladieslearningcode.com/" class="button button--tertiary as--about-buttons" target="_blank">more upcoming<br>workshops</a> -->
         </div>
       </div>
       <div class="as--training">

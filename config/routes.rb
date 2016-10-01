@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :workshops
   resources :mailing_lists
   get 'admin' => 'admin#panel'
   get 'download_mailing_list' => 'admin#download_mailing_list'

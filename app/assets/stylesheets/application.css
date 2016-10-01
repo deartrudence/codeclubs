@@ -2157,7 +2157,7 @@ img {
 }
 
 .as--about-training .as--training p {
-    min-height: 210px
+    /*min-height: 210px*/
 }
 
 @media screen and (min-width:768px) and (max-width:959px) {

@@ -5,6 +5,8 @@ class AdminController < ApplicationController
   def panel
     @users = Profile.all
     @lessons = Lesson.all.includes(:profile)
+    @workshops = Workshop.all
+    @workshop = Workshop.new
     @email = MailingList.all
     @profile_email = Profile.on_mailing_list
     if params[:lesson].present?
