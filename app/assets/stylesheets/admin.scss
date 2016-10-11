@@ -48,4 +48,10 @@ hr {
 form.new_workshop {
   max-width: 350px;
 }
+.display-none {
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  visibility: hidden;
+}
 

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>First name:</strong>
+  <%= @download_list.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @download_list.last_name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @download_list.email %>
+</p>
+
+<%= link_to 'Edit', edit_download_list_path(@download_list) %> |
+<%= link_to 'Back', download_lists_path %>

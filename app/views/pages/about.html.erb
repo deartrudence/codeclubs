@@ -18,7 +18,10 @@
           <p>We’ve combined our experiences teaching thousands of youth across the country to code, our tips and tricks to get started, resources to familiarize yourself with code, plus lots of easy to follow and even easier to implement coding activities to empower and teach the future generation of technologists across Canada.</p>
           <p class="special">This guide is your jumping off point - where you choose to take your program is up to you!</p>
           <p>We encourage you to use as much or as little of the guide as you like, to remix the challenges we’ve created or create new ones and share them with our community.</p>
-          <%= link_to 'Download The Guide', 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'button button--tertiary as--about-buttons'%>
+          <a href="#" class="button button--tertiary as--about-buttons" data-open="pdf_download">Download The Guide</a>
+          <%= link_to 'Download The Guide', 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
+
+          
         </div>
       </div>
     </div>
@@ -61,6 +64,15 @@
   <div class="modal modal--about" id="thank-you">
     <p class="center">Thank you! You will receive an invite to our Slack group shortly.</p>
   </div>
+  <div class="modal modal--about" id="pdf_download">
+      <%= simple_form_for(@download_list, remote: true, :authenticity_token => true) do |f| %>
+        <%= f.error_notification %>
+          <%= f.input :first_name %>
+          <%= f.input :last_name %>
+          <%= f.input :email %>
+          <%= f.button :submit, class:'button button--tertiary', download: 'assets/TLC-gettingstartedguide.pdf', id: 'pdf-trigger' %>
+      <% end %>
+  </div>
 </div>
 
 
@@ -73,6 +85,10 @@
     $('#' + modal +', .modal--overlay').css('display', 'block').addClass('active')
   });
 
+  $('#pdf-trigger').on('click', function(){
+    $('#pdf').trigger('click')
+  })
+
   $('.modal--overlay').on('click', function(){
     
     if($('.modal').hasClass('active')){
@@ -84,6 +100,11 @@
   });
 
   (function ($) {
+
+    $('#new_download_list').submit(function(){
+     $('.modal.active, .modal--overlay').removeClass('active').css('display', 'none');
+     document.getElementById('pdf').click()
+    })
       $.fn.serializeFormJSON = function () {
         var o = {};
         var a = this.serializeArray();
