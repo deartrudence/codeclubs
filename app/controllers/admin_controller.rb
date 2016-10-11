@@ -9,6 +9,7 @@ class AdminController < ApplicationController
     @workshop = Workshop.new
     @email = MailingList.all
     @profile_email = Profile.on_mailing_list
+    @download_list = DownloadList.all
     if params[:lesson].present?
       lesson = Lesson.find(params[:lesson])
       lesson.update(approved: params[:approved])

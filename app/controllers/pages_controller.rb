@@ -3,8 +3,5 @@ class PagesController < ApplicationController
   def about
     @workshops = Workshop.all
     @download_list = DownloadList.new
-    if params[:first_name]
-    	@download_list.update(params)
-    end	
   end
 end

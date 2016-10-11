@@ -7,6 +7,7 @@
     <li class="tab-link" data-tab="users-tab">Users</li>
     <li class="tab-link" data-tab="mailing-tab">Mailing List</li>
     <li class="tab-link" data-tab="workshops-tab">Workshops</li>
+    <li class="tab-link" data-tab="download-tab">Download List</li>
   </ul>
 
   <div id="lessons-tab" class="tab-content current">
@@ -59,6 +60,14 @@
     
     <div id="workshops-admin">
       <%= render 'workshops_admin' %>
+    </div>
+
+  </div>
+  <div id="download-tab" class="tab-content">
+    <h2>Downloaded PDF</h2>
+    
+    <div id="download-admin">
+      <%= render 'download_admin' %>
     </div>
 
   </div>

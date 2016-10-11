@@ -1,0 +1,9 @@
+<ul class="main">
+	<%  @download_list.find_each do |download| %>
+	<li>
+		<%= download.first_name%> <%= download.last_name%> - <%= download.email%>
+		<hr>		  
+	</li>
+	<% end %>
+</ul>
+
