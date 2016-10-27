@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027144910) do
+ActiveRecord::Schema.define(version: 20161027151919) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -122,6 +122,15 @@ ActiveRecord::Schema.define(version: 20161027144910) do
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+
+  create_table "suggested_lessons", force: :cascade do |t|
+    t.integer  "lesson_id"
+    t.integer  "suggested_lesson_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  add_index "suggested_lessons", ["lesson_id"], name: "index_suggested_lessons_on_lesson_id"
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"

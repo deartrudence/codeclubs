@@ -3,6 +3,7 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :profile, -> { includes :user }
   delegate :user, :to => :profile, :allow_nil => true
+  has_many :suggested_lessons
 
   acts_as_votable
 

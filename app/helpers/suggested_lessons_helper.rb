@@ -1,0 +1,2 @@
+module SuggestedLessonsHelper
+end

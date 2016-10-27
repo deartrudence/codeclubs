@@ -82,8 +82,12 @@ class LessonsController < ApplicationController
     @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
     @lesson.grade_list.add(params[:grade_list], parse: true) 
     @lesson.level = params[:lesson][:level].to_i
+    @suggested_lessons = params[:lesson][:suggested_lessons]
     respond_to do |format|
       if @lesson.save
+        @suggested_lessons.each do |sug_lesson|
+          SuggestedLesson.create(lesson_id: @lesson.id, suggested_lesson_id: sug_lesson.to_i)
+        end
         format.html { redirect_to @lesson, notice: 'Lesson was successfully created.' }
         format.json { render :show, status: :created, location: @lesson }
       else
@@ -96,6 +100,10 @@ class LessonsController < ApplicationController
   # PATCH/PUT /lessons/1
   # PATCH/PUT /lessons/1.json
   def update
+    @suggested_lessons = params[:lesson][:suggested_lessons]
+    @suggested_lessons.each do |sug_lesson|
+      SuggestedLesson.create(lesson_id: @lesson.id, suggested_lesson_id: sug_lesson.to_i)
+    end
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }

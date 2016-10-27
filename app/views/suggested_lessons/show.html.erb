@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lesson:</strong>
+  <%= @suggested_lesson.lesson %>
+</p>
+
+<p>
+  <strong>Suggested lesson:</strong>
+  <%= @suggested_lesson.suggested_lesson_id %>
+</p>
+
+<%= link_to 'Edit', edit_suggested_lesson_path(@suggested_lesson) %> |
+<%= link_to 'Back', suggested_lessons_path %>

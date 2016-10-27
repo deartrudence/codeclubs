@@ -100,6 +100,13 @@
         <p class="small">List any references you used or found useful in the creation of this lesson.</p>
         <%= f.bootsy_area :references %>
       </div>
+      <% if current_user.profile.is_admin? %>
+      <div>
+        <h3>Suggested Lessons</h3>
+        <p class="small">Lessons that would nicely conmplement this one or provide a good extension.</p>
+          <%= f.collection_check_boxes :suggested_lessons, Lesson.all, :id, :title, {:include_blank => false}  %>
+      </div>
+      <% end %>
 
     </div>
   </div>

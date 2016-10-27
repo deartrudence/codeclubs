@@ -39,6 +39,14 @@
     <% if @lesson.file_upload.file? %>
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
     <% end %>
+    <% if @lesson.suggested_lessons.present? %>
+      <% @lesson.suggested_lessons.each do |sug_lesson|%>
+        <%= sug_lesson.suggested_lesson_id%>
+        <% if sug_lesson.suggested_lesson_id > 0%>
+        <%= Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first.title%>
+        <% end %>
+      <% end %> 
+    <% end %>
   </div>
   <div class="sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
@@ -49,6 +57,12 @@
           <li><%= subject %></li>
         <% end %>
       </ul>
+      <% if @lesson.prep.present? %>
+        <h3>Prep</h3>
+        <div class="text-edit">
+          <%= @lesson.prep.html_safe %>
+        </div>
+      <% end %>
       <ul class="list--tags">
         <li class="title">Programming Concepts:</li>
         <% @lesson.code_concept_list.each do |code_concept| %>
@@ -69,12 +83,7 @@
         </div>
       <% end %>
 
-      <% if @lesson.prep.present? %>
-        <h3>Prep</h3>
-        <div class="text-edit">
-          <%= @lesson.prep.html_safe %>
-        </div>
-      <% end %>
+      
       <% if @lesson.references.present? %>
         <h3>References</h3>
         <div class="text-edit">
