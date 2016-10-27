@@ -40,10 +40,11 @@
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
     <% end %>
     <% if @lesson.suggested_lessons.present? %>
+      <h3 class="as--underlined">Suggested Lessons</h3>
       <% @lesson.suggested_lessons.each do |sug_lesson|%>
-        <%= sug_lesson.suggested_lesson_id%>
         <% if sug_lesson.suggested_lesson_id > 0%>
-        <%= Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first.title%>
+          <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
+            <%= link_to the_lesson.title, lesson_path(the_lesson) %>
         <% end %>
       <% end %> 
     <% end %>
