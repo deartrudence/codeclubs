@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161002192546) do
+ActiveRecord::Schema.define(version: 20161027144910) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -116,6 +116,8 @@ ActiveRecord::Schema.define(version: 20161002192546) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "slug"
+    t.integer  "number_of_students"
+    t.string   "learner_age_range"
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true
