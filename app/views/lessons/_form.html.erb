@@ -104,6 +104,17 @@
       <div>
         <h3>Suggested Lessons</h3>
         <p class="small">Lessons that would nicely conmplement this one or provide a good extension.</p>
+        <% if @lesson.suggested_lessons.present?%>
+          <ul>
+            <%@lesson.suggested_lessons.each do |sug_lesson|%>
+              <% if sug_lesson.suggested_lesson_id > 0%>
+                <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
+                  <li id="sug_<%= sug_lesson.id%>"><%= link_to the_lesson.title, lesson_path(the_lesson) %> |      <%= link_to 'Delete', sug_lesson, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></li>
+              <% end %>
+        
+            <% end %>
+          </ul>
+        <% end %>
           <%= f.collection_check_boxes :suggested_lessons, Lesson.all, :id, :title, {:include_blank => false}  %>
       </div>
       <% end %>

@@ -57,6 +57,7 @@ class SuggestedLessonsController < ApplicationController
     @suggested_lesson.destroy
     respond_to do |format|
       format.html { redirect_to suggested_lessons_url, notice: 'Suggested lesson was successfully destroyed.' }
+      format.js{}
       format.json { head :no_content }
     end
   end
