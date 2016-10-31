@@ -41,12 +41,14 @@
     <% end %>
     <% if @lesson.suggested_lessons.present? %>
       <h3 class="as--underlined">Suggested Lessons</h3>
-      <% @lesson.suggested_lessons.each do |sug_lesson|%>
-        <% if sug_lesson.suggested_lesson_id > 0%>
-          <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
-            <%= link_to the_lesson.title, lesson_path(the_lesson) %>
-        <% end %>
-      <% end %> 
+      <ul> 
+        <% @lesson.suggested_lessons.each do |sug_lesson|%>
+          <% if sug_lesson.suggested_lesson_id > 0%>
+            <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
+              <li><%= link_to the_lesson.title, lesson_path(the_lesson) %></li>
+          <% end %>
+        <% end %> 
+      </ul>
     <% end %>
   </div>
   <div class="sidebar">
