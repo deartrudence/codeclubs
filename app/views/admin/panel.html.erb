@@ -11,7 +11,7 @@
     <li class="tab-link" data-tab="glossary-tab">Glossary</li>
   </ul>
 
-  <div id="lessons-tab" class="tab-content current">
+  <div id="lessons-tab" class="tab-content ">
     <h2>Lessons</h2>
     <%= form_tag(admin_path, method: :get, remote: true) do %>
     <div class="as--filter-wrap">
@@ -30,19 +30,23 @@
 
   </div>
 
-  <div id="glossary-tab" class="tab-content">
+  <div id="glossary-tab" class="tab-content current">
     <h2>Glossary</h2>
     <div class="add-new-container">
+      <h3>Add Term</h3>
       <%= simple_form_for(@glossary, remote: true) do |f| %>
         <%= f.error_notification %>
+        <div class="wrapper--flex">
+          <div class="as--glossary-input">
+            <%= f.input :term, placeholder: 'Enter new term here' %>
+          </div>
+          <div class="as--glossary-textarea">
+            <%= f.input :definition, placeholder: 'Enter new term definition here'%>
+          </div>
 
-        <div class="form-inputs">
-          <%= f.input :term %>
-          <%= f.input :definition %>
-        </div>
-
-        <div class="form-actions">
-          <%= f.button :submit %>
+          <div class="form-actions">
+            <%= f.submit 'add', class: 'button' %>
+          </div>
         </div>
       <% end %>
     </div>
