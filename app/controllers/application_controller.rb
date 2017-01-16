@@ -24,11 +24,19 @@ class ApplicationController < ActionController::Base
   def get_emails
     @mailing_list = MailingList.new
   end
+
   def authorize_admin
     if current_user.profile.present?
       unless current_user.profile.role == "admin"
       redirect_to root_path
       end
+    end
+  end
+
+  def authenticate_has_profile
+    if !current_user.profile.present?
+        redirect_to new_profile_path,
+        notice: 'Please fill out a profile before continuing' 
     end
   end
 end

@@ -8,6 +8,7 @@
     <li class="tab-link" data-tab="mailing-tab">Mailing List</li>
     <li class="tab-link" data-tab="workshops-tab">Workshops</li>
     <li class="tab-link" data-tab="download-tab">Download List</li>
+    <li class="tab-link" data-tab="glossary-tab">Glossary</li>
   </ul>
 
   <div id="lessons-tab" class="tab-content current">
@@ -27,6 +28,27 @@
       <%= render 'lessons_admin' %>
     </div>
 
+  </div>
+
+  <div id="glossary-tab" class="tab-content">
+    <h2>Glossary</h2>
+    <div class="add-new-container">
+      <%= simple_form_for(@glossary, remote: true) do |f| %>
+        <%= f.error_notification %>
+
+        <div class="form-inputs">
+          <%= f.input :term %>
+          <%= f.input :definition %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit %>
+        </div>
+      <% end %>
+    </div>
+    <div id="glossary-admin">
+      <%= render 'glossaries_admin'%>
+    </div>
   </div>
 
   <div id="users-tab" class="tab-content">

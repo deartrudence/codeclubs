@@ -10,6 +10,9 @@ class AdminController < ApplicationController
     @email = MailingList.all
     @profile_email = Profile.on_mailing_list
     @download_list = DownloadList.all
+    @glossaries = Glossary.all
+    @glossary = Glossary.new
+    
     if params[:lesson].present?
       lesson = Lesson.find(params[:lesson])
       lesson.update(approved: params[:approved])

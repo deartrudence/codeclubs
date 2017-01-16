@@ -43,7 +43,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
- <!--  <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
+  <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
@@ -53,32 +53,76 @@
 <% end %>
 
 <nav class="nav--main">
-  <div class="wrapper">
-    <span class="logo">
-      <%= link_to lessons_path do%>
-        <%= image_tag 'tlc-oneline-white.svg'%>
-        <!-- <span class="font-quicksand">code:clubs</span> -->
-      <% end %>
-    </span>
-    <a class="nav--hamburger" id="nav-hamburger"><span></span></a>
-    <span class="nav--links">
-      <%= link_to 'About', about_path %>
+  <div class="wrapper wrapper--flex">
+    <div class="logo-container">
+      <span class="logo">
+        <%= link_to lessons_path do%>
+          <%= image_tag 'tlc-oneline-white.svg'%>
+        <% end %>
+      </span>
+      <a class="nav--hamburger" id="nav-hamburger"><span></span></a>
+    </div>
+    <ul class="nav--links wrapper--flex">
+      <li class="nav--link-with-sub">
+        <%= link_to about_path do %> 
+          <span>About</span> <span class="nav--link-arrow">▼</span>
+        <% end %>
+        <ul class="nav--links-sub hidden">
+          <li><a href="#">How-To Guide</a></li>
+          <li><a href="#">F.A.Q.</a></li>
+          <li><a href="#">More Resources</a></li>
+        </ul>
+      </li>
+      <li class="nav--link-with-sub">
+        <%= link_to lessons_path do %>
+          <span>Lessons</span> <span class="nav--link-arrow">▼</span>
+        <% end %>
+        <ul class="nav--links-sub hidden">
+          <li><a href="#">Browse Lessons</a></li>
+          <li><a href="#">Glossary of terms</a></li>
+          <li><%= link_to 'Create New Lesson', new_lesson_path%></li>
+        </ul>
+      </li>
+      <li><a href="#">Workshops</a></li>
+
       <% if user_signed_in? %>
-        <% if current_user.profile.present? %>
-          <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
-          <%= link_to 'My Profile', profile_path(current_user.profile) %>
-        <% else %>
-          <%= link_to 'Create Profile', new_profile_path%>
-        <% end %>
-        <% if current_user.admin? %>
-          <%= link_to 'Admin', admin_path%>
-        <% end %>
-        <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
+        <li class="nav--link-with-sub">
+          <% if current_user.profile.present? %>
+            <%= link_to profile_path(current_user.profile) do %>
+              <span>
+                <span>
+                  <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
+                </span>
+                <span>
+                  
+                  Hi, <%= current_user.profile.first_name %> 
+                </span>
+              </span>
+              <span class="nav--link-arrow">▼</span>
+              <ul class="nav--links-sub hidden">
+                <li><%= link_to 'My Profile', profile_path(current_user.profile)%></li>
+                <li><%= link_to 'My Lesson Dashboard', profile_path(current_user.profile)%></li>
+                <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+                <% if current_user.admin? %>
+                  <li><%= link_to 'Admin Dashboard', admin_path%></li>
+                <% end %>
+              </ul>
+            <% end %>
+          <% else %>
+            <%= link_to new_profile_path do %>
+              <span>Create Profile</span>
+              <span class="nav--link-arrow">▼</span>
+            <% end %>
+            <ul class="nav--links-sub hidden">
+              <li><%= link_to 'Create Profile', new_profile_path%></li>
+              <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+            </ul>
+          <% end %>
+        </li>
       <% else %>
-        <%= link_to 'Sign In', new_user_session_path, method: :get%>
+        <li><%= link_to 'Sign In', new_user_session_path, method: :get%></li>
       <% end %>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdcAx7qCrrpuT9oZ8exKNwxc2DUst6Ubh9sDNHaSEVEX8Lw/viewform?c=0&w=1" target="_blank" class="button button--tertiary as--request-button">Request Teacher Workshop</a>
-    </span>
+    </ul>
   </div>
 </nav>
 
@@ -150,6 +194,17 @@
       console.log(width)
       $('.nav--links').slideToggle(500)
       $(this).toggleClass('active')
+    })
+
+    //open and close sub-menus
+    $('.nav--link-with-sub').on('mouseenter', function(){
+      var sub = $(this).find('.nav--links-sub')
+      console.log(sub)
+      $(sub).toggleClass('hidden')
+    })
+    $('.nav--link-with-sub').on('mouseleave', function(){
+      var sub = $(this).find('.nav--links-sub')
+      $(sub).toggleClass('hidden')
     })
   })
 </script>

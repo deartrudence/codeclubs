@@ -1,0 +1,11 @@
+<ul class="main">
+	<%= @glossaries.find_each do |item|%>
+		<li class="wrapper--flex">
+			<span class="term"><%= item.term%></span>
+			<span class="def"><%= item.definition%></span>
+			<span class="actions">
+				<%= link_to 'delete', glossary_path(item), method: :delete, data: { confirm: 'Are you sure?' }, remote: true%>
+			</span>
+		</li>
+	<% end %>
+</ul>

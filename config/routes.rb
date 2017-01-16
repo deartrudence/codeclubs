@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :glossaries
   resources :suggested_lessons
   resources :download_lists
   resources :workshops

@@ -3,6 +3,7 @@ class LessonsController < ApplicationController
 
   before_action :require_permission, only: [:edit, :update, :destroy]
 
+  before_filter :authenticate_has_profile
   skip_before_action :authenticate_user!, only: [:index]
 
 
