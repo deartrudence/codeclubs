@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'download_mailing_list' => 'admin#download_mailing_list'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  root 'lessons#index'
+  root 'pages#landing_page'
   resources :lessons do
     get :autocomplete_subject_name, :on => :collection
     get :autocomplete_code_concept_name, :on => :collection

@@ -19,6 +19,12 @@ class GlossariesController < ApplicationController
 
   # GET /glossaries/1/edit
   def edit
+    # if params[:glossary]
+    #   raise 'hell'
+    # end
+    # respond_to do |format|  
+    #   format.js 
+    # end
   end
 
   # POST /glossaries
@@ -41,10 +47,12 @@ class GlossariesController < ApplicationController
   # PATCH/PUT /glossaries/1
   # PATCH/PUT /glossaries/1.json
   def update
+    @glossaries = Glossary.all
     respond_to do |format|
       if @glossary.update(glossary_params)
         format.html { redirect_to @glossary, notice: 'Glossary was successfully updated.' }
         format.json { render :show, status: :ok, location: @glossary }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @glossary.errors, status: :unprocessable_entity }

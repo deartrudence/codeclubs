@@ -7,26 +7,7 @@
 .as--home-wrap{
   background: #666 url('bw-bg.png') no-repeat;
 }
-ul.tabs li{
-  background: none;
-  color: #222;
-  display: inline-block;
-  padding: 10px 15px;
-  cursor: pointer;
-  &:hover {
-    background: #FFCE06;
-  }
-}
 
-
-ul.tabs li.current{
-  background: #FFCE06;
-  color: #222;
-  &:hover {
-    background: #000;
-    color: #fff;
-  }
-}
 
 
 .tab-content{

@@ -1,8 +1,8 @@
 <div class="wrapper">
 
-  <h1 class="as--admin-title">Admin</h1>
+  <h1 class="as--admin-title">Admin Dashboard</h1>
 
-  <ul class="tabs">
+  <ul class="tabs wrapper--flex">
     <li class="tab-link current" data-tab="lessons-tab">Lessons</li>
     <li class="tab-link" data-tab="users-tab">Users</li>
     <li class="tab-link" data-tab="mailing-tab">Mailing List</li>
@@ -11,7 +11,7 @@
     <li class="tab-link" data-tab="glossary-tab">Glossary</li>
   </ul>
 
-  <div id="lessons-tab" class="tab-content ">
+  <div id="lessons-tab" class="tab-content current">
     <h2>Lessons</h2>
     <%= form_tag(admin_path, method: :get, remote: true) do %>
     <div class="as--filter-wrap">
@@ -30,7 +30,7 @@
 
   </div>
 
-  <div id="glossary-tab" class="tab-content current">
+  <div id="glossary-tab" class="tab-content">
     <h2>Glossary</h2>
     <div class="add-new-container">
       <h3>Add Term</h3>
@@ -45,7 +45,7 @@
           </div>
 
           <div class="form-actions">
-            <%= f.submit 'add', class: 'button' %>
+            <%= f.submit 'add', class: 'button button--submit' %>
           </div>
         </div>
       <% end %>
