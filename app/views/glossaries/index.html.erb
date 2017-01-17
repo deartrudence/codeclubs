@@ -1,29 +1,52 @@
-<p id="notice"><%= notice %></p>
+<header class="resource--header">
+  <div class="wrapper">
+    <h1>Glossary of Terms</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab sequi sunt atque, id illum aliquid perferendis fugit ad enim dicta!</p>
+  </div>
+  <ul class="alphabet wrapper">
 
-<h1>Listing Glossaries</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Term</th>
-      <th>Definition</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @glossaries.each do |glossary| %>
-      <tr>
-        <td><%= glossary.term %></td>
-        <td><%= glossary.definition %></td>
-        <td><%= link_to 'Show', glossary %></td>
-        <td><%= link_to 'Edit', edit_glossary_path(glossary) %></td>
-        <td><%= link_to 'Destroy', glossary, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+    <% Glossary::ALPHABET.each do |letter|%>
+      <li data-letter="<%= letter%>"><%= letter%></li>
     <% end %>
-  </tbody>
-</table>
+  </ul>
+</header>
+<div class="list--header list--header-glossary">
+  <div class="wrapper">
+    <div> 
+      <%= form_tag(glossaries_path, method: :get, remote: true) do %>
+        <%= label :alphabetical, 'terminology' %>
+        <%= check_box :alphabetical, 'terminology', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+      <% end %>
+    </div>
+    <div><span>definition</span></div>
+  </div>
+</div>
+<ul class="list--glossary wrapper" id="glossary-list">
+  <%= render 'glossary_list'%>
+</ul>
+<%= will_paginate @glossaries%>
 
-<br>
+<script>
+    function ajaxSubmit(form) {
+      var data = $(form).serialize()
+      $.ajax({
+        url: '',  
+        method: 'GET', 
+        data: data
+      })
+    }
 
-<%= link_to 'New Glossary', new_glossary_path %>
+    $('[data-letter]').on('click', function(){
+      $('[data-letter].active').toggleClass('active')
+      var letter = $(this).data(letter)
+      $(this).toggleClass('active')
+      $.ajax({
+        url: '',  
+        method: 'GET', 
+        data: {
+          single_letter: letter
+        }
+      })
+    })
+
+</script>

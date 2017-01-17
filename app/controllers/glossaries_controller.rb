@@ -4,7 +4,27 @@ class GlossariesController < ApplicationController
   # GET /glossaries
   # GET /glossaries.json
   def index
-    @glossaries = Glossary.all
+    if params[:alphabetical]
+      if params[:alphabetical][:terminology] == '1'
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term desc')
+      elsif params[:alphabetical][:terminology] == '0'
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term asc')
+      end
+      respond_to do |format|
+        format.js { render :partial => "glossary_list_js" }
+      end
+    else
+       @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term asc')
+    end
+
+    if params[:single_letter]
+      @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter]}%").paginate(:page => params[:page], :per_page => 10).order('term asc')
+      # raise 'hell'
+      respond_to do |format|
+        format.js { render :partial => "glossary_list_js" }
+      end
+    end  
+
   end
 
   # GET /glossaries/1
@@ -19,12 +39,7 @@ class GlossariesController < ApplicationController
 
   # GET /glossaries/1/edit
   def edit
-    # if params[:glossary]
-    #   raise 'hell'
-    # end
-    # respond_to do |format|  
-    #   format.js 
-    # end
+  
   end
 
   # POST /glossaries

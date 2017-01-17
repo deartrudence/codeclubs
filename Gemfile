@@ -38,6 +38,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'table_print'
 
+#for pagination 
+gem 'will_paginate'
+
 # wysiwyg
 gem 'bootsy'
 gem 'fog'
