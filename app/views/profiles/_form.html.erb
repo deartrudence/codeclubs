@@ -1,52 +1,70 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<div class="as--profile-wrapper form--profile">
+  
+  <%= form_for(@profile) do |f| %>
+    <% if @profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul class="main">
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <ul class="main">
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= f.label :avatar, 'display picture' %>
+    <%= f.file_field :avatar %>
+
+    <%= f.label :first_name, class: 'required' %>
+    <%= f.text_field :first_name, placeholder: 'Enter your first name', required: true %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name, placeholder: 'Enter your last name' %>
+
+    <%= f.label :school, 'school/organization' %>
+    <%= f.text_field :school, placeholder: 'Enter the name of your school or organization' %>
+
+    <%= f.label :province, 'What province are you based out of?' %>
+    <%= select('profile', 'province', Profile::PROVINCES, {include_blank: true})%>
+    
+
+    <%= f.label :gender %>
+    <span class="internal">(for internal use only)</span>
+    <%= f.text_field :gender %>
+
+    <%= f.label :years_of_experience %>
+    <span class="internal">(for internal use only)</span>
+    <%= f.text_field :years_of_experience %>
+
+    <%= f.label :teaching_role %>
+    <%= f.text_field :teaching_role %>
+
+    <% if current_user.profile.present? %>
+      <% if current_user.profile.is_admin? %>
+          <%= f.label :role %>
+          <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%>
       <% end %>
-      </ul>
+    <% end %>
+
+    <%= f.label :grade %>
+    <%= f.text_field :grade %>
+
+    <%= f.label :number_of_students %>
+    <%= f.text_field :number_of_students %>
+
+    <%= f.label :learner_age_range %>
+    <%= f.text_field :learner_age_range %>
+
+
+    <%= f.label :mailing_list %>
+    <%= f.check_box :mailing_list %>
+
+
+    <%= link_to 'edit account settings', edit_user_registration_path, class: 'button button--primary' %>
+
+    <div class="actions">
+      <%= f.submit 'submit', class: "button button--tertiary font-quicksand center" %>
     </div>
   <% end %>
-
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :school %><br>
-  <%= f.text_field :school %>
-
-  <% if current_user.profile.present? %>
-    <% if current_user.profile.is_admin? %>
-        <%= f.label :role %>
-        <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%><br><br>
-    <% end %>
-  <% end %>
-
-  <%= f.label :grade %>
-  <%= f.text_field :grade %>
-
-  <%= f.label :number_of_students %>
-  <%= f.text_field :number_of_students %>
-
-  <%= f.label :learner_age_range %>
-  <%= f.text_field :learner_age_range %>
-
-
-  <%= f.label :mailing_list %>
-  <%= f.check_box :mailing_list %><br><br>
-
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-
-  <%= link_to 'edit account settings', edit_user_registration_path, class: 'button button--primary' %>
-
-  <div class="actions">
-    <%= f.submit 'submit', class: "button button--tertiary font-quicksand center" %>
-  </div>
-<% end %>
+</div>

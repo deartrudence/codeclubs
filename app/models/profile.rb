@@ -1,5 +1,7 @@
 class Profile < ActiveRecord::Base
   ROLE = %w[admin teacher]
+
+  PROVINCES = ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
   has_many :lessons
   belongs_to :user
   validates :user, presence: true
