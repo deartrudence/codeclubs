@@ -13,6 +13,8 @@ group :production do
   gem 'rails_12factor'
 end 
 
+#for regex query
+# gem 'wherex'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -56,7 +58,7 @@ gem 'simple_form'
 gem 'friendly_id', '~> 5.1.0'
 
 # for image management
-gem 'paperclip'
+gem 'paperclip', '4.3.6'
 gem 'aws-sdk-v1'
 gem 'aws-s3'
 

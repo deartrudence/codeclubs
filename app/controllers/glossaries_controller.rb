@@ -18,8 +18,12 @@ class GlossariesController < ApplicationController
     end
 
     if params[:single_letter]
-      @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter]}%").paginate(:page => params[:page], :per_page => 10).order('term asc')
-      # raise 'hell'
+      if params[:single_letter][:letter] == '#'
+        # TODO fix this query (using regex)
+        @glossaries = Glossary.where("term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ?", "0%", "1%", "2%", "3%", "4%", "5%", "6%", "7%", "8%", "9%")
+      else
+        @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter]}%").paginate(:page => params[:page], :per_page => 10).order('term asc')
+      end
       respond_to do |format|
         format.js { render :partial => "glossary_list_js" }
       end
