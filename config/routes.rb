@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get 'admin' => 'admin#panel'
   get 'download_mailing_list' => 'admin#download_mailing_list'
 
+  get 'my_lesson_dashboard' => 'lesson_dashboards#home'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   root 'pages#landing_page'
   resources :lessons do

@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lesson Dashboards</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lesson_dashboards.each do |lesson_dashboard| %>
+      <tr>
+        <td><%= link_to 'Show', lesson_dashboard %></td>
+        <td><%= link_to 'Edit', edit_lesson_dashboard_path(lesson_dashboard) %></td>
+        <td><%= link_to 'Destroy', lesson_dashboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lesson dashboard', new_lesson_dashboard_path %>

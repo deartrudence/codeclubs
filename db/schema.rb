@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117204025) do
+ActiveRecord::Schema.define(version: 20170118212527) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -55,50 +55,8 @@ ActiveRecord::Schema.define(version: 20170117204025) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "lessons", force: :cascade do |t|
-    t.string   "title"
-    t.integer  "duration_in_minutes"
-    t.integer  "level",                      default: 1
-    t.text     "description"
-    t.text     "curriculum_concepts"
-    t.text     "prep"
-    t.text     "programming_concepts"
-    t.text     "content"
-    t.text     "extensions"
-    t.text     "answers"
-    t.string   "video_link"
-    t.integer  "profile_id"
-    t.datetime "created_at",                                 null: false
-    t.datetime "updated_at",                                 null: false
-    t.string   "feature_image_file_name"
-    t.string   "feature_image_content_type"
-    t.integer  "feature_image_file_size"
-    t.datetime "feature_image_updated_at"
-    t.string   "file_upload_file_name"
-    t.string   "file_upload_content_type"
-    t.integer  "file_upload_file_size"
-    t.datetime "file_upload_updated_at"
-    t.integer  "cached_votes_total",         default: 0
-    t.integer  "cached_votes_score",         default: 0
-    t.integer  "cached_votes_up",            default: 0
-    t.integer  "cached_votes_down",          default: 0
-    t.integer  "cached_weighted_score",      default: 0
-    t.integer  "cached_weighted_total",      default: 0
-    t.float    "cached_weighted_average",    default: 0.0
-    t.boolean  "approved",                   default: false
-    t.string   "slug"
-    t.text     "references"
-  end
-
-  add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down"
-  add_index "lessons", ["cached_votes_score"], name: "index_lessons_on_cached_votes_score"
-  add_index "lessons", ["cached_votes_total"], name: "index_lessons_on_cached_votes_total"
-  add_index "lessons", ["cached_votes_up"], name: "index_lessons_on_cached_votes_up"
-  add_index "lessons", ["cached_weighted_average"], name: "index_lessons_on_cached_weighted_average"
-  add_index "lessons", ["cached_weighted_score"], name: "index_lessons_on_cached_weighted_score"
-  add_index "lessons", ["cached_weighted_total"], name: "index_lessons_on_cached_weighted_total"
-  add_index "lessons", ["profile_id"], name: "index_lessons_on_profile_id"
-  add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
+# Could not dump table "lessons" because of following NoMethodError
+#   undefined method `[]' for nil:NilClass
 
   create_table "mailing_lists", force: :cascade do |t|
     t.string   "name"

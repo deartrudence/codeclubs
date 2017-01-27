@@ -102,7 +102,7 @@
             <% end %>
             <ul class="nav--links-sub hidden">
               <li><%= link_to 'My Profile', profile_path(current_user.profile)%></li>
-              <li><%= link_to 'My Lesson Dashboard', profile_path(current_user.profile)%></li>
+              <li><%= link_to 'My Lesson Dashboard', my_lesson_dashboard_path%></li>
               <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin Dashboard', admin_path%></li>

@@ -1,0 +1,1 @@
+json.partial! "lesson_dashboards/lesson_dashboard", lesson_dashboard: @lesson_dashboard

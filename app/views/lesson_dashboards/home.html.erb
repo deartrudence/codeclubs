@@ -1,0 +1,36 @@
+<div class="wrapper">
+	<h1 class="as--admin-title">My Lesson Dashboard</h1>
+  <ul class="tabs wrapper--flex">
+    <li class="tab-link current" data-tab="profile-tab">My Profile</li>
+    <li class="tab-link" data-tab="my-lessons-tab">My Lessons</li>
+    <li class="tab-link" data-tab="favourite-lessons-tab">Favourite Lessons</li>
+  </ul>
+  <div class="wrapper--flex tab-content" id="my-lessons-tab">
+  <% if @lessons.present? %>
+    <%= render 'lesson', locals: {lessons: @lessons}%>
+  <% else %>
+    <p>You haven't made any lessons yet.  Create one <%= link_to 'here', new_lesson_path %></p>
+  <% end %>
+  </div>
+  <div class="wrapper--flex tab-content" id="favourite-lessons-tab">
+  <% if @favourites.present? %>
+    <%= render 'lesson', locals: {lessons: @favourites}%>
+  <% else %>
+    <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
+  <% end %>
+  </div>
+</div>
+
+
+
+<script>
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+
+    $('ul.tabs li').removeClass('current');
+    $('.tab-content').removeClass('current');
+
+    $(this).addClass('current');
+    $("#"+tab_id).addClass('current');
+  })
+</script>

@@ -1,0 +1,2 @@
+module LessonDashboardsHelper
+end

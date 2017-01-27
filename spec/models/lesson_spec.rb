@@ -11,7 +11,6 @@ RSpec.describe Lesson, type: :model do
 
   # it "is valid with title, level, duration_in_minutes, description, and content"
   #   lesson = build(:lesson)
-  #
   # end
   it "is invalid without title" do
     lesson = Lesson.new(title: nil)

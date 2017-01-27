@@ -19,26 +19,8 @@
     <%= f.label :first_name, class: 'required' %>
     <%= f.text_field :first_name, placeholder: 'Enter your first name', required: true %>
 
-    <%= f.label :last_name %>
+    <%= f.label :last_name, class: 'required' %>
     <%= f.text_field :last_name, placeholder: 'Enter your last name' %>
-
-    <%= f.label :school, 'school/organization' %>
-    <%= f.text_field :school, placeholder: 'Enter the name of your school or organization' %>
-
-    <%= f.label :province, 'What province are you based out of?' %>
-    <%= select('profile', 'province', Profile::PROVINCES, {include_blank: true})%>
-    
-
-    <%= f.label :gender %>
-    <span class="internal">(for internal use only)</span>
-    <%= f.text_field :gender %>
-
-    <%= f.label :years_of_experience %>
-    <span class="internal">(for internal use only)</span>
-    <%= f.text_field :years_of_experience %>
-
-    <%= f.label :teaching_role %>
-    <%= f.text_field :teaching_role %>
 
     <% if current_user.profile.present? %>
       <% if current_user.profile.is_admin? %>
@@ -47,24 +29,43 @@
       <% end %>
     <% end %>
 
-    <%= f.label :grade %>
+    <%= f.label :school, 'school/organization' %>
+    <%= f.text_field :school, placeholder: 'Enter the name of your school or organization' %>
+
+    <%= f.label :province, 'What province are you based out of?', class: 'required' %>
+    <%= select('profile', 'province', Profile::PROVINCES, {include_blank: true})%>
+    
+
+    <%= f.label :gender %>
+    <span class="internal font-quicksand">(for internal use only)</span>
+    <%= f.text_field :gender %>
+
+    <%= f.label :years_of_experience %>
+    <span class="internal font-quicksand">(for internal use only)</span>
+    <%= f.text_field :years_of_experience %>
+
+    <%= f.label :teaching_role, 'What is your role in teaching kids to code?', class: 'required' %>
+    <%= f.text_field :teaching_role %>
+
+
+
+    <%= f.label :grade, 'What grades do you teach', class: 'required' %>
     <%= f.text_field :grade %>
 
-    <%= f.label :number_of_students %>
+    <%= f.label :number_of_students, 'How many students per class?', class: 'required' %>
     <%= f.text_field :number_of_students %>
-
-    <%= f.label :learner_age_range %>
-    <%= f.text_field :learner_age_range %>
-
-
-    <%= f.label :mailing_list %>
-    <%= f.check_box :mailing_list %>
-
-
-    <%= link_to 'edit account settings', edit_user_registration_path, class: 'button button--primary' %>
-
-    <div class="actions">
-      <%= f.submit 'submit', class: "button button--tertiary font-quicksand center" %>
+    <div class="wrapper--flex">
+      <%= f.check_box :mailing_list %>
+      <%= f.label :mailing_list, 'Yes, opt me into the Mailing List to be the first to hear about industry news, upcoming workshops and events', class: 'mailing-label' %>
     </div>
+
+
+
+    <div class="actions wrapper--flex">
+      <%= f.submit 'Create Profile', class: "button" %>
+      <%= link_to 'Edit account settings', edit_user_registration_path %>
+
+    </div>
+    <p class="internal right"><span class="required"></span> =Required Field</p>
   <% end %>
 </div>
