@@ -3,7 +3,7 @@ class Lesson < ActiveRecord::Base
 
   belongs_to :profile, -> { includes :user }
   delegate :user, :to => :profile, :allow_nil => true
-  has_many :suggested_lessons
+  has_many :suggested_lessons, :dependent => :destroy
 
   acts_as_votable
 
@@ -22,6 +22,10 @@ class Lesson < ActiveRecord::Base
   validates_attachment :file_upload, content_type: { content_type: "application/pdf" }
 
   scope :is_approved, -> { where(approved: true) }
+  scope :is_submitted, -> { where( submitted: true) }
+  scope :is_draft, -> { where(submitted: false) }
+
+  scope :order_asc, -> { where( submitted: false ).order("title asc") }
 
 
   def short_description
@@ -51,6 +55,10 @@ class Lesson < ActiveRecord::Base
 
   def self.search(query)
     where("title like ?", "%#{query}%")
+  end
+
+  def format_date(date)
+    date.strftime("%-d/%-m/%C")
   end
 
 

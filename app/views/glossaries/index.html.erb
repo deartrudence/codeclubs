@@ -10,15 +10,15 @@
     <% end %>
   </ul>
 </header>
-<div class="list--header list--header-glossary">
-  <div class="wrapper">
-    <div> 
-      <%= form_tag(glossaries_path, method: :get, remote: true) do %>
-        <%= label :alphabetical, 'terminology' %>
-        <%= check_box :alphabetical, 'terminology', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
-      <% end %>
-    </div>
-    <div><span>definition</span></div>
+<div class="wrapper">
+  <div class="list--header list--header-glossary">
+      <div> 
+        <%= form_tag(glossaries_path, method: :get, remote: true) do %>
+          <%= label :alphabetical, 'terminology' %>
+          <%= check_box :alphabetical, 'terminology', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+        <% end %>
+      </div>
+      <div><span>definition</span></div>
   </div>
 </div>
 <ul class="list--glossary wrapper" id="glossary-list">
