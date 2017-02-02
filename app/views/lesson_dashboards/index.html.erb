@@ -1,25 +1,218 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Lesson Dashboards</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @lesson_dashboards.each do |lesson_dashboard| %>
-      <tr>
-        <td><%= link_to 'Show', lesson_dashboard %></td>
-        <td><%= link_to 'Edit', edit_lesson_dashboard_path(lesson_dashboard) %></td>
-        <td><%= link_to 'Destroy', lesson_dashboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="wrapper">
+	<h1 class="as--admin-title">My Lesson Dashboard</h1>
+  <ul class="tabs wrapper--flex">
+    <li class="tab-link" data-tab="drafts-tab"><%= link_to my_lesson_dashboard_path(:submitted => false), method: 'GET', remote: true do %>Drafts<% end %></li>
+    <li class="tab-link" data-tab="submitted-tab">Submitted</li>
+    <li class="tab-link" data-tab="bookmarked-tab">Bookmarked Lessons</li>
+  </ul>
+  <div class="tab-content" id="drafts-tab">
+    <% if @lessons.present? %>
+      <div class="list--header">
+        <!-- <form action="" id="my_lesson_dashboard_filters">
+          <div>
+            <label for="lesson_title">Lesson Title</label>
+            <input type="checkbox" id="lesson_title" name="lesson_title" class="hidden">
+          </div>
+          <div>
+            <label for="grade">Grade</label>
+            <input type="checkbox" id="grade" name="grade" class="hidden">
+          </div>
+          <div>Subjects</div>
+          <div>Concepts</div>
+          <div>
+            <label for="updated">Updated</label>
+            <input type="checkbox" id="updated" name="updated" class="hidden">
+          </div>
+        </form> -->
+        <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+          <div>
+            <label for="lesson_title">Lesson Title</label>
+            <%= check_box_tag :lesson_title,'lesson_title', false, :onchange => "ajaxSubmit(this.form)"%>
+          </div>
+          <div>
+            <label for="grade">Grade</label>
+            <%= check_box_tag :grade, 'grade', false, :onchange => "ajaxSubmit(this.form)" %>
+          </div>
+          <div>Subjects</div>
+          <div>Concepts</div>
+          <div>
+            <label for="updated">Updated</label>
+            <%= check_box_tag :updated, 'updated', false, :onchange => "ajaxSubmit(this.form)" %>
+          </div>
+          <%= hidden_field :filter_options, 'filter_options' %>
+          <%= hidden_field :submitted, :value => false %>
+        <% end %>
+      </div>
+      <div id="drafts-tab-content">
+        
+        <%= render 'lesson_drafts', locals: {lessons: @lessons}%>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <div class="wrapper--flex tab-content" id="submitted-tab">
+    <% if @lesson_submitted.present? %>
+       <%= render 'lesson_drafts', locals: {lessons: @lessons}%>
+    <% end %>
+  </div>
+ 
+  <div class="wrapper--flex tab-content" id="bookmarked-tab">
+  <% if @lesson_bookmarked.present? %>
+    <%= render 'lesson', locals: {lessons: @lesson_bookmarked}%>
+  <% else %>
+    <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
+  <% end %>
+  </div>
+</div>
 
-<br>
 
-<%= link_to 'New Lesson dashboard', new_lesson_dashboard_path %>
+
+<script>
+
+
+// use query params to pass everything 
+
+// use the hash to keep the open tab for the front end
+  function getHashParams() {
+    var hashParams = {};
+    var e,
+        a = /\+/g,  // Regex for replacing addition symbol with a space
+        r = /([^&;=]+)=?([^&;]*)/g,
+        d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+        q = window.location.hash.substring(1);
+
+    while (e = r.exec(q))
+       hashParams[d(e[1])] = d(e[2]);
+
+    return hashParams;
+  }
+
+  function updateTabWithHash() {
+    if (window.location.hash){
+      var tab = getHashParams()['tab']
+      tab_id = tab + '-tab'
+
+      // remove class from tabs currently set as current
+      $('ul.tabs li').removeClass('current');
+      $('.tab-content').removeClass('current');
+
+      // add current class to active tab based on hash
+      $('[data-tab="'+ tab_id + '"]').addClass('current');
+      $('#'+tab_id).addClass('current');
+
+    }
+  }
+
+
+  // function parseQuerystring(uri){
+  //     var foo = uri.split('?')[1].split('#')[0].split('&');
+  //     var dict = {};
+  //     var elem = [];
+  //     for (var i = foo.length - 1; i >= 0; i--) {
+  //         elem = foo[i].split('=');
+  //         dict[elem[0]] = elem[1];
+  //     };
+  //     return dict;
+  // }
+
+
+
+
+  // function createAndSendQueryParams($form){
+  //   var data = {};
+  //   checkTabData(data);
+  //   var formData
+  //   $form ? formData = getFormData($form) : formData = {}
+  //   var newData = Object.assign({}, data, formData);
+  //   $.ajax({
+  //     url: '', 
+  //     method: 'GET', 
+  //     dataType: 'json', 
+  //     data: newData
+  //   })
+    
+  // }
+
+  // function checkTabData(data) {
+  //   // var data = parseQuerystring(window.location.href)
+  //   var tab = getHashParams()['tab']
+  //   // check if the tab is drafts if not only show submitted lessons
+  //   if (tab == 'drafts') {
+  //     data.submitted = false
+  //   } else if (tab == 'submitted') {
+  //     data.submitted = true
+  //   }
+  //   return data
+  // }
+
+
+  // function getFormData($form){
+  //     var unindexed_array = $form.serializeArray();
+  //     var indexed_array = {};
+
+  //     $.map(unindexed_array, function(n, i){
+  //         indexed_array[n['name']] = n['value'];
+  //     });
+
+  //     return indexed_array;
+  // }
+
+  // HAVE YET TO USE
+
+  
+
+  // function ajaxSubmit(form) {
+  //   // var formData = $(form).serialize();
+  //   // var hashData = createHashData();
+  //   var data = parseQuerystring(window.location.href);
+  //   $.ajax({
+  //     url: '',  
+  //     method: 'GET', 
+  //     data: data
+  //   });
+  //   console.log('happening')
+  // }
+
+  
+
+  function updateQueryStringParameter(uri, key, value) {
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+      
+      var newUri =  uri.replace(re, '$1' + key + "=" + value + '$2');
+      return parseQuerystring(newUri)
+    }
+    else {
+      console.log(uri, 'uri')
+      return uri + separator + key + "=" + value;
+    }
+  }
+
+
+
+  // EVENT LISTENERS ETC
+
+  $('form').on('change', function(){
+    // createAndSendQueryParams($(this));
+  })
+
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+    var tab = tab_id.split('-')[0]
+    window.location.hash = 'tab=' + tab
+    // createAndSendQueryParams();
+
+  })
+
+  $(window).on('hashchange', function(){
+   updateTabWithHash();
+  })
+
+  $(document).on('ready page:load', function(){
+    updateTabWithHash();
+    var hashID = window.location.hash.substring(1)
+    $('[data-tab="'+hashID+'"] a').trigger('click')
+  })
+
+
+</script>

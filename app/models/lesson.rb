@@ -22,8 +22,10 @@ class Lesson < ActiveRecord::Base
   validates_attachment :file_upload, content_type: { content_type: "application/pdf" }
 
   scope :is_approved, -> { where(approved: true) }
-  scope :is_submitted, -> { where( submitted: true) }
-  scope :is_draft, -> { where(submitted: false) }
+  # scope :is_submitted, -> { where( submitted: true) }
+  # scope :is_draft, -> { where(submitted: false) }
+
+  scope :has_been_submitted?, -> (status) { where submitted: status }
 
   scope :order_asc, -> { where( submitted: false ).order("title asc") }
 

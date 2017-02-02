@@ -1,17 +1,6 @@
-<div class="list--header">
-	<div>
-		<%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
-		  <%= label :lesson_title, 'title', 'Lesson Title' %>
-		  <%= check_box :lesson_title, 'title', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
-		<% end %>
-	</div>
-	<div>Grade</div>
-	<div>Subjects</div>
-	<div>Concepts</div>
-	<div>Updated</div>
-</div>
+
 <ul class="list--drafts font-quicksand">
-	<% locals[:lessons].each do |lesson|%>
+	<% @lessons.each do |lesson|%>
 		<li>
 			<%= link_to edit_lesson_path(lesson) do %>
 				<span><%= lesson.title %></span>
@@ -26,12 +15,14 @@
 
 <script>
 	function ajaxSubmit(form) {
+		console.log('stuff')
 	  var data = $(form).serialize()
+	  console.log(data, 'data')
 	  $.ajax({
 	    url: '',  
 	    method: 'GET', 
 	    data: data
 	  });
-	  console.log('happening')
+	  // console.log('happening')
 	}
 </script>
