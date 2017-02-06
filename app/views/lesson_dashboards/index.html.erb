@@ -1,57 +1,55 @@
 <div class="wrapper">
 	<h1 class="as--admin-title">My Lesson Dashboard</h1>
   <ul class="tabs wrapper--flex">
-    <li class="tab-link" data-tab="drafts-tab"><%= link_to my_lesson_dashboard_path(:submitted => false), method: 'GET', remote: true do %>Drafts<% end %></li>
+    <li class="tab-link" data-tab="drafts-tab">Drafts</li>
     <li class="tab-link" data-tab="submitted-tab">Submitted</li>
     <li class="tab-link" data-tab="bookmarked-tab">Bookmarked Lessons</li>
   </ul>
   <div class="tab-content" id="drafts-tab">
-    <% if @lessons.present? %>
-      <div class="list--header">
-        <!-- <form action="" id="my_lesson_dashboard_filters">
-          <div>
-            <label for="lesson_title">Lesson Title</label>
-            <input type="checkbox" id="lesson_title" name="lesson_title" class="hidden">
-          </div>
-          <div>
-            <label for="grade">Grade</label>
-            <input type="checkbox" id="grade" name="grade" class="hidden">
-          </div>
-          <div>Subjects</div>
-          <div>Concepts</div>
-          <div>
-            <label for="updated">Updated</label>
-            <input type="checkbox" id="updated" name="updated" class="hidden">
-          </div>
-        </form> -->
-        <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
-          <div>
-            <label for="lesson_title">Lesson Title</label>
-            <%= check_box_tag :lesson_title,'lesson_title', false, :onchange => "ajaxSubmit(this.form)"%>
-          </div>
-          <div>
-            <label for="grade">Grade</label>
-            <%= check_box_tag :grade, 'grade', false, :onchange => "ajaxSubmit(this.form)" %>
-          </div>
-          <div>Subjects</div>
-          <div>Concepts</div>
-          <div>
-            <label for="updated">Updated</label>
-            <%= check_box_tag :updated, 'updated', false, :onchange => "ajaxSubmit(this.form)" %>
-          </div>
-          <%= hidden_field :filter_options, 'filter_options' %>
-          <%= hidden_field :submitted, :value => false %>
-        <% end %>
+    <% if @lesson_drafts.present? %>
+      <div class="list--header list--header-drafts flex--wrapper">
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :lesson_title, 'Lesson Title' %>
+            <%= check_box :lesson_title, 'Lesson Title', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :draft_filters, 'filter_options' %>
+          <% end %>
+        </div>
+        <div>Grade</div>
+        <div>Subjects</div>
+        <div>Concepts</div>
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :lesson_updated, 'Updated' %>
+            <%= check_box :lesson_updated, 'Updated', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :draft_filters, 'filter_options' %>
+          <% end %> 
+        </div>  
       </div>
       <div id="drafts-tab-content">
-        
-        <%= render 'lesson_drafts', locals: {lessons: @lessons}%>
+        <%= render 'lesson_drafts', locals: {lessons: @lesson_drafts}%>
       </div>
     <% end %>
   </div>
-  <div class="wrapper--flex tab-content" id="submitted-tab">
+  <div class="tab-content" id="submitted-tab">
     <% if @lesson_submitted.present? %>
-       <%= render 'lesson_drafts', locals: {lessons: @lessons}%>
+      <div class="list--header list--header-submitted flex--wrapper">
+        
+            <div>
+             Status
+            </div>
+            <div>Verified?</div>
+            <div>Lesson Title</div>
+            <div>Grade</div>
+            <div>
+              Subjects
+            </div> 
+            <div>Updated</div> 
+        
+      </div>
+      <div id="submitted-tab-content">
+        <%= render 'lesson_submitted', locals: {lessons: @lesson_submitted}%>
+      </div>
     <% end %>
   </div>
  
@@ -68,6 +66,14 @@
 
 <script>
 
+  function ajaxSubmit(form) {
+    var data = $(form).serialize()
+    $.ajax({
+      url: '',  
+      method: 'GET', 
+      data: data
+    });
+  }
 
 // use query params to pass everything 
 
@@ -211,7 +217,7 @@
   $(document).on('ready page:load', function(){
     updateTabWithHash();
     var hashID = window.location.hash.substring(1)
-    $('[data-tab="'+hashID+'"] a').trigger('click')
+    // $('[data-tab="'+hashID+'"] a').trigger('click')
   })
 
 
