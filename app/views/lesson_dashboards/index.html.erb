@@ -34,18 +34,26 @@
   <div class="tab-content" id="submitted-tab">
     <% if @lesson_submitted.present? %>
       <div class="list--header list--header-submitted flex--wrapper">
-        
-            <div>
-             Status
-            </div>
-            <div>Verified?</div>
-            <div>Lesson Title</div>
-            <div>Grade</div>
-            <div>
-              Subjects
-            </div> 
-            <div>Updated</div> 
-        
+        <div>
+         Status
+        </div>
+        <div>Verified?</div>
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :submitted_lesson_title, 'Lesson Title' %>
+            <%= check_box :submitted_lesson_title, 'Lesson Title', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :submitted_filters, 'filter_options' %>
+          <% end %>
+        </div>
+        <div>Grade</div>
+        <div>Subjects</div> 
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :submitted_lesson_updated, 'Updated' %>
+            <%= check_box :submitted_lesson_updated, 'Updated', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :submitted_filters, 'filter_options' %>
+          <% end %> 
+        </div> 
       </div>
       <div id="submitted-tab-content">
         <%= render 'lesson_submitted', locals: {lessons: @lesson_submitted}%>
@@ -53,9 +61,21 @@
     <% end %>
   </div>
  
-  <div class="wrapper--flex tab-content" id="bookmarked-tab">
+  <div class="tab-content" id="bookmarked-tab">
   <% if @lesson_bookmarked.present? %>
-    <%= render 'lesson', locals: {lessons: @lesson_bookmarked}%>
+    <div class="list--header list--header-bookmarked flex--wrapper">
+      <div>
+       Lesson Title
+      </div>
+      <div>Author</div>
+      <div>Grade</div>
+      <div>Subjects</div> 
+      <div>Updated</div>
+      <div>Remove?</div> 
+    </div>
+    <div id="bookmarked-tab-content">
+      <%= render 'lesson_bookmarked', locals: {lessons: @lesson_bookmarked}%>
+    </div>
   <% else %>
     <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
   <% end %>

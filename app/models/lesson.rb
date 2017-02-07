@@ -36,6 +36,10 @@ class Lesson < ActiveRecord::Base
     end
   end
 
+  def author
+    self.user.profile.name
+  end
+
   def liked_by_user(current_user)
     if current_user.present?
       liked = current_user.voted_as_when_voted_for self

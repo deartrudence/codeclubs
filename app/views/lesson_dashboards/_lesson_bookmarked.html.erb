@@ -1,0 +1,36 @@
+<ul class="list--bookmarked list--lessons font-quicksand">
+	<% @lesson_bookmarked.each do |lesson|%>
+		<li>
+			<span><%= link_to lesson.title, lesson_path(lesson)%></span>
+			<span><%= lesson.author %></span>
+			<span><%= lesson.grade_list %></span>
+			<span><%= lesson.subject_list %></span>
+			<span><%= lesson.format_date(lesson.updated_at)%></span>
+			<span>
+				<%= link_to dislike_lesson_path(lesson, source: 'lesson_dashboard'), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get do %>
+				  ☃
+				<% end %>
+			</span>
+		</li>
+	<% end %>
+</ul>
+
+<script>
+  $(document).ready(function(){
+    $('.likes').on('click', function(e){
+      e.preventDefault()
+
+    })
+    $('.likes').on('ajax:success', function(e, data, status, xhr){
+      console.log(data.count)
+      var count = data.count
+      var liked = $(this).data('liked')
+      $(this).find('.likes-count').html(count)
+      if(liked == true){
+        $(this).data('liked', false)
+      }else if(liked == false){
+        $(this).data('liked', true)
+      }
+    });
+  });
+</script>

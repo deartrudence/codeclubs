@@ -16,14 +16,13 @@ class LessonDashboardsController < ApplicationController
 		end
 
 		if params[:submitted_filters]
-			if params[:lesson_title]
-				@lesson_drafts = params[:lesson_title]['Lesson Title'].present? && params[:lesson_title]['Lesson Title'] == '1' ? @lesson_drafts.order('title desc') : @lesson_drafts.order('title asc')
+			if params[:submitted_lesson_title]
+				@lesson_submitted = params[:submitted_lesson_title]['Lesson Title'].present? && params[:submitted_lesson_title]['Lesson Title'] == '1' ? @lesson_submitted.order('title desc') : @lesson_submitted.order('title asc')
 			end
-			if params[:lesson_updated]
-				@lesson_drafts = params[:lesson_updated]['Updated'].present? && params[:lesson_updated]['Updated'] == '1' ? @lesson_drafts.order('updated_at desc') : @lesson_drafts.order('updated_at asc')
+			if params[:submitted_lesson_updated]
+				@lesson_submitted = params[:submitted_lesson_updated]['Updated'].present? && params[:submitted_lesson_updated]['Updated'] == '1' ? @lesson_submitted.order('updated_at desc') : @lesson_submitted.order('updated_at asc')
 			end
 		end
-
 
 
 		#TODO ordering with acts as taggable
@@ -33,5 +32,10 @@ class LessonDashboardsController < ApplicationController
 				format.js { render :partial => "lesson_drafts_js" }
 			end
 		end
+		if params[:submitted_filters]
+			respond_to do |format|
+				format.js { render :partial => "lesson_submitted_js" }
+			end
+		end	
  end
 end

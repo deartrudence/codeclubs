@@ -21,9 +21,16 @@ class LessonsController < ApplicationController
 
   def downvote
     @lesson.downvote_by current_user
-    respond_to do |format|
-      format.html { redirect_to :back }
-      format.json { render json: { count: @lesson.get_upvotes.size } }
+    @lesson_bookmarked = current_user.find_up_voted_items
+    if params[:source] == 'lesson_dashboard'
+      respond_to do |format|
+        format.js { render :partial => "lesson_dashboards/lesson_bookmarked_js" }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to :back }
+        format.json { render json: { count: @lesson.get_upvotes.size } }
+      end
     end
   end
 

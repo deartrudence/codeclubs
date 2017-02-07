@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get 'download_mailing_list' => 'admin#download_mailing_list'
 
   # get 'my_lesson_dashboard' => 'lesson_dashboards#index'
-  resources :lesson_dashboards
+  resources :lesson_dashboards 
   get "my_lesson_dashboard", to: 'lesson_dashboards#index'
 
 
