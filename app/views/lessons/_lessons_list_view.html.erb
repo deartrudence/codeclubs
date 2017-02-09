@@ -1,0 +1,24 @@
+<div class="list--header list--header-browse flex--wrapper">
+  <div>bk</div>
+  <div>Lesson Title</div>
+  <div>Grade</div>
+  <div>Prov</div>
+  <div>Subjects</div>
+  <div>Concepts</div>
+  <div>Created</div>  
+</div>
+<ul class="list--browse list--lessons font-quicksand">
+  <% @lessons.each do |lesson|%>
+    <li>
+      <%= link_to lesson_path(lesson) do %>
+        <span><%= lesson.get_upvotes.size %></span>
+        <span><%= lesson.title %></span>
+        <span><%= lesson.grade_list %></span>
+        <span>province</span>
+        <span><%= lesson.subject_list%></span>
+        <span><%= lesson.code_concept_list %></span>
+        <span><%= lesson.format_date(lesson.created_at)%></span>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

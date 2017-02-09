@@ -67,15 +67,19 @@
       <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
     <% end %>
     <% if @lesson.suggested_lessons.present? %>
-      <h3 class="lesson--section-title" id="suggested-lessons">Suggested Lessons</h3>
-      <ul> 
-        <% @lesson.suggested_lessons.each do |sug_lesson|%>
-          <% if sug_lesson.suggested_lesson_id > 0%>
-            <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
-              <li><%= link_to the_lesson.title, lesson_path(the_lesson) %></li>
-          <% end %>
-        <% end %> 
-      </ul>
+      <section>
+        <h3 class="lesson--section-title" id="suggested-lessons">Suggested Lessons</h3>
+        <div class="text-edit">
+          <ul> 
+            <% @lesson.suggested_lessons.each do |sug_lesson|%>
+              <% if sug_lesson.suggested_lesson_id > 0%>
+                <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
+                  <li><%= link_to the_lesson.title, lesson_path(the_lesson) %></li>
+              <% end %>
+            <% end %> 
+          </ul>
+        </div>
+      </section>
     <% end %>
   </div>
   <div class="sidebar">
@@ -122,7 +126,7 @@
 <script>
   $(function(){ 
     $('.lesson--section-title').on('click', function(){
-      $(this).siblings('.text-edit').slideToggle('300')
+      $(this).siblings('.text-edit').slideToggle('100')
       $(this).toggleClass('active')
     })
   })

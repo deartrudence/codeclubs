@@ -63,8 +63,15 @@ class LessonsController < ApplicationController
       else  
         @lessons = @lessons
       end
-      respond_to do |format|
-        format.js { render :partial => "lessons_js", locals: {grade: @grade} }
+
+      if params[:browse].present? && params[:browse] == 'list'  
+        respond_to do |format|
+          format.js { render :partial => "lessons_list_js", locals: {grade: @grade} }
+        end
+      else 
+        respond_to do |format|
+         format.js { render :partial => "lessons_js", locals: {grade: @grade} }
+        end 
       end
 
     end

@@ -27,6 +27,7 @@ Rails.application.routes.draw do
   resources :profiles
 
   get "about" => "pages#about"
+  get "home" => "pages#landing_page"
   # devise_for :users
   devise_for :users, :controllers => { :registrations => "my_devise/registrations" }
 

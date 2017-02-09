@@ -22,6 +22,7 @@
   <meta name="twitter:image" content="http://ladieslearningcode.com/downloads/banners/tlc-twitter-card.jpg">
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <script src="https://use.fontawesome.com/43bdd233ba.js"></script>
   <%= favicon_link_tag 'tlc-favicon.png' %>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -56,7 +57,7 @@
   <div class="wrapper wrapper--flex">
     <div class="logo-container">
       <span class="logo">
-        <%= link_to lessons_path do%>
+        <%= link_to home_path do%>
           <%= image_tag 'tlc-oneline-white.svg'%>
         <% end %>
       </span>
@@ -78,7 +79,7 @@
           <span>Lessons</span> <span class="nav--link-arrow">▼</span>
         <% end %>
         <ul class="nav--links-sub hidden">
-          <li><a href="#">Browse Lessons</a></li>
+          <li><%= link_to 'Browse Lessons', lessons_path %></li>
           <li><%= link_to 'Glossary of terms', glossaries_path%></li>
           <li><%= link_to 'Create New Lesson', new_lesson_path%></li>
         </ul>

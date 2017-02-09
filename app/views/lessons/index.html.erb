@@ -11,8 +11,16 @@
   </div>
 </div>
 <div class="wrapper" id="search-area" >
-  <h2 class="as--admin-title">Browse Lessons</h2>
   <%= form_tag(lessons_path, remote: true, method: :get, id: 'lesson-index-filters') do %>
+  <h2 class="as--admin-title as--browse-title">
+    Browse Lessons
+    <span class="grid" data-browse="grid">
+      <input type="radio" name="browse" value="grid" id="grid">
+    </span> 
+    <span class="list" data-browse="list">
+      <input type="radio" name="browse" value="list" id="list">
+    </span>
+  </h2>
     <div class="as--home-form">
       <div class="wrapper--flex">
         <div class="wrapper--flex"> 
@@ -30,10 +38,12 @@
             <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
           </div>
         </div>
-        <div> 
-          <%= check_box_tag :verified %>
-          <%= label_tag :verified, 'verified lessons only'%>
-          <p>clear all filters</p>
+        <div class="filter-controls"> 
+          <div>
+            <%= check_box_tag :verified %>
+            <%= label_tag :verified, 'verified lessons only'%>
+          </div>
+          <span id="clear-all-filters"><i class="fa fa-filter" aria-hidden="true"></i> clear all filters</span>
   
         </div>
       </div>
@@ -43,12 +53,22 @@
 
     </div>
   <% end %>
-  <div id="lessons-listing" class="wrapper--flex lessons-listing">
+  <div id="lessons-listing">
     <%= render 'lessons_listing'%>
   </div>
 </div>
 
 <script>
+  function updateBrowseView(data) {
+    $.ajax({
+      url: '', 
+      dataType: 'json',
+      method: 'GET', 
+      data: {
+        view: data
+      }
+    })
+  }
   $(document).ready(function(){
     $('form').on('submit', function(){
       $('html, body').animate({
@@ -57,6 +77,17 @@
     })
     $('#lesson-index-filters').on('change', function(){
       $(this).submit()
+    })
+    $('#clear-all-filters').on('click', function(){
+      $('#lesson-index-filters')[0].reset()
+       $('#lesson-index-filters').submit()
+    })
+
+    $('[data-browse]').on('click', function(){
+      console.log('click')
+      var view = $(this).data('browse')
+
+      updateBrowseView(view)
     })
   })
 </script>

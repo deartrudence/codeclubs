@@ -2,8 +2,23 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 <div class="as--home-wrap">
-	<div class="wrapper as--home-intro center">
+	<div class="wrapper as--landing-page">
 		<h1>Introduce Coding in Your Classroom. Start a Coding Club. Use Technology to Inspire Kids. Change the Wolrd.</h1>
 		<p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop.</p>
+	</div>
+	<div class="wrapper--flex wrapper button-boxes">
+		<%= link_to about_path do%>
+			<h2>Get started with our guide for beginners</h2>
+			<div class="button button--primary">How-To Guide</div>
+		<% end %>
+		<%= link_to lessons_path do%>
+			<h2>Find and create your own lessons</h2>
+			<div class="button button--primary">Browse Lessons</div>
+		<% end %>
+		<a href="#" class="button button--primary">
+			<h2>Join a worshop for educators</h2>
+			<div class="button button--primary">Workshops</div>
+		</a>
+		
 	</div>
 </div>

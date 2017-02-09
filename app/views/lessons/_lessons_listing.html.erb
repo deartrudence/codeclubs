@@ -1,3 +1,4 @@
+<div class="wrapper--flex lessons-listing">
 <% if @lessons.present? %>
   <% @lessons.each do |lesson| %>
     <div class="lesson col--two lesson--level-<%= lesson.level %>">
@@ -22,14 +23,6 @@
       <div class="lesson--short-description">
         <p><%= lesson.short_description %></p>
         <%= link_to 'Learn More', lesson, class: 'button button--black' %>
-
-       <!--  <span class="lesson--likes">
-
-        <%= link_to like_lesson_path(lesson), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get, data: { type: :json } do %>
-          ♡
-          <span class="likes-count"><%= lesson.get_upvotes.size %></span>
-        <% end %>
-        </span> -->
       </div>
     </div>
 
@@ -37,6 +30,7 @@
 <% else %>
   <p>No lessons match this search parameter.</p>
 <% end %>
+</div>
 
 
 <script>
