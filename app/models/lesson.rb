@@ -29,6 +29,8 @@ class Lesson < ActiveRecord::Base
 
   scope :order_asc, -> { where( submitted: false ).order("title asc") }
 
+  scope :is_verified?, -> { where( verified: true ) }
+
 
   def short_description
     if self.description.present?

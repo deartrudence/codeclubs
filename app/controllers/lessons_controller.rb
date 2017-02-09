@@ -37,7 +37,7 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.is_approved.order(:cached_votes_up => :desc).first(21)
+    @lessons = Lesson.is_approved.includes(:profile).order(:cached_votes_up => :desc).first(21)
     @grade =  params[:grade] != ''? params[:grade] : 'all grades'
     @subject = params[:subject] != ''? params[:subject] : 'all subjects'
     @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
@@ -54,9 +54,13 @@ class LessonsController < ApplicationController
         tags.push(params[:grade])
       end
       @tags = tags
-      if @tags.length > 0
+      if @tags.length > 0 && params[:verified].present?
+        @lessons = Lesson.is_approved.is_verified?.tagged_with(@tags).order(:cached_votes_up => :desc)
+      elsif @tags.length > 0
         @lessons = Lesson.is_approved.tagged_with(@tags).order(:cached_votes_up => :desc)
-      else
+      elsif params[:verified].present?
+        @lessons = Lesson.is_approved.is_verified?.order(:cached_votes_up => :desc)
+      else  
         @lessons = @lessons
       end
       respond_to do |format|

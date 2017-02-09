@@ -26,28 +26,28 @@
   <div class="lesson--single-text">
     <section>
       <h3 class="lesson--section-title" id="introduction">Introduction</h3>
-      <div class="text-edit hidden">
+      <div class="text-edit">
         <%= @lesson.description.html_safe%>
       </div>
     </section>
     <% if @lesson.prep.present? %>
       <section>
         <h3 class="lesson--section-title" id="prep-work">Prep Work</h3>
-        <div class="text-edit hidden">
+        <div class="text-edit">
           <%= @lesson.prep.html_safe %>
         </div>
       </section>
     <% end %>
     <section> 
       <h3 class="lesson--section-title" id="the-lesson">The Lesson</h3>
-      <div class="text-edit hidden">
+      <div class="text-edit">
         <%= @lesson.content.html_safe %>
       </div>
     </section>
     <% if @lesson.extensions.present? %>
       <section>
         <h3 class="lesson--section-title" id="extensions">Extensions</h3>
-        <div class="text-edit hidden">
+        <div class="text-edit">
           <%= @lesson.extensions.html_safe %>
         </div>
       </section>
@@ -55,7 +55,7 @@
     <% if @lesson.answers.present? %>
       <section> 
         <h3 class="lesson--section-title" id="answers">Answers</h3>
-        <div class="text-edit hidden">
+        <div class="text-edit">
           <%= @lesson.answers.html_safe %>
         </div>
       </section>
@@ -118,4 +118,12 @@
     </div>
   </div>
 </div>
-<br>
+
+<script>
+  $(function(){ 
+    $('.lesson--section-title').on('click', function(){
+      $(this).siblings('.text-edit').slideToggle('300')
+      $(this).toggleClass('active')
+    })
+  })
+</script>

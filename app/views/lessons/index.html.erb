@@ -3,16 +3,16 @@
 <% end %>
 
 <div class="as--home-wrap">
-  <div class="wrapper as--home-intro center">
-      <div class="overlay"></div>
-      <h1>Introduce coding in your classroom. Start a coding club. Use technology to inspire kids. change the world.</h1>
-      <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdcAx7qCrrpuT9oZ8exKNwxc2DUst6Ubh9sDNHaSEVEX8Lw/viewform?c=0&w=1" target="_blank" class="as--header-link">here</a>.</p>
-    </div>
+  <div class="wrapper as--home-intro">
+    <h1>Lessons</h1>
+    <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop.</p>
+    <%= link_to 'Create New Lesson', new_lesson_path, class: 'button button--primary'%>
+    <%= link_to 'Glossary of Terms', glossaries_path, class: 'button button--primary'%>
+  </div>
 </div>
 <div class="wrapper" id="search-area" >
-  <!-- <h3 id="lesson-search-results" class="as--search-results">Just some of the lessons we have available for you to integrate in your classrooms</h3> -->
   <h2 class="as--admin-title">Browse Lessons</h2>
-  <%= form_tag(lessons_path, remote: true, method: :get) do %>
+  <%= form_tag(lessons_path, remote: true, method: :get, id: 'lesson-index-filters') do %>
     <div class="as--home-form">
       <div class="wrapper--flex">
         <div class="wrapper--flex"> 
@@ -31,7 +31,8 @@
           </div>
         </div>
         <div> 
-          <p>verified</p>
+          <%= check_box_tag :verified %>
+          <%= label_tag :verified, 'verified lessons only'%>
           <p>clear all filters</p>
   
         </div>
@@ -39,7 +40,7 @@
 
   
       <%= hidden_field_tag :search_complete, true %>
-      <%= submit_tag 'Search', remote: true, class: 'button button--secondary font-quicksand' %>
+
     </div>
   <% end %>
   <div id="lessons-listing" class="wrapper--flex lessons-listing">
@@ -53,6 +54,9 @@
       $('html, body').animate({
         scrollTop: $("#search-area").offset().top
       }, 1000);
+    })
+    $('#lesson-index-filters').on('change', function(){
+      $(this).submit()
     })
   })
 </script>
