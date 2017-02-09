@@ -78,7 +78,12 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1/edit
   def edit
-    # @lesson.level = params[:level].to_i
+    if params[:submitted]
+      @lesson.update(submitted: true)
+      respond_to do |format|
+        format.js {render :partial => "lesson_submitted_js"}
+      end  
+    end 
   end
 
   # POST /lessons
@@ -118,7 +123,7 @@ class LessonsController < ApplicationController
     end
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to edit_lesson_path(@lesson), notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit }
@@ -156,6 +161,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id, :approved, :references, :submitted, :grade)
+      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id, :approved, :references, :submitted, :grade, :custom_color, :verification_message, :verified)
     end
 end

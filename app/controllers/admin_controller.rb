@@ -3,8 +3,8 @@ class AdminController < ApplicationController
   before_filter :authorize_admin
 
   def panel
-    @users = Profile.all
-    @lessons = Lesson.all.includes(:profile)
+    @users = User.all.includes(:profile)
+    @lessons = Lesson.all.includes(:profile).where(submitted: true)
     @workshops = Workshop.all
     @workshop = Workshop.new
     @email = MailingList.all
@@ -12,6 +12,42 @@ class AdminController < ApplicationController
     @download_list = DownloadList.all
     @glossaries = Glossary.all
     @glossary = Glossary.new
+
+
+    if params[:lesson_filters].present?
+      if params[:status].present?
+        @lessons = params[:status]['Status'].present? && params[:status]['Status'] == '1' ? @lessons.order('approved desc') : @lessons.order('approved asc')
+      end
+
+      if params[:lesson_title].present?
+        @lessons = params[:lesson_title]['Lesson Title'].present? && params[:lesson_title]['Lesson Title'] == '1' ? @lessons.order('title desc') : @lessons.order('title asc')
+      end
+
+      if params[:created].present?
+        @lessons = params[:created]['Created'].present? && params[:created]['Created'] == '1' ? @lessons.order('created_at desc') : @lessons.order('created_at asc')  
+      end
+      respond_to do |format|
+        format.js { render :partial => "lessons_admin_js" }
+      end
+    end
+
+    if params[:user_filters].present?
+      if params[:first_name].present?
+        @users = params[:first_name]['First Name'].present? && params[:first_name]['First Name'] == '1' ? @users.order('profiles.first_name desc') : @users.order('profiles.first_name asc')
+      end
+      if params[:last_name].present?
+        @users = params[:last_name]['Last Name'].present? && params[:last_name]['Last Name'] == '1' ? @users.order('profiles.last_name desc') : @users.order('profiles.last_name asc')
+      end
+      if params[:user_email].present?
+        @users = params[:user_email]['email'].present? && params[:user_email]['email'] == '1' ? @users.order('email desc') : @users.order('email asc')
+      end
+      if params[:opt_in].present?
+        @users = params[:opt_in]['Opt In?'].present? && params[:opt_in]['Opt In?'] == '1' ? @users.order('profiles.mailing_list desc') : @users.order('profiles.mailing_list asc')
+      end
+      respond_to do |format|
+        format.js { render :partial => "users_admin_js" }
+      end
+    end
     
     if params[:lesson].present?
       lesson = Lesson.find(params[:lesson])

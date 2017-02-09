@@ -40,6 +40,14 @@ class Lesson < ActiveRecord::Base
     self.user.profile.name
   end
 
+  def status
+    approved ? 'public' : 'pending'
+  end
+
+  def verified?
+    verified ? 'Y' : 'N'
+  end
+
   def liked_by_user(current_user)
     if current_user.present?
       liked = current_user.voted_as_when_voted_for self

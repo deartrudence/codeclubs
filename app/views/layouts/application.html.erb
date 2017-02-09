@@ -20,7 +20,7 @@
   <meta name="twitter:creator" content="@learningcode">
   <meta name="twitter:description" content="Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code.">
   <meta name="twitter:image" content="http://ladieslearningcode.com/downloads/banners/tlc-twitter-card.jpg">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
   <%= favicon_link_tag 'tlc-favicon.png' %>
   <script>
@@ -34,7 +34,7 @@
 
   </script>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "autocomplete-rails.js" %>
   <!-- Latest compiled and minified CSS -->
 
@@ -102,10 +102,10 @@
             <% end %>
             <ul class="nav--links-sub hidden">
               <li><%= link_to 'My Profile', profile_path(current_user.profile)%></li>
-              <li><%= link_to 'My Lesson Dashboard', my_lesson_dashboard_path%></li>
+              <li><%= link_to 'My Lesson Dashboard', my_lesson_dashboard_path(:anchor => 'tab=drafts')%></li>
               <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
               <% if current_user.admin? %>
-                <li><%= link_to 'Admin Dashboard', admin_path%></li>
+                <li><%= link_to 'Admin Dashboard', admin_path(:anchor => 'tab=lessons')%></li>
               <% end %>
             </ul>
           <% else %>

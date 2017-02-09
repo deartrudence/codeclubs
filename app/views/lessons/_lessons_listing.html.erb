@@ -2,37 +2,34 @@
   <% @lessons.each do |lesson| %>
     <div class="lesson col--two lesson--level-<%= lesson.level %>">
       <div class="lesson--bar">
-        <% lesson.grade_list.each do |grade| %>
-        <span>Grade :  <%= grade %></span>
-        <% end %>
+        <span>Grade: <%= lesson.grade_list%></span>
+        <span class="lesson--likes">
+          <span class="ribbon">
+            <%= link_to like_lesson_path(lesson), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get, data: { type: :json } do %>
+              <span class="likes-count"><%= lesson.get_upvotes.size %></span>
+            <% end %>
+          </span>
+        </span>
       </div>
-      <% if lesson.level == 2 %>
-        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(68, 141, 203, 0.9) 0%, rgba(68, 141, 203, 0.6) 59%, rgba(68, 141, 203, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
-      <% elsif lesson.level == 3 %>
-      <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(9, 83, 163, 0.9) 0%, rgba(9, 83, 163, 0.6) 59%, rgba(9, 83, 163, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
-      <% elsif lesson.level == 4 %>
-        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(26, 57, 103, 0.9) 0%, rgba(26, 57, 103, 0.6) 59%, rgba(26, 57, 103, 0.5) 100%), url(<%= lesson.feature_image.url %>)">
-      <% else %>
-        <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(94, 134, 155, 0.95) 0%, rgba(94, 134, 155, 0.65) 59%, rgba(94, 134, 155, 0.55) 100%), url(<%= lesson.feature_image.url %>)">
-      <% end %>
+      <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(31, 72, 123, 0.4) 0%, rgba(31, 72, 123, 0.5) 59%, rgba(31, 72, 123, 0.65) 100%), url(<%= lesson.feature_image.url %>)">
         <span>
           <p>Time: <%= lesson.duration_in_minutes %></p>
-          <p>Level: <%= lesson.level%></p>
+          <p>Author: <%= lesson.author%></p>
         </span>
         <h2><%= lesson.title %></h2>
       </div>
 
       <div class="lesson--short-description">
         <p><%= lesson.short_description %></p>
-        <%= link_to 'Learn More', lesson, class: 'button button--primary' %>
+        <%= link_to 'Learn More', lesson, class: 'button button--black' %>
 
-        <span class="lesson--likes">
+       <!--  <span class="lesson--likes">
 
         <%= link_to like_lesson_path(lesson), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get, data: { type: :json } do %>
           ♡
           <span class="likes-count"><%= lesson.get_upvotes.size %></span>
         <% end %>
-        </span>
+        </span> -->
       </div>
     </div>
 

@@ -2,8 +2,8 @@
 	<% @lesson_submitted.each do |lesson|%>
 		<li>
 			<%= link_to edit_lesson_path(lesson) do %>
-				<span><%= lesson.approved %></span>
-				<span>Y</span>
+				<span class="<%= lesson.status %>"><%= lesson.status %></span>
+				<span><%= lesson.verified?%></span>
 				<span><%= lesson.title %></span>
 				<span><%= lesson.grade_list %></span>
 				<span><%= lesson.subject_list%></span>

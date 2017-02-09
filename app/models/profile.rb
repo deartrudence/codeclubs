@@ -23,6 +23,7 @@ class Profile < ActiveRecord::Base
 
     scope :on_mailing_list, -> { where(mailing_list: true) }
 
+
     def is_admin?
       self.role == 'admin'
     end

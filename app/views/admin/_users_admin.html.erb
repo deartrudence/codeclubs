@@ -1,6 +1,11 @@
-<ul class="main">
-  <% @users.find_each do |user| %>
-  <li><%= link_to user.name, user %></li>
-  <hr>
+<ul class="list--users list--lessons font-quicksand">
+  <% @users.each do |user|%>
+    <li>
+     	<span><%= user.profile.first_name if user.profile.present?%></span>
+     	<span><%= user.profile.last_name if user.profile.present?%></span>
+     	<span><%= user.email%></span>
+     	<span><%= user.profile.teaching_role if user.profile.present?%></span>
+			<span><%= user.profile.mailing_list if user.profile.present?%></span>
+    </li>
   <% end %>
 </ul>

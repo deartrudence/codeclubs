@@ -64,9 +64,7 @@
   <div class="tab-content" id="bookmarked-tab">
   <% if @lesson_bookmarked.present? %>
     <div class="list--header list--header-bookmarked flex--wrapper">
-      <div>
-       Lesson Title
-      </div>
+      <div>Lesson Title</div>
       <div>Author</div>
       <div>Grade</div>
       <div>Subjects</div> 
@@ -129,77 +127,6 @@
   }
 
 
-  // function parseQuerystring(uri){
-  //     var foo = uri.split('?')[1].split('#')[0].split('&');
-  //     var dict = {};
-  //     var elem = [];
-  //     for (var i = foo.length - 1; i >= 0; i--) {
-  //         elem = foo[i].split('=');
-  //         dict[elem[0]] = elem[1];
-  //     };
-  //     return dict;
-  // }
-
-
-
-
-  // function createAndSendQueryParams($form){
-  //   var data = {};
-  //   checkTabData(data);
-  //   var formData
-  //   $form ? formData = getFormData($form) : formData = {}
-  //   var newData = Object.assign({}, data, formData);
-  //   $.ajax({
-  //     url: '', 
-  //     method: 'GET', 
-  //     dataType: 'json', 
-  //     data: newData
-  //   })
-    
-  // }
-
-  // function checkTabData(data) {
-  //   // var data = parseQuerystring(window.location.href)
-  //   var tab = getHashParams()['tab']
-  //   // check if the tab is drafts if not only show submitted lessons
-  //   if (tab == 'drafts') {
-  //     data.submitted = false
-  //   } else if (tab == 'submitted') {
-  //     data.submitted = true
-  //   }
-  //   return data
-  // }
-
-
-  // function getFormData($form){
-  //     var unindexed_array = $form.serializeArray();
-  //     var indexed_array = {};
-
-  //     $.map(unindexed_array, function(n, i){
-  //         indexed_array[n['name']] = n['value'];
-  //     });
-
-  //     return indexed_array;
-  // }
-
-  // HAVE YET TO USE
-
-  
-
-  // function ajaxSubmit(form) {
-  //   // var formData = $(form).serialize();
-  //   // var hashData = createHashData();
-  //   var data = parseQuerystring(window.location.href);
-  //   $.ajax({
-  //     url: '',  
-  //     method: 'GET', 
-  //     data: data
-  //   });
-  //   console.log('happening')
-  // }
-
-  
-
   function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf('?') !== -1 ? "&" : "?";
@@ -218,16 +145,11 @@
 
   // EVENT LISTENERS ETC
 
-  $('form').on('change', function(){
-    // createAndSendQueryParams($(this));
-  })
 
   $('ul.tabs li').click(function(){
     var tab_id = $(this).attr('data-tab');
     var tab = tab_id.split('-')[0]
     window.location.hash = 'tab=' + tab
-    // createAndSendQueryParams();
-
   })
 
   $(window).on('hashchange', function(){
@@ -237,7 +159,6 @@
   $(document).on('ready page:load', function(){
     updateTabWithHash();
     var hashID = window.location.hash.substring(1)
-    // $('[data-tab="'+hashID+'"] a').trigger('click')
   })
 
 

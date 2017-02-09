@@ -1,4 +1,5 @@
 <%= simple_form_for(@lesson) do |f| %>
+
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
@@ -12,13 +13,54 @@
   <% end %>
   <header class="header--secondary">
     <div class="wrapper--flex">
-      <h2>Create a Lesson</h2>
+      <%if @lesson.title.present?%>
+        <h2><%= @lesson.title%></h2>
+      <% else %>
+        <h2>Create a Lesson</h2>
+      <% end %>
       <div class="actions right">
-        <a href="#" class="button button--secondary">Save as Draft</a>
-        <%= f.submit "Submit Lesson", class: "button button--primary" %>
+        <% if current_user.admin? && @lesson.submitted%>
+           <div class="slideThree"> 
+             <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
+             <label for="slideThree<%= @lesson.id %>"></label>
+           </div>
+        <% end %>
+        <%= f.submit "Save as Draft", class: "button button--secondary" %>
+        <% if @lesson.id.present? && !@lesson.submitted%>
+          <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary', id: 'submit-button' do %>
+           Submit
+          <% end %>
+        <% end %>
       </div>
     </div>
   </header>
+  <%if current_user.admin? && @lesson.id.present?%>
+    <div class="lesson--admin-edit wrapper--flex">
+      <div class="lesson--admin-edit-author"> 
+        <label for="author">Author:</label>
+        <input type="text" disabled value="<%= @lesson.author%>">
+      </div>
+      <div class="lesson--admin-edit-color">
+        <%= f.label :custom_color, 'Custom Lesson Colour:'%>
+        <%= f.text_field :custom_color %>
+        <span class="color-swatch" style="background:<%= @lesson.custom_color%>;"></span>
+      </div>
+      <div class="lesson--admin-edit-verified">
+        <%= f.label :verified, 'Lesson Verified?'%>
+        <div class="select">
+          <%= f.select :verified, [['Yes', true], ['No', false]] %>
+        </div>
+      </div>
+      <div class="lesson--admin-edit-message">
+        <%= f.label :verification_message, 'Badge Verification Message'%>
+        <span class="label-direction">(30 characters maximum)</span>
+        <div class="wrapper--flex">
+          <span class="message-for">This lesson is verified for...</span>
+          <%= f.text_field :verification_message, placeholder: 'The Provincial Curriculum' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
   <div class="wrapper--flex">
     <div class="content">
       <h3 class="title--tertiary required">Lesson Info</h3>
@@ -35,8 +77,8 @@
       </div>
 
       <div>
-        <h3 class="title--tertiary">Description</h3>
-        <p class="small">This will show up on the listings page with all the lessons and is just a short overview of what your lesson will cover.</p>
+        <h3 class="title--tertiary required">Short Summary</h3>
+        <p class="small">Write a brief summary to introduce your lesson and provide context. This will appear on the main lesson dashboard as well as the top of your lesson page.</p>
         <%= f.text_area :description %>
       </div>
 
@@ -83,14 +125,14 @@
 
       <%= f.label :file_upload %>
       <p class="small">Upload additonal learning materials, reading, or slides.</p>
-      <%= f.file_field :file_upload, class: "button button--primary" %>
+      <%= f.file_field :file_upload %>
     </div>
     <div class="sidebar">
       <% if @lesson.feature_image.present? %>
         <%= image_tag @lesson.feature_image.url(:medium)%>
       <% end %>
       <%= f.label :feature_image %>
-      <%= f.file_field :feature_image, class: "button button--primary" %>
+      <%= f.file_field :feature_image %>
       <h3>Tags</h3>
       <p class="small">Add comma seperated tags for associated curriculum subjects and programming concepts (Ex. Math, English OR Javascript, Conditional Statements)</p>
       <%= f.input :subject_list, :label => 'Curriculum Subjects',  :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
@@ -135,3 +177,14 @@
     </div>
   </div>
 <% end %>
+
+<script>
+  function ajaxSubmitInput(elem) {
+    console.log(elem)
+    // $.ajax({
+    //   url: '',  
+    //   method: 'GET', 
+    //   data: data
+    // });
+  }
+</script>
