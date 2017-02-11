@@ -41,6 +41,8 @@ class LessonsController < ApplicationController
     @grade =  params[:grade] != ''? params[:grade] : 'all grades'
     @subject = params[:subject] != ''? params[:subject] : 'all subjects'
     @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
+
+
     if params[:search_complete]
       tags = []
       # make sure to not search against blank fields
@@ -63,6 +65,7 @@ class LessonsController < ApplicationController
       else  
         @lessons = @lessons
       end
+
 
       if params[:browse].present? && params[:browse] == 'list'  
         respond_to do |format|
@@ -148,7 +151,7 @@ class LessonsController < ApplicationController
   def destroy
     @lesson.destroy
     respond_to do |format|
-      format.html { redirect_to admin_path, notice: 'Lesson was successfully destroyed.' }
+      format.html { redirect_to admin_path(:anchor => 'tab=lessons') , notice: 'Lesson was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

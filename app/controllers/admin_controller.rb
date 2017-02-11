@@ -88,6 +88,16 @@ class AdminController < ApplicationController
 
   end
 
+  def download_user_list
+    @profiles = Profile.all
+    respond_to do |format|
+      format.html
+      format.csv { 
+        send_data Profile.to_csv(@profiles, params[:csv_options]), type: 'text/csv; charset=utf-8;header=present', disposition: 'attachement; filename=MailingList.csv'
+      }
+    end
+  end
+
   def download_mailing_list
     @email = MailingList.all
     respond_to do |format|

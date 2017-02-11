@@ -22,3 +22,15 @@
     </li>
   <% end %>
 </ul>
+
+<script>
+  function ajaxSubmit(form) {
+    console.log('submit')
+    var data = $(form).serialize()
+    $.ajax({
+      url: '',  
+      method: 'GET', 
+      data: data
+    });
+  }
+</script>

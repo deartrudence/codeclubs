@@ -2,6 +2,9 @@ class Profile < ActiveRecord::Base
   ROLE = %w[admin teacher]
 
   PROVINCES = ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
+
+  CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
+  
   has_many :lessons
   belongs_to :user
   validates :user, presence: true
@@ -32,8 +35,22 @@ class Profile < ActiveRecord::Base
       "#{first_name} #{last_name}"
     end
 
+    def email
+      self.user.email
+    end
+
     def self.search(query)
       where("first_name like :search OR last_name like :search", search: "#{query}")
+    end
+
+    def self.to_csv(profiles, options)
+      attributes = options
+      CSV.generate(headers: true) do |csv|
+        csv << attributes
+        profiles.each do |profile|
+          csv << attributes.map{ |attr| profile.send(attr) }
+        end
+      end
     end
 
 end

@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :mailing_lists
   get 'admin' => 'admin#panel'
   get 'download_mailing_list' => 'admin#download_mailing_list'
+  post 'download_user_list' => 'admin#download_user_list'
 
   # get 'my_lesson_dashboard' => 'lesson_dashboards#index'
   resources :lesson_dashboards 

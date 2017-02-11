@@ -6,8 +6,10 @@
       <span><%= link_to lesson.title, edit_lesson_path(lesson) %></span>
       <span><%= lesson.author %></span>
       <span><%= lesson.format_date(lesson.created_at)%></span>
-      <span><%= link_to '☞',  lesson_path(lesson),
-    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class:'as--lesson-delete' %></span>
+      <span><%= link_to lesson_path(lesson),
+    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class:'as--lesson-delete' do %><i class="fa fa-trash" aria-hidden="true"><% end %></i>
+      
+    </span>
     </li>
   <% end %>
 </ul>
