@@ -107,7 +107,7 @@ class LessonsController < ApplicationController
     @lesson.profile = current_user.profile
     @lesson.subject_list.add(params[:subject_list], parse: true)
     @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
-    @lesson.grade_list.add(params[:grade_list], parse: true) 
+    # @lesson.grade_list.add(params[:grade_list], parse: true) 
     @lesson.level = params[:lesson][:level].to_i
     @suggested_lessons = params[:lesson][:suggested_lessons]
     respond_to do |format|
@@ -175,6 +175,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id, :approved, :references, :submitted, :grade, :custom_color, :verification_message, :verified)
+      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id, :approved, :references, :submitted, :grade, :custom_color, :verification_message, :verified, :province)
     end
 end

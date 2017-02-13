@@ -25,11 +25,16 @@
              <label for="slideThree<%= @lesson.id %>"></label>
            </div>
         <% end %>
-        <%= f.submit "Save as Draft", class: "button button--secondary" %>
+        <% if !@lesson.submitted%>
+          <%= f.submit "Save as Draft", class: "button button--secondary save-as-draft" %>
+        <% end %>
         <% if @lesson.id.present? && !@lesson.submitted%>
-          <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary', id: 'submit-button' do %>
+          <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
            Submit
           <% end %>
+        <% elsif !@lesson.submitted%>
+          <%= f.hidden_field :submitted, value: true %>  
+          <%= f.submit "Submit Lesson", class: "button button--primary" %>  
         <% end %>
       </div>
     </div>
@@ -68,7 +73,10 @@
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
         <div>  
-          <%= f.input :grade_list, :label => 'Grade', :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
+         <%= f.label :grade %>
+        <div class="select"> 
+          <%= f.select :grade, options_for_select(Lesson::GRADE, @lesson.grade), {:include_blank => 'Choose'}%>
+        </div>
         </div>
         <div>
           <%= f.label :duration_in_minutes %>
@@ -79,8 +87,66 @@
       <div>
         <h3 class="title--tertiary required">Short Summary</h3>
         <p class="small">Write a brief summary to introduce your lesson and provide context. This will appear on the main lesson dashboard as well as the top of your lesson page.</p>
-        <%= f.text_area :description %>
+        <%= f.text_area :description, placeholder: 'Write a short summary here' %>
       </div>
+      <div>
+        <h3 class="title--tertiary">Prep Work</h3>
+        <p class="small">All the behind the scenes work to get the lesson ready.</p>
+        <%= f.bootsy_area :prep, placeholder: 'Indicate any prep work required for this lesson, including any materials etc.' %>
+      </div>
+      <div class="textarea-content">
+        <h3 class="title--tertiary required">The Lesson</h3>
+        <p class="small">The actual meat of the lesson! This could take form of a step by step guide or maybe a series of little exercises, completely up to you!</p>
+        <%= f.bootsy_area :content, placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
+      </div>
+      <div>
+        <h3 class="title--tertiary">Assessment</h3>
+        <p class="small">Either then answers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.</p>
+        <%= f.bootsy_area :answers, placeholder: 'Provide answers here.' %>
+      </div>
+      <div>
+        <h3 class="title--tertiary">Extensions</h3>
+        <p class="small">Additional questions and challenges that build on content reviewed in the lesson.</p>
+        <%= f.bootsy_area :extensions, placeholder: 'Provide extensions here.' %>
+      </div>
+      <%= f.label :file_upload %>
+      <p class="small">Upload additonal learning materials, reading, or slides.</p>
+      <%= f.file_field :file_upload %>
+      <%= f.label :video_link %>
+      <p class="small">The embed link for any video material you may have that goes along with the lesson</p>
+      <%= f.text_field :video_link, placeholder: 'Add link to video here' %>
+      <% if !@lesson.submitted %>
+        <%= f.submit "Save as Draft", class: "button button--secondary save-as-draft" %>
+      <% end %>
+      <% if @lesson.id.present? && !@lesson.submitted%>
+        <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
+         Submit
+        <% end %>
+        <%= link_to 'delete lesson', lesson_path(@lesson),
+    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: 'link--underlined delete-lesson'%>
+      <% elsif !@lesson.submitted%>
+        <%= hidden_field_tag submitted: true %>  
+        <%= f.submit "Submit Lesson", class: "button button--primary" %>
+      <% end %>
+    </div>
+    <!-- BEGINING OF SIDEBAR -->
+    <div class="sidebar">
+      <%= f.label 'Intended Province', :province, class: 'required'%>
+      <div class="select"> 
+        <%= f.select :province, options_for_select(Lesson::PROVINCES, @lesson.province)%>
+      </div>
+      <% if @lesson.feature_image.present? %>
+        <%= image_tag @lesson.feature_image.url(:medium)%>
+      <% end %>
+      <%= f.label :feature_image, class: 'required' %>
+      <%= f.file_field :feature_image, required: true %>
+      <div class="">
+        <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS), {}, {class: 'ui fluid dropdown selection multiple', multiple: true} %>
+      </div>
+      <select name="" id="" multiple class="ui fluid dropdown simple">
+        <option value="test">first</option>
+        <option value="test2">second</option>
+      </select>
 
       <div>
         <h3 class="title--tertiary">Curriculum Concepts</h3>
@@ -93,46 +159,7 @@
         <p class="small">What programming concepts and terminology does this lesson touch on. Are you going over conditional statements or maybe making use of variables? Feel free to share both term specific and conceptual definitions.</p>
         <%= f.bootsy_area :programming_concepts %>
       </div>
-
-      <div>
-        <h3 class="title--tertiary">Prep</h3>
-        <p class="small">All the behind the scenes work to get the lesson ready.</p>
-        <%= f.bootsy_area :prep %>
-      </div>
-
-
-      <div class="textarea-content">
-        <h3 class="title--tertiary">Content</h3>
-        <p class="small">The actual meat of the lesson! This could take form of a step by step guide or maybe a series of little exercises, completely up to you!</p>
-        <%= f.bootsy_area :content %>
-      </div>
-
-      <div>
-        <h3 class="title--tertiary">Answers</h3>
-        <p class="small">Either then asnwers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.</p>
-        <%= f.bootsy_area :answers %>
-      </div>
-
-      <div>
-        <h3 class="title--tertiary">Extensions</h3>
-        <p class="small">Additional questions and challenges that build on content reviewed in the lesson.</p>
-        <%= f.bootsy_area :extensions %>
-      </div>
-
-      <%= f.label :video_link %>
-      <p class="small">The embed link for any video material you may have that goes along with the lesson</p>
-      <%= f.text_field :video_link %>
-
-      <%= f.label :file_upload %>
-      <p class="small">Upload additonal learning materials, reading, or slides.</p>
-      <%= f.file_field :file_upload %>
-    </div>
-    <div class="sidebar">
-      <% if @lesson.feature_image.present? %>
-        <%= image_tag @lesson.feature_image.url(:medium)%>
-      <% end %>
-      <%= f.label :feature_image %>
-      <%= f.file_field :feature_image %>
+     
       <h3>Tags</h3>
       <p class="small">Add comma seperated tags for associated curriculum subjects and programming concepts (Ex. Math, English OR Javascript, Conditional Statements)</p>
       <%= f.input :subject_list, :label => 'Curriculum Subjects',  :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
@@ -158,7 +185,7 @@
       <% if current_user.profile.is_admin? %>
       <div>
         <h3>Suggested Lessons</h3>
-        <p class="small">Lessons that would nicely conmplement this one or provide a good extension.</p>
+        <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
         <% if @lesson.suggested_lessons.present?%>
           <ul>
             <%@lesson.suggested_lessons.each do |sug_lesson|%>

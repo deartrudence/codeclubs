@@ -3,7 +3,7 @@
   <% @lessons.each do |lesson| %>
     <div class="lesson col--two lesson--level-<%= lesson.level %>">
       <div class="lesson--bar">
-        <span>Grade: <%= lesson.grade_list%></span>
+        <span>Grade: <%= lesson.grade%></span>
         <span class="lesson--likes">
           <span class="ribbon">
             <%= link_to like_lesson_path(lesson), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get, data: { type: :json } do %>

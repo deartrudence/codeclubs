@@ -7,12 +7,12 @@ class Lesson < ActiveRecord::Base
 
   acts_as_votable
 
-  acts_as_taggable_on :subject, :code_concept, :grade
+  acts_as_taggable_on :subject, :code_concept
 
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  validates :title, :level, :duration_in_minutes, :description, :content, presence: true
+  validates :title, :level, :duration_in_minutes, :description, :content, :province, presence: true
 
 
   has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "klc.jpg"
@@ -22,8 +22,6 @@ class Lesson < ActiveRecord::Base
   validates_attachment :file_upload, content_type: { content_type: "application/pdf" }
 
   scope :is_approved, -> { where(approved: true) }
-  # scope :is_submitted, -> { where( submitted: true) }
-  # scope :is_draft, -> { where(submitted: false) }
 
   scope :has_been_submitted?, -> (status) { where submitted: status }
 
@@ -31,6 +29,11 @@ class Lesson < ActiveRecord::Base
 
   scope :is_verified?, -> { where( verified: true ) }
 
+  GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+
+  PROVINCES = ['All','British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
+
+  CURRICULUM_SUBJECTS = ['The Arts','French As a Second Language', 'English Language Arts','Health and Physical Education','Mathematics','Native Languages','Science','Technology Education','Social Studies','Career Education'] 
 
   def short_description
     if self.description.present?

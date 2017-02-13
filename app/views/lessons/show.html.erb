@@ -5,7 +5,7 @@
 <div class="wrapper wrapper--flex wrapper--flex-wrap lesson--level-<%= @lesson.level %> as--lesson-wrapper">
   <div class="lesson--single-title-bar">
     <h2 class="as--no-top-margin"><%= @lesson.title %></h2>
-    <h4 class="font-quicksand as--no-top-margin"><% if @lesson.grade.present?%>Grade <%= @lesson.grade_list%> • <% end %><%= @lesson.duration_in_minutes%> Minutes</h4>
+    <h4 class="font-quicksand as--no-top-margin"><% if @lesson.grade.present?%>Grade <%= @lesson.grade%> • <% end %><%= @lesson.duration_in_minutes%> Minutes</h4>
     <h3 class="font-quicksand as--no-top-margin">Created by <%= link_to @lesson.author, profile_path(@lesson.user.profile)%> on <%= @lesson.format_date(@lesson.created_at)%></h3>
   </div>
   <div class="lesson--single-title-img" style="background-image: url(<%= @lesson.feature_image.url(:medium) %>)"></div>
