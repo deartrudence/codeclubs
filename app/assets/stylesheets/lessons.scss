@@ -1,6 +1,7 @@
 // Place all the styles related to the lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// @import "bootstrap";
 .ui-autocomplete {
   position: absolute;
   top: 100%;
@@ -61,4 +62,3 @@ a.wysihtml5-command-active{
     list-style: initial;
   }
 }
-@import "semantic-ui";

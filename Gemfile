@@ -17,8 +17,9 @@ end
 # gem 'wherex'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
-gem 'semantic-ui-sass', git: 'https://github.com/doabit/semantic-ui-sass.git'
-
+# style multi-select dropdowns
+gem 'bootstrap-sass', '~> 3.3.6'
+gem "select2-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -55,9 +56,6 @@ gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'rails4-autocomplete'
 gem 'simple_form'
-
-# for better url ids
-gem 'friendly_id', '~> 5.1.0'
 
 # for image management
 gem 'paperclip', '4.3.6'

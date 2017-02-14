@@ -144,14 +144,14 @@
       <%= f.file_field :feature_image, required: true %>
       <!-- TODO make semantic ui work -->
       <%= f.label 'Curriculum Subjects', :subject_list, class: 'required'%>
-      <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS, @lesson.subject_list), {}, {class: 'ui fluid dropdown selection multiple', multiple: true}  %>
+      <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS, @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       <div>
         <%= f.label 'Curriculum Takeaways', :curriculum_concepts, class: 'required'%>
         <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
       </div>
       <%= f.label 'Coding Concepts', :code_concept_list, class: 'required' %>
-      <%= f.select :code_concept_list, options_for_select(Lesson::CODING_CONCEPTS, @lesson.code_concept_list), {}, {class: 'ui fluid dropdown selection multiple',multiple: true}  %>
+      <%= f.select :code_concept_list, options_for_select(Lesson::CODING_CONCEPTS, @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
       <div>
         <%= f.label 'Coding Takeaways', :programming_concepts%>
         <p class="small">An optional text field should you want to expand upon the coding concepts covered in the lesson.</p>
@@ -204,6 +204,11 @@
 <% end %>
 
 <script>
+$(function(){
+  $('.curriculum_subjects_dropdown').select2()
+  $('.coding_concepts_dropdown').select2()
+})
+  ;
   function ajaxSubmitInput(elem) {
     console.log(elem)
     // $.ajax({

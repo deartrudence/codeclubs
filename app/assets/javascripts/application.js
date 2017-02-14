@@ -15,6 +15,6 @@
 //= require bootsy
 //= require jquery-ui
 //= require autocomplete-rails
-//= require semantic-ui
+//= require select2
 //= require_tree .
 
