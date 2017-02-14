@@ -35,6 +35,9 @@ class Lesson < ActiveRecord::Base
 
   CURRICULUM_SUBJECTS = ['The Arts','French As a Second Language', 'English Language Arts','Health and Physical Education','Mathematics','Native Languages','Science','Technology Education','Social Studies','Career Education'] 
 
+  CODING_CONCEPTS = ['Algorithms', 'Arrays',  'Boolean Logic','Conditional statements','Debugging','Events','Functions','Loops','Operators','Parallel Execution','Random Numbers', 
+  'Sequences','States','Variables']
+
   def short_description
     if self.description.present?
       self.description.first(300) + ' ...'
