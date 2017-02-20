@@ -41,6 +41,7 @@ class LessonsController < ApplicationController
     @grade =  params[:grade] != ''? params[:grade] : 'all grades'
     @subject = params[:subject] != ''? params[:subject] : 'all subjects'
     @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
+    @province = params[:province] != ''? params[:province] : 'all provinces'
 
 
     if params[:search_complete]
@@ -52,9 +53,9 @@ class LessonsController < ApplicationController
       if params[:code_concept] != ''
         tags.push(params[:code_concept])
       end
-      if params[:grade] != ''
-        tags.push(params[:grade])
-      end
+      # if params[:grade] != ''
+      #   tags.push(params[:grade])
+      # end
       @tags = tags
       if @tags.length > 0 && params[:verified].present?
         @lessons = Lesson.is_approved.is_verified?.tagged_with(@tags).order(:cached_votes_up => :desc)
@@ -66,6 +67,13 @@ class LessonsController < ApplicationController
         @lessons = @lessons
       end
 
+      if params[:province] != ''
+        @lessons = @lessons.select {|lesson| lesson.province == params[:province]}
+      end   
+
+      if params[:grade] != ''
+        @lessons = @lessons.select {|lesson| lesson.grade == params[:grade]}
+      end
 
       if params[:browse].present? && params[:browse] == 'list'  
         respond_to do |format|

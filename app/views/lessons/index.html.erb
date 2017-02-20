@@ -16,18 +16,24 @@
   <h2 class="as--admin-title as--browse-title">
     Browse Lessons
     <span class="grid" data-browse="grid">
-      <input type="radio" name="browse" value="grid" id="grid">
+      <input type="radio" name="browse" value="grid" id="grid" class="hidden">
+      <label for="grid"><i class="fa fa-th-large" aria-hidden="true"></i></label>
     </span> 
     <span class="list" data-browse="list">
-      <input type="radio" name="browse" value="list" id="list">
+      <input type="radio" name="browse" value="list" id="list" class="hidden">
+      <label for="list"><i class="fa fa-list" aria-hidden="true"></i></label>
     </span>
   </h2>
     <div class="as--home-form">
       <div class="wrapper--flex">
         <div class="wrapper--flex"> 
          <div class="select">
-            <%= select_tag 'grade', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'grade'}%>
+            <%= select_tag 'grade', options_for_select(Lesson::GRADE), {:include_blank => 'grade'}%>
           </div>
+          <div class="select">
+            <%= select_tag 'province', options_for_select(Lesson::PROVINCES), {:include_blank => 'province'}%>
+          </div>
+
           <div class="select">
             <%= select_tag 'subject', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'subject'}%>
           </div>
@@ -35,9 +41,7 @@
           <div class="select">
             <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
           </div>
-          <div class="select">
-            <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
-          </div>
+         
         </div>
         <div class="filter-controls"> 
           <div>

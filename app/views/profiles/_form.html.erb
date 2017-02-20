@@ -33,7 +33,9 @@
     <%= f.text_field :school, placeholder: 'Enter the name of your school or organization' %>
 
     <%= f.label :province, 'What province are you based out of?', class: 'required' %>
-    <%= select('profile', 'province', Profile::PROVINCES, {include_blank: true})%>
+    <div class="select">  
+     <%= select('profile', 'province', Profile::PROVINCES, {include_blank: true})%>
+    </div>
     
 
     <%= f.label :gender %>
@@ -42,22 +44,27 @@
 
     <%= f.label :years_of_experience %>
     <span class="internal font-quicksand">(for internal use only)</span>
-    <div class="select-wrap">
-      
-      <%= select('profile', 'years_of_experience', Profile::YEARS_OF_EXPERIENCE, {include_blank: true})%>
+    <div class="select">
+      <%= select('profile', 'years_of_experience', Profile::YEARS_OF_EXPERIENCE, {prompt: 'Choose...'})%>
     </div>
   
 
     <%= f.label :teaching_role, 'What is your role in teaching kids to code?', class: 'required' %>
-    <%= f.text_field :teaching_role %>
+    <div class="select">
+      <%= select('profile', 'teaching_role', Profile::TEACHING_ROLE, {prompt: 'I am best described as…'})%>
+    </div>
 
 
 
-    <%= f.label :grade, 'What grades do you teach', class: 'required' %>
-    <%= f.text_field :grade %>
+    <%= f.label :grade, 'What grade do you teach', class: 'required' %>
+    <div class="select">
+      <%= select('profile', 'grade', Profile::GRADE, {prompt: 'Choose...'})%>
+    </div>
 
     <%= f.label :number_of_students, 'How many students per class?', class: 'required' %>
-    <%= f.text_field :number_of_students %>
+    <div class="select">
+      <%= select('profile', 'number_of_students', Profile::NUMBER_OF_STUDENTS, {prompt: 'Choose...'})%>
+    </div>
     <div class="wrapper--flex">
       <%= f.check_box :mailing_list %>
       <%= f.label :mailing_list, 'Yes, opt me into the Mailing List to be the first to hear about industry news, upcoming workshops and events', class: 'mailing-label' %>

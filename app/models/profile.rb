@@ -7,6 +7,12 @@ class Profile < ActiveRecord::Base
 
   YEARS_OF_EXPERIENCE = ['Less than 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
   
+  GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+
+  TEACHING_ROLE = ['A teacher in a public school','A teacher in a private school','A teacher in an alternative school or home-school','A daycare or preschool teacher','A non-traditional educator part of a community group','Other']
+
+  NUMBER_OF_STUDENTS = ['Less than 10','10 - 15','15 - 20',
+  '20 - 25','25+']
   has_many :lessons
   belongs_to :user
   validates :user, presence: true

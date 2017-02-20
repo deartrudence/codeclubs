@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
 
-    # raise 'hell'
+    
     respond_to do |format|
       if @profile.update(profile_params)
         if @profile.mailing_list == false && MailingList.where(email: @profile.user.email).present?

@@ -8,7 +8,7 @@
 			<span><%= lesson.format_date(lesson.updated_at)%></span>
 			<span>
 				<%= link_to dislike_lesson_path(lesson, source: 'lesson_dashboard'), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get do %>
-				  ☃
+				  <i class="fa fa-minus-circle" aria-hidden="true"></i>
 				<% end %>
 			</span>
 		</li>

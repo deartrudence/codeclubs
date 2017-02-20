@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170219234647) do
+ActiveRecord::Schema.define(version: 20170220191902) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -143,7 +143,7 @@ ActiveRecord::Schema.define(version: 20170219234647) do
     t.string   "learner_age_range"
     t.string   "province"
     t.string   "gender"
-    t.integer  "years_of_experience"
+    t.string   "years_of_experience"
     t.string   "teaching_role"
   end
 
