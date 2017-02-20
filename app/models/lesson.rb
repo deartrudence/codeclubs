@@ -5,6 +5,9 @@ class Lesson < ActiveRecord::Base
   delegate :user, :to => :profile, :allow_nil => true
   has_many :suggested_lessons, :dependent => :destroy
 
+  has_many :lesson_references, :dependent => :destroy
+  accepts_nested_attributes_for :lesson_references, allow_destroy: true
+
   acts_as_votable
 
   acts_as_taggable_on :subject, :code_concept

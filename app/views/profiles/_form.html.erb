@@ -42,7 +42,11 @@
 
     <%= f.label :years_of_experience %>
     <span class="internal font-quicksand">(for internal use only)</span>
-    <%= f.text_field :years_of_experience %>
+    <div class="select-wrap">
+      
+      <%= select('profile', 'years_of_experience', Profile::YEARS_OF_EXPERIENCE, {include_blank: true})%>
+    </div>
+  
 
     <%= f.label :teaching_role, 'What is your role in teaching kids to code?', class: 'required' %>
     <%= f.text_field :teaching_role %>
@@ -62,8 +66,10 @@
 
 
     <div class="actions wrapper--flex">
-      <%= f.submit 'Create Profile', class: "button" %>
-      <%= link_to 'Edit account settings', edit_user_registration_path %>
+      <%= f.submit 'Create Profile', class: "button button--primary" %>
+      <%= link_to edit_user_registration_path, class: 'link--underlined link--underlined-small' do%>
+        <i class="fa fa-cog" aria-hidden="true"></i> Edit account settings
+      <% end %> 
 
     </div>
     <p class="internal right"><span class="required"></span> =Required Field</p>

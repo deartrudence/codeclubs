@@ -1,3 +1,17 @@
+<style>
+  .custom-color-bg {
+    background:<%= @lesson.custom_color %> !important;
+  }
+
+  .custom-color-text {
+    color: <%= @lesson.custom_color %>;
+  }
+
+  .custom-color-title {
+    color: <%= @lesson.custom_color %>;
+    border-color: <%= @lesson.custom_color %>!important;
+  }
+</style>
 <%= simple_form_for(@lesson) do |f| %>
 
   <% if @lesson.errors.any? %>
@@ -11,20 +25,21 @@
       </ul>
     </div>
   <% end %>
-  <header class="header--secondary">
+  <header class="header--secondary custom-color-bg">
     <div class="wrapper--flex">
       <%if @lesson.title.present?%>
         <h2><%= @lesson.title%></h2>
       <% else %>
         <h2>Create a Lesson</h2>
       <% end %>
-      <div class="actions right">
+      <div class="lesson--single-actions">
         <% if current_user.admin? && @lesson.submitted%>
-          <%= f.submit "Update", class: "button button--secondary save-as-draft" %>
+            <span>Update Status: </span>
            <div class="slideThree"> 
              <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
              <label for="slideThree<%= @lesson.id %>"></label>
            </div>
+          <%= f.submit "Save Lesson", class: "button button--primary save-as-draft" %>
         <% end %>
         <% if !@lesson.submitted%>
           <%= f.submit "Save as Draft", class: "button button--secondary save-as-draft" %>
@@ -70,7 +85,7 @@
   <% end %>
   <div class="wrapper--flex">
     <div class="content">
-      <h3 class="title--tertiary required">Lesson Info</h3>
+      <h3 class="title--tertiary required custom-color-title">Lesson Info</h3>
       <%= f.label :title, class: 'required'%>
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
@@ -87,27 +102,27 @@
       </div>
 
       <div>
-        <h3 class="title--tertiary required">Short Summary</h3>
+        <h3 class="title--tertiary required custom-color-title">Short Summary</h3>
         <p class="small">Write a brief summary to introduce your lesson and provide context. This will appear on the main lesson dashboard as well as the top of your lesson page.</p>
         <%= f.text_area :description, placeholder: 'Write a short summary here' %>
       </div>
       <div>
-        <h3 class="title--tertiary">Prep Work</h3>
+        <h3 class="title--tertiary custom-color-title">Prep Work</h3>
         <p class="small">All the behind the scenes work to get the lesson ready.</p>
         <%= f.bootsy_area :prep, placeholder: 'Indicate any prep work required for this lesson, including any materials etc.' %>
       </div>
       <div class="textarea-content">
-        <h3 class="title--tertiary required">The Lesson</h3>
+        <h3 class="title--tertiary required custom-color-title">The Lesson</h3>
         <p class="small">The actual meat of the lesson! This could take form of a step by step guide or maybe a series of little exercises, completely up to you!</p>
         <%= f.bootsy_area :content, placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
       </div>
       <div>
-        <h3 class="title--tertiary">Assessment</h3>
+        <h3 class="title--tertiary custom-color-title">Assessment</h3>
         <p class="small">Either then answers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.</p>
         <%= f.bootsy_area :answers, placeholder: 'Provide answers here.' %>
       </div>
       <div>
-        <h3 class="title--tertiary">Extensions</h3>
+        <h3 class="title--tertiary custom-color-title">Extensions</h3>
         <p class="small">Additional questions and challenges that build on content reviewed in the lesson.</p>
         <%= f.bootsy_area :extensions, placeholder: 'Provide extensions here.' %>
       </div>
@@ -144,58 +159,49 @@
       <%= f.file_field :feature_image, required: true %>
       <!-- TODO make semantic ui work -->
       <%= f.label 'Curriculum Subjects', :subject_list, class: 'required'%>
-      <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS, @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
+      <div class="select">    
+        <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS, @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
+      </div>
       <div>
         <%= f.label 'Curriculum Takeaways', :curriculum_concepts, class: 'required'%>
         <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
       </div>
       <%= f.label 'Coding Concepts', :code_concept_list, class: 'required' %>
-      <%= f.select :code_concept_list, options_for_select(Lesson::CODING_CONCEPTS, @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
+      <div class="select">
+        <%= f.select :code_concept_list, options_for_select(Lesson::CODING_CONCEPTS, @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
+      </div>
       <div>
         <%= f.label 'Coding Takeaways', :programming_concepts%>
         <p class="small">An optional text field should you want to expand upon the coding concepts covered in the lesson.</p>
         <%= f.bootsy_area :programming_concepts, placeholder: 'Add any coding takeaways here.' %>
       </div>
-     
-      <h3>Tags</h3>
-      <p class="small">Add comma seperated tags for associated curriculum subjects and programming concepts (Ex. Math, English OR Javascript, Conditional Statements)</p>
-     
-
-      <%= f.input :code_concept_list, :label => 'Programming concept', :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
-
-
-   
-
-      <div class="levels">
-        <%= f.label :level %><br>
-        <p class="small">An indicator of the difficulty of the lesson. Could be related to programming concepts or curriculum concepts covered.</p>
-        <%= f.radio_button :level, '1', :checked => true %><span>1</span><br>
-        <%= f.radio_button :level, '2' %><span>2</span><br>
-        <%= f.radio_button :level, '3' %><span>3</span><br>
-        <%= f.radio_button :level, '4' %><span>4</span><br>
-      </div>
+      <% if current_user.profile.is_admin? %>
       <div>
         <h3>References</h3>
         <p class="small">List any references you used or found useful in the creation of this lesson.</p>
-        <%= f.bootsy_area :references %>
+        <%= f.fields_for :lesson_references do |builder| %>
+          <%= render 'lesson_reference_fields', f: builder %>
+        <% end %>
+        <%= link_to_add_fields "+ more", f, :lesson_references  %>
       </div>
-      <% if current_user.profile.is_admin? %>
       <div>
         <h3>Suggested Lessons</h3>
         <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
+        <div class="select">
+          <%= f.collection_select :suggested_lessons, Lesson.all.is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
+        </div>
         <% if @lesson.suggested_lessons.present?%>
-          <ul>
+          <ul class="list--suggested-lessons-edit">
             <%@lesson.suggested_lessons.each do |sug_lesson|%>
               <% if sug_lesson.suggested_lesson_id > 0%>
                 <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
-                  <li id="sug_<%= sug_lesson.id%>"><%= link_to the_lesson.title, lesson_path(the_lesson) %> |      <%= link_to 'Delete', sug_lesson, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></li>
+                  <li id="sug_<%= sug_lesson.id%>"><%= link_to '×', sug_lesson, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, class: 'suggested-delete custom-color-bg' %> <%= link_to the_lesson.title, lesson_path(the_lesson) %></li>
               <% end %>
         
             <% end %>
           </ul>
         <% end %>
-          <%= f.collection_check_boxes :suggested_lessons, Lesson.all, :id, :title, {:include_blank => false}  %>
       </div>
       <% end %>
 
@@ -207,6 +213,8 @@
 $(function(){
   $('.curriculum_subjects_dropdown').select2()
   $('.coding_concepts_dropdown').select2()
+  $('.suggested_lessons_dropdown').select2()
+
 })
   ;
   function ajaxSubmitInput(elem) {
@@ -217,4 +225,25 @@ $(function(){
     //   data: data
     // });
   }
+</script>
+
+<script>
+$(document).ready(function(){
+  console.log('ready')
+  $('form').on('click', '.remove_fields', function(even){
+    event.preventDefault()
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+  });
+  
+  $('form').on('click', '.add_fields', function(event){
+    event.preventDefault();
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    console.log(regexp)
+    $(this).before($(this).data('fields').replace(regexp, time));
+
+  })
+});
+  
 </script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213174554) do
+ActiveRecord::Schema.define(version: 20170219234647) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -54,6 +54,16 @@ ActiveRecord::Schema.define(version: 20170213174554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "lesson_references", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lesson_references", ["lesson_id"], name: "index_lesson_references_on_lesson_id"
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title"

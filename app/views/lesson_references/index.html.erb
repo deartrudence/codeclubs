@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lesson References</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Url</th>
+      <th>Lesson</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lesson_references.each do |lesson_reference| %>
+      <tr>
+        <td><%= lesson_reference.title %></td>
+        <td><%= lesson_reference.url %></td>
+        <td><%= lesson_reference.lesson %></td>
+        <td><%= link_to 'Show', lesson_reference %></td>
+        <td><%= link_to 'Edit', edit_lesson_reference_path(lesson_reference) %></td>
+        <td><%= link_to 'Destroy', lesson_reference, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lesson reference', new_lesson_reference_path %>

@@ -1,0 +1,1 @@
+json.array! @lesson_references, partial: 'lesson_references/lesson_reference', as: :lesson_reference

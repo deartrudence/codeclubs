@@ -4,6 +4,8 @@ class Profile < ActiveRecord::Base
   PROVINCES = ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
 
   CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
+
+  YEARS_OF_EXPERIENCE = ['Less than 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
   
   has_many :lessons
   belongs_to :user

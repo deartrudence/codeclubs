@@ -1,0 +1,17 @@
+<fieldset class="story_block" data-block_id="<%= f.object.id%>">
+	<%= f.label :title%>
+	<%= f.text_field :title, placeholder: 'Title of article, book, website etc.' %>
+	<%= f.label :url%>
+	<%= f.text_field :url, placeholder: 'Link to reference material' %>
+	<% if @lesson.present? %>
+		<div class="field">
+		  <%= f.hidden_field :lesson_id, value: @lesson.id  %>
+		</div>
+	<% end %>
+	<div class="fieldset">
+	  <%= f.hidden_field :_destroy %>
+	  <%= link_to "#", class: "remove_fields" do %>
+	    delete
+	  <% end %>
+	</div>
+</fieldset>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lesson_reference.title %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @lesson_reference.url %>
+</p>
+
+<p>
+  <strong>Lesson:</strong>
+  <%= @lesson_reference.lesson %>
+</p>
+
+<%= link_to 'Edit', edit_lesson_reference_path(@lesson_reference) %> |
+<%= link_to 'Back', lesson_references_path %>

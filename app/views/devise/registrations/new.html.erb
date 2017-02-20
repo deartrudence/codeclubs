@@ -1,22 +1,25 @@
-<div class="box">
-  <div class="as--hashtag-wrap"><%= image_tag 'tlc-circlehash.svg'%></div>
-  <h2 class="center">Sign up</h2>
+<div class="wrapper--small">
+  <h2>Sign up</h2>
+  <div class="as--profile-wrapper form--profile">
+    <p>Accounts are completely free and will provide you full access to lessons and other learning material.</p>
 
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
+    <%= f.label :email, class: 'required'%>
+    <%= f.input_field :email, required: true, autofocus: true, placeholder: 'Enter your mail address.' %>
+    <%= f.label :password, class: 'required'%><span class="internal font-quicksand">(8 characters minimum)</span>
+    <%= f.input_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: 'Enter your password' %>
+    <%= f.label 'Confirm Password', :password_confirmation, class: 'required'%>
+    <%= f.input_field :password_confirmation, required: true, placeholder: 'Enter your password again' %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-    <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length) %>
-    <%= f.input :password_confirmation, required: true %>
-  </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up", class: "button button--tertiary font-quicksand" %>
+    <div class="form-actions">
+      <%= f.button :submit, "Sign up!", class: "button button--primary" %>
+      <%- if controller_name != 'sessions' %>
+          <%= link_to "Log in", new_session_path(resource_name), class: 'button button--secondary' %>
+      <% end -%>
+    </div>
+    <% end %>
+    <p class="internal right"><span class="required"></span> =Required Field</p>
   </div>
-  <% end %>
-  <div class="as--other-links">
-    <%= render "devise/shared/links" %>  
-  </div>
-  
 </div>
