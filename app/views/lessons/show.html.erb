@@ -4,12 +4,32 @@
   }
 
   .custom-color-text {
-    color: <%= @lesson.custom_color %>;
+    color: <%= @lesson.custom_color %> !important;
   }
-
+  
+  a.custom-color-text:hover {
+    border-bottom: 2px solid <%= @lesson.custom_color %>!important;
+  }
   .custom-color-title {
     color: <%= @lesson.custom_color %>;
     border-color: <%= @lesson.custom_color %>!important;
+  }
+
+  .lesson--section-title {
+    color:<%= @lesson.custom_color %>!important;
+    border-bottom-color: <%= @lesson.custom_color %>!important;
+  }
+  .lesson--section-title:after {
+    color:<%= @lesson.custom_color %>!important;
+  }
+
+  .lesson--section-title:hover {
+    color:white !important;
+    background: <%= @lesson.custom_color %>!important;
+  }
+
+  .lesson--section-title:hover:after {
+    color:white !important;
   }
 </style>
 <%if notice.present?%>
@@ -26,16 +46,17 @@
   <nav class="lesson--nav">
     <p>Jump to:</p>
     <ul>
-      <li><a href="#introduction">Introduction</a></li>
-      <li><a href="#prep-work">Prep Work</a></li>
-      <li><a href="#the-lesson">The Lesson</a></li>
-      <li><a href="#extensions">Extensions</a></li>
-      <li><a href="#answers">Answers</a></li>
-      <li><a href="#suggested-lessons">Suggested Lessons</a></li>
+      <li><a href="#introduction" class="custom-color-text">Introduction</a></li>
+      <li><a href="#prep-work" class="custom-color-text">Prep Work</a></li>
+      <li><a href="#the-lesson" class="custom-color-text">The Lesson</a></li>
+      <li><a href="#extensions" class="custom-color-text">Extensions</a></li>
+      <li><a href="#answers" class="custom-color-text">Answers</a></li>
+      <li><a href="#suggested-lessons" class="custom-color-text">Suggested Lessons</a></li>
     </ul>
   </nav>
   <nav class="lesson--share">
-    test
+    <!-- <div id="fb-root"></div> -->
+    <div class="fb-share-button" data-href="<%=request.url%>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>">Share</a></div>
   </nav>
   <div class="lesson--single-text">
     <section>
@@ -102,13 +123,13 @@
       <ul class="list--tags">
         <li class="title">Subjects:</li>
         <% @lesson.subject_list.each do |subject| %>
-          <li><%= subject %></li>
+          <li class="custom-color-bg"><%= subject %></li>
         <% end %>
       </ul>
       <ul class="list--tags">
         <li class="title">Programming Concepts:</li>
         <% @lesson.code_concept_list.each do |code_concept| %>
-          <li><%= code_concept %></li>
+          <li class="custom-color-bg"><%= code_concept %></li>
         <% end %>
       </ul>
       <% if @lesson.curriculum_concepts.present? %>
@@ -144,4 +165,14 @@
       $(this).toggleClass('active')
     })
   })
+
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=965856376884950";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
 </script>
+
+
