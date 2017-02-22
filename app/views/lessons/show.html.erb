@@ -31,18 +31,27 @@
   .lesson--section-title:hover:after {
     color:white !important;
   }
+
+  .lesson--section-title.active {
+    color:white !important;
+    background: <%= @lesson.custom_color %>!important;
+  }
 </style>
 <%if notice.present?%>
   <p id="notice"><%= notice %></p>
 <% end %>  
 
-<div class="wrapper wrapper--flex wrapper--flex-wrap lesson--level-<%= @lesson.level %> as--lesson-wrapper">
+<div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper">
   <div class="lesson--single-title-bar custom-color-bg">
     <h2 class="as--no-top-margin"><%= @lesson.title %></h2>
     <h4 class="font-quicksand as--no-top-margin"><% if @lesson.grade.present?%>Grade <%= @lesson.grade%> • <% end %><%= @lesson.duration_in_minutes%> Minutes</h4>
     <h3 class="font-quicksand as--no-top-margin">Created by <%= link_to @lesson.author, profile_path(@lesson.user.profile)%> on <%= @lesson.format_date(@lesson.created_at)%></h3>
   </div>
-  <div class="lesson--single-title-img" style="background-image: url(<%= @lesson.feature_image.url(:medium) %>)"></div>
+  <div class="lesson--single-title-img" style="background-image: url(<%= @lesson.feature_image.url(:medium) %>)">
+  </div>
+</div> 
+<div id="sticky-nav-target"></div>
+<div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper" id="lesson--nav-bar">
   <nav class="lesson--nav">
     <p>Jump to:</p>
     <ul>
@@ -55,9 +64,19 @@
     </ul>
   </nav>
   <nav class="lesson--share">
-    <!-- <div id="fb-root"></div> -->
-    <div class="fb-share-button" data-href="<%=request.url%>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>">Share</a></div>
+    <div>
+      <p>Share this lesson!</p>
+      <div class="wrapper--flex">
+        <a class="twitter-share-button"
+          href="https://twitter.com/intent/tweet?text=Hello%20world">
+        Tweet</a>
+        <a href="" class="share-email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
+        <div class="fb-share-button" data-href="<%=request.url%>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>">Share</a></div>
+      </div>
+    </div>
   </nav>
+</div>
+<div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper">
   <div class="lesson--single-text">
     <section>
       <h3 class="lesson--section-title" id="introduction">Introduction</h3>
@@ -156,23 +175,65 @@
 
     </div>
   </div>
-</div>
+</div>  
+
 
 <script>
+  var centerStickyNav = function(nav){
+    var windowWidth = $(window).innerWidth()
+    var navWidth = $(nav).width()
+
+    var leftMargin = (windowWidth - navWidth) / 2
+
+    $(nav).css('left', leftMargin)
+  }
+  function sticky_relocate() {
+      var window_top = $(window).scrollTop();
+      var div_top = $('#sticky-nav-target').offset().top;
+      if (window_top > div_top) {
+          $('#lesson--nav-bar').addClass('lesson--nav-bar-sticky');
+          $('#sticky-nav-target').height($('#lesson--nav-bar').outerHeight());
+          centerStickyNav($('#lesson--nav-bar'))
+      } else {
+          $('#lesson--nav-bar').removeClass('lesson--nav-bar-sticky');
+          $('#sticky-nav-target').height(0);
+          $('#lesson--nav-bar').css('left', 0)
+      }
+  }
+
   $(function(){ 
     $('.lesson--section-title').on('click', function(){
       $(this).siblings('.text-edit').slideToggle('100')
       $(this).toggleClass('active')
     })
+    $(window).scroll(sticky_relocate);
+    sticky_relocate();
   })
 
-  (function(d, s, id) {
+  $(function(d, s, id) {
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "http://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=965856376884950";
+    js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=965856376884950";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 </script>
+
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+    t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+
+  return t;
+}(document, "script", "twitter-wjs"));</script>
 
 

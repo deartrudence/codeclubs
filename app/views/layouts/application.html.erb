@@ -44,7 +44,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
-  <!-- <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
+  <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
@@ -66,7 +66,7 @@
     <ul class="nav--links wrapper--flex">
       <li class="nav--link-with-sub">
         <%= link_to about_path do %> 
-          <span>About</span> <span class="nav--link-arrow">▼</span>
+          <span>About</span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
         <% end %>
         <ul class="nav--links-sub hidden">
           <li><%= link_to 'How-To Guide', about_path%></li>
@@ -76,7 +76,7 @@
       </li>
       <li class="nav--link-with-sub">
         <%= link_to lessons_path do %>
-          <span>Lessons</span> <span class="nav--link-arrow">▼</span>
+          <span>Lessons</span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
         <% end %>
         <ul class="nav--links-sub hidden">
           <li><%= link_to 'Browse Lessons', lessons_path %></li>
@@ -99,7 +99,7 @@
                   Hi, <%= current_user.profile.first_name %> 
                 </span>
               </span>
-              <span class="nav--link-arrow">▼</span>
+              <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
             <% end %>
             <ul class="nav--links-sub hidden">
               <li><%= link_to 'My Profile', profile_path(current_user.profile)%></li>
@@ -112,7 +112,7 @@
           <% else %>
             <%= link_to new_profile_path do %>
               <span>Create Profile</span>
-              <span class="nav--link-arrow">▼</span>
+              <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
             <% end %>
             <ul class="nav--links-sub hidden">
               <li><%= link_to 'Create Profile', new_profile_path%></li>
@@ -178,6 +178,27 @@
   </div>
 </footer>
 <script>
+  var openSubMenus = function(){
+    var width = $(window).innerWidth()
+    if (width > 960) {
+      $('.nav--link-with-sub').on('mouseenter', function(){
+        var sub = $(this).find('.nav--links-sub')
+        console.log(sub)
+        $(sub).toggleClass('hidden')
+      })
+      $('.nav--link-with-sub').on('mouseleave', function(){
+        var sub = $(this).find('.nav--links-sub')
+        $(sub).toggleClass('hidden')
+      })
+    } else {
+      $('.nav--link-with-sub > a').on('click', function(e){
+        e.preventDefault();
+        var sub = $(this).next('.nav--links-sub')
+        $(sub).toggleClass('hidden')
+      })
+    } 
+  }
+
   $(document).ready(function(){
     setTimeout(function(){
       $('#notice').remove();
@@ -196,17 +217,18 @@
       $('.nav--links').slideToggle(500)
       $(this).toggleClass('active')
     })
-
+    openSubMenus();
     //open and close sub-menus
-    $('.nav--link-with-sub').on('mouseenter', function(){
-      var sub = $(this).find('.nav--links-sub')
-      console.log(sub)
-      $(sub).toggleClass('hidden')
-    })
-    $('.nav--link-with-sub').on('mouseleave', function(){
-      var sub = $(this).find('.nav--links-sub')
-      $(sub).toggleClass('hidden')
-    })
+
+    // $('.nav--link-with-sub').on('mouseenter', function(){
+    //   var sub = $(this).find('.nav--links-sub')
+    //   console.log(sub)
+    //   $(sub).toggleClass('hidden')
+    // })
+    // $('.nav--link-with-sub').on('mouseleave', function(){
+    //   var sub = $(this).find('.nav--links-sub')
+    //   $(sub).toggleClass('hidden')
+    // })
   })
 </script>
 </body>

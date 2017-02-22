@@ -9,14 +9,6 @@
   </ul>
 
   <div id="lessons-tab" class="tab-content">
-    <%= form_tag(admin_path, method: :get, remote: true) do %>
-    <div class="as--filter-wrap">
-      <div class="as--search-wrap">
-        <%= text_field_tag :search,nil , class: 'lesson_search' %>
-        <%= submit_tag 'search', class:"button button--primary" %>
-      </div>
-    </div>
-    <% end %>
     
     <div class="list--header list--header--lessons-admin flex--wrapper">
       <div>
@@ -94,28 +86,25 @@
         </div>
       <% end %>
     </div>
-    <%= form_tag(admin_path, method: :get, remote: true) do %>
-      <%= text_field_tag :user_search, nil, class: 'user_search' %>
-      <%= submit_tag 'search', class:"button button--primary" %>
-    <% end %>
+   
     <div class="list--header list--header--users flex--wrapper">
       <div>
         <%= form_tag(admin_path, method: :get, remote: true) do %>
-          <%= label :first_name, 'First Name' %>
+          <%= label :first_name, 'First Name' %><i class="fa fa-sort" aria-hidden="true"></i>
           <%= check_box :first_name, 'First Name', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
           <%= hidden_field :user_filters, 'filter_options' %>
         <% end %>
       </div>
       <div>
         <%= form_tag(admin_path, method: :get, remote: true) do %>
-          <%= label :last_name, 'Last Name' %>
+          <%= label :last_name, 'Last Name' %><i class="fa fa-sort" aria-hidden="true"></i>
           <%= check_box :last_name, 'Last Name', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
           <%= hidden_field :user_filters, 'filter_options' %>
         <% end %>
       </div>
       <div>
         <%= form_tag(admin_path, method: :get, remote: true) do %>
-          <%= label :user_email, 'email' %>
+          <%= label :user_email, 'email' %><i class="fa fa-sort" aria-hidden="true"></i>
           <%= check_box :user_email, 'email', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
           <%= hidden_field :user_filters, 'filter_options' %>
         <% end %>
@@ -123,7 +112,7 @@
       <div>User Type</div>
       <div>
         <%= form_tag(admin_path, method: :get, remote: true) do %>
-          <%= label :opt_in, 'Opt In?' %>
+          <%= label :opt_in, 'Opt In?' %><i class="fa fa-sort" aria-hidden="true"></i>
           <%= check_box :opt_in, 'Opt In?', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
           <%= hidden_field :user_filters, 'filter_options' %>
         <% end %>
@@ -193,6 +182,7 @@
       });
 
       $('.lesson_search').on('submit', function(){
+        console.log('submit')
         query = $(this).val()
         $.ajax({
           url: '',
