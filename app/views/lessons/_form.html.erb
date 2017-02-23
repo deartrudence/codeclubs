@@ -25,12 +25,16 @@
       </ul>
     </div>
   <% end %>
+
+  <!-- Set user's language based on param -->
+  <% lang = params[:locale] %>
+
   <header class="header--secondary custom-color-bg">
     <div class="wrapper--flex">
       <%if @lesson.title.present?%>
         <h2><%= @lesson.title%></h2>
       <% else %>
-        <h2>Create a Lesson</h2>
+        <h2><%= t('dictionary.create-lesson') %></h2>
       <% end %>
       <div class="lesson--single-actions">
         <% if current_user.admin? && @lesson.submitted%>
@@ -42,16 +46,16 @@
           <%= f.submit "Save Lesson", class: "button button--primary save-as-draft" %>
         <% end %>
         <% if !@lesson.submitted%>
-          <%= f.submit "Save as Draft", class: "button button--secondary save-as-draft" %>
+          <%= f.submit t('lessons.new.save-draft'), class: "button button--secondary save-as-draft" %>
         <% end %>
 
         <% if @lesson.id.present? && !@lesson.submitted%>
           <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
-           Submit
+           <%= t('lessons.new.submit-lesson') %>
           <% end %>
         <% elsif !@lesson.submitted%>
           <%= f.hidden_field :submitted, value: true %>  
-          <%= f.submit "Submit Lesson", class: "button button--primary" %>  
+          <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %>  
         <% end %>
       </div>
     </div>
@@ -59,16 +63,16 @@
   <%if current_user.admin? && @lesson.id.present?%>
     <div class="lesson--admin-edit wrapper--flex">
       <div class="lesson--admin-edit-author"> 
-        <label for="author">Author:</label>
+        <label for="author"><%= t('dictionary.author') %>:</label>
         <input type="text" disabled value="<%= @lesson.author%>">
       </div>
       <div class="lesson--admin-edit-color">
-        <%= f.label :custom_color, 'Custom Lesson Colour:'%>
+        <%= f.label :custom_color, 'Custom Lesson Colour:' %>
         <%= f.text_field :custom_color %>
         <span class="color-swatch" style="background:<%= @lesson.custom_color%>;"></span>
       </div>
       <div class="lesson--admin-edit-verified">
-        <%= f.label :verified, 'Lesson Verified?'%>
+        <%= f.label :verified, t('dictionary.verified?') %>
         <div class="select">
           <%= f.select :verified, [['Yes', true], ['No', false]] %>
         </div>
@@ -85,72 +89,74 @@
   <% end %>
   <div class="wrapper--flex">
     <div class="content">
-      <h3 class="title--tertiary required custom-color-title">Lesson Info</h3>
-      <%= f.label :title, class: 'required'%>
+      <h3 class="title--tertiary required custom-color-title"><%= t('lessons.new.lesson-info')%></h3>
+      <%= f.label t('lessons.new.title'), class: 'required'%>
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
         <div>  
-         <%= f.label :grade %>
+         <%= f.label t('dictionary.grade-level') %>
         <div class="select"> 
-          <%= f.select :grade, options_for_select(Lesson::GRADE, @lesson.grade), {:include_blank => 'Choose'}%>
+          <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'French choose' : 'Choose')}%>
         </div>
         </div>
         <div>
-          <%= f.label :duration_in_minutes %>
+          <%= f.label t('lessons.new.estimated-duration') %>
           <%= f.number_field :duration_in_minutes %>
         </div>
       </div>
 
       <div>
-        <h3 class="title--tertiary required custom-color-title">Short Summary</h3>
-        <p class="small">Write a brief summary to introduce your lesson and provide context. This will appear on the main lesson dashboard as well as the top of your lesson page.</p>
-        <%= f.text_area :description, placeholder: 'Write a short summary here' %>
+        <h3 class="title--tertiary required custom-color-title"><%= t('lessons.new.short-summary') %></h3>
+        <p class="small"><%= t('lessons.new.write-short-summary') %></p>
+        <%= f.text_area :description, placeholder: t('lessons.new.write-short-summary-here') %>
       </div>
       <div>
-        <h3 class="title--tertiary custom-color-title">Prep Work</h3>
-        <p class="small">All the behind the scenes work to get the lesson ready.</p>
-        <%= f.bootsy_area :prep, placeholder: 'Indicate any prep work required for this lesson, including any materials etc.' %>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.new.prep') %></h3>
+        <p class="small"><%= t('lessons.new.prep-description') %></p>
+        <%= f.bootsy_area :prep, placeholder: t('lessons.new.prep-required') %>
       </div>
       <div class="textarea-content">
-        <h3 class="title--tertiary required custom-color-title">The Lesson</h3>
-        <p class="small">The actual meat of the lesson! This could take form of a step by step guide or maybe a series of little exercises, completely up to you!</p>
+        <h3 class="title--tertiary required custom-color-title"><%= t('lessons.new.lesson') %></h3>
+        <p class="small"><%= t('lessons.new.lesson-description') %></p>
         <%= f.bootsy_area :content, placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
       </div>
       <div>
-        <h3 class="title--tertiary custom-color-title">Assessment</h3>
-        <p class="small">Either then answers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.</p>
-        <%= f.bootsy_area :answers, placeholder: 'Provide answers here.' %>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.new.assessment') %></h3>
+        <p class="small"><%= t('lessons.new.assessment-description') %></p>
+        <%= f.bootsy_area :answers, placeholder: t('lessons.new.provide-answer') %>
       </div>
       <div>
-        <h3 class="title--tertiary custom-color-title">Extensions</h3>
-        <p class="small">Additional questions and challenges that build on content reviewed in the lesson.</p>
-        <%= f.bootsy_area :extensions, placeholder: 'Provide extensions here.' %>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.new.extenstions') %></h3>
+        <p class="small"><%= t('lessons.new.extensions-description') %></p>
+        <%= f.bootsy_area :extensions, placeholder: t('lessons.new.provide-extension') %>
       </div>
-      <%= f.label :file_upload %>
-      <p class="small">Upload additonal learning materials, reading, or slides.</p>
+      <%= f.label t('lessons.new.file-upload') %>
+      <p class="small">
+        <%= t(' lessons.new.file-upload-description') %>
+      </p>
       <%= f.file_field :file_upload %>
-      <%= f.label :video_link %>
-      <p class="small">The embed link for any video material you may have that goes along with the lesson</p>
-      <%= f.text_field :video_link, placeholder: 'Add link to video here' %>
+      <%= f.label t('lessons.new.video-link') %>
+      <p class="small"><%= t('lessons.new.video-link-description')%></p>
+      <%= f.text_field :video_link, placeholder: t('lessons.new.add-video-link') %>
       <% if !@lesson.submitted %>
-        <%= f.submit "Save as Draft", class: "button button--secondary save-as-draft" %>
+        <%= f.submit t('lessons.new.save-draft'), class: "button button--secondary save-as-draft" %>
       <% end %>
       <% if @lesson.id.present? && !@lesson.submitted%>
         <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
-         Submit
+         <%= t('lessons.new.submit-lesson') %>
         <% end %>
-        <%= link_to 'delete lesson', lesson_path(@lesson),
+        <%= link_to t('lessons.new.delete-lesson'), lesson_path(@lesson),
     data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: 'link--underlined delete-lesson'%>
       <% elsif !@lesson.submitted%>
         <%= hidden_field_tag submitted: true %>  
-        <%= f.submit "Submit Lesson", class: "button button--primary" %>
+        <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %>
       <% end %>
     </div>
     <!-- BEGINING OF SIDEBAR -->
     <div class="sidebar">
       <%= f.label 'Intended Province', :province, class: 'required'%>
       <div class="select"> 
-        <%= f.select :province, options_for_select(Lesson::PROVINCES, @lesson.province)%>
+        <%= f.select :province, options_for_select((lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), @lesson.province)%>
       </div>
       <% if @lesson.feature_image.present? %>
         <%= image_tag @lesson.feature_image.url(:medium)%>
@@ -160,7 +166,7 @@
       <!-- TODO make semantic ui work -->
       <%= f.label 'Curriculum Subjects', :subject_list, class: 'required'%>
       <div class="select">    
-        <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS, @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
+        <%= f.select :subject_list, options_for_select((lang == 'fr' ?Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS) , @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
         <%= f.label 'Curriculum Takeaways', :curriculum_concepts, class: 'required'%>
@@ -169,7 +175,7 @@
       </div>
       <%= f.label 'Coding Concepts', :code_concept_list, class: 'required' %>
       <div class="select">
-        <%= f.select :code_concept_list, options_for_select(Lesson::CODING_CONCEPTS, @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
+        <%= f.select :code_concept_list, options_for_select((lang == 'fr' ? Lesson::FR_CODING_CONCEPTS : Lesson::EN_CODING_CONCEPTS), @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
       </div>
       <div>
         <%= f.label 'Coding Takeaways', :programming_concepts%>
