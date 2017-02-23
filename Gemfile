@@ -13,6 +13,9 @@ group :production do
   gem 'rails_12factor'
 end 
 
+# Multi-lingual
+gem 'rails-i18n'
+
 #for regex query
 # gem 'wherex'
 # Use SCSS for stylesheets

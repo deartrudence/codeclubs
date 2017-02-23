@@ -66,25 +66,25 @@
     <ul class="nav--links wrapper--flex">
       <li class="nav--link-with-sub">
         <%= link_to about_path do %> 
-          <span>About</span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+          <span><%= t('top-nav.about')%></span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
         <% end %>
         <ul class="nav--links-sub hidden">
-          <li><%= link_to 'How-To Guide', about_path%></li>
+          <li><%= link_to t('top-nav.howto'), about_path%></li>
           <!-- <li><a href="#">F.A.Q.</a></li> -->
           <!-- <li><a href="#">More Resources</a></li> -->
         </ul>
       </li>
       <li class="nav--link-with-sub">
         <%= link_to lessons_path do %>
-          <span>Lessons</span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+          <span><%= t('top-nav.lessons') %></span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
         <% end %>
         <ul class="nav--links-sub hidden">
-          <li><%= link_to 'Browse Lessons', lessons_path %></li>
-          <li><%= link_to 'Glossary of terms', glossaries_path%></li>
-          <li><%= link_to 'Create New Lesson', new_lesson_path%></li>
+          <li><%= link_to t('top-nav.browse-lessons'), lessons_path %></li>
+          <li><%= link_to t('top-nav.glosarry'), glossaries_path%></li>
+          <li><%= link_to t('top-nav.create-lesson'), new_lesson_path%></li>
         </ul>
       </li>
-      <li><a href="#">Workshops</a></li>
+      <li><a href="#"><%= t('top-nav.workshops')%></a></li>
 
       <% if user_signed_in? %>
         <li class="nav--link-with-sub">
@@ -96,17 +96,17 @@
                 </span>
                 <span>
                   
-                  Hi, <%= current_user.profile.first_name %> 
+                  <%= t('top-nav.greeting')%> <%= current_user.profile.first_name %> 
                 </span>
               </span>
               <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
             <% end %>
             <ul class="nav--links-sub hidden">
-              <li><%= link_to 'My Profile', profile_path(current_user.profile)%></li>
-              <li><%= link_to 'My Lesson Dashboard', my_lesson_dashboard_path(:anchor => 'tab=drafts')%></li>
-              <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to t('top-nav.profile'), profile_path(current_user.profile)%></li>
+              <li><%= link_to t('top-nav.userdashboard'), my_lesson_dashboard_path(:anchor => 'tab=drafts')%></li>
+              <li><%= link_to t('top-nav.logout'),  destroy_user_session_path, method: :delete %></li>
               <% if current_user.admin? %>
-                <li><%= link_to 'Admin Dashboard', admin_path(:anchor => 'tab=lessons')%></li>
+                <li><%= link_to t('top-nav.admindashboard'), admin_path(:anchor => 'tab=lessons')%></li>
               <% end %>
             </ul>
           <% else %>
@@ -116,7 +116,7 @@
             <% end %>
             <ul class="nav--links-sub hidden">
               <li><%= link_to 'Create Profile', new_profile_path%></li>
-              <li><%= link_to 'Logout',  destroy_user_session_path, method: :delete %></li>
+              <li><%= link_to t('top-nav.logout'),  destroy_user_session_path, method: :delete %></li>
             </ul>
           <% end %>
         </li>
@@ -133,33 +133,33 @@
 <footer class="nav--footer">
   <div class="wrapper wrapper--flex">
     <ul class="small-caps main">
-        <li><h3>Contact Us</h3></li>
+        <li><h3><%= t('footer.contact-us') %></h3></li>
   			<li><a href="http://twitter.com/learningcode" target="_blank">twitter.com/learningcode</a></li>
   			<li><a href="https://www.facebook.com/ladieslearningcode" target="_blank">fb.com/ladieslearningcode</a></li>
   			<li><a href="https://www.instagram.com/learningcode/">instagram.com/learningcode</a></li>
   			<li><a href="mailto:carolyn@ladieslearningcode.com">carolyn@ladieslearningcode.com</a></li>
   	</ul>
     <ul class="small-caps main">
-      <li><h3>Support Us</h3></li>
-  		<li><a href="http://ladieslearningcode.myshopify.com/" target="_blank">Shop</a></li>
-  		<li><a href="http://ladieslearningcode.com/about/#sponsors">Sponsors</a></li>
+      <li><h3><%= t('footer.support-us')%></h3></li>
+  		<li><a href="http://ladieslearningcode.myshopify.com/" target="_blank"><%= t('footer.shop') %></a></li>
+  		<li><a href="http://ladieslearningcode.com/about/#sponsors"><%= t('footer.sponsors') %></a></li>
   		<li>
   			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
   				<input type="hidden" name="cmd" value="_s-xclick">
   				<input type="hidden" name="hosted_button_id" value="36LEPAUDSAMJS">
-  				<input class="button-link" type="submit" value="Donate Now">
+  				<input class="button-link" type="submit" value="<%= t('footer.donate') %>">
   			</form>
   		</li>
-  		<li><a href="http://ladieslearningcode.com/get-involved/">Get Involved</a></li>
-  		<li><a href="http://jobs.ladieslearningcode.com/" target="_blank">Job Board</a></li>
-  		<li><a href="http://ladieslearningcode.com/about#press">Press</a></li>
+  		<li><a href="http://ladieslearningcode.com/get-involved/"><%= t('footer.get-involved') %></a></li>
+  		<li><a href="http://jobs.ladieslearningcode.com/" target="_blank"><%= t('footer.job-board') %></a></li>
+  		<li><a href="http://ladieslearningcode.com/about#press"><%= t('footer.press') %></a></li>
   	</ul>
     <div class="email-form">
-      <h3>Join Our Mailing List</h3>
-      <p class="small">SIGN UP NOW TO STAY IN THE LOOP</p>
+      <h3><%= t('footer.mailing-list-join') %></h3>
+      <p class="small"><%= t('footer.signup-form') %></p>
       <%= form_for(@mailing_list) do |f| %>
-      <%= f.text_field :email,type: 'email', placeholder: 'enter email here' %>
-      <%= f.submit 'subscribe', class: 'button button--primary' %>
+      <%= f.text_field :email,type: 'email', placeholder: t('footer.enter-email') %>
+      <%= f.submit t('footer.subscribe') , class: 'button button--primary' %>
       <% end %>
     </div>
   </div>
@@ -167,13 +167,13 @@
 <footer class="nav--sponsor">
   <div class="wrapper">
     <div class="as--creds">
-      <p>Development by <a href="http://upatfive.ca" target="_blank">Up at Five</a></p>
-      <p>Design by <a href="http://natcooper.com" target="_blank">Nat Cooper</a></p>
-      <p>&copy; <a href="http://ladieslearningcode.com" target="_blank">Ladies Learning Code</a></p>
+      <p><%= t('footer.developed-by') %> <a href="http://upatfive.ca" target="_blank">Up at Five</a></p>
+      <p><%= t('footer.designed-by') %> <a href="http://natcooper.com" target="_blank">Nat Cooper</a></p>
+      <p>&copy; <a href="http://ladieslearningcode.com" target="_blank"><%= t('footer.llc') %></a></p>
     </div>
     <div class="as--hashtag"><%= image_tag 'tlc-hashtag.svg'%></div>
     <div>
-      <p>in partnership with:</p><%= image_tag 'scotiabank-logo-white.svg'%>
+      <p><%= t('footer.parternship-with') %>:</p><%= image_tag 'scotiabank-logo-white.svg'%>
     </div>
   </div>
 </footer>
@@ -218,17 +218,6 @@
       $(this).toggleClass('active')
     })
     openSubMenus();
-    //open and close sub-menus
-
-    // $('.nav--link-with-sub').on('mouseenter', function(){
-    //   var sub = $(this).find('.nav--links-sub')
-    //   console.log(sub)
-    //   $(sub).toggleClass('hidden')
-    // })
-    // $('.nav--link-with-sub').on('mouseleave', function(){
-    //   var sub = $(this).find('.nav--links-sub')
-    //   $(sub).toggleClass('hidden')
-    // })
   })
 </script>
 </body>

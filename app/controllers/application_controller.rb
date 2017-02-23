@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :get_emails
   before_action :authenticate_user!
+  before_action :set_locale
 
   after_filter :store_location
 
@@ -14,6 +15,13 @@ class ApplicationController < ActionController::Base
   def store_location
     # store last url as long as it isn't a /users path
     session[:previous_url] = request.fullpath unless request.fullpath =~ /\/users/
+  end
+
+  def set_locale
+    locale = params[:locale].to_s.strip.to_sym
+      I18n.locale = I18n.available_locales.include?(locale) ?
+        locale :
+        I18n.default_locale
   end
 
   def after_sign_in_path_for(resource)
