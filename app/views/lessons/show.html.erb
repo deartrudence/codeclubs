@@ -41,7 +41,7 @@
   <p id="notice"><%= notice %></p>
 <% end %>  
 
-<div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper">
+<div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper lesson--single-title">
   <div class="lesson--single-title-bar custom-color-bg">
     <h2 class="as--no-top-margin"><%= @lesson.title %></h2>
     <h4 class="font-quicksand as--no-top-margin"><% if @lesson.grade.present?%>Grade <%= @lesson.grade%> • <% end %><%= @lesson.duration_in_minutes%> Minutes</h4>
@@ -63,7 +63,7 @@
       <li><a href="#suggested-lessons" class="custom-color-text">Suggested Lessons</a></li>
     </ul>
   </nav>
-  <nav class="lesson--share">
+  <nav class="lesson--single-share">
     <div>
       <p>Share this lesson!</p>
       <div class="wrapper--flex">
@@ -136,9 +136,9 @@
       </section>
     <% end %>
   </div>
-  <div class="sidebar">
+  <div class="lesson--single-sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
-    <div class="sidebar--text word-wrap">
+    <div class="lesson--single-sidebar--text word-wrap">
       <ul class="list--tags">
         <li class="title">Subjects:</li>
         <% @lesson.subject_list.each do |subject| %>

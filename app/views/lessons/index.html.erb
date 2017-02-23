@@ -3,7 +3,7 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="as--home-wrap">
+<div class="browse--wrap">
   <div class="wrapper as--home-intro">
     <h1>Lessons</h1>
     <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop.</p>
@@ -58,9 +58,8 @@
 
     </div>
   <% end %>
-  <div id="lessons-listing">
-    <%= render 'lessons_listing'%>
-  </div>
+  <%= render 'lessons_listing'%>
+  
 </div>
 
 <script>

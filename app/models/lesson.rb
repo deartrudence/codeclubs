@@ -41,6 +41,8 @@ class Lesson < ActiveRecord::Base
   CODING_CONCEPTS = ['Algorithms', 'Arrays',  'Boolean Logic','Conditional statements','Debugging','Events','Functions','Loops','Operators','Parallel Execution','Random Numbers', 
   'Sequences','States','Variables']
 
+  DURATION_IN_MINUTES = [10, 20, 30, 50, 60, 90, 120]
+
   def short_description
     if self.description.present?
       self.description.first(300) + ' ...'
