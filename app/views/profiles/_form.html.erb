@@ -75,10 +75,10 @@
     <div class="actions wrapper--flex">
       <%= f.submit 'Create Profile', class: "button button--primary" %>
       <%= link_to edit_user_registration_path, class: 'link--underlined link--underlined-small' do%>
-        <i class="fa fa-cog" aria-hidden="true"></i> Edit account settings
+        <i class="fa fa-cog" aria-hidden="true"></i> <%= t('profile.edit-account') %>
       <% end %> 
 
     </div>
-    <p class="internal right"><span class="required"></span> =Required Field</p>
+    <p class="internal right"><span class="required"></span> =<%= t('profile.required-field') %></p>
   <% end %>
 </div>
