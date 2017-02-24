@@ -28,10 +28,10 @@
       <div class="wrapper--flex">
         <div class="wrapper--flex"> 
          <div class="select">
-            <%= select_tag 'grade', options_for_select(Lesson::GRADE), {:include_blank => 'grade'}%>
+            <%= select_tag 'grade', options_for_select(Lesson::EN_GRADE), {:include_blank => 'grade'}%>
           </div>
           <div class="select">
-            <%= select_tag 'province', options_for_select(Lesson::PROVINCES), {:include_blank => 'province'}%>
+            <%= select_tag 'province', options_for_select(Lesson::EN_PROVINCES), {:include_blank => 'province'}%>
           </div>
 
           <div class="select">

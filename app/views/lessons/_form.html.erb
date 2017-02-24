@@ -67,7 +67,7 @@
         <input type="text" disabled value="<%= @lesson.author%>">
       </div>
       <div class="lesson--admin-edit-color">
-        <%= f.label :custom_color, 'Custom Lesson Colour:' %>
+        <%= f.label :custom_color, t('lessons.admin.custom-lesson-color') %>
         <%= f.text_field :custom_color %>
         <span class="color-swatch" style="background:<%= @lesson.custom_color%>;"></span>
       </div>
@@ -78,10 +78,10 @@
         </div>
       </div>
       <div class="lesson--admin-edit-message">
-        <%= f.label :verification_message, 'Badge Verification Message'%>
-        <span class="label-direction">(30 characters maximum)</span>
+        <%= f.label :verification_message, t('lessons.admin.badge-message')%>
+        <span class="label-direction"><%= t('lessons.admin.max-30') %></span>
         <div class="wrapper--flex">
-          <span class="message-for">This lesson is verified for...</span>
+          <span class="message-for"><%= t('lessons.admin.verified-for') %></span>
           <%= f.text_field :verification_message, placeholder: 'The Provincial Curriculum' %>
         </div>
       </div>
@@ -96,7 +96,7 @@
         <div>  
          <%= f.label t('dictionary.grade-level') %>
         <div class="select"> 
-          <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'French choose' : 'Choose')}%>
+          <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
         </div>
         </div>
         <div>
@@ -154,45 +154,45 @@
     </div>
     <!-- BEGINING OF SIDEBAR -->
     <div class="sidebar">
-      <%= f.label 'Intended Province', :province, class: 'required'%>
+      <%= f.label 'Intended Province',  class: 'required'%>
       <div class="select"> 
         <%= f.select :province, options_for_select((lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), @lesson.province)%>
       </div>
       <% if @lesson.feature_image.present? %>
         <%= image_tag @lesson.feature_image.url(:medium)%>
       <% end %>
-      <%= f.label :feature_image, class: 'required' %>
+      <%= f.label t('lessons.new.featured-image'), class: 'required' %>
       <%= f.file_field :feature_image, required: true %>
       <!-- TODO make semantic ui work -->
-      <%= f.label 'Curriculum Subjects', :subject_list, class: 'required'%>
+      <%= f.label t('lessons.new.curriculum-subjects'), :subject_list, class: 'required'%>
       <div class="select">    
         <%= f.select :subject_list, options_for_select((lang == 'fr' ?Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS) , @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
-        <%= f.label 'Curriculum Takeaways', :curriculum_concepts, class: 'required'%>
-        <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
-        <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
+        <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts, class: 'required'%>
+        <p class="small"><%= t('lessons.new.curriculum-takeaways-description') %></p>
+        <%= f.bootsy_area :curriculum_concepts, placeholder: t('lessons.new.add-curriculum-takeaway') %>
       </div>
-      <%= f.label 'Coding Concepts', :code_concept_list, class: 'required' %>
+      <%= f.label t('lessons.new.coding-concepts'), :code_concept_list, class: 'required' %>
       <div class="select">
         <%= f.select :code_concept_list, options_for_select((lang == 'fr' ? Lesson::FR_CODING_CONCEPTS : Lesson::EN_CODING_CONCEPTS), @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
       </div>
       <div>
-        <%= f.label 'Coding Takeaways', :programming_concepts%>
-        <p class="small">An optional text field should you want to expand upon the coding concepts covered in the lesson.</p>
-        <%= f.bootsy_area :programming_concepts, placeholder: 'Add any coding takeaways here.' %>
+        <%= f.label t('lessons.new.coding-takeaways'), :programming_concepts%>
+        <p class="small"><%= t('lessons.new.coding-takeaways-description') %></p>
+        <%= f.bootsy_area :programming_concepts, placeholder: t('lessons.new.add-coding-takeaway') %>
       </div>
       <% if current_user.profile.is_admin? %>
       <div>
-        <h3>References</h3>
-        <p class="small">List any references you used or found useful in the creation of this lesson.</p>
+        <h3><%= t('lessons.new.references') %></h3>
+        <p class="small"><%= t('lessons.new.reference-list') %></p>
         <%= f.fields_for :lesson_references do |builder| %>
           <%= render 'lesson_reference_fields', f: builder %>
         <% end %>
-        <%= link_to_add_fields "+ more", f, :lesson_references  %>
+        <%= link_to_add_fields t('lessons.new.more'), f, :lesson_references  %>
       </div>
       <div>
-        <h3>Suggested Lessons</h3>
+        <h3><%= t('lessons.new.suggested-lesson')%></h3>
         <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
         <div class="select">
           <%= f.collection_select :suggested_lessons, Lesson.all.is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
