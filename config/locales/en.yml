@@ -1,7 +1,7 @@
 en:
   hello: "Hello world"
   dictionary: 
-    author: 'Auteur'
+    author: 'Author'
     browse-lessons: 'Explorer les leçons'
     choose: 'Sélectionner'
     choose-file: 'Choisir le fichier'
@@ -19,7 +19,7 @@ en:
     verified: 'Vérifiée'
     non-verified: 'Non vérifiée'
     verified-for: 'Cette leçon est vérifiée pour…'
-    verified?: 'Leçon vérifiée?'
+    verified?: 'Lesson Verified?'
     workshops: 'workshops'
   top-nav: 
     about: 'About'
@@ -133,3 +133,12 @@ en:
       reference-link: 'Link to reference material'
       more: '+more'
       suggested-lesson: 'Suggested Lessons'
+    admin:
+      update-status: 'Update Status:'
+      pending-public: 'Pending / Public'
+      custom-lesson-color: 'Custom lesson colour:'
+      verified?: 'Lesson Verified?'
+      yes-no: 'Yes / No'
+      badge-message: 'Badge Verification Message '
+      max-30: '(30 characters maximum)'
+      verified-for: 'This lesson is verified for...'

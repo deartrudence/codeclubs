@@ -56,7 +56,8 @@ gem 'fog'
 gem 'acts_as_votable', '~> 0.10.0'
 
 # autocomplete for tagging gems (3gems)
-gem 'acts-as-taggable-on', '~> 3.4'
+# gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on', '~> 4.0'
 gem 'rails4-autocomplete'
 gem 'simple_form'
 

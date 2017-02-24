@@ -38,6 +38,9 @@ class LessonsController < ApplicationController
   # GET /lessons.json
   def index
     @lessons = Lesson.is_approved.includes(:profile).order(:cached_votes_up => :desc).first(21)
+    @french_lessons = Lesson.search("french")
+    @subject_tags = Lesson.all_tags_for_type(@french_lessons, "subject")
+    @concept_tags = Lesson.all_tags_for_type(@french_lessons, "code_concept")
     @grade =  params[:grade] != ''? params[:grade] : 'all grades'
     @subject = params[:subject] != ''? params[:subject] : 'all subjects'
     @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
@@ -145,6 +148,7 @@ class LessonsController < ApplicationController
         SuggestedLesson.create(lesson_id: @lesson.id, suggested_lesson_id: sug_lesson.to_i)
       end
     end
+    # raise 'hell'
     respond_to do |format|
       if @lesson.update(lesson_params)
         format.html { redirect_to edit_lesson_path(@lesson), notice: 'Lesson was successfully updated.' }

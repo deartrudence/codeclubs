@@ -6,6 +6,8 @@
 <div class="browse--wrap">
   <div class="wrapper as--home-intro">
     <h1>Lessons</h1>
+    <h2><%= @subject_tags %></h2>
+    <h2><%= @concept_tags %></h2>
     <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop.</p>
     <%= link_to 'Create New Lesson', new_lesson_path, class: 'button button--primary'%>
     <%= link_to 'Glossary of Terms', glossaries_path, class: 'button button--primary'%>
@@ -35,11 +37,11 @@
           </div>
 
           <div class="select">
-            <%= select_tag 'subject', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'subject'}%>
+            <%= select_tag 'subject', options_for_select(@subject_tags), {:include_blank => 'subject'}%>
           </div>
          
           <div class="select">
-            <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
+            <%= select_tag 'code_concept', options_for_select(@concept_tags), {:include_blank => 'programming concept'}%>
           </div>
          
         </div>
