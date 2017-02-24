@@ -13,28 +13,28 @@
       </div>
     <% end %>
 
-    <%= f.label :avatar, 'display picture' %>
+    <%= f.label :avatar, t('profile.display-photo') %>
     <%= f.file_field :avatar %>
 
-    <%= f.label :first_name, class: 'required' %>
+    <%= f.label t('profile.first-name'), class: 'required' %>
     <%= f.text_field :first_name, placeholder: 'Enter your first name', required: true %>
 
-    <%= f.label :last_name, class: 'required' %>
+    <%= f.label t('profile.last-name'), class: 'required' %>
     <%= f.text_field :last_name, placeholder: 'Enter your last name' %>
 
     <% if current_user.profile.present? %>
       <% if current_user.profile.is_admin? %>
           <%= f.label :role %>
-          <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%>
+          <%= select('profile', 'role',( lang == 'fr' ? Profile::FR_ROLE : Profile::EN_ROLE), {include_blank: true})%>
       <% end %>
     <% end %>
 
-    <%= f.label :school, 'school/organization' %>
+    <%= f.label :school, t('profile.school-org') %>
     <%= f.text_field :school, placeholder: 'Enter the name of your school or organization' %>
 
-    <%= f.label :province, 'What province are you based out of?', class: 'required' %>
+    <%= f.label :province, t('profile.what-province'), class: 'required' %>
     <div class="select">  
-     <%= select('profile', 'province', Profile::PROVINCES, {include_blank: true})%>
+     <%= select('profile', 'province',(lang == 'fr' ? Lesson::FR_PROVINCES :  Lesson::EN_PROVINCES), {include_blank: true})%>
     </div>
     
 
@@ -42,32 +42,32 @@
     <span class="internal font-quicksand">(for internal use only)</span>
     <%= f.text_field :gender %>
 
-    <%= f.label :years_of_experience %>
+    <%= f.label t('profile.years-experience') %>
     <span class="internal font-quicksand">(for internal use only)</span>
     <div class="select">
-      <%= select('profile', 'years_of_experience', Profile::YEARS_OF_EXPERIENCE, {prompt: 'Choose...'})%>
+      <%= select('profile', 'years_of_experience', (lang == 'fr' ? Profile::FR_YEARS_OF_EXPERIENCE : Profile::EN_YEARS_OF_EXPERIENCE), {prompt: 'Choose...'})%>
     </div>
   
 
-    <%= f.label :teaching_role, 'What is your role in teaching kids to code?', class: 'required' %>
+    <%= f.label :teaching_role, t('profile.teaching-role'), class: 'required' %>
     <div class="select">
-      <%= select('profile', 'teaching_role', Profile::TEACHING_ROLE, {prompt: 'I am best described as…'})%>
+      <%= select('profile', 'teaching_role',( lang == 'fr' ? Profile::FR_TEACHING_ROLE :  Profile::EN_TEACHING_ROLE), {prompt: 'I am best described as…'})%>
     </div>
 
 
 
-    <%= f.label :grade, 'What grade do you teach', class: 'required' %>
+    <%= f.label :grade, t('profile.what-grade-teach'), class: 'required' %>
     <div class="select">
-      <%= select('profile', 'grade', Profile::GRADE, {prompt: 'Choose...'})%>
+      <%= select('profile', 'grade', (lang == "fr" ? Lesson::FR_GRADE : Lesson::EN_GRADE), {prompt: 'Choose...'})%>
     </div>
 
-    <%= f.label :number_of_students, 'How many students per class?', class: 'required' %>
+    <%= f.label :number_of_students, t('profile.how-many-students'), class: 'required' %>
     <div class="select">
-      <%= select('profile', 'number_of_students', Profile::NUMBER_OF_STUDENTS, {prompt: 'Choose...'})%>
+      <%= select('profile', 'number_of_students', (lang == 'fr' ? Profile::FR_NUMBER_OF_STUDENTS : Profile::EN_NUMBER_OF_STUDENTS), {prompt: 'Choose...'})%>
     </div>
     <div class="wrapper--flex">
       <%= f.check_box :mailing_list %>
-      <%= f.label :mailing_list, 'Yes, opt me into the Mailing List to be the first to hear about industry news, upcoming workshops and events', class: 'mailing-label' %>
+      <%= f.label :mailing_list, t('profile.mail-list-optin'), class: 'mailing-label' %>
     </div>
 
 
