@@ -1,7 +1,7 @@
 <ul class="list--submitted list--lessons font-quicksand">
 	<% @lesson_submitted.each do |lesson|%>
 		<li>
-			<%= link_to edit_lesson_path(lesson) do %>
+			<%= link_to lesson_path(lesson) do %>
 				<span class="<%= lesson.status %>"><%= lesson.status %></span>
 				<span><%= lesson.verified?%></span>
 				<span><%= lesson.title %></span>

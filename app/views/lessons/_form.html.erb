@@ -48,10 +48,7 @@
         <% if @lesson.id.present? && !@lesson.submitted%>
           <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
            Submit
-          <% end %>
-        <% elsif !@lesson.submitted%>
-          <%= f.hidden_field :submitted, value: true %>  
-          <%= f.submit "Submit Lesson", class: "button button--primary" %>  
+          <% end %> 
         <% end %>
       </div>
     </div>
@@ -144,9 +141,6 @@
         <% end %>
         <%= link_to 'delete lesson', lesson_path(@lesson),
     data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: 'link--underlined delete-lesson'%>
-      <% elsif !@lesson.submitted%>
-        <%= hidden_field_tag submitted: true %>  
-        <%= f.submit "Submit Lesson", class: "button button--primary" %>
       <% end %>
     </div>
     <!-- BEGINING OF SIDEBAR -->
