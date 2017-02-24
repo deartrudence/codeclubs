@@ -101,7 +101,9 @@
         </div>
         <div>
           <%= f.label t('lessons.new.estimated-duration') %>
-          <%= f.number_field :duration_in_minutes %>
+          <div class="select"> 
+            <%= f.select :duration_in_minutes, options_for_select(Lesson::DURATION_IN_MINUTES, @lesson.duration_in_minutes), {:include_blank => 'Choose'}%>
+          </div>
         </div>
       </div>
 
@@ -153,8 +155,13 @@
       <% end %>
     </div>
     <!-- BEGINING OF SIDEBAR -->
+<<<<<<< HEAD
     <div class="sidebar">
       <%= f.label 'Intended Province',  class: 'required'%>
+=======
+    <div class="lesson--single-sidebar">
+      <%= f.label 'Intended Province', :province, class: 'required'%>
+>>>>>>> 06cdcbd81cbef02636dc4d2598afe53dea3d09c9
       <div class="select"> 
         <%= f.select :province, options_for_select((lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), @lesson.province)%>
       </div>

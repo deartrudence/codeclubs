@@ -113,8 +113,8 @@ class LessonsController < ApplicationController
   def create
     @lesson = Lesson.new(lesson_params)
     @lesson.profile = current_user.profile
-    @lesson.subject_list.add(params[:subject_list], parse: true)
-    @lesson.code_concept_list.add(params[:code_concept_list], parse: true)
+    @lesson.subject_list.add(params[:lesson][:subject_list], parse: true)
+    @lesson.code_concept_list.add(params[:lesson][:code_concept_list], parse: true)
     # @lesson.grade_list.add(params[:grade_list], parse: true) 
     @lesson.level = params[:lesson][:level].to_i
     @suggested_lessons = params[:lesson][:suggested_lessons]
@@ -137,6 +137,8 @@ class LessonsController < ApplicationController
   # PATCH/PUT /lessons/1
   # PATCH/PUT /lessons/1.json
   def update
+    @lesson.subject_list.add(params[:lesson][:subject_list], parse: true)
+    @lesson.code_concept_list.add(params[:lesson][:code_concept_list], parse: true)
     @suggested_lessons = params[:lesson][:suggested_lessons]
     if @suggested_lessons.present?
       @suggested_lessons.each do |sug_lesson|

@@ -2,24 +2,27 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 <div class="as--home-wrap">
-	<div class="wrapper as--landing-page">
+	<main>
+		<div class="wrapper as--landing-page">
 
-		<h1><%= t('pages.intro-1')%></h1>
-		<p><%= t('pages.intro-2')%></p>
-	</div>
-	<div class="wrapper--flex wrapper button-boxes">
-		<%= link_to about_path do%>
-			<h2><%= t('pages.get-started')%></h2>
-			<div class="button button--primary">How-To Guide</div>
-		<% end %>
-		<%= link_to lessons_path do%>
-			<h2><%= t('pages.find-lessons') %></h2>
-			<div class="button button--primary"><%= t('pages.browse-lessons')%></div>
-		<% end %>
-		<a href="#" class="button">
-			<h2><%= t('pages.join-workshop')%></h2>
-			<div class="button button--primary"><%= t('pages.workshops')%></div>
-		</a>
-		
-	</div>
+			<h1><%= t('pages.intro-1')%></h1>
+			<p><%= t('pages.intro-2')%></p>
+		</div>
+		<div class="wrapper--flex wrapper button-boxes">
+			<%= link_to about_path do%>
+				<h2><%= t('pages.get-started')%></h2>
+				<div class="button button--primary">How-To Guide</div>
+			<% end %>
+			<%= link_to lessons_path do%>
+				<h2><%= t('pages.find-lessons') %></h2>
+				<div class="button button--primary"><%= t('pages.browse-lessons')%></div>
+			<% end %>
+			<a href="#" class="button">
+				<h2><%= t('pages.join-workshop')%></h2>
+				<div class="button button--primary"><%= t('pages.workshops')%></div>
+			</a>
+			
+		</div>
+	</main>
+	<%= video_tag 'Typing-numbers.mp4', autoplay: true, loop: true, class: 'home--video'%>
 </div>

@@ -44,6 +44,8 @@ class Lesson < ActiveRecord::Base
   EN_CODING_CONCEPTS = ['Algorithms', 'Arrays',  'Boolean Logic','Conditional statements','Debugging','Events','Functions','Loops','Operators','Parallel Execution','Random Numbers', 'Sequences','States','Variables']
   FR_CODING_CONCEPTS =  ['Algorithmes ', 'Tableaux', 'Logique booléenne', 'Instructions conditionnelles', 'Débogage', 'Événements', 'Fonctions', 'Boucles Opérateurs', 'Traitement en parallèle', ' Nombres aléatoires', 'Séquences', 'États', 'Variables']
 
+  DURATION_IN_MINUTES = [10, 20, 30, 50, 60, 90, 120]
+
   def short_description
     if self.description.present?
       self.description.first(300) + ' ...'
