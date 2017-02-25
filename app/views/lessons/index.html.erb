@@ -4,7 +4,7 @@
 <% end %>
 
 <!-- Set user's language based on param -->
-<% lang = params[:locale] %>
+<% lang = session[:locale].to_s %>
 
 <div class="browse--wrap">
   <div class="wrapper as--home-intro">
@@ -17,7 +17,7 @@
 <div class="wrapper" id="search-area" >
   <%= form_tag(lessons_path, remote: true, method: :get, id: 'lesson-index-filters') do %>
   <h2 class="as--admin-title as--browse-title">
-    <%= t('top-nav.browse-lessons') %>
+    <%= t('dictionary.browse-lessons') %>
     <span class="grid" data-browse="grid">
       <input type="radio" name="browse" value="grid" id="grid" class="hidden">
       <label for="grid"><i class="fa fa-th-large" aria-hidden="true"></i></label>

@@ -1,11 +1,11 @@
 <div class="list--header list--header-browse flex--wrapper">
   <div>bk</div>
-  <div>Lesson Title</div>
-  <div>Grade</div>
+  <div><%= t('lessons.dashboard.lesson-title') %></div>
+  <div><%= t('dictionary.grade-level') %></div>
   <div>Prov</div>
-  <div>Subjects</div>
-  <div>Concepts</div>
-  <div>Created</div>  
+  <div><%= t('dictionary.subjects') %></div>
+  <div><%= t('lessons.dashboard.concepts') %></div>
+  <div><%= t('lessons.dashboard.created') %></div>  
 </div>
 <ul class="list--browse list--lessons font-quicksand">
   <% @lessons.each do |lesson|%>
@@ -14,7 +14,7 @@
         <span><%= lesson.get_upvotes.size %></span>
         <span><%= lesson.title %></span>
         <span><%= lesson.grade %></span>
-        <span>province</span>
+        <span><%= lesson.province %></span>
         <span><%= lesson.subject_list%></span>
         <span><%= lesson.code_concept_list %></span>
         <span><%= lesson.format_date(lesson.created_at)%></span>

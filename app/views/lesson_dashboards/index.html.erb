@@ -35,7 +35,7 @@
     <% if @lesson_submitted.present? %>
       <div class="list--header list--header-submitted flex--wrapper">
         <div><%= t('lessons.dashboard.status') %></div>
-        <div><%= t('lessons.dashboard.verified') %></div>
+        <div><%= t('dictionary.verified') %></div>
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
             <%= label :submitted_lesson_title, 'Lesson Title' %>

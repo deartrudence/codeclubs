@@ -26,9 +26,6 @@
     </div>
   <% end %>
 
-  <!-- Set user's language based on param -->
-  <% lang = params[:locale] %>
-
   <header class="header--secondary custom-color-bg">
     <div class="wrapper--flex">
       <%if @lesson.title.present?%>
@@ -161,7 +158,7 @@
     <!-- BEGINING OF SIDEBAR -->
 
     <div class="lesson--single-sidebar">
-      <%= f.label t('lessons.new.intentded-province'), :province, class: 'required'%>
+      <%= f.label t('lessons.intended-province'), :province, class: 'required'%>
       <div class="select"> 
         <%= f.select :province, options_for_select((lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), @lesson.province)%>
       </div>
@@ -180,12 +177,12 @@
         <p class="small"><%= t('lessons.new.curriculum-takeaways-description') %></p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: t('lessons.new.add-curriculum-takeaway') %>
       </div>
-      <%= f.label t('lessons.new.coding-concepts'), :code_concept_list, class: 'required' %>
+      <%= f.label t('dictionary.coding-concepts'), :code_concept_list, class: 'required' %>
       <div class="select">
         <%= f.select :code_concept_list, options_for_select((lang == 'fr' ? Lesson::FR_CODING_CONCEPTS : Lesson::EN_CODING_CONCEPTS), @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
       </div>
       <div>
-        <%= f.label t('lessons.new.coding-takeaways'), :programming_concepts%>
+        <%= f.label t('dictionary.coding-takeaways'), :programming_concepts%>
         <p class="small"><%= t('lessons.new.coding-takeaways-description') %></p>
         <%= f.bootsy_area :programming_concepts, placeholder: t('lessons.new.add-coding-takeaway') %>
       </div>

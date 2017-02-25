@@ -33,7 +33,7 @@
       <h3><%= t('about-us.review-list') %></h3>
       <div class="button button--primary"><%= t('about-us.more-resources')%></div>
     </a>
-    <a href="mailto:carolyn@ladieslearningcode.com">
+    <a href="mailto:carolyn@ladieslearningcode.com" target="_blank">
       <h3><%= t('about-us.more-resources') %></h3>
       <div class="button button--primary"><%= t('about-us.email-us') %></div>
     </a>
@@ -68,10 +68,10 @@
   <div class="modal modal--about" id="pdf_download">
       <%= simple_form_for(@download_list, remote: true, :authenticity_token => true) do |f| %>
         <%= f.error_notification %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :email %>
-          <%= f.button :submit, 'Download', class:'button button--primary', download: 'assets/TLC-gettingstartedguide.pdf', id: 'pdf-trigger' %>
+          <%= f.input :first_name, label: t('profile.first-name') %>
+          <%= f.input :last_name, label: t('profile.last-name') %>
+          <%= f.input :email, label: t('dictionary.email') %>
+          <%= f.button :submit, t('dictionary.download'), class:'button button--primary', download: 'assets/TLC-gettingstartedguide.pdf', id: 'pdf-trigger' %>
       <% end %>
   </div>
 </div>

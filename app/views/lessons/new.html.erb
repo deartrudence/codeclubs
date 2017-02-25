@@ -1,6 +1,9 @@
 <div class="wrapper form--new-lesson">
 
-  <%= render 'form' %>
+	<!-- Set user's language based on param -->
+  <% lang = session[:locale].to_s %>
+
+  <%= render 'form', lang: lang %>
 
 </div>
 
