@@ -163,7 +163,6 @@ fr:
       langs: 'Langues:'
       subjects: 'Disciplines'
       subject-takeaways: 'Notions de la discipline'
-      coding-concepts: 'Concepts de programmation'
       coding-takeaways: 'Notions de programmation'
       references: 'Références'
     admin:

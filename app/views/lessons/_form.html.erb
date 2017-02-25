@@ -117,22 +117,22 @@
         <%= f.text_area :description, placeholder: t('lessons.new.write-short-summary-here') %>
       </div>
       <div>
-        <h3 class="title--tertiary custom-color-title"><%= t('lessons.new.prep') %></h3>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.prep') %></h3>
         <p class="small"><%= t('lessons.new.prep-description') %></p>
         <%= f.bootsy_area :prep, placeholder: t('lessons.new.prep-required') %>
       </div>
       <div class="textarea-content">
-        <h3 class="title--tertiary required custom-color-title"><%= t('lessons.new.lesson') %></h3>
+        <h3 class="title--tertiary required custom-color-title"><%= t('lessons.the-lesson') %></h3>
         <p class="small"><%= t('lessons.new.lesson-description') %></p>
         <%= f.bootsy_area :content, placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
       </div>
       <div>
-        <h3 class="title--tertiary custom-color-title"><%= t('lessons.new.assessment') %></h3>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.assessment') %></h3>
         <p class="small"><%= t('lessons.new.assessment-description') %></p>
         <%= f.bootsy_area :answers, placeholder: t('lessons.new.provide-answer') %>
       </div>
       <div>
-        <h3 class="title--tertiary custom-color-title"><%= t('lessons.new.extenstions') %></h3>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.extenstions') %></h3>
         <p class="small"><%= t('lessons.new.extensions-description') %></p>
         <%= f.bootsy_area :extensions, placeholder: t('lessons.new.provide-extension') %>
       </div>
@@ -199,7 +199,7 @@
         <%= link_to_add_fields t('lessons.new.more'), f, :lesson_references  %>
       </div>
       <div>
-        <h3><%= t('lessons.new.suggested-lesson')%></h3>
+        <h3><%= t('lessons.suggested-lesson')%></h3>
         <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
         <div class="select">
           <%= f.collection_select :suggested_lessons, Lesson.all.is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
