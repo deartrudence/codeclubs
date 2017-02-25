@@ -24,7 +24,7 @@
 
     <% if current_user.profile.present? %>
       <% if current_user.profile.is_admin? %>
-          <%= f.label :role %>
+          <%= f.label t('profile.teaching-role') %>
           <%= select('profile', 'role',( lang == 'fr' ? Profile::FR_ROLE : Profile::EN_ROLE), {include_blank: true})%>
       <% end %>
     <% end %>
@@ -38,7 +38,7 @@
     </div>
     
 
-    <%= f.label :gender %>
+    <%= f.label t('profile.gender') %>
     <span class="internal font-quicksand">(for internal use only)</span>
     <%= f.text_field :gender %>
 
@@ -79,6 +79,6 @@
       <% end %> 
 
     </div>
-    <p class="internal right"><span class="required"></span> =<%= t('profile.required-field') %></p>
+    <p class="internal right"><span class="required"></span> =<%= t('dictionary.required-field') %></p>
   <% end %>
 </div>

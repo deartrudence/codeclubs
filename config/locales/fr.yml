@@ -30,6 +30,8 @@ fr:
     time: 'Durée'
     author: 'Auteur'
     learn-more: 'En savoir plus'
+    email: 'Courriel'
+    required-field: 'Champ requis'
   top-nav: 
     about: 'À propos'
     howto: 'Guide pratique'
@@ -148,6 +150,19 @@ fr:
       badge-message: 'Message de certification : '
       max-30: '(maximum de 30 caractères)'
       verified-for: 'Cette leçon est vérifiée pour…'
+    dashboard:
+      my-lesson-dashboard: 'Tableau de bord de leçons'
+      drafts: 'Brouillons'
+      submitted: 'Soumissions'
+      bookmarked-lessons: 'Leçons sauvegardées'
+      lesson-collections: 'Collections de leçons'
+      lesson-title: Titre de la leçon
+      concepts: 'Concepts'
+      created: 'Création'
+      add-to-collection: 'Ajouter à la collection'
+      status: 'Statut'
+      verified: 'Vérifiée?'
+      remove: 'Effacer'
   profile:
     my-profile: 'Mon profil'
     name: 'Nom:'
@@ -190,4 +205,3 @@ fr:
     mail-list-optin: 'Oui, inscrivez-moi à la liste d’envoi afin de me garder à l’affût des actualités de l’industrie ainsi que des ateliers et des événements à venir.'
     edit-profile: 'Modifier le profil'
     edit-account: 'Modifier les paramètres du compte'
-    required-field: 'Champ requis'

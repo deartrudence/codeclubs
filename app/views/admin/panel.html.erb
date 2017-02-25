@@ -73,7 +73,7 @@
         <div class="users-exports-container">
           
           <div class="wrapper--flex">
-            <% Profile::CSV_OPTIONS.each do |option|%>
+            <% Profile::EN_CSV_OPTIONS.each do |option|%>
               <div>  
                 <%= check_box_tag('csv_options[]', option)%>
                 <label for="csv_options"><%= option.humanize %></label>

@@ -1,9 +1,9 @@
 <div class="wrapper">
-	<h1 class="as--admin-title">My Lesson Dashboard</h1>
+	<h1 class="as--admin-title"><%= t('lessons.dashboard.my-lesson-dashboard') %></h1>
   <ul class="tabs wrapper--flex">
-    <li class="tab-link" data-tab="drafts-tab">Drafts</li>
-    <li class="tab-link" data-tab="submitted-tab">Submitted</li>
-    <li class="tab-link" data-tab="bookmarked-tab">Bookmarked Lessons</li>
+    <li class="tab-link" data-tab="drafts-tab"><%= t('lessons.dashboard.drafts') %></li>
+    <li class="tab-link" data-tab="submitted-tab"><%= t('lessons.dashboard.submitted') %></li>
+    <li class="tab-link" data-tab="bookmarked-tab"><%= t('lessons.dashboard.bookmarked-lessons') %></li>
   </ul>
   <div class="tab-content" id="drafts-tab">
     <% if @lesson_drafts.present? %>
@@ -15,9 +15,9 @@
             <%= hidden_field :draft_filters, 'filter_options' %>
           <% end %>
         </div>
-        <div>Grade</div>
-        <div>Subjects</div>
-        <div>Concepts</div>
+        <div><%= t('dictionary.grade-level') %></div>
+        <div><%= t('dictionary.subjects') %></div>
+        <div><%= t('lessons.dashboard.concepts') %></div>
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
             <%= label :lesson_updated, 'Updated' %>
@@ -34,10 +34,8 @@
   <div class="tab-content" id="submitted-tab">
     <% if @lesson_submitted.present? %>
       <div class="list--header list--header-submitted flex--wrapper">
-        <div>
-         Status
-        </div>
-        <div>Verified?</div>
+        <div><%= t('lessons.dashboard.status') %></div>
+        <div><%= t('lessons.dashboard.verified') %></div>
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
             <%= label :submitted_lesson_title, 'Lesson Title' %>
@@ -45,8 +43,8 @@
             <%= hidden_field :submitted_filters, 'filter_options' %>
           <% end %>
         </div>
-        <div>Grade</div>
-        <div>Subjects</div> 
+        <div><%= t('dictionary.grade-level') %></div>
+        <div><%= t('dictionary.subjects') %></div> 
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
             <%= label :submitted_lesson_updated, 'Updated' %>
@@ -64,12 +62,12 @@
   <div class="tab-content" id="bookmarked-tab">
   <% if @lesson_bookmarked.present? %>
     <div class="list--header list--header-bookmarked flex--wrapper">
-      <div>Lesson Title</div>
-      <div>Author</div>
-      <div>Grade</div>
-      <div>Subjects</div> 
+      <div><%= t('lessons.dashboard.lesson-title') %></div>
+      <div><%= t('dictionary.author') %></div>
+      <div><%= t('dictionary.grade-level') %></div>
+        <div><%= t('dictionary.subjects') %></div> 
       <div>Updated</div>
-      <div>Remove?</div> 
+      <div><%= t('lessons.dashboard.remove') %>?</div> 
     </div>
     <div id="bookmarked-tab-content">
       <%= render 'lesson_bookmarked', locals: {lessons: @lesson_bookmarked}%>
@@ -86,6 +84,7 @@
 
   function ajaxSubmit(form) {
     var data = $(form).serialize()
+    console.log(data)
     $.ajax({
       url: '',  
       method: 'GET', 
