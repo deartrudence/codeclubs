@@ -2,7 +2,7 @@
  * English translations for bootstrap-wysihtml5 and Bootsy
  */
 (function($){
-  $.fn.wysihtml5.locale['en'] = {
+  $.fn.wysihtml5.locale['fr'] = {
     font_styles: {
       normal: 'Texte normal',
       h1: 'Titre 1',
