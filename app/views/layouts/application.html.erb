@@ -128,6 +128,9 @@
 </nav>
 
 <div class="container-codeclubs">
+  <%= link_to "English", { locale: :en } %>
+  <%= link_to "French", { locale: :fr } %>
+
   <%= yield %>
 </div>
 <footer class="nav--footer">
@@ -169,7 +172,7 @@
     <div class="as--creds">
       <p><%= t('footer.developed-by') %> <a href="http://upatfive.ca" target="_blank">Up at Five</a></p>
       <p><%= t('footer.designed-by') %> <a href="http://natcooper.com" target="_blank">Nat Cooper</a></p>
-      <p>&copy; <a href="http://ladieslearningcode.com" target="_blank"><%= t('footer.llc') %></a></p>
+      <p> <a href="http://ladieslearningcode.com" target="_blank"><%= t('footer.llc') %></a></p>
     </div>
     <div class="as--hashtag"><%= image_tag 'tlc-hashtag.svg'%></div>
     <div>
