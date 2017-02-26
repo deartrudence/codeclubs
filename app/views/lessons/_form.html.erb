@@ -162,6 +162,10 @@
       <div class="select"> 
         <%= f.select :province, options_for_select((lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), @lesson.province)%>
       </div>
+      <%= f.label :language, class: 'required' %>
+      <div class="select">
+        <%= f.select :language, options_for_select(Lesson::LANGUAGES, @lesson.language) %>
+      </div>
       <% if @lesson.feature_image.present? %>
         <%= image_tag @lesson.feature_image.url(:medium)%>
       <% end %>

@@ -172,8 +172,8 @@ en:
       remove: 'Remove?'
   profile:
     my-profile: 'My Profile'
-    name: 'Name:'
-    school: 'School:'
+    name: 'Name'
+    school: 'School'
     edit-profile: 'Edit My Profile'
     display-photo: 'Display Picture'
     first-name: 'First name'

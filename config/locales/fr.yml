@@ -201,8 +201,8 @@ fr:
       remove: 'Effacer'
   profile:
     my-profile: 'Mon profil'
-    name: 'Nom:'
-    school: 'École:'
+    name: 'Nom'
+    school: 'École'
     edit-profile: 'Modifier mon profil'
     display-photo: 'Photo de profil'
     first-name: 'Prénom'

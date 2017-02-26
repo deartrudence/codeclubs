@@ -32,6 +32,10 @@ class Lesson < ActiveRecord::Base
 
   scope :is_verified?, -> { where( verified: true ) }
 
+  scope :by_language, -> (lang) { where( language: lang) }
+
+  LANGUAGES = ['en', 'fr']
+
   EN_GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
   FR_GRADE = ['Maternelle' , '1ere', '2e', '3e', '4e', '5e', '6e', '7e (Sec 1)', '8e (Sec 2)', '9e (Sec 3)', '10e (Sec 4)', '11e (Sec 5)', '12e']
 

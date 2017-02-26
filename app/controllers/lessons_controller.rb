@@ -37,10 +37,11 @@ class LessonsController < ApplicationController
   # GET /lessons
   # GET /lessons.json
   def index
-    @lessons = Lesson.is_approved.includes(:profile).order(:cached_votes_up => :desc).first(21)
-    @french_lessons = Lesson.search("french")
-    @subject_tags = Lesson.all_tags_for_type(@french_lessons, "subject")
-    @concept_tags = Lesson.all_tags_for_type(@french_lessons, "code_concept")
+    lang = session[:locale]
+    @lessons = Lesson.is_approved.includes(:profile).by_language(lang).order(:cached_votes_up => :desc).first(21)
+    @lessons_for_tags = Lesson.by_language(lang)
+    @subject_tags = Lesson.all_tags_for_type(@lessons_for_tags, "subject")
+    @concept_tags = Lesson.all_tags_for_type(@lessons_for_tags, "code_concept")
     @grade =  params[:grade] != ''? params[:grade] : 'all grades'
     @subject = params[:subject] != ''? params[:subject] : 'all subjects'
     @code_concept = params[:code_concept] != ''? params[:code_concept] : 'all coding concepts'
@@ -189,6 +190,6 @@ class LessonsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lesson_params
-      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id, :approved, :references, :submitted, :grade, :custom_color, :verification_message, :verified, :province, lesson_references_attributes: [:id, :title, :url, :_destroy])
+      params.require(:lesson).permit(:title, :duration_in_minutes, :level, :description, :curriculum_concepts, :prep, :programming_concepts, :content, :extensions, :answers, :video_link, :profile_id, :feature_image, :file_upload, :code_concept_list, :subject_list, :grade_list, :bootsy_image_gallery_id, :approved, :references, :submitted, :grade, :custom_color, :verification_message, :verified, :province, :language, lesson_references_attributes: [:id, :title, :url, :_destroy])
     end
 end

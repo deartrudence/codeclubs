@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170220191902) do
+ActiveRecord::Schema.define(version: 20170226122253) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20170220191902) do
     t.string   "verification_message"
     t.boolean  "verified",                   default: false
     t.string   "province"
+    t.string   "language",                   default: "en"
   end
 
   add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down"
