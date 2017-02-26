@@ -103,7 +103,7 @@
         <div>
           <%= f.label t('lessons.new.estimated-duration') %>
           <div class="select"> 
-            <%= f.select :duration_in_minutes, options_for_select(Lesson::DURATION_IN_MINUTES, @lesson.duration_in_minutes), {:include_blank => 'Choose'}%>
+            <%= f.select :duration_in_minutes, options_for_select(Lesson::DURATION_IN_MINUTES, @lesson.duration_in_minutes), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
           </div>
         </div>
       </div>
@@ -135,7 +135,7 @@
       </div>
       <%= f.label t('lessons.new.file-upload') %>
       <p class="small">
-        <%= t(' lessons.new.file-upload-description') %>
+        <%= t('lessons.new.file-upload-description') %>
       </p>
       <%= f.file_field :file_upload %>
       <%= f.label t('lessons.new.video-link') %>

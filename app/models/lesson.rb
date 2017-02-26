@@ -56,12 +56,20 @@ class Lesson < ActiveRecord::Base
     self.user.profile.name
   end
 
-  def status
-    approved ? 'public' : 'pending'
+  def status(lang)
+    if lang == 'fr'
+      approved ? 'public' : 'En attente'
+    else
+      approved ? 'public' : 'pending'
+    end
   end
 
-  def verified?
-    verified ? 'Y' : 'N'
+  def verified?(lang)
+    if lang == 'fr'
+      verified ? 'O' : 'N'
+    else
+      verified ? 'Y' : 'N'
+    end
   end
 
   def liked_by_user(current_user)

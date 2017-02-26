@@ -1,5 +1,34 @@
 fr:
   hello: "Bonjour world"
+  bootsy:
+    action:
+      refresh: FR Refresh
+      destroy: FR Delete
+      close: FR Close
+      load: FR Load
+      or: FR or
+      upload: FR Upload New Image
+      submit_upload: FR Go
+      enter_image_url: FR Enter a URL from the web...
+    image_gallery: FR Image Gallery
+    image:
+      s: FR Image
+      p: FR Images
+      size: FR Size
+      large: FR Large
+      medium: FR Medium
+      small: FR Small
+      original: FR Original
+      new: FR New image
+      confirm:
+        destroy: FR Are you sure you want to delete this image?
+      position:
+        left: FR Left
+        right: FR Right
+        inline: FR Inline
+    no_images_uploaded: FR There are currently no uploaded images.
+    js:
+      alert_unsaved: FR You have unsaved changes.
   dictionary: 
     author: 'Auteur'
     browse-lessons: 'Explorer les leçons'
@@ -24,6 +53,9 @@ fr:
     about: 'À propos'
     howto: 'Guide pratique'
     glossary: 'Glossaire'
+    glossary-description: 'Un glossaire définissant les termes fréquemment employés pour enseigner des concepts de programmation et de pensée informatique.'
+    terminology: 'Terme'
+    definition: 'Définition'
     province: 'Province'
     clear-filter: 'Réinitialiser les filtres'
     only-verified: 'Leçons vérifiées seulement'

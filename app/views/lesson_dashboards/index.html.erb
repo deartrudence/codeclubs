@@ -1,3 +1,6 @@
+<!-- Set user's language based on param -->
+  <% lang = session[:locale].to_s %>
+
 <div class="wrapper">
 	<h1 class="as--admin-title"><%= t('lessons.dashboard.my-lesson-dashboard') %></h1>
   <ul class="tabs wrapper--flex">
@@ -54,7 +57,7 @@
         </div> 
       </div>
       <div id="submitted-tab-content">
-        <%= render 'lesson_submitted', locals: {lessons: @lesson_submitted}%>
+        <%= render 'lesson_submitted', locals: {lessons: @lesson_submittedm, lang: lang}%>
       </div>
     <% end %>
   </div>

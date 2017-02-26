@@ -1,3 +1,6 @@
+<!-- Set user's language based on param -->
+  <% lang = session[:locale].to_s %>
+
 <div class="wrapper">
 
   <h1 class="as--admin-title">Admin Dashboard</h1>
@@ -37,7 +40,7 @@
       <div>Delete?</div>
     </div>
     <div id="lessons-admin" class="as--lessons-admin">
-      <%= render 'lessons_admin' %>
+      <%= render 'lessons_admin', lang: lang %>
     </div>
   </div>
 
