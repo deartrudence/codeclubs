@@ -34,6 +34,7 @@ en:
     learn-more: 'Learn More'
     email: 'Email'
     required-field: 'Required Field'
+    min-8: '(8 characters maximum)'
   top-nav: 
     faq: 'F.A.Q.'
     resources: 'More Resources'

@@ -85,7 +85,12 @@
         </ul>
       </li>
       <li><a href="#"><%= t('dictionary.workshops')%></a></li>
-
+      <li><% if session[:locale].to_s == "en" %>
+            <%= link_to "Français", { locale: :fr } %>
+          <% else %>
+            <%= link_to "English", { locale: :en } %>
+          <% end %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav--link-with-sub">
           <% if current_user.profile.present? %>
@@ -128,9 +133,6 @@
 </nav>
 
 <div class="container-codeclubs">
-  <%= link_to "English", { locale: :en } %>
-  <%= link_to "French", { locale: :fr } %>
-
   <%= yield %>
 </div>
 <footer class="nav--footer">

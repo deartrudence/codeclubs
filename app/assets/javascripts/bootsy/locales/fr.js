@@ -22,13 +22,13 @@
       indent: 'Indent'
     },
     link: {
-      insert: 'Insert link',
-      cancel: 'Cancel',
-      target: 'Open link in new window'
+      insert: 'FR Insert link',
+      cancel: 'FR Cancel',
+      target: 'FR Open link in new window'
     },
     image: {
-      insert: 'Insert image',
-      cancel: 'Cancel'
+      insert: 'FR Insert image',
+      cancel: 'FR Cancel'
     },
     html: {
       edit: 'Edit HTML'
@@ -47,8 +47,8 @@
       orange: 'Orange'
     },
     bootsy: {
-      alertUnsaved: 'You have unsaved changes.',
-      error: 'Something went wrong. Please try again later.'
+      alertUnsaved: 'FR You have unsaved changes.',
+      error: 'FR Something went wrong. Please try again later.'
     }
   };
 }(jQuery));

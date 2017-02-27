@@ -15,6 +15,8 @@ end
 
 # Multi-lingual
 gem 'rails-i18n'
+# internationalization for Devise
+gem 'devise-i18n'
 
 #for regex query
 # gem 'wherex'

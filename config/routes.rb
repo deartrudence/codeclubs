@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   scope "/:locale", local: /en|fr/ do 
     resources :lesson_references
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
 
 
 
-    mount Bootsy::Engine => '/bootsy', as: 'bootsy'
     root 'pages#landing_page'
     resources :lessons do
       get :autocomplete_subject_name, :on => :collection
