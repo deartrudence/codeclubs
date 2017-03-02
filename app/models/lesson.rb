@@ -28,7 +28,8 @@ class Lesson < ActiveRecord::Base
 
   scope :has_been_submitted?, -> (status) { where submitted: status }
 
-  scope :order_asc, -> { where( submitted: false ).order("title asc") }
+  #TODO - is this used
+  # scope :order_asc, -> { where( submitted: false ).order("title asc") }
 
   scope :is_verified?, -> { where( verified: true ) }
 

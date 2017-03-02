@@ -1,6 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Lesson, type: :model do
+  let(:lesson) { FactoryGirl.create(:lesson, profile: FactoryGirl.create(:profile))}
+
   it "has a valid factory" do
     build(:lesson).should be_valid
   end
@@ -9,9 +11,6 @@ RSpec.describe Lesson, type: :model do
     expect(lesson.short_description).to eq("Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, ...")
   end
 
-  # it "is valid with title, level, duration_in_minutes, description, and content"
-  #   lesson = build(:lesson)
-  # end
   it "is invalid without title" do
     lesson = Lesson.new(title: nil)
     lesson.valid?
@@ -47,6 +46,16 @@ RSpec.describe Lesson, type: :model do
     expect(Lesson.is_approved).to include lesson
   end
 
+  it "should only include verified lessons when scoped with is_verified?" do
+    lesson = create(:lesson, approved: true, verified: true )
+    expect(Lesson.is_verified?).to include lesson
+  end 
+
+  it "should return the submission status of the lesson" do
+    lesson = create(:lesson, submitted: true)
+    expect(Lesson.has_been_submitted?(true)).to include lesson
+  end  
+
   it "is owned by current user " do
     lesson = build(:lesson)
     current_user = lesson.user
@@ -64,12 +73,17 @@ RSpec.describe Lesson, type: :model do
     expect(lessons.search('Second')).to include lesson2
   end
 
+  it "should return Y when verified" do 
+    lesson = create(:lesson, approved: true, verified: true )
+    expect(lesson.verified?).to eq('Y')
+  end
+
   # it "is liked by current user" do
   #   @current_user = create(:user)
   #   user = build(:user, email: 'test@test.com', password: 'password')
   #   profile = build(:profile, user: user)
   #   @lesson = build(:lesson, profile: profile)
-  #   @lesson.liked_by @current_user
-  #   expect(@lesson.liked_by_user(@current_user)).to eq(true)
+  #   @lesson.upvote_by @current_user 
+  #   expect(@lesson.votes_for.size).to eq(1)
   # end
 end
