@@ -6,9 +6,9 @@ class GlossariesController < ApplicationController
   def index
     if params[:alphabetical]
       if params[:alphabetical][:terminology] == '1'
-        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term desc')
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('lower(term) desc')
       elsif params[:alphabetical][:terminology] == '0'
-        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term asc')
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('lower(term) asc')
       end
       respond_to do |format|
         format.js { render :partial => "glossary_list_js" }

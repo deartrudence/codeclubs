@@ -186,7 +186,7 @@
         <h3>Suggested Lessons</h3>
         <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
         <div class="select">
-          <%= f.collection_select :suggested_lessons, Lesson.all.is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
+          <%= f.collection_select :suggested_lessons, Lesson.where.not(id: @lesson.id).is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
         </div>
         <% if @lesson.suggested_lessons.present?%>
           <ul class="list--suggested-lessons-edit">

@@ -20,7 +20,7 @@ class AdminController < ApplicationController
       end
 
       if params[:lesson_title].present?
-        @lessons = params[:lesson_title]['Lesson Title'].present? && params[:lesson_title]['Lesson Title'] == '1' ? @lessons.order('title desc') : @lessons.order('title asc')
+        @lessons = params[:lesson_title]['Lesson Title'].present? && params[:lesson_title]['Lesson Title'] == '1' ? @lessons.order('lower(title) desc') : @lessons.order('lower(title) asc')
       end
 
       if params[:created].present?
