@@ -17,7 +17,6 @@ Rails.application.routes.draw do
     get "my_lesson_dashboard", to: 'lesson_dashboards#index'
 
 
-
     root 'pages#landing_page'
     resources :lessons do
       get :autocomplete_subject_name, :on => :collection

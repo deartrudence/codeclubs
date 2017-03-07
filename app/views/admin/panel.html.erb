@@ -57,6 +57,10 @@
           <div class="as--glossary-textarea">
             <%= f.input :definition, placeholder: 'Enter new term definition here'%>
           </div>
+          <div>
+            <%= f.label :language%>
+            <%= f.select :language, options_for_select(Lesson::LANGUAGES, @glossary.language) %>
+          </div>
 
           <div class="form-actions">
             <%= f.submit 'add', class: 'button button--primary' %>

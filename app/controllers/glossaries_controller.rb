@@ -4,25 +4,26 @@ class GlossariesController < ApplicationController
   # GET /glossaries
   # GET /glossaries.json
   def index
+    lang = session[:locale]
     if params[:alphabetical]
       if params[:alphabetical][:terminology] == '1'
-        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term desc')
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('term desc')
       elsif params[:alphabetical][:terminology] == '0'
-        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term asc')
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('term asc')
       end
       respond_to do |format|
         format.js { render :partial => "glossary_list_js" }
       end
     else
-       @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).order('term asc')
+       @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('term asc')
     end
 
     if params[:single_letter]
       if params[:single_letter][:letter] == '#'
         # TODO fix this query (using regex)
-        @glossaries = Glossary.where("term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ?", "0%", "1%", "2%", "3%", "4%", "5%", "6%", "7%", "8%", "9%")
+        @glossaries = Glossary.where("term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ?", "0%", "1%", "2%", "3%", "4%", "5%", "6%", "7%", "8%", "9%").by_language(lang)
       else
-        @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter]}%").paginate(:page => params[:page], :per_page => 10).order('term asc')
+        @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter]}%").paginate(:page => params[:page], :per_page => 10).by_language(lang).order('term asc')
       end
       respond_to do |format|
         format.js { render :partial => "glossary_list_js" }
@@ -99,6 +100,6 @@ class GlossariesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def glossary_params
-      params.require(:glossary).permit(:term, :definition)
+      params.require(:glossary).permit(:term, :definition, :language)
     end
 end

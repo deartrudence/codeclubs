@@ -2,6 +2,7 @@
   <%= f.error_notification %>
     <div class="term"><%= f.input :term %></div>
     <div class="def"><%= f.input :definition %></div>
+    <div><%=f.label :language %><%= f.select :language, options_for_select(Lesson::LANGUAGES, @glossary.language) %></div>
   	<div class="form-actions">
     	<%= f.submit 'edit', class: 'button button--primary' %>
   	</div>
