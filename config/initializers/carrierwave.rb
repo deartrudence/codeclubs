@@ -8,7 +8,7 @@ CarrierWave.configure do |config|
     # host:                  'localhost',             # optional, defaults to nil
     # endpoint:              'http://localhost:3000' # optional, defaults to nil
   }
-  config.fog_directory  = 'teacherslearningcode'                          # required
+  config.fog_directory  = ENV['bucket']                          # required
   config.fog_public     = true                                        # optional, defaults to true
   config.fog_attributes = { 'Cache-Control' => "max-age=#{365.day.to_i}" } # optional, defaults to {}
 end

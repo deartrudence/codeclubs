@@ -147,7 +147,7 @@ class LessonsController < ApplicationController
     end
     respond_to do |format|
       if @lesson.update(lesson_params)
-        format.html { redirect_to edit_lesson_path(@lesson), notice: 'Lesson was successfully updated.' }
+        format.html { redirect_to @lesson, notice: 'Lesson was successfully updated.' }
         format.json { render :show, status: :ok, location: @lesson }
       else
         format.html { render :edit }

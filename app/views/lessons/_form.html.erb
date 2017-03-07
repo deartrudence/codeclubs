@@ -87,7 +87,7 @@
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
         <div>  
-         <%= f.label :grade %>
+         <%= f.label :grade, class: 'required' %>
         <div class="select"> 
           <%= f.select :grade, options_for_select(Lesson::GRADE, @lesson.grade), {:include_blank => 'Choose'}%>
         </div>
@@ -160,7 +160,7 @@
         <%= f.select :subject_list, options_for_select(Lesson::CURRICULUM_SUBJECTS, @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
-        <%= f.label 'Curriculum Takeaways', :curriculum_concepts, class: 'required'%>
+        <%= f.label 'Curriculum Takeaways', :curriculum_concepts%>
         <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
       </div>

@@ -12,7 +12,7 @@
       <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
 
       <div class="form-actions">
-        <%= f.submit "Log in", class: 'button button--primary' %>
+        <%= f.submit "Sign in", class: 'button button--primary' %>
         <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
           <%= link_to "Sign up", new_registration_path(resource_name), class: 'button button--secondary' %>
         <% end -%>
