@@ -52,7 +52,7 @@
           <% end %>
         <% elsif !@lesson.submitted%>
           <%= f.hidden_field :submitted, value: true %>  
-          <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %>  
+          <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %> 
         <% end %>
       </div>
     </div>
@@ -121,7 +121,7 @@
       <div class="textarea-content">
         <h3 class="title--tertiary required custom-color-title"><%= t('lessons.the-lesson') %></h3>
         <p class="small"><%= t('lessons.new.lesson-description') %></p>
-        <%= f.bootsy_area :content, placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
+        <%= f.bootsy_area :content, editor_options: { html: true} ,placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
       </div>
       <div>
         <h3 class="title--tertiary custom-color-title"><%= t('lessons.assessment') %></h3>

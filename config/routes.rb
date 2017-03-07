@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-
+  root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
   scope "/:locale", local: /en|fr/ do 
     resources :lesson_references
     resources :glossaries
