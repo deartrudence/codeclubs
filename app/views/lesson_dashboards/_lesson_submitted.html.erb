@@ -1,9 +1,11 @@
+<% lang = session[:locale].to_s %>
+
 <ul class="list--submitted list--lessons font-quicksand">
 	<% @lesson_submitted.each do |lesson|%>
 		<li>
 			<%= link_to edit_lesson_path(lesson) do %>
-				<span class="<%= lesson.status(locals[:lang]) %>"><%= lesson.status(locals[:lang]) %></span>
-				<span><%= lesson.verified?(locals[:lang])%></span>
+				<span class="<%= lesson.status(lang) %>"><%= lesson.status(lang) %></span>
+				<span><%= lesson.verified?(lang)%></span>
 				<span><%= lesson.title %></span>
 				<span><%= lesson.grade %></span>
 				<span><%= lesson.subject_list%></span>

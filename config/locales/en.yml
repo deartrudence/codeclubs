@@ -166,11 +166,12 @@ en:
       bookmarked-lessons: 'Bookmarked Lessons'
       lesson-collections: 'Lesson Collections'
       lesson-title: 'Lesson Title'
+      updated: 'Updated'
       concepts: 'Concepts'
       created: 'Created'
       add-to-collection: 'Add to Collection'
       status: 'Status'
-      remove: 'Remove?'
+      remove: 'Remove'
   profile:
     my-profile: 'My Profile'
     name: 'Name'

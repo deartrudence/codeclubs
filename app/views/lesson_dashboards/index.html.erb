@@ -13,8 +13,8 @@
       <div class="list--header list--header-drafts flex--wrapper">
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
-            <%= label :lesson_title, 'Lesson Title' %>
-            <%= check_box :lesson_title, 'Lesson Title', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= label :lesson_title, t('lessons.dashboard.lesson-title') %>
+            <%= check_box :lesson_title, t('lessons.dashboard.lesson-title'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
             <%= hidden_field :draft_filters, 'filter_options' %>
           <% end %>
         </div>
@@ -23,8 +23,8 @@
         <div><%= t('lessons.dashboard.concepts') %></div>
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
-            <%= label :lesson_updated, 'Updated' %>
-            <%= check_box :lesson_updated, 'Updated', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= label :lesson_updated, t('lessons.dashboard.updated') %>
+            <%= check_box :lesson_updated, t('lessons.dashboard.updated'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
             <%= hidden_field :draft_filters, 'filter_options' %>
           <% end %> 
         </div>  
@@ -41,8 +41,8 @@
         <div><%= t('dictionary.verified') %></div>
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
-            <%= label :submitted_lesson_title, 'Lesson Title' %>
-            <%= check_box :submitted_lesson_title, 'Lesson Title', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= label :submitted_lesson_title, t('lessons.dashboard.lesson-title') %>
+            <%= check_box :submitted_lesson_title, t('lessons.dashboard.lesson-title'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
             <%= hidden_field :submitted_filters, 'filter_options' %>
           <% end %>
         </div>
@@ -50,8 +50,8 @@
         <div><%= t('dictionary.subjects') %></div> 
         <div>
           <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
-            <%= label :submitted_lesson_updated, 'Updated' %>
-            <%= check_box :submitted_lesson_updated, 'Updated', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= label :submitted_lesson_updated, t('lessons.dashboard.updated') %>
+            <%= check_box :submitted_lesson_updated, t('lessons.dashboard.updated'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
             <%= hidden_field :submitted_filters, 'filter_options' %>
           <% end %> 
         </div> 
