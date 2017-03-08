@@ -4,21 +4,22 @@
 <div class="home--wrap">
 	<main>
 		<div class="wrapper as--landing-page">
-			<h1>Introduce Coding in Your Classroom. Start a Coding Club. Use Technology to Inspire Kids. Change the Wolrd.</h1>
-			<p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop.</p>
+
+			<h1><%= t('pages.intro-1')%></h1>
+			<p><%= t('pages.intro-2')%></p>
 		</div>
 		<div class="wrapper--flex wrapper button-boxes">
 			<%= link_to about_path do%>
-				<h2>Get started with our guide for beginners</h2>
-				<div class="button button--primary">How-To Guide</div>
+				<h2><%= t('pages.get-started')%></h2>
+				<div class="button button--primary"><%= t('dictionary.howto') %></div>
 			<% end %>
 			<%= link_to lessons_path do%>
-				<h2>Find and create your own lessons</h2>
-				<div class="button button--primary">Browse Lessons</div>
+				<h2><%= t('pages.find-lessons') %></h2>
+				<div class="button button--primary"><%= t('dictionary.browse-lessons')%></div>
 			<% end %>
-			<a href="http://ladieslearningcode.com/educator-workshops" class="button">
-				<h2>Join a worshop for educators</h2>
-				<div class="button button--primary">Workshops</div>
+			<a href="#" class="button">
+				<h2><%= t('pages.join-workshop')%></h2>
+				<div class="button button--primary"><%= t('dictionary.workshops')%></div>
 			</a>
 			
 		</div>

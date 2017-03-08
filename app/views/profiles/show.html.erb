@@ -1,14 +1,14 @@
 <div class="wrapper--small as--profile-show">
-  <h2>My Profile</h2>
+  <h2><%= t('profile.my-profile') %></h2>
   <div class="as--profile-wrapper wrapper--flex">
     <div> 
       <ul class="list--profile-info">
-        <li><span>Name:</span> <%= @profile.name %></li>
-        <li><span>School:</span> <%= @profile.school %></li>
-        <li><span>Grades:</span> <%= @profile.grade%></li>
+        <li><span><%= t('profile.name') %>:</span> <%= @profile.name %></li>
+        <li><span><%= t('profile.school') %>:</span> <%= @profile.school %></li>
+        <li><span><%= t('dictionary.grade-level') %>:</span> <%= @profile.grade%></li>
       </ul>
-      <%= link_to 'Edit Profile', edit_profile_path, class: 'button button--secondary'%>
-      <%= link_to 'Create New Lesson', new_lesson_path, class: 'link--underlined'%>
+      <%= link_to t('profile.edit-profile'), edit_profile_path, class: 'button button--secondary'%>
+      <%= link_to t('dictionary.create-lesson'), new_lesson_path, class: 'link--underlined'%>
     </div>
     <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
   </div>

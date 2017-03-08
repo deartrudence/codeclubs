@@ -1,8 +1,9 @@
+<% lang = session[:locale].to_s %>
 <ul class="list--lessons-admin list--lessons font-quicksand">
   <% @lessons.each do |lesson|%>
     <li>
-      <span class="<%= lesson.status%>"><%= lesson.status%></span>
-      <span><%= lesson.verified?%></span>
+      <span class="<%= lesson.status(lang)%>"><%= lesson.status(lang)%></span>
+      <span><%= lesson.verified?(lang)%></span>
       <span><%= link_to lesson.title, edit_lesson_path(lesson) %></span>
       <span><%= lesson.author %></span>
       <span><%= lesson.format_date(lesson.created_at)%></span>

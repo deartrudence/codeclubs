@@ -1,41 +1,41 @@
 <div class="as--about-wrap">
   <div class="wrapper">
-    <h1>About Us</h1>
+    <h1><%= t('dictionary.about') %></h1>
   </div>
 </div>
 <section class="wrapper wrapper--flex as--about-page">
   <div>
-    <p>Teachers Learning Code is designed by <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a> and proudly supported by <a href="http://www.scotiabank.com/ca" target="_blank">Scotiabank</a> for educators focused on inspiring kids to be builders – not just consumers - of technology through coding activities and challenges.</p>
-    <p>It’s all about using technology and changing the world through teamwork, creativity, and, of course, code.</p>
-    <p>Whether you’re a teacher in a classroom, a program coordinator at a community centre, a home-schooling parent or a Girl Guide troop leader - we’ve put together a comprehensive how-to guide and lesson planning tool to help you teach kids to code.</p>
-    <h2 class="as--admin-title">How-To Guide</h2>
-    <p>We’ve combined our experiences teaching thousands of youth across the country to code, our tips and tricks to get started, resources to familiarize yourself with code, plus lots of easy to follow and even easier to implement coding activities to empower and teach the future generation of technologists across Canada.</p>
-    <p>We encourage you to use as much or as little of the guide as you like, to remix the challenges we’ve created or create new ones and share them with our community.</p>
+    <p><%= t('about-us.about-us-1_html')%></p>
+    <p><%= t('about-us.about-us-2') %></p>
+    <p><%= t('about-us.about-us-3') %></p>
+    <h2 class="as--admin-title"><%= t('dictionary.howto') %></h2>
+    <p><%= t('about-us.about-us-4') %></p>
+    <p><%= t('about-us.about-us-5') %></p>
   </div>
   <aside>
-    <h2>Download the Guide</h2>
+    <h2><%= t('dictionary.download-guide')%></h2>
     <div>  
       <%= image_tag 'tlc-howtoguide-mockup.png'%>
-      <a href="#" class="button button--tertiary" data-open="pdf_download">Download</a>
-      <p>This guide is your jumping off point - where you choose to take your program is up to you!</p>
-      <%= link_to 'Download The Guide', 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
+      <a href="#" class="button button--primary" data-open="pdf_download"><%= t('dictionary.download') %></a>
+      <p><%= t('about-us.guide-description') %></p>
+      <%= link_to t('dictionary.download-guide'), 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
     </div>
   </aside>
 </section>
 <section class="wrapper as--about-page">
-  <h2 class="as--admin-title">Want to learn more?</h2>
+  <h2 class="as--admin-title"><%= t('about-us.learn-more')%></h2>
   <div class="wrapper--flex button-boxes button-boxes--light"> 
     <%= link_to glossaries_path do%>
-      <h3>Read our glossary of coding concepts</h3>
-      <div class="button button--primary">Glossary</div>
+      <h3><%= t('about-us.read-glossary') %></h3>
+      <div class="button button--primary"><%= t('dictionary.glossary') %></div>
     <% end %>  
     <a href="#">
-      <h3>Review our list of resources + tools</h3>
-      <div class="button button--primary">More Resources</div>
+      <h3><%= t('about-us.review-list') %></h3>
+      <div class="button button--primary"><%= t('about-us.more-resources')%></div>
     </a>
-    <a href="mailto:carolyn@ladieslearningcode.com">
-      <h3>Send us<br>a message</h3>
-      <div class="button button--primary">Email Us</div>
+    <a href="mailto:carolyn@ladieslearningcode.com" target="_blank">
+      <h3><%= t('about-us.more-resources') %></h3>
+      <div class="button button--primary"><%= t('about-us.email-us') %></div>
     </a>
   </div>
 </section>
@@ -68,10 +68,10 @@
   <div class="modal modal--about" id="pdf_download">
       <%= simple_form_for(@download_list, remote: true, :authenticity_token => true) do |f| %>
         <%= f.error_notification %>
-          <%= f.input :first_name %>
-          <%= f.input :last_name %>
-          <%= f.input :email %>
-          <%= f.button :submit, 'Download', class:'button button--primary', download: 'assets/TLC-gettingstartedguide.pdf', id: 'pdf-trigger' %>
+          <%= f.input :first_name, label: t('profile.first-name') %>
+          <%= f.input :last_name, label: t('profile.last-name') %>
+          <%= f.input :email, label: t('dictionary.email') %>
+          <%= f.button :submit, t('dictionary.download'), class:'button button--primary', download: 'assets/TLC-gettingstartedguide.pdf', id: 'pdf-trigger' %>
       <% end %>
   </div>
 </div>

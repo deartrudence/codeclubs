@@ -33,14 +33,21 @@ class Lesson < ActiveRecord::Base
 
   scope :is_verified?, -> { where( verified: true ) }
 
-  GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+  scope :by_language, -> (lang) { where( language: lang) }
 
-  PROVINCES = ['All','British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
+  LANGUAGES = ['en', 'fr']
 
-  CURRICULUM_SUBJECTS = ['The Arts','French As a Second Language', 'English Language Arts','Health and Physical Education','Mathematics','Native Languages','Science','Technology Education','Social Studies','Career Education'] 
+  EN_GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+  FR_GRADE = ['Maternelle' , '1ere', '2e', '3e', '4e', '5e', '6e', '7e (Sec 1)', '8e (Sec 2)', '9e (Sec 3)', '10e (Sec 4)', '11e (Sec 5)', '12e']
 
-  CODING_CONCEPTS = ['Algorithms', 'Arrays',  'Boolean Logic','Conditional statements','Debugging','Events','Functions','Loops','Operators','Parallel Execution','Random Numbers', 
-  'Sequences','States','Variables']
+  EN_PROVINCES = ['All','British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
+  FR_PROVINCES = ['Alberta', 'Colombie-Britannique', 'Manitoba', 'Nouveau-Brunswick', 'Terre-Neuve et Labrador', 'Territoires du Nord-Ouest', 'Nouvelle-Écosse', 'Nunavut', 'Ontario', 'Île-du-Prince-Édouard', 'Québec', 'Saskatchewan', 'Yukon']
+
+  EN_CURRICULUM_SUBJECTS = ['The Arts','French As a Second Language', 'English Language Arts','Health and Physical Education','Mathematics','Native Languages','Science','Technology Education','Social Studies','Career Education'] 
+  FR_CURRICULUM_SUBJECTS = ['Arts', 'Français langue maternelle', 'English Language Arts', 'Éducation physique et santé', 'Mathématiques', 'Langues autochtones', 'Sciences', 'Technologies', 'Univers social', 'Éducation au choix de carrière']
+
+  EN_CODING_CONCEPTS = ['Algorithms', 'Arrays',  'Boolean Logic','Conditional statements','Debugging','Events','Functions','Loops','Operators','Parallel Execution','Random Numbers', 'Sequences','States','Variables']
+  FR_CODING_CONCEPTS =  ['Algorithmes ', 'Tableaux', 'Logique booléenne', 'Instructions conditionnelles', 'Débogage', 'Événements', 'Fonctions', 'Boucles Opérateurs', 'Traitement en parallèle', ' Nombres aléatoires', 'Séquences', 'États', 'Variables']
 
   DURATION_IN_MINUTES = [10, 20, 30, 50, 60, 90, 120]
 
@@ -54,12 +61,20 @@ class Lesson < ActiveRecord::Base
     self.user.profile.name
   end
 
-  def status
-    approved ? 'public' : 'pending'
+  def status(lang)
+    if lang == 'fr'
+      approved ? 'public' : 'En attente'
+    else
+      approved ? 'public' : 'pending'
+    end
   end
 
-  def verified?
-    verified ? 'Y' : 'N'
+  def verified?(lang)
+    if lang == 'fr'
+      verified ? 'O' : 'N'
+    else
+      verified ? 'Y' : 'N'
+    end
   end
 
   def liked_by_user(current_user)
@@ -87,6 +102,17 @@ class Lesson < ActiveRecord::Base
 
   def format_date(date)
     date.strftime("%-d/%-m/%C")
+  end
+
+  def self.all_tags_for_type(lessons, tag_type)
+    if lessons.present?
+      array = []
+      list = "#{tag_type}_list"
+      lessons.includes([:taggings]).each do |lesson|
+        array << lesson.send(list)
+      end
+    end
+    return array.flatten.uniq
   end
 
 

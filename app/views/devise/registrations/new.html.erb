@@ -1,25 +1,25 @@
 <div class="wrapper--small">
-  <h2>Sign up</h2>
-  <div class="as--profile-wrapper form--profile">
-    <p>Accounts are completely free and will provide you full access to lessons and other learning material.</p>
+	<h2><%= t(".sign_up") %></h2>
 
-    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-    <%= f.label :email, class: 'required'%>
-    <%= f.input_field :email, required: true, autofocus: true, placeholder: 'Enter your mail address.' %>
-    <%= f.label :password, class: 'required'%><span class="internal font-quicksand">(8 characters minimum)</span>
-    <%= f.input_field :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: 'Enter your password' %>
-    <%= f.label 'Confirm Password', :password_confirmation, class: 'required'%>
-    <%= f.input_field :password_confirmation, required: true, placeholder: 'Enter your password again' %>
+	<div class="as--profile-wrapper form--profile">
+		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+		  <%= f.error_notification %>
 
+		  <div class="form-inputs">
+		  	<%= f.label :email, class: 'required'%>
+		    <%= f.input_field :email, required: true, autofocus: true %>
+		    <%= f.label :password, class: 'required'%><span class="internal font-quicksand"><%= t('dictionary.min-8') %></span>
+		    <%= f.input_field :password, required: true %>
+		    <%= f.label :password_confirmation, class: 'required'%>
+		    <%= f.input_field :password_confirmation, required: true %>
+		  </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up!", class: "button button--primary" %>
-      <%- if controller_name != 'sessions' %>
-          <%= link_to "Log in", new_session_path(resource_name), class: 'button button--secondary' %>
-      <% end -%>
-    </div>
-    <% end %>
-    <p class="internal right"><span class="required"></span> =Required Field</p>
-  </div>
+		  <div class="form-actions">
+		    <%= f.button :submit, t(".sign_up") %>
+		  </div>
+		<% end %>
+		<p class="internal right"><span class="required"></span> =<%= t('dictionary.required-field')%></p>
+		<%= render "devise/shared/links" %>
+		
+	</div>
 </div>

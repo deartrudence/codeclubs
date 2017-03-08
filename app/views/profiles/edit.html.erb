@@ -1,4 +1,9 @@
 <div class="wrapper--small">
-  <h2 >Edit Your Profile</h2>
-	<%= render 'form' %>
+
+	<!-- set the user's language	 -->
+	<% lang = session[:locale].to_s %>
+
+  <h2><%= t('profile.edit-profile') %>	</h2>
+
+	<%= render 'form', lang: lang %>
 </div>

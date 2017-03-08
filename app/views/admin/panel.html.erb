@@ -1,3 +1,6 @@
+<!-- Set user's language based on param -->
+  <% lang = session[:locale].to_s %>
+
 <div class="wrapper">
 
   <h1 class="as--admin-title">Admin Dashboard</h1>
@@ -37,7 +40,7 @@
       <div>Delete?</div>
     </div>
     <div id="lessons-admin" class="as--lessons-admin">
-      <%= render 'lessons_admin' %>
+      <%= render 'lessons_admin', lang: lang %>
     </div>
   </div>
 
@@ -53,6 +56,10 @@
           </div>
           <div class="as--glossary-textarea">
             <%= f.input :definition, placeholder: 'Enter new term definition here'%>
+          </div>
+          <div>
+            <%= f.label :language%>
+            <%= f.select :language, options_for_select(Lesson::LANGUAGES, @glossary.language) %>
           </div>
 
           <div class="form-actions">
@@ -77,7 +84,7 @@
               <input type="checkbox" name="select-all" id="select-all">
               <label for="select-all">All</label>
             </div>
-            <% Profile::CSV_OPTIONS.each do |option|%>
+            <% Profile::EN_CSV_OPTIONS.each do |option|%>
               <div>  
                 <%= check_box_tag('csv_options[]', option)%>
                 <label for="csv_options"><%= option.humanize %></label>
