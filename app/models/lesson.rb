@@ -105,8 +105,8 @@ class Lesson < ActiveRecord::Base
   end
 
   def self.all_tags_for_type(lessons, tag_type)
+    array = []
     if lessons.present?
-      array = []
       list = "#{tag_type}_list"
       lessons.includes([:taggings]).each do |lesson|
         array << lesson.send(list)
