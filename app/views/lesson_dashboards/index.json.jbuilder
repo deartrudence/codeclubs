@@ -1,0 +1,1 @@
+json.array! @lesson_dashboards, partial: 'lesson_dashboards/lesson_dashboard', as: :lesson_dashboard

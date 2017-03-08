@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161027151919) do
+ActiveRecord::Schema.define(version: 20170307152047) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -48,6 +48,24 @@ ActiveRecord::Schema.define(version: 20161027151919) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "glossaries", force: :cascade do |t|
+    t.string   "term"
+    t.text     "definition"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "language",   default: "en"
+  end
+
+  create_table "lesson_references", force: :cascade do |t|
+    t.string   "title"
+    t.string   "url"
+    t.integer  "lesson_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "lesson_references", ["lesson_id"], name: "index_lesson_references_on_lesson_id"
+
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.integer  "duration_in_minutes"
@@ -81,6 +99,13 @@ ActiveRecord::Schema.define(version: 20161027151919) do
     t.boolean  "approved",                   default: false
     t.string   "slug"
     t.text     "references"
+    t.string   "grade"
+    t.boolean  "submitted",                  default: false
+    t.string   "custom_color"
+    t.string   "verification_message"
+    t.boolean  "verified",                   default: false
+    t.string   "province"
+    t.string   "language",                   default: "en"
   end
 
   add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down"
@@ -118,6 +143,10 @@ ActiveRecord::Schema.define(version: 20161027151919) do
     t.string   "slug"
     t.integer  "number_of_students"
     t.string   "learner_age_range"
+    t.string   "province"
+    t.string   "gender"
+    t.string   "years_of_experience"
+    t.string   "teaching_role"
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true

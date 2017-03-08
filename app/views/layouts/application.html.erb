@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang=<%= session[:locale].to_s %>>
 <head>
   <!-- Google Tag Manager -->
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -27,8 +27,9 @@
   <meta name="twitter:creator" content="@learningcode">
   <meta name="twitter:description" content="Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code.">
   <meta name="twitter:image" content="http://ladieslearningcode.com/downloads/banners/tlc-twitter-card.jpg">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all'%>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
+  <script src="https://use.fontawesome.com/43bdd233ba.js"></script>
   <%= favicon_link_tag 'tlc-favicon.png' %>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -41,7 +42,7 @@
 
   </script>
 
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "autocomplete-rails.js" %>
   <!-- Latest compiled and minified CSS -->
 
@@ -50,7 +51,7 @@
 
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
- <!--  <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
+  <!-- <link rel="stylesheet" href="http://localhost:8000/styleguide/assets/styles/styleguide.css"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <%= csrf_meta_tags %>
 </head>
@@ -64,32 +65,81 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <% end %>
 
 <nav class="nav--main">
-  <div class="wrapper">
-    <span class="logo">
-      <%= link_to lessons_path do%>
-        <%= image_tag 'tlc-oneline-white.svg'%>
-        <!-- <span class="font-quicksand">code:clubs</span> -->
-      <% end %>
-    </span>
-    <a class="nav--hamburger" id="nav-hamburger"><span></span></a>
-    <span class="nav--links">
-      <%= link_to 'About', about_path %>
+  <div class="wrapper wrapper--flex">
+    <div class="logo-container">
+      <span class="logo">
+        <%= link_to home_path do%>
+          <%= image_tag 'tlc-oneline-white.svg'%>
+        <% end %>
+      </span>
+      <a class="nav--hamburger" id="nav-hamburger"><span></span></a>
+    </div>
+    <ul class="nav--links wrapper--flex">
+      <li class="nav--link-with-sub">
+        <%= link_to about_path do %> 
+          <span><%= t('dictionary.about')%></span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+        <% end %>
+        <ul class="nav--links-sub hidden">
+          <li><%= link_to t('dictionary.howto'), about_path%></li>
+          <!-- <li><a href="#">F.A.Q.</a></li> -->
+          <!-- <li><a href="#">More Resources</a></li> -->
+        </ul>
+      </li>
+      <li class="nav--link-with-sub">
+        <%= link_to lessons_path do %>
+          <span><%= t('top-nav.lessons') %></span> <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+        <% end %>
+        <ul class="nav--links-sub hidden">
+          <li><%= link_to t('dictionary.browse-lessons'), lessons_path %></li>
+          <li><%= link_to t('dictionary.glossary'), glossaries_path%></li>
+          <li><%= link_to t('top-nav.create-new-lesson'), new_lesson_path%></li>
+        </ul>
+      </li>
+      <li><a href="#"><%= t('dictionary.workshops')%></a></li>
+      <li><% if session[:locale].to_s == "en" %>
+            <%= link_to "Français", { locale: :fr } %>
+          <% else %>
+            <%= link_to "English", { locale: :en } %>
+          <% end %>
+      </li>
       <% if user_signed_in? %>
-        <% if current_user.profile.present? %>
-          <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
-          <%= link_to 'My Profile', profile_path(current_user.profile) %>
-        <% else %>
-          <%= link_to 'Create Profile', new_profile_path%>
-        <% end %>
-        <% if current_user.admin? %>
-          <%= link_to 'Admin', admin_path%>
-        <% end %>
-        <%= link_to 'Logout',  destroy_user_session_path, method: :delete %>
+        <li class="nav--link-with-sub">
+          <% if current_user.profile.present? %>
+            <%= link_to profile_path(current_user.profile) do %>
+              <span>
+                <span>
+                  <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
+                </span>
+                <span>
+                  
+                  <%= t('top-nav.greeting')%> <%= current_user.profile.first_name %> 
+                </span>
+              </span>
+              <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+            <% end %>
+            <ul class="nav--links-sub hidden">
+              <li><%= link_to t('profile.my-profile'), profile_path(current_user.profile)%></li>
+              <li><%= link_to t('top-nav.userdashboard'), my_lesson_dashboard_path(:anchor => 'tab=drafts')%></li>
+              <li><%= link_to t('top-nav.logout'),  destroy_user_session_path, method: :delete %></li>
+              <% if current_user.admin? %>
+                <li><%= link_to t('top-nav.admindashboard'), admin_path(:anchor => 'tab=lessons')%></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <%= link_to new_profile_path do %>
+              <span>Create Profile</span>
+              <span class="nav--link-arrow"><i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+            <% end %>
+            <ul class="nav--links-sub hidden">
+              <li><%= link_to 'Create Profile', new_profile_path%></li>
+              <li><%= link_to t('top-nav.logout'),  destroy_user_session_path, method: :delete %></li>
+            </ul>
+          <% end %>
+        </li>
       <% else %>
-        <%= link_to 'Sign In', new_user_session_path, method: :get%>
+        <li><%= link_to 'Sign In', new_user_session_path, method: :get%></li>
       <% end %>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdcAx7qCrrpuT9oZ8exKNwxc2DUst6Ubh9sDNHaSEVEX8Lw/viewform?c=0&w=1" target="_blank" class="button button--tertiary as--request-button">Request Teacher Workshop</a>
-    </span>
+    </ul>
   </div>
 </nav>
 
@@ -99,33 +149,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="nav--footer">
   <div class="wrapper wrapper--flex">
     <ul class="small-caps main">
-        <li><h3>Contact Us</h3></li>
+        <li><h3><%= t('footer.contact-us') %></h3></li>
   			<li><a href="http://twitter.com/learningcode" target="_blank">twitter.com/learningcode</a></li>
   			<li><a href="https://www.facebook.com/ladieslearningcode" target="_blank">fb.com/ladieslearningcode</a></li>
   			<li><a href="https://www.instagram.com/learningcode/">instagram.com/learningcode</a></li>
-  			<li><a href="mailto:carolyn@ladieslearningcode.com">carolyn@ladieslearningcode.com</a></li>
+  			<li><a href="mailto:info@teacherslearningcode.com">info@teacherslearningcode.com</a></li>
   	</ul>
     <ul class="small-caps main">
-      <li><h3>Support Us</h3></li>
-  		<li><a href="http://ladieslearningcode.myshopify.com/" target="_blank">Shop</a></li>
-  		<li><a href="http://ladieslearningcode.com/about/#sponsors">Sponsors</a></li>
+      <li><h3><%= t('footer.support-us')%></h3></li>
+  		<li><a href="http://ladieslearningcode.myshopify.com/" target="_blank"><%= t('footer.shop') %></a></li>
+  		<li><a href="http://ladieslearningcode.com/about/#sponsors" target="_blank"><%= t('footer.sponsors') %></a></li>
   		<li>
   			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
   				<input type="hidden" name="cmd" value="_s-xclick">
   				<input type="hidden" name="hosted_button_id" value="36LEPAUDSAMJS">
-  				<input class="button-link" type="submit" value="Donate Now">
+  				<input class="button-link" type="submit" value="<%= t('footer.donate') %>">
   			</form>
   		</li>
-  		<li><a href="http://ladieslearningcode.com/get-involved/">Get Involved</a></li>
-  		<li><a href="http://jobs.ladieslearningcode.com/" target="_blank">Job Board</a></li>
-  		<li><a href="http://ladieslearningcode.com/about#press">Press</a></li>
+  		<li><a href="http://ladieslearningcode.com/get-involved/" target="_blank"><%= t('footer.get-involved') %></a></li>
+  		<li><a href="http://jobs.ladieslearningcode.com/" target="_blank"><%= t('footer.job-board') %></a></li>
+  		<li><a href="http://ladieslearningcode.com/about#press" target="_blank"><%= t('footer.press') %></a></li>
   	</ul>
     <div class="email-form">
-      <h3>Join Our Mailing List</h3>
-      <p class="small">SIGN UP NOW TO STAY IN THE LOOP</p>
+      <h3><%= t('footer.mailing-list-join') %></h3>
+      <p class="small"><%= t('footer.signup-form') %></p>
       <%= form_for(@mailing_list) do |f| %>
-      <%= f.text_field :email,type: 'email', placeholder: 'enter email here' %>
-      <%= f.submit 'subscribe', class: 'button button--tertiary font-quicksand' %>
+      <%= f.text_field :email,type: 'email', placeholder: t('footer.enter-email') %>
+      <%= f.submit t('footer.subscribe') , class: 'button button--primary' %>
       <% end %>
     </div>
   </div>
@@ -133,17 +183,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <footer class="nav--sponsor">
   <div class="wrapper">
     <div class="as--creds">
-      <p>Development by <a href="http://upatfive.ca" target="_blank">Up at Five</a></p>
-      <p>Design by <a href="http://natcooper.com" target="_blank">Nat Cooper</a></p>
-      <p>&copy; <a href="http://ladieslearningcode.com" target="_blank">Ladies Learning Code</a></p>
+      <p><%= t('footer.developed-by') %> <a href="http://upatfive.ca" target="_blank">Up at Five</a></p>
+      <p><%= t('footer.designed-by') %> <a href="http://natcooper.com" target="_blank">Nat Cooper</a></p>
+      <p> <a href="http://ladieslearningcode.com" target="_blank"><%= t('footer.llc') %></a></p>
     </div>
     <div class="as--hashtag"><%= image_tag 'tlc-hashtag.svg'%></div>
     <div>
-      <p>in partnership with:</p><%= image_tag 'scotiabank-logo-white.svg'%>
+      <p><%= t('footer.parternship-with') %>:</p><%= image_tag 'scotiabank-logo-white.svg'%>
     </div>
   </div>
 </footer>
 <script>
+  var openSubMenus = function(){
+    var width = $(window).innerWidth()
+    if (width > 960) {
+      $('.nav--link-with-sub').on('mouseenter', function(){
+        var sub = $(this).find('.nav--links-sub')
+        console.log(sub)
+        $(sub).toggleClass('hidden')
+      })
+      $('.nav--link-with-sub').on('mouseleave', function(){
+        var sub = $(this).find('.nav--links-sub')
+        $(sub).toggleClass('hidden')
+      })
+    } else {
+      $('.nav--link-with-sub > a').on('click', function(e){
+        e.preventDefault();
+        var sub = $(this).next('.nav--links-sub')
+        $(sub).toggleClass('hidden')
+      })
+    } 
+  }
+
   $(document).ready(function(){
     setTimeout(function(){
       $('#notice').remove();
@@ -162,6 +233,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       $('.nav--links').slideToggle(500)
       $(this).toggleClass('active')
     })
+    openSubMenus();
   })
 </script>
 </body>

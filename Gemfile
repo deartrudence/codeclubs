@@ -13,8 +13,18 @@ group :production do
   gem 'rails_12factor'
 end 
 
+# Multi-lingual
+gem 'rails-i18n'
+# internationalization for Devise
+gem 'devise-i18n'
+
+#for regex query
+# gem 'wherex'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
+# style multi-select dropdowns
+gem 'bootstrap-sass', '~> 3.3.6'
+gem "select2-rails"
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
@@ -27,7 +37,7 @@ gem 'jquery-rails'
 gem "jquery-ui-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+# gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -38,6 +48,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'table_print'
 
+#for pagination 
+gem 'will_paginate'
+
 # wysiwyg
 gem 'bootsy'
 gem 'fog'
@@ -45,15 +58,13 @@ gem 'fog'
 gem 'acts_as_votable', '~> 0.10.0'
 
 # autocomplete for tagging gems (3gems)
-gem 'acts-as-taggable-on', '~> 3.4'
+# gem 'acts-as-taggable-on', '~> 3.4'
+gem 'acts-as-taggable-on', '~> 4.0'
 gem 'rails4-autocomplete'
 gem 'simple_form'
 
-# for better url ids
-gem 'friendly_id', '~> 5.1.0'
-
 # for image management
-gem 'paperclip'
+gem 'paperclip', '4.3.6'
 gem 'aws-sdk-v1'
 gem 'aws-s3'
 

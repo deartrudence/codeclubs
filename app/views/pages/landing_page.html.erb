@@ -1,0 +1,29 @@
+<% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
+<div class="home--wrap">
+	<main>
+		<div class="wrapper as--landing-page">
+
+			<h1><%= t('pages.intro-1')%></h1>
+			<p><%= t('pages.intro-2')%></p>
+		</div>
+		<div class="wrapper--flex wrapper button-boxes">
+			<%= link_to about_path do%>
+				<h2><%= t('pages.get-started')%></h2>
+				<div class="button button--primary"><%= t('dictionary.howto') %></div>
+			<% end %>
+			<%= link_to lessons_path do%>
+				<h2><%= t('pages.find-lessons') %></h2>
+				<div class="button button--primary"><%= t('dictionary.browse-lessons')%></div>
+			<% end %>
+			<a href="#" class="button">
+				<h2><%= t('pages.join-workshop')%></h2>
+				<div class="button button--primary"><%= t('dictionary.workshops')%></div>
+			</a>
+			
+		</div>
+	</main>
+	<div class="landing-page--overlay"></div>
+	<%= video_tag 'Typing-numbers.mp4', autoplay: true, loop: true, class: 'home--video'%>
+</div>

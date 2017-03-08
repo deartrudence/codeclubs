@@ -1,15 +1,18 @@
-<ul class="main">
-  <% @lessons.find_each do |lesson| %>
-  <li>
-  <%= form_for(lesson, remote: true, :authenticity_token => true)  do |f| %>
-  <div class="slideThree"> 
-    <%= f.check_box :approved, data: lesson.id, class: "lesson_approved_check", id: "slideThree#{lesson.id}" %>
-    <label for="slideThree<%= lesson.id %>"></label>
-  </div>
-  <% end %>
-  <div class="as--lesson-title"><%= link_to lesson.title, edit_lesson_path(lesson) %></div>
-  <div class="as--lesson-author"><%= link_to lesson.profile.name, lesson.profile %>   <%= link_to 'Delete Lesson',  lesson_path(lesson),
-    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class:'as--lesson-delete' %></div>
-  </li>
+<% lang = session[:locale].to_s %>
+<ul class="list--lessons-admin list--lessons font-quicksand">
+  <% @lessons.each do |lesson|%>
+    <li>
+      <span class="<%= lesson.status(lang)%>"><%= lesson.status(lang)%></span>
+      <span><%= lesson.verified?(lang)%></span>
+      <span><%= link_to lesson.title, edit_lesson_path(lesson) %></span>
+      <span><%= lesson.author %></span>
+      <span><%= lesson.format_date(lesson.created_at)%></span>
+      <span>
+      <% if !lesson.approved %>
+        <%= link_to lesson_path(lesson),
+    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class:'as--lesson-delete' do %><i class="fa fa-trash" aria-hidden="true"><% end %></i>
+      <% end %>
+      </span>
+    </li>
   <% end %>
 </ul>

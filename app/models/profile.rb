@@ -1,5 +1,25 @@
 class Profile < ActiveRecord::Base
-  ROLE = %w[admin teacher]
+  EN_ROLE = %w[admin teacher]
+  FR_ROLE = %w[admin enseignant]
+
+  # using the provinces from level - to reduce how many places we store it
+  # PROVINCES = ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
+
+  EN_CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
+  FR_CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
+
+  EN_YEARS_OF_EXPERIENCE = ['Less than 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
+  FR_YEARS_OF_EXPERIENCE = ['Moins de 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
+  
+  # using the provinces from level - to reduce how many places we store it
+  # GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+
+  EN_TEACHING_ROLE = ['A teacher in a public school','A teacher in a private school','A teacher in an alternative school or home-school','A daycare or preschool teacher','A non-traditional educator part of a community group','Other']
+  FR_TEACHING_ROLE = ['Enseignant dans une école publique','Enseignant dans une école privée','Enseignant dans une école alternative ou à la maison','Éducateur en garderie ou enseignant en prématernelle','Enseignant autre dans un groupe communautaire','Autre']
+
+  EN_NUMBER_OF_STUDENTS = ['Less than 10','10 - 15','15 - 20', '20 - 25','25+']
+  FR_NUMBER_OF_STUDENTS = ['Moins de 10','10 - 15','15 - 20', '20 - 25','25+']
+
   has_many :lessons
   belongs_to :user
   validates :user, presence: true
@@ -21,6 +41,7 @@ class Profile < ActiveRecord::Base
 
     scope :on_mailing_list, -> { where(mailing_list: true) }
 
+
     def is_admin?
       self.role == 'admin'
     end
@@ -29,8 +50,22 @@ class Profile < ActiveRecord::Base
       "#{first_name} #{last_name}"
     end
 
+    def email
+      self.user.email
+    end
+
     def self.search(query)
       where("first_name like :search OR last_name like :search", search: "#{query}")
+    end
+
+    def self.to_csv(profiles, options)
+      attributes = options
+      CSV.generate(headers: true) do |csv|
+        csv << attributes
+        profiles.each do |profile|
+          csv << attributes.map{ |attr| profile.send(attr) }
+        end
+      end
     end
 
 end

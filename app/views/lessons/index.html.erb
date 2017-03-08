@@ -1,44 +1,101 @@
+
 <% if notice.present? %>
   <p id="notice"><%= notice %></p>
 <% end %>
 
-<div class="as--home-wrap">
-  <div class="wrapper as--home-intro center">
-      <div class="overlay"></div>
-      <h1>Introduce coding in your classroom. Start a coding club. Use technology to inspire kids. change the world.</h1>
-      <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop <a href="https://docs.google.com/forms/d/e/1FAIpQLSdxdcAx7qCrrpuT9oZ8exKNwxc2DUst6Ubh9sDNHaSEVEX8Lw/viewform?c=0&w=1" target="_blank" class="as--header-link">here</a>.</p>
-    </div>
-    <%= form_tag(lessons_path, remote: true, method: :get) do %>
-      <div class="wrapper wrapper--flex as--home-form font-quicksand">
-        <!-- take out grade filtering on lessons for now -->
-        <!-- <div class="select">
-          <%= select_tag 'grade', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'grade').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'grade'}%>
-        </div> -->
-        <div class="select">
-          <%= select_tag 'subject', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'subject').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'subject'}%>
-        </div>
-        <div class="select">
-          <%= select_tag 'code_concept', options_for_select(ActsAsTaggableOn::Tagging.includes(:tag).where(context: 'code_concept').uniq.pluck(:name).sort.map { |s| [s.humanize, s]}), {:include_blank => 'programming concept'}%>
-        </div>
-    
-        <%= hidden_field_tag :search_complete, true %>
-        <%= submit_tag 'Search', remote: true, class: 'button button--secondary font-quicksand' %>
-      </div>
-    <% end %>
+<!-- Set user's language based on param -->
+<% lang = session[:locale].to_s %>
+
+<div class="browse--wrap">
+  <div class="wrapper as--home-intro">
+    <h1><%= t('top-nav.lessons') %></h1>
+    <p>Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop.</p>
+    <%= link_to t('dictionary.create-lesson'), new_lesson_path, class: 'button button--primary'%>
+    <%= link_to t('dictionary.glossary'), glossaries_path, class: 'button button--primary'%>
+  </div>
 </div>
 <div class="wrapper" id="search-area" >
-  <h3 id="lesson-search-results" class="as--search-results">Just some of the lessons we have available for you to integrate in your classrooms</h3>
-  <div id="lessons-listing" class="wrapper--flex">
+  <%= form_tag(lessons_path, remote: true, method: :get, id: 'lesson-index-filters') do %>
+  <h2 class="as--admin-title as--browse-title">
+    <%= t('dictionary.browse-lessons') %>
+    <span class="grid" data-browse="grid">
+      <input type="radio" name="browse" value="grid" id="grid" class="hidden">
+      <label for="grid"><i class="fa fa-th-large" aria-hidden="true"></i></label>
+    </span> 
+    <span class="list" data-browse="list">
+      <input type="radio" name="browse" value="list" id="list" class="hidden">
+      <label for="list"><i class="fa fa-list" aria-hidden="true"></i></label>
+    </span>
+  </h2>
+    <div class="as--home-form">
+      <div class="wrapper--flex">
+        <div class="wrapper--flex"> 
+         <div class="select">
+            <%= select_tag 'grade', options_for_select(lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), {:include_blank => (t('dictionary.grade-level'))}%>
+          </div>
+          <div class="select">
+            <%= select_tag 'province', options_for_select(lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), {:include_blank => t('dictionary.province')}%>
+          </div>
+
+          <div class="select">
+            <%= select_tag 'subject', options_for_select(@subject_tags), {:include_blank => t('dictionary.subjects')}%>
+          </div>
+         
+          <div class="select">
+            <%= select_tag 'code_concept', options_for_select(@concept_tags), {:include_blank => t('dictionary.coding-concept')}%>
+          </div>
+         
+        </div>
+        <div class="filter-controls"> 
+          <div>
+            <%= check_box_tag :verified %>
+            <%= label_tag :verified, t('dictionary.only-verified') %>
+          </div>
+          <span id="clear-all-filters"><i class="fa fa-filter" aria-hidden="true"></i> <%= t('dictionary.clear-filter') %></span>
+  
+        </div>
+      </div>
+
+  
+      <%= hidden_field_tag :search_complete, true %>
+
+    </div>
+  <% end %>
+  <div id="lessons-listing">
     <%= render 'lessons_listing'%>
   </div>
 </div>
 
 <script>
+  function updateBrowseView(data) {
+    $.ajax({
+      url: '', 
+      dataType: 'json',
+      method: 'GET', 
+      data: {
+        view: data
+      }
+    })
+  }
   $(document).ready(function(){
     $('form').on('submit', function(){
       $('html, body').animate({
         scrollTop: $("#search-area").offset().top
       }, 1000);
+    })
+    $('#lesson-index-filters').on('change', function(){
+      $(this).submit()
+    })
+    $('#clear-all-filters').on('click', function(){
+      $('#lesson-index-filters')[0].reset()
+       $('#lesson-index-filters').submit()
+    })
+
+    $('[data-browse]').on('click', function(){
+      console.log('click')
+      var view = $(this).data('browse')
+
+      updateBrowseView(view)
     })
   })
 </script>

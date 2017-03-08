@@ -1,0 +1,1 @@
+json.partial! "lesson_references/lesson_reference", lesson_reference: @lesson_reference

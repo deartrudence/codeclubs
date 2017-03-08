@@ -1,6 +1,9 @@
 <div class="wrapper form--new-lesson">
 
-  <%= render 'form' %>
+	<!-- Set user's language based on param -->
+  <% lang = session[:locale].to_s %>
+
+  <%= render 'form', lang: lang %>
 
 </div>
 
@@ -8,7 +11,7 @@
 $( document ).ready(function() {
     console.log( "ready!" );
     $('.wrapper').bind("DOMNodeInserted", function(){
-      $(this).find('.btn').addClass('button button--primary').removeClass('btn btn-default btn-primary')
+      $(this).find('.btn').addClass('bootsy--buttons').removeClass('btn btn-default btn-primary')
     });
 });
 
@@ -20,6 +23,7 @@ function imageModalDesc(){
 		title = title[0]
 		title = $(title).html()
 		title == 'Images' ? $(obj).append('<p>select a photo to upload. Once it is in the gallery click on the photo and select the size and position. You can also insert a link to a photo somewhere else online and hit go.</p>') : null
+		title == 'FR Images' ? $(obj).append('<p>FR select a photo to upload. Once it is in the gallery click on the photo and select the size and position. You can also insert a link to a photo somewhere else online and hit go.</p>') : null
 	})
 }
 imageModalDesc();

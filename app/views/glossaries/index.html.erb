@@ -1,0 +1,53 @@
+<header class="resource--header">
+  <div class="wrapper">
+    <h1><%= t('dictionary.glossary') %></h1>
+    <p><%= t('dictionary.glossary-description') %></p>
+  </div>
+  <ul class="alphabet wrapper">
+    <li data-letter="#">#</li>
+    <% Glossary::ALPHABET.each do |letter|%>
+      <li data-letter="<%= letter%>"><%= letter%></li>
+    <% end %>
+  </ul>
+</header>
+<div class="wrapper">
+  <div class="list--header list--header-glossary">
+      <div> 
+        <%= form_tag(glossaries_path, method: :get, remote: true) do %>
+          <%= label :alphabetical, t('dictionary.terminology') %>
+          <%= check_box :alphabetical, 'terminology', :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+        <% end %>
+      </div>
+      <div><span><%= t('dictionary.definition') %></span></div>
+  </div>
+</div>
+<ul class="list--glossary wrapper" id="glossary-list">
+  <%= render 'glossary_list'%>
+</ul>
+<%= will_paginate @glossaries%>
+
+<script>
+    function ajaxSubmit(form) {
+      $('[data-letter].active').toggleClass('active')
+      var data = $(form).serialize()
+      $.ajax({
+        url: '',  
+        method: 'GET', 
+        data: data
+      })
+    }
+
+    $('[data-letter]').on('click', function(){
+      $('[data-letter].active').toggleClass('active')
+      var letter = $(this).data(letter)
+      $(this).toggleClass('active')
+      $.ajax({
+        url: '',  
+        method: 'GET', 
+        data: {
+          single_letter: letter
+        }
+      })
+    })
+
+</script>

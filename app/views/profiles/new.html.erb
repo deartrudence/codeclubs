@@ -1,5 +1,9 @@
-<div class=" box box--large">
-  <h2 class="font-quicksand center">Create Your Profile</h2>
+<div class="wrapper--small">
 
-  <%= render 'form' %>
+	<!-- set the user's language	 -->
+	<% lang = session[:locale].to_s %>
+	
+  <h2>Create Your Profile</h2>
+
+  <%= render 'form', lang: lang %>
 </div>

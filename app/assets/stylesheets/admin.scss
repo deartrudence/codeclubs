@@ -1,33 +1,24 @@
 // Place all the styles related to the Admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-ul.tabs li{
-  background: none;
-  color: #222;
-  display: inline-block;
-  padding: 10px 15px;
-  cursor: pointer;
-  &:hover {
-    background: #FFCE06;
-  }
+
+//DO NOT GET RID OF THIS YET
+
+.browse--wrap{
+  background: #666 url('bw-bg.png') no-repeat;
+  background-size: cover;
+}
+
+.as--about-wrap{
+  background: linear-gradient(to bottom,rgba(0,0,0,0.2), rgba(0,0,0,0.5)), url('about-page-background.png') no-repeat;
+  background-size: cover;
 }
 
 
-ul.tabs li.current{
-  background: #FFCE06;
-  color: #222;
-  &:hover {
-    background: #000;
-    color: #fff;
-  }
-}
 
 
 .tab-content{
   display: none;
-  background: white;
-  padding: 15px;
-  margin-bottom: 20px;
 }
 
 .tab-content.current{

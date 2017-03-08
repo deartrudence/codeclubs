@@ -1,52 +1,84 @@
-<%= form_for(@profile) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<div class="as--profile-wrapper form--profile">
+  
+  <%= form_for(@profile) do |f| %>
+    <% if @profile.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
 
-      <ul class="main">
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <%= f.label :first_name %>
-  <%= f.text_field :first_name %>
-
-
-  <%= f.label :last_name %><br>
-  <%= f.text_field :last_name %>
-
-  <%= f.label :school %><br>
-  <%= f.text_field :school %>
-
-  <% if current_user.profile.present? %>
-    <% if current_user.profile.is_admin? %>
-        <%= f.label :role %>
-        <%= select('profile', 'role', Profile::ROLE, {include_blank: true})%><br><br>
+        <ul class="main">
+        <% @profile.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
     <% end %>
+
+    <%= f.label :avatar, t('profile.display-photo') %>
+    <%= f.file_field :avatar %>
+
+    <%= f.label t('profile.first-name'), class: 'required' %>
+    <%= f.text_field :first_name, placeholder: 'Enter your first name', required: true %>
+
+    <%= f.label t('profile.last-name'), class: 'required' %>
+    <%= f.text_field :last_name, placeholder: 'Enter your last name' %>
+
+    <% if current_user.profile.present? %>
+      <% if current_user.profile.is_admin? %>
+          <%= f.label t('profile.teaching-role') %>
+          <%= select('profile', 'role',( lang == 'fr' ? Profile::FR_ROLE : Profile::EN_ROLE), {include_blank: true})%>
+      <% end %>
+    <% end %>
+
+    <%= f.label :school, t('profile.school-org') %>
+    <%= f.text_field :school, placeholder: 'Enter the name of your school or organization' %>
+
+    <%= f.label :province, t('profile.what-province'), class: 'required' %>
+    <div class="select">  
+     <%= select('profile', 'province',(lang == 'fr' ? Lesson::FR_PROVINCES :  Lesson::EN_PROVINCES), {include_blank: true})%>
+    </div>
+    
+
+    <%= f.label t('profile.gender') %>
+    <span class="internal font-quicksand">(for internal use only)</span>
+    <%= f.text_field :gender %>
+
+    <%= f.label t('profile.years-experience') %>
+    <span class="internal font-quicksand">(for internal use only)</span>
+    <div class="select">
+      <%= select('profile', 'years_of_experience', (lang == 'fr' ? Profile::FR_YEARS_OF_EXPERIENCE : Profile::EN_YEARS_OF_EXPERIENCE), {prompt: 'Choose...'})%>
+    </div>
+  
+
+    <%= f.label :teaching_role, t('profile.teaching-role'), class: 'required' %>
+    <div class="select">
+      <%= select('profile', 'teaching_role',( lang == 'fr' ? Profile::FR_TEACHING_ROLE :  Profile::EN_TEACHING_ROLE), {prompt: 'I am best described as…'})%>
+    </div>
+
+
+
+    <%= f.label :grade, t('profile.what-grade-teach'), class: 'required' %>
+    <div class="select">
+      <%= select('profile', 'grade', (lang == "fr" ? Lesson::FR_GRADE : Lesson::EN_GRADE), {prompt: 'Choose...'})%>
+    </div>
+
+    <%= f.label :number_of_students, t('profile.how-many-students'), class: 'required' %>
+    <div class="select">
+      <%= select('profile', 'number_of_students', (lang == 'fr' ? Profile::FR_NUMBER_OF_STUDENTS : Profile::EN_NUMBER_OF_STUDENTS), {prompt: 'Choose...'})%>
+    </div>
+    <div class="wrapper--flex">
+      <%= f.check_box :mailing_list %>
+      <%= f.label :mailing_list, t('profile.mail-list-optin'), class: 'mailing-label' %>
+    </div>
+
+
+
+    <div class="actions wrapper--flex">
+      <%= f.submit 'Create Profile', class: "button button--primary" %>
+      <%= link_to edit_user_registration_path, class: 'link--underlined link--underlined-small' do%>
+        <i class="fa fa-cog" aria-hidden="true"></i> <%= t('profile.edit-account') %>
+      <% end %> 
+
+    </div>
+    <p class="internal right"><span class="required"></span> =<%= t('dictionary.required-field') %></p>
   <% end %>
-
-  <%= f.label :grade %>
-  <%= f.text_field :grade %>
-
-  <%= f.label :number_of_students %>
-  <%= f.text_field :number_of_students %>
-
-  <%= f.label :learner_age_range %>
-  <%= f.text_field :learner_age_range %>
-
-
-  <%= f.label :mailing_list %>
-  <%= f.check_box :mailing_list %><br><br>
-
-  <%= f.label :avatar %>
-  <%= f.file_field :avatar %>
-
-  <%= link_to 'edit account settings', edit_user_registration_path, class: 'button button--primary' %>
-
-  <div class="actions">
-    <%= f.submit 'submit', class: "button button--tertiary font-quicksand center" %>
-  </div>
-<% end %>
+</div>

@@ -1,9 +1,9 @@
-<div class="box bow--large">
-  <h2 class="center font-quicksand">Edit My Profile</h2>
+<div class="wrapper--small">
 
-  <%= image_tag @profile.avatar.url(:thumbnail), class: 'as--profile-avatar center' %>
-  <div>
-    <%= render 'form' %>
-  </div>
+	<!-- set the user's language	 -->
+	<% lang = session[:locale].to_s %>
 
+  <h2><%= t('profile.edit-profile') %>	</h2>
+
+	<%= render 'form', lang: lang %>
 </div>

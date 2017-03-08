@@ -15,5 +15,6 @@
 //= require bootsy
 //= require jquery-ui
 //= require autocomplete-rails
-//= require turbolinks
+//= require select2
 //= require_tree .
+

@@ -1,4 +1,19 @@
+<style>
+  .custom-color-bg {
+    background:<%= @lesson.custom_color %> !important;
+  }
+
+  .custom-color-text {
+    color: <%= @lesson.custom_color %>;
+  }
+
+  .custom-color-title {
+    color: <%= @lesson.custom_color %>;
+    border-color: <%= @lesson.custom_color %>!important;
+  }
+</style>
 <%= simple_form_for(@lesson) do |f| %>
+
   <% if @lesson.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@lesson.errors.count, "error") %> prohibited this lesson from being saved:</h2>
@@ -10,115 +25,251 @@
       </ul>
     </div>
   <% end %>
-  <div class="wrapper--flex">
-    <div class="content">
-      <h3>*Lesson Title</h3>
-      <%= f.text_field :title %>
-      <div class="textarea-description">
-        <h3>Description</h3>
-        <p class="small">This will show up on the listings page with all the lessons and is just a short overview of what your lesson will cover.</p>
-        <%= f.text_area :description %>
-      </div>
 
-      <div>
-        <h3>Curriculum Concepts</h3>
-        <p class="small">What areas of the standard curriculum does your lesson touch on? Maybe you focus on reading comprehension or Fractions. Provide a bit of context for other educators as to where your lesson could fit in to their classrooms.</p>
-        <%= f.bootsy_area :curriculum_concepts %>
-      </div>
+  <header class="header--secondary custom-color-bg">
+    <div class="wrapper--flex">
+      <%if @lesson.title.present?%>
+        <h2><%= @lesson.title%></h2>
+      <% else %>
+        <h2><%= t('dictionary.create-lesson') %></h2>
+      <% end %>
+      <div class="lesson--single-actions">
+        <% if current_user.admin? && @lesson.submitted%>
+            <span><%= t('lessons.admin.update-status') %> </span>
+           <div class="slideThree" id="public-slide">
+             <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
+             <label for="slideThree<%= @lesson.id %>"></label>
+           </div>
+          <%= f.submit "Save Lesson", class: "button button--primary save-as-draft" %>
+        <% end %>
+        <% if !@lesson.submitted%>
+          <%= f.submit t('lessons.new.save-draft'), class: "button button--secondary save-as-draft" %>
+        <% end %>
 
-      <div>
-        <h3>Programming Concepts</h3>
-        <p class="small">What programming concepts and terminology does this lesson touch on. Are you going over conditional statements or maybe making use of variables? Feel free to share both term specific and conceptual definitions.</p>
-        <%= f.bootsy_area :programming_concepts %>
-      </div>
-
-      <div>
-        <h3>Prep</h3>
-        <p class="small">All the behind the scenes work to get the lesson ready.</p>
-        <%= f.bootsy_area :prep %>
-      </div>
-
-
-      <div class="textarea-content">
-        <h3>Content</h3>
-        <p class="small">The actual meat of the lesson! This could take form of a step by step guide or maybe a series of little exercises, completely up to you!</p>
-        <%= f.bootsy_area :content %>
-      </div>
-
-      <div>
-        <h3>Answers</h3>
-        <p class="small">Either then asnwers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.</p>
-        <%= f.bootsy_area :answers %>
-      </div>
-
-      <div>
-        <h3>Extensions</h3>
-        <p class="small">Additional questions and challenges that build on content reviewed in the lesson.</p>
-        <%= f.bootsy_area :extensions %>
-      </div>
-
-      <%= f.label :video_link %>
-      <p class="small">The embed link for any video material you may have that goes along with the lesson</p>
-      <%= f.text_field :video_link %>
-
-      <%= f.label :file_upload %>
-      <p class="small">Upload additonal learning materials, reading, or slides.</p>
-      <%= f.file_field :file_upload, class: "button button--primary" %>
-
-
-      <div class="actions">
-        <%= f.submit "submit", class: "button button--tertiary button--large font-quicksand" %>
+        <% if @lesson.id.present? && !@lesson.submitted%>
+          <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
+           <%= t('lessons.new.submit-lesson') %>
+          <% end %>
+        <% elsif !@lesson.submitted%>
+          <%= f.hidden_field :submitted, value: true %>  
+          <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %> 
+        <% end %>
       </div>
     </div>
-    <div class="sidebar">
+  </header>
+  <%if current_user.admin? && @lesson.id.present?%>
+    <div class="lesson--admin-edit wrapper--flex">
+      <div class="lesson--admin-edit-author"> 
+        <label for="author"><%= t('dictionary.author') %>:</label>
+        <input type="text" disabled value="<%= @lesson.author%>">
+      </div>
+      <div class="lesson--admin-edit-color">
+        <%= f.label :custom_color, t('lessons.admin.custom-lesson-color') %>
+        <%= f.text_field :custom_color %>
+        <span class="color-swatch" style="background:<%= @lesson.custom_color%>;"></span>
+      </div>
+      <div class="lesson--admin-edit-verified">
+        <%= f.label :verified, t('dictionary.verified?') %>
+        <div class="select">
+          <% if lang == 'fr' %>
+            <%= f.select :verified, [['Oui', true], ['Non', false]] %>
+          <% else %>
+            <%= f.select :verified, [['Yes', true], ['No', false]] %>
+          <% end %>
+        </div>
+      </div>
+      <div class="lesson--admin-edit-message">
+        <%= f.label :verification_message, t('lessons.admin.badge-message')%>
+        <span class="label-direction"><%= t('lessons.admin.max-30') %></span>
+        <div class="wrapper--flex">
+          <span class="message-for"><%= t('lessons.admin.verified-for') %></span>
+          <%= f.text_field :verification_message, placeholder: 'The Provincial Curriculum' %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <div class="wrapper--flex">
+    <div class="content">
+      <h3 class="title--tertiary required custom-color-title"><%= t('lessons.new.lesson-info')%></h3>
+      <%= f.label t('lessons.new.title'), class: 'required'%>
+      <%= f.text_field :title %>
+      <div class="wrapper--flex flex-even">
+        <div>  
+<<<<<<< HEAD
+         <%= f.label t('dictionary.grade-level') %>
+=======
+         <%= f.label :grade, class: 'required' %>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
+        <div class="select"> 
+          <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
+        </div>
+        </div>
+        <div>
+          <%= f.label t('lessons.new.estimated-duration') %>
+          <div class="select"> 
+            <%= f.select :duration_in_minutes, options_for_select(Lesson::DURATION_IN_MINUTES, @lesson.duration_in_minutes), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="title--tertiary required custom-color-title"><%= t('lessons.new.short-summary') %></h3>
+        <p class="small"><%= t('lessons.new.write-short-summary') %></p>
+        <%= f.text_area :description, placeholder: t('lessons.new.write-short-summary-here') %>
+      </div>
+      <div>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.prep') %></h3>
+        <p class="small"><%= t('lessons.new.prep-description') %></p>
+        <%= f.bootsy_area :prep, placeholder: t('lessons.new.prep-required') %>
+      </div>
+      <div class="textarea-content">
+        <h3 class="title--tertiary required custom-color-title"><%= t('lessons.the-lesson') %></h3>
+        <p class="small"><%= t('lessons.new.lesson-description') %></p>
+        <%= f.bootsy_area :content, editor_options: { html: true} ,placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
+      </div>
+      <div>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.assessment') %></h3>
+        <p class="small"><%= t('lessons.new.assessment-description') %></p>
+        <%= f.bootsy_area :answers, placeholder: t('lessons.new.provide-answer') %>
+      </div>
+      <div>
+        <h3 class="title--tertiary custom-color-title"><%= t('lessons.extenstions') %></h3>
+        <p class="small"><%= t('lessons.new.extensions-description') %></p>
+        <%= f.bootsy_area :extensions, placeholder: t('lessons.new.provide-extension') %>
+      </div>
+      <%= f.label t('lessons.new.file-upload') %>
+      <p class="small">
+        <%= t('lessons.new.file-upload-description') %>
+      </p>
+      <%= f.file_field :file_upload %>
+      <%= f.label t('lessons.new.video-link') %>
+      <p class="small"><%= t('lessons.new.video-link-description')%></p>
+      <%= f.text_field :video_link, placeholder: t('lessons.new.add-video-link') %>
+      <% if !@lesson.submitted %>
+        <%= f.submit t('lessons.new.save-draft'), class: "button button--secondary save-as-draft" %>
+      <% end %>
+      <% if @lesson.id.present? && !@lesson.submitted%>
+        <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
+         <%= t('lessons.new.submit-lesson') %>
+        <% end %>
+        <%= link_to t('lessons.new.delete-lesson'), lesson_path(@lesson),
+    data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: 'link--underlined delete-lesson'%>
+      <% elsif !@lesson.submitted%>
+        <%= hidden_field_tag submitted: true %>  
+        <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %>
+      <% end %>
+    </div>
+    <!-- BEGINING OF SIDEBAR -->
+
+    <div class="lesson--single-sidebar">
+      <%= f.label t('lessons.intended-province'), :province, class: 'required'%>
+      <div class="select"> 
+        <%= f.select :province, options_for_select((lang == 'fr' ? Lesson::FR_PROVINCES : Lesson::EN_PROVINCES), @lesson.province)%>
+      </div>
+      <%= f.label :language, class: 'required' %>
+      <div class="select">
+        <%= f.select :language, options_for_select(Lesson::LANGUAGES, @lesson.language) %>
+      </div>
       <% if @lesson.feature_image.present? %>
         <%= image_tag @lesson.feature_image.url(:medium)%>
       <% end %>
-      <%= f.label :feature_image %>
-      <%= f.file_field :feature_image, class: "button button--primary" %>
-      <h3>Tags</h3>
-      <p class="small">Add comma seperated tags for associated curriculum subjects and programming concepts (Ex. Math, English OR Javascript, Conditional Statements)</p>
-      <%= f.input :subject_list, :label => 'Curriculum Subjects',  :url => autocomplete_subject_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.subject_list.to_s, 'data-delimiter' => ','} %>
-
-      <%= f.input :code_concept_list, :label => 'Programming concept', :url => autocomplete_code_concept_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.code_concept_list.to_s, 'data-delimiter' => ','} %>
-
-      <%= f.input :grade_list, :label => 'Grade', :url => autocomplete_grade_name_lessons_path, :as => :autocomplete, input_html: {value: @lesson.grade_list.to_s, 'data-delimiter' => ','} %>
-
-      <%= f.label :duration_in_minutes %>
-      <%= f.number_field :duration_in_minutes %>
-
-      <div class="levels">
-        <%= f.label :level %><br>
-        <p class="small">An indicator of the difficulty of the lesson. Could be related to programming concepts or curriculum concepts covered.</p>
-        <%= f.radio_button :level, '1', :checked => true %><span>1</span><br>
-        <%= f.radio_button :level, '2' %><span>2</span><br>
-        <%= f.radio_button :level, '3' %><span>3</span><br>
-        <%= f.radio_button :level, '4' %><span>4</span><br>
+      <%= f.label t('lessons.new.featured-image'), class: 'required' %>
+      <%= f.file_field :feature_image, required: true %>
+      <!-- TODO make semantic ui work -->
+      <%= f.label t('lessons.new.curriculum-subjects'), :subject_list, class: 'required'%>
+      <div class="select">    
+        <%= f.select :subject_list, options_for_select((lang == 'fr' ?Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS) , @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
-        <h3>References</h3>
-        <p class="small">List any references you used or found useful in the creation of this lesson.</p>
-        <%= f.bootsy_area :references %>
+<<<<<<< HEAD
+        <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts, class: 'required'%>
+        <p class="small"><%= t('lessons.new.curriculum-takeaways-description') %></p>
+        <%= f.bootsy_area :curriculum_concepts, placeholder: t('lessons.new.add-curriculum-takeaway') %>
+=======
+        <%= f.label 'Curriculum Takeaways', :curriculum_concepts%>
+        <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
+        <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
+      </div>
+      <%= f.label t('dictionary.coding-concepts'), :code_concept_list, class: 'required' %>
+      <div class="select">
+        <%= f.select :code_concept_list, options_for_select((lang == 'fr' ? Lesson::FR_CODING_CONCEPTS : Lesson::EN_CODING_CONCEPTS), @lesson.code_concept_list), {}, {class: 'coding_concepts_dropdown',multiple: true}  %>
+      </div>
+      <div>
+        <%= f.label t('dictionary.coding-takeaways'), :programming_concepts%>
+        <p class="small"><%= t('lessons.new.coding-takeaways-description') %></p>
+        <%= f.bootsy_area :programming_concepts, placeholder: t('lessons.new.add-coding-takeaway') %>
       </div>
       <% if current_user.profile.is_admin? %>
       <div>
-        <h3>Suggested Lessons</h3>
-        <p class="small">Lessons that would nicely conmplement this one or provide a good extension.</p>
+        <h3><%= t('lessons.new.references') %></h3>
+        <p class="small"><%= t('lessons.new.reference-list') %></p>
+        <%= f.fields_for :lesson_references do |builder| %>
+          <%= render 'lesson_reference_fields', f: builder %>
+        <% end %>
+        <%= link_to_add_fields t('lessons.new.more'), f, :lesson_references  %>
+      </div>
+      <div>
+        <h3><%= t('lessons.suggested-lesson')%></h3>
+        <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
+        <div class="select">
+          <%= f.collection_select :suggested_lessons, Lesson.where.not(id: @lesson.id).is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
+        </div>
         <% if @lesson.suggested_lessons.present?%>
-          <ul>
+          <ul class="list--suggested-lessons-edit">
             <%@lesson.suggested_lessons.each do |sug_lesson|%>
               <% if sug_lesson.suggested_lesson_id > 0%>
                 <% the_lesson = Lesson.where(id: sug_lesson.suggested_lesson_id.to_i).first%>
-                  <li id="sug_<%= sug_lesson.id%>"><%= link_to the_lesson.title, lesson_path(the_lesson) %> |      <%= link_to 'Delete', sug_lesson, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true %></li>
+                  <li id="sug_<%= sug_lesson.id%>"><%= link_to '×', sug_lesson, method: :delete, data: { confirm: 'Are you sure?' }, :remote => true, class: 'suggested-delete custom-color-bg' %> <%= link_to the_lesson.title, lesson_path(the_lesson) %></li>
               <% end %>
         
             <% end %>
           </ul>
         <% end %>
-          <%= f.collection_check_boxes :suggested_lessons, Lesson.all, :id, :title, {:include_blank => false}  %>
       </div>
       <% end %>
 
     </div>
   </div>
 <% end %>
+
+<script>
+$(function(){
+  $('.curriculum_subjects_dropdown').select2()
+  $('.coding_concepts_dropdown').select2()
+  $('.suggested_lessons_dropdown').select2()
+
+})
+  ;
+  function ajaxSubmitInput(elem) {
+    console.log(elem)
+    // $.ajax({
+    //   url: '',  
+    //   method: 'GET', 
+    //   data: data
+    // });
+  }
+</script>
+
+<script>
+$(document).ready(function(){
+  console.log('ready')
+  $('form').on('click', '.remove_fields', function(even){
+    event.preventDefault()
+    $(this).prev('input[type=hidden]').val('1');
+    $(this).closest('fieldset').hide();
+  });
+  
+  $('form').on('click', '.add_fields', function(event){
+    event.preventDefault();
+    time = new Date().getTime();
+    regexp = new RegExp($(this).data('id'), 'g');
+    console.log(regexp)
+    $(this).before($(this).data('fields').replace(regexp, time));
+
+  })
+
+
+});
+  
+</script>

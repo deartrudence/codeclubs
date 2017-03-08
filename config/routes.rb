@@ -1,28 +1,39 @@
 Rails.application.routes.draw do
-  resources :suggested_lessons
-  resources :download_lists
-  resources :workshops
-  resources :mailing_lists
-  get 'admin' => 'admin#panel'
-  get 'download_mailing_list' => 'admin#download_mailing_list'
-
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
-  root 'lessons#index'
-  resources :lessons do
-    get :autocomplete_subject_name, :on => :collection
-    get :autocomplete_code_concept_name, :on => :collection
-    get :autocomplete_grade_name, :on => :collection
-    member do
-      get "like", to: "lessons#upvote"
-      get "dislike", to: "lessons#downvote"
+  root to: redirect("/#{I18n.default_locale}", status: 302), as: :redirected_root
+  scope "/:locale", local: /en|fr/ do 
+    resources :lesson_references
+    resources :glossaries
+    resources :suggested_lessons
+    resources :download_lists
+    resources :workshops
+    resources :mailing_lists
+    get 'admin' => 'admin#panel'
+    get 'download_mailing_list' => 'admin#download_mailing_list'
+    post 'download_user_list' => 'admin#download_user_list'
+
+    # get 'my_lesson_dashboard' => 'lesson_dashboards#index'
+    resources :lesson_dashboards 
+    get "my_lesson_dashboard", to: 'lesson_dashboards#index'
+
+
+    root 'pages#landing_page'
+    resources :lessons do
+      get :autocomplete_subject_name, :on => :collection
+      get :autocomplete_code_concept_name, :on => :collection
+      get :autocomplete_grade_name, :on => :collection
+      member do
+        get "like", to: "lessons#upvote"
+        get "dislike", to: "lessons#downvote"
+      end
     end
+    resources :profiles
+
+    get "about" => "pages#about"
+    get "home" => "pages#landing_page"
+    # devise_for :users
+    devise_for :users, :controllers => { :registrations => "my_devise/registrations" }
   end
-  resources :profiles
-
-  get "about" => "pages#about"
-  # devise_for :users
-  devise_for :users, :controllers => { :registrations => "my_devise/registrations" }
-
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

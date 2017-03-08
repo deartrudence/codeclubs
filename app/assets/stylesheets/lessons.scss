@@ -1,6 +1,7 @@
 // Place all the styles related to the lessons controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+// @import "bootstrap";
 .ui-autocomplete {
   position: absolute;
   top: 100%;
@@ -48,16 +49,38 @@
 
 
 a.wysihtml5-command-active{
-  background: black;
-  color: white;
+  // background: black;
+  // color: white;
 } 
 
+input[type="submit"].bootsy--buttons {
+  font-size: 12px;
+  padding: 6px;
+}
 
-.wysihtml5-sandbox{
+
+.wysihtml5-editor{
   ul{
     list-style: disc !important;
+    padding-left: 40px !important;
   }
   ol{
-    list-style: initial;
+    list-style: decimal !important;
+    padding-left: 40px !important;
   }
 }
+
+
+.text-edit:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.text-edit { display: inline-block; }
+/* start commented backslash hack \*/
+* html .text-edit { height: 1%; }
+.text-edit { display: block; }
+/* close commented backslash hack */

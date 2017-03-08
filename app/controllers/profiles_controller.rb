@@ -16,8 +16,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    @lessons = @profile.lessons.includes(:profile)
-    @favourites = current_user.find_up_voted_items
+    # @lessons = @profile.lessons.includes(:profile)
+    # @favourites = current_user.find_up_voted_items
   end
 
   # GET /profiles/new
@@ -56,7 +56,7 @@ class ProfilesController < ApplicationController
   # PATCH/PUT /profiles/1.json
   def update
 
-    # raise 'hell'
+    
     respond_to do |format|
       if @profile.update(profile_params)
         if @profile.mailing_list == false && MailingList.where(email: @profile.user.email).present?
@@ -101,6 +101,6 @@ class ProfilesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:first_name, :last_name, :school, :role, :grade, :mailing_list, :avatar, :number_of_students, :learner_age_range)
+      params.require(:profile).permit(:first_name, :last_name, :school, :role, :grade, :mailing_list, :avatar, :number_of_students, :learner_age_range, :province, :gender, :years_of_experience, :teaching_role)
     end
 end

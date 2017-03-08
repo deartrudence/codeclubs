@@ -1,47 +1,15 @@
-<% if notice.present?%>
-  <p id="notice"><%= notice %></p>
-<% end %>
-
-<div class="wrapper">
-  <ul class="tabs">
-    <li class="tab-link current" data-tab="profile-tab">My Profile</li>
-    <li class="tab-link" data-tab="my-lessons-tab">My Lessons</li>
-    <li class="tab-link" data-tab="favourite-lessons-tab">Favourite Lessons</li>
-  </ul>
-  <div class="center tab-content current as--profile-tab" id="profile-tab">
-    <%= image_tag @profile.avatar.url(:thumbnail), class: 'as--profile-avatar' %>
-    <h3><%= @profile.first_name %> <%= @profile.last_name %></h3>
-    <h4>Grade: <%= @profile.grade %></h4>
-    <h4 class="as--profile-school">School: <%= @profile.school %></h4>
-    <%= link_to 'Edit Profile', edit_profile_path(@profile), class: 'button button--primary' %>
-    <%= link_to "Create New Lesson", new_lesson_path, class: 'button button--primary' %>
-  </div>
-  <div class="wrapper--flex tab-content" id="my-lessons-tab">
-  <% if @lessons.present? %>
-    <%= render 'lesson', locals: {lessons: @lessons}%>
-  <% else %>
-    <p>You haven't made any lessons yet.  Create one <%= link_to 'here', new_lesson_path %></p>
-  <% end %>
-  </div>
-  <div class="wrapper--flex tab-content" id="favourite-lessons-tab">
-  <% if @favourites.present? %>
-    <%= render 'lesson', locals: {lessons: @favourites}%>
-  <% else %>
-    <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
-  <% end %>
+<div class="wrapper--small as--profile-show">
+  <h2><%= t('profile.my-profile') %></h2>
+  <div class="as--profile-wrapper wrapper--flex">
+    <div> 
+      <ul class="list--profile-info">
+        <li><span><%= t('profile.name') %>:</span> <%= @profile.name %></li>
+        <li><span><%= t('profile.school') %>:</span> <%= @profile.school %></li>
+        <li><span><%= t('dictionary.grade-level') %>:</span> <%= @profile.grade%></li>
+      </ul>
+      <%= link_to t('profile.edit-profile'), edit_profile_path, class: 'button button--secondary'%>
+      <%= link_to t('dictionary.create-lesson'), new_lesson_path, class: 'link--underlined'%>
+    </div>
+    <%= image_tag current_user.profile.avatar.url ? current_user.profile.avatar.url(:thumbnail) : '' %>
   </div>
 </div>
-
-
-
-<script>
-  $('ul.tabs li').click(function(){
-    var tab_id = $(this).attr('data-tab');
-
-    $('ul.tabs li').removeClass('current');
-    $('.tab-content').removeClass('current');
-
-    $(this).addClass('current');
-    $("#"+tab_id).addClass('current');
-  })
-</script>

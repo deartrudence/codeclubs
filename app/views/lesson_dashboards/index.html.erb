@@ -1,0 +1,167 @@
+<!-- Set user's language based on param -->
+  <% lang = session[:locale].to_s %>
+
+<div class="wrapper">
+	<h1 class="as--admin-title"><%= t('lessons.dashboard.my-lesson-dashboard') %></h1>
+  <ul class="tabs wrapper--flex">
+    <li class="tab-link" data-tab="drafts-tab"><%= t('lessons.dashboard.drafts') %></li>
+    <li class="tab-link" data-tab="submitted-tab"><%= t('lessons.dashboard.submitted') %></li>
+    <li class="tab-link" data-tab="bookmarked-tab"><%= t('lessons.dashboard.bookmarked-lessons') %></li>
+  </ul>
+  <div class="tab-content" id="drafts-tab">
+    <% if @lesson_drafts.present? %>
+      <div class="list--header list--header-drafts flex--wrapper">
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :lesson_title, t('lessons.dashboard.lesson-title') %>
+            <%= check_box :lesson_title, t('lessons.dashboard.lesson-title'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :draft_filters, 'filter_options' %>
+          <% end %>
+        </div>
+        <div><%= t('dictionary.grade-level') %></div>
+        <div><%= t('dictionary.subjects') %></div>
+        <div><%= t('lessons.dashboard.concepts') %></div>
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :lesson_updated, t('lessons.dashboard.updated') %>
+            <%= check_box :lesson_updated, t('lessons.dashboard.updated'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :draft_filters, 'filter_options' %>
+          <% end %> 
+        </div>  
+      </div>
+      <div id="drafts-tab-content">
+        <%= render 'lesson_drafts', locals: {lessons: @lesson_drafts}%>
+      </div>
+    <% end %>
+  </div>
+  <div class="tab-content" id="submitted-tab">
+    <% if @lesson_submitted.present? %>
+      <div class="list--header list--header-submitted flex--wrapper">
+        <div><%= t('lessons.dashboard.status') %></div>
+        <div><%= t('dictionary.verified') %></div>
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :submitted_lesson_title, t('lessons.dashboard.lesson-title') %>
+            <%= check_box :submitted_lesson_title, t('lessons.dashboard.lesson-title'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :submitted_filters, 'filter_options' %>
+          <% end %>
+        </div>
+        <div><%= t('dictionary.grade-level') %></div>
+        <div><%= t('dictionary.subjects') %></div> 
+        <div>
+          <%= form_tag(my_lesson_dashboard_path, method: :get, remote: true) do %>
+            <%= label :submitted_lesson_updated, t('lessons.dashboard.updated') %>
+            <%= check_box :submitted_lesson_updated, t('lessons.dashboard.updated'), :onchange => "ajaxSubmit(this.form)", class: 'hidden' %>
+            <%= hidden_field :submitted_filters, 'filter_options' %>
+          <% end %> 
+        </div> 
+      </div>
+      <div id="submitted-tab-content">
+        <%= render 'lesson_submitted', locals: {lessons: @lesson_submittedm, lang: lang}%>
+      </div>
+    <% end %>
+  </div>
+ 
+  <div class="tab-content" id="bookmarked-tab">
+  <% if @lesson_bookmarked.present? %>
+    <div class="list--header list--header-bookmarked flex--wrapper">
+      <div><%= t('lessons.dashboard.lesson-title') %></div>
+      <div><%= t('dictionary.author') %></div>
+      <div><%= t('dictionary.grade-level') %></div>
+        <div><%= t('dictionary.subjects') %></div> 
+      <div>Updated</div>
+      <div><%= t('lessons.dashboard.remove') %>?</div> 
+    </div>
+    <div id="bookmarked-tab-content">
+      <%= render 'lesson_bookmarked', locals: {lessons: @lesson_bookmarked}%>
+    </div>
+  <% else %>
+    <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
+  <% end %>
+  </div>
+</div>
+
+
+
+<script>
+
+  function ajaxSubmit(form) {
+    var data = $(form).serialize()
+    console.log(data)
+    $.ajax({
+      url: '',  
+      method: 'GET', 
+      data: data
+    });
+  }
+
+// use query params to pass everything 
+
+// use the hash to keep the open tab for the front end
+  function getHashParams() {
+    var hashParams = {};
+    var e,
+        a = /\+/g,  // Regex for replacing addition symbol with a space
+        r = /([^&;=]+)=?([^&;]*)/g,
+        d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+        q = window.location.hash.substring(1);
+
+    while (e = r.exec(q))
+       hashParams[d(e[1])] = d(e[2]);
+
+    return hashParams;
+  }
+
+  function updateTabWithHash() {
+    if (window.location.hash){
+      var tab = getHashParams()['tab']
+      tab_id = tab + '-tab'
+
+      // remove class from tabs currently set as current
+      $('ul.tabs li').removeClass('current');
+      $('.tab-content').removeClass('current');
+
+      // add current class to active tab based on hash
+      $('[data-tab="'+ tab_id + '"]').addClass('current');
+      $('#'+tab_id).addClass('current');
+
+    }
+  }
+
+
+  function updateQueryStringParameter(uri, key, value) {
+    var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
+    var separator = uri.indexOf('?') !== -1 ? "&" : "?";
+    if (uri.match(re)) {
+      
+      var newUri =  uri.replace(re, '$1' + key + "=" + value + '$2');
+      return parseQuerystring(newUri)
+    }
+    else {
+      console.log(uri, 'uri')
+      return uri + separator + key + "=" + value;
+    }
+  }
+
+
+
+  // EVENT LISTENERS ETC
+
+
+  $('ul.tabs li').click(function(){
+    var tab_id = $(this).attr('data-tab');
+    var tab = tab_id.split('-')[0]
+    window.location.hash = 'tab=' + tab
+  })
+
+  $(window).on('hashchange', function(){
+   updateTabWithHash();
+  })
+
+  $(document).on('ready page:load', function(){
+    updateTabWithHash();
+    var hashID = window.location.hash.substring(1)
+  })
+
+
+</script>
