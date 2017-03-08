@@ -216,7 +216,7 @@ fr:
     assessment: 'Évaluation'
     extenstions: 'Prolongements'
     suggested-lesson: 'Leçons recommandées'
-    intended-province: 'Conçu pour la province:'
+    intended-province: 'Conçu pour la province'
     new:
       save-draft: 'Enregistrer comme brouillon'
       submit-lesson: 'Envoyer la leçon'
