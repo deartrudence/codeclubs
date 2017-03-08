@@ -53,6 +53,11 @@ a.wysihtml5-command-active{
   // color: white;
 } 
 
+input[type="submit"].bootsy--buttons {
+  font-size: 12px;
+  padding: 6px;
+}
+
 
 .wysihtml5-editor{
   ul{
@@ -64,3 +69,18 @@ a.wysihtml5-command-active{
     padding-left: 40px !important;
   }
 }
+
+
+.text-edit:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+.text-edit { display: inline-block; }
+/* start commented backslash hack \*/
+* html .text-edit { height: 1%; }
+.text-edit { display: block; }
+/* close commented backslash hack */

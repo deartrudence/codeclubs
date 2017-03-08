@@ -80,6 +80,10 @@
         <div class="users-exports-container">
           
           <div class="wrapper--flex">
+            <div>
+              <input type="checkbox" name="select-all" id="select-all">
+              <label for="select-all">All</label>
+            </div>
             <% Profile::EN_CSV_OPTIONS.each do |option|%>
               <div>  
                 <%= check_box_tag('csv_options[]', option)%>
@@ -296,6 +300,15 @@
       var tab = tab_id.split('-')[0]
       window.location.hash = 'tab=' + tab
     })
+
+    $('#select-all').click(function(event) {   
+        if(this.checked) {
+            // Iterate each checkbox
+            $(':checkbox').each(function() {
+                this.checked = true;                        
+            });
+        }
+    });
 
     $(window).on('hashchange', function(){
      updateTabWithHash();

@@ -36,7 +36,7 @@
       <div class="lesson--single-actions">
         <% if current_user.admin? && @lesson.submitted%>
             <span><%= t('lessons.admin.update-status') %> </span>
-           <div class="slideThree"> 
+           <div class="slideThree" id="public-slide">
              <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
              <label for="slideThree<%= @lesson.id %>"></label>
            </div>
@@ -95,7 +95,11 @@
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
         <div>  
+<<<<<<< HEAD
          <%= f.label t('dictionary.grade-level') %>
+=======
+         <%= f.label :grade, class: 'required' %>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
         <div class="select"> 
           <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
         </div>
@@ -177,9 +181,15 @@
         <%= f.select :subject_list, options_for_select((lang == 'fr' ?Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS) , @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
+<<<<<<< HEAD
         <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts, class: 'required'%>
         <p class="small"><%= t('lessons.new.curriculum-takeaways-description') %></p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: t('lessons.new.add-curriculum-takeaway') %>
+=======
+        <%= f.label 'Curriculum Takeaways', :curriculum_concepts%>
+        <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
+        <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
       </div>
       <%= f.label t('dictionary.coding-concepts'), :code_concept_list, class: 'required' %>
       <div class="select">
@@ -203,7 +213,7 @@
         <h3><%= t('lessons.suggested-lesson')%></h3>
         <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
         <div class="select">
-          <%= f.collection_select :suggested_lessons, Lesson.all.is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
+          <%= f.collection_select :suggested_lessons, Lesson.where.not(id: @lesson.id).is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
         </div>
         <% if @lesson.suggested_lessons.present?%>
           <ul class="list--suggested-lessons-edit">
@@ -258,6 +268,8 @@ $(document).ready(function(){
     $(this).before($(this).data('fields').replace(regexp, time));
 
   })
+
+
 });
   
 </script>

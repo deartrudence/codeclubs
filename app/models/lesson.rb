@@ -15,7 +15,7 @@ class Lesson < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: :slugged
 
-  validates :title, :level, :duration_in_minutes, :description, :content, :province, presence: true
+  validates :title, :level, :duration_in_minutes, :description, :content, :province, :grade, presence: true
 
 
   has_attached_file :feature_image, styles: { medium: "750x300>", thumb: "100x100>" }, default_url: "klc.jpg"
@@ -28,7 +28,8 @@ class Lesson < ActiveRecord::Base
 
   scope :has_been_submitted?, -> (status) { where submitted: status }
 
-  scope :order_asc, -> { where( submitted: false ).order("title asc") }
+  #TODO - is this used
+  # scope :order_asc, -> { where( submitted: false ).order("title asc") }
 
   scope :is_verified?, -> { where( verified: true ) }
 

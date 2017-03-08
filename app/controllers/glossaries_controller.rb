@@ -7,9 +7,9 @@ class GlossariesController < ApplicationController
     lang = session[:locale]
     if params[:alphabetical]
       if params[:alphabetical][:terminology] == '1'
-        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('term desc')
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('LOWER(term) desc')
       elsif params[:alphabetical][:terminology] == '0'
-        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('term asc')
+        @glossaries = Glossary.paginate(:page => params[:page], :per_page => 10).by_language(lang).order('LOWER(term) asc')
       end
       respond_to do |format|
         format.js { render :partial => "glossary_list_js" }

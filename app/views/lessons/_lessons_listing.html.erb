@@ -6,9 +6,9 @@
         <span><%= t('dictionary.grade') %>: <%= lesson.grade%></span>
         <span class="lesson--likes">
           <span class="ribbon">
-            <%= link_to like_lesson_path(lesson), "data-liked" => lesson.liked_by_user(current_user), class: "likes", remote: true,  method: :get, data: { type: :json } do %>
+           
               <span class="likes-count"><%= lesson.get_upvotes.size %></span>
-            <% end %>
+    
           </span>
         </span>
       </div>
@@ -65,39 +65,39 @@
 
 
 <script>
-  function updateVotable(){
-    $('.likes').each(function(i, lesson){
-      var status = $(lesson).data('liked');
-      var url = $(lesson).attr('href')
-      var href = url.split('/')
-      href.pop()
-      var url_start = href.join('/')
-      if(status == true){
-        console.log(i + 'true')
-        $(lesson).attr('href', url_start + '/dislike')
-      }else if(status == false){
-        $(lesson).attr('href', url_start + '/like')
-        console.log(i + 'false')
-      }
-    })
-  }
-  $(document).ready(function(){
-    $('.likes').on('click', function(e){
-      e.preventDefault()
+  // function updateVotable(){
+  //   $('.likes').each(function(i, lesson){
+  //     var status = $(lesson).data('liked');
+  //     var url = $(lesson).attr('href')
+  //     var href = url.split('/')
+  //     href.pop()
+  //     var url_start = href.join('/')
+  //     if(status == true){
+  //       console.log(i + 'true')
+  //       $(lesson).attr('href', url_start + '/dislike')
+  //     }else if(status == false){
+  //       $(lesson).attr('href', url_start + '/like')
+  //       console.log(i + 'false')
+  //     }
+  //   })
+  // }
+  // $(document).ready(function(){
+  //   $('.likes').on('click', function(e){
+  //     e.preventDefault()
 
-    })
-    $('.likes').on('ajax:success', function(e, data, status, xhr){
-      console.log(data.count)
-      var count = data.count
-      var liked = $(this).data('liked')
-      $(this).find('.likes-count').html(count)
-      if(liked == true){
-        $(this).data('liked', false)
-      }else if(liked == false){
-        $(this).data('liked', true)
-      }
-      updateVotable();
-    });
-    updateVotable();
-  });
+  //   })
+  //   $('.likes').on('ajax:success', function(e, data, status, xhr){
+  //     console.log(data.count)
+  //     var count = data.count
+  //     var liked = $(this).data('liked')
+  //     $(this).find('.likes-count').html(count)
+  //     if(liked == true){
+  //       $(this).data('liked', false)
+  //     }else if(liked == false){
+  //       $(this).data('liked', true)
+  //     }
+  //     updateVotable();
+  //   });
+  //   updateVotable();
+  // });
 </script>

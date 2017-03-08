@@ -36,6 +36,14 @@
     color:white !important;
     background: <%= @lesson.custom_color %>!important;
   }
+
+  .lesson--section-title.active:after {
+    color:white !important;
+  }
+
+  .lesson--single-title-img {
+    background-color: <%= @lesson.custom_color %>!important;
+  }
 </style>
 <%if notice.present?%>
   <p id="notice"><%= notice %></p>
@@ -289,6 +297,7 @@
       </section>
     <% end %>
     <section> 
+<<<<<<< HEAD
       <h3 class="lesson--section-title" id="the-lesson"><%= t('lessons.the-lesson') %></h3>
       <div class="text-edit">
         <%= @lesson.content.html_safe %>
@@ -305,17 +314,38 @@
     <% if @lesson.answers.present? %>
       <section> 
         <h3 class="lesson--section-title" id="answers"><%= t('lessons.assessments') %></h3>
+=======
+      <h3 class="lesson--section-title active" id="the-lesson">The Lesson</h3>
+      <div class="text-edit active">
+        <%= @lesson.content.html_safe %>
+      </div>
+    </section>
+    <% if @lesson.answers.present? %>
+      <section> 
+        <h3 class="lesson--section-title" id="assessment">Assessment</h3>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
         <div class="text-edit">
           <%= @lesson.answers.html_safe %>
         </div>
       </section>
     <% end %>
-    <% if @lesson.video_link.present?%>
-        <%= @lesson.video_link.html_safe %>
+    <% if @lesson.extensions.present? || @lesson.video_link.present? || @lesson.file_upload.file?%>
+      <section>
+        <h3 class="lesson--section-title" id="extensions">Extensions</h3>
+        <div class="text-edit">
+          <%= @lesson.extensions.html_safe %>
+          <% if @lesson.video_link.present?%>
+              <%= @lesson.video_link.html_safe %>
+          <% end %>
+          <% if @lesson.file_upload.file? %>
+            <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
+          <% end %>
+        </div>
+      </section>
     <% end %>
-    <% if @lesson.file_upload.file? %>
-      <%= link_to 'download additional materials', @lesson.file_upload.url, target: '_blank', class: 'button button--secondary' %>
-    <% end %>
+   
+   
+    
     <% if @lesson.suggested_lessons.present? %>
       <section>
         <h3 class="lesson--section-title" id="suggested-lessons"><%= t('lessons.suggested-lesson') %></h3>
@@ -335,6 +365,16 @@
   <div class="lesson--single-sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
     <div class="lesson--single-sidebar--text word-wrap">
+      <%= link_to like_lesson_path(@lesson), "data-liked" => @lesson.liked_by_user(current_user), class: "likes button--action custom-color-text", remote: true,  method: :get, data: { type: :json } do %>
+        Bookmark This Lesson
+        <span class="lesson--likes">
+          <span class="ribbon">
+              <span class="likes-count"><%= @lesson.get_upvotes.size %></span>
+          </span>
+        </span>  
+      <% end %>
+      <h3>Intended Province:</h3>
+      <p><%= @lesson.province%> <% if @lesson.verified%><span class="lesson--single-verified-check custom-color-text"><i class="fa fa-check-circle" aria-hidden="true"></i> verified</span><% end %></p>
       <ul class="list--tags">
         <li class="title"><%= t('dictionary.subjects') %>:</li>
         <% @lesson.subject_list.each do |subject| %>
@@ -362,13 +402,22 @@
       <% end %>
 
       
+<<<<<<< HEAD
       <% if @lesson.references.present? %>
         <h3><%= t('dictionary.references') %></h3>
         <div class="text-edit">
           <%= @lesson.references.html_safe %>
+=======
+      <% if @lesson.lesson_references.present? %>
+        <h3>References</h3>
+        <div class="lesson--single-refs"> 
+          <% @lesson.lesson_references.each do |ref|%>
+            <p><%= ref.title %></p>
+            <%= link_to ref.url, ref.url, target: '_blank'%>
+          <% end %>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
         </div>
       <% end %>
-
     </div>
   </div>
 </div>  
@@ -412,7 +461,10 @@
          target = target.length ? target : $('[name=' + this.hash.slice(1) +']');
          if (target.length) {
             var navHeight = $('#lesson--nav-bar').height()
-            console.log(target.offset().top, navHeight)
+            if (!target.hasClass('active')){
+              $(target).siblings('.text-edit').slideToggle('100')
+              $(target).toggleClass('active')
+            }
            $('html, body').animate({
              scrollTop: target.offset().top - navHeight
            }, 1000);
@@ -447,5 +499,43 @@
 
   return t;
 }(document, "script", "twitter-wjs"));</script>
+
+<script>
+  function updateVotable(){
+    $('.likes').each(function(i, lesson){
+      var status = $(lesson).data('liked');
+      var url = $(lesson).attr('href')
+      var href = url.split('/')
+      href.pop()
+      var url_start = href.join('/')
+      if(status == true){
+        console.log(i + 'true')
+        $(lesson).attr('href', url_start + '/dislike')
+      }else if(status == false){
+        $(lesson).attr('href', url_start + '/like')
+        console.log(i + 'false')
+      }
+    })
+  }
+  $(document).ready(function(){
+    $('.likes').on('click', function(e){
+      e.preventDefault()
+
+    })
+    $('.likes').on('ajax:success', function(e, data, status, xhr){
+      console.log(data.count)
+      var count = data.count
+      var liked = $(this).data('liked')
+      $(this).find('.likes-count').html(count)
+      if(liked == true){
+        $(this).data('liked', false)
+      }else if(liked == false){
+        $(this).data('liked', true)
+      }
+      updateVotable();
+    });
+    updateVotable();
+  });
+</script>
 
 
