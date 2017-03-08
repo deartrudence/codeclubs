@@ -50,9 +50,6 @@
           <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
            <%= t('lessons.new.submit-lesson') %>
           <% end %>
-        <% elsif !@lesson.submitted%>
-          <%= f.hidden_field :submitted, value: true %>  
-          <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %> 
         <% end %>
       </div>
     </div>
