@@ -35,7 +35,7 @@
       <div class="lesson--single-actions">
         <% if current_user.admin? && @lesson.submitted%>
             <span>Update Status: </span>
-           <div class="slideThree"> 
+           <div class="slideThree" id="public-slide"> 
              <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
              <label for="slideThree<%= @lesson.id %>"></label>
            </div>
@@ -241,6 +241,8 @@ $(document).ready(function(){
     $(this).before($(this).data('fields').replace(regexp, time));
 
   })
+
+
 });
   
 </script>
