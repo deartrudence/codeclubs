@@ -297,41 +297,23 @@
       </section>
     <% end %>
     <section> 
-<<<<<<< HEAD
       <h3 class="lesson--section-title" id="the-lesson"><%= t('lessons.the-lesson') %></h3>
       <div class="text-edit">
         <%= @lesson.content.html_safe %>
       </div>
     </section>
-    <% if @lesson.extensions.present? %>
-      <section>
-        <h3 class="lesson--section-title" id="extensions"><%= t('lessons.extenstions') %></h3>
-        <div class="text-edit">
-          <%= @lesson.extensions.html_safe %>
-        </div>
-      </section>
-    <% end %>
+
     <% if @lesson.answers.present? %>
       <section> 
-        <h3 class="lesson--section-title" id="answers"><%= t('lessons.assessments') %></h3>
-=======
-      <h3 class="lesson--section-title active" id="the-lesson">The Lesson</h3>
-      <div class="text-edit active">
-        <%= @lesson.content.html_safe %>
-      </div>
-    </section>
-    <% if @lesson.answers.present? %>
-      <section> 
-        <h3 class="lesson--section-title" id="assessment">Assessment</h3>
->>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
+        <h3 class="lesson--section-title" id="assessments"><%= t('lessons.assessments') %></h3>
         <div class="text-edit">
           <%= @lesson.answers.html_safe %>
         </div>
       </section>
     <% end %>
-    <% if @lesson.extensions.present? || @lesson.video_link.present? || @lesson.file_upload.file?%>
+    <% if @lesson.extensions.present? %>
       <section>
-        <h3 class="lesson--section-title" id="extensions">Extensions</h3>
+        <h3 class="lesson--section-title" id="extensions"><%= t('lessons.extenstions') %></h3>
         <div class="text-edit">
           <%= @lesson.extensions.html_safe %>
           <% if @lesson.video_link.present?%>
@@ -343,8 +325,6 @@
         </div>
       </section>
     <% end %>
-   
-   
     
     <% if @lesson.suggested_lessons.present? %>
       <section>
@@ -401,21 +381,14 @@
         </div>
       <% end %>
 
-      
-<<<<<<< HEAD
-      <% if @lesson.references.present? %>
-        <h3><%= t('dictionary.references') %></h3>
-        <div class="text-edit">
-          <%= @lesson.references.html_safe %>
-=======
+    
       <% if @lesson.lesson_references.present? %>
-        <h3>References</h3>
+        <h3><%= t('dictionary.references') %></h3>
         <div class="lesson--single-refs"> 
           <% @lesson.lesson_references.each do |ref|%>
             <p><%= ref.title %></p>
             <%= link_to ref.url, ref.url, target: '_blank'%>
           <% end %>
->>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
         </div>
       <% end %>
     </div>
