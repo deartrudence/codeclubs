@@ -23,7 +23,7 @@ class GlossariesController < ApplicationController
         # TODO fix this query (using regex)
         @glossaries = Glossary.where("term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ? OR term like ?", "0%", "1%", "2%", "3%", "4%", "5%", "6%", "7%", "8%", "9%").by_language(lang)
       else
-        @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter]}%").paginate(:page => params[:page], :per_page => 10).by_language(lang).order('LOWER(term) asc')
+        @glossaries = Glossary.where("term like ?", "#{params[:single_letter][:letter].downcase}%").paginate(:page => params[:page], :per_page => 10).by_language(lang).order('LOWER(term) asc')
       end
       respond_to do |format|
         format.js { render :partial => "glossary_list_js" }
