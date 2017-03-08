@@ -52,8 +52,8 @@
 <div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper lesson--single-title">
   <div class="lesson--single-title-bar custom-color-bg">
     <h2 class="as--no-top-margin"><%= @lesson.title %></h2>
-    <h4 class="font-quicksand as--no-top-margin"><% if @lesson.grade.present?%>Grade <%= @lesson.grade%> • <% end %><%= @lesson.duration_in_minutes%> Minutes</h4>
-    <h3 class="font-quicksand as--no-top-margin">Created by <%= link_to @lesson.author, profile_path(@lesson.user.profile)%> on <%= @lesson.format_date(@lesson.created_at)%></h3>
+    <h4 class="font-quicksand as--no-top-margin"><% if @lesson.grade.present?%><%= t('dictionary.grade-level') %> <%= @lesson.grade%> • <% end %><%= @lesson.duration_in_minutes%> <%= t('lessons.single.duration') %></h4>
+    <h3 class="font-quicksand as--no-top-margin"><%= t('lessons.single.created-by') %> <%= link_to @lesson.author, profile_path(@lesson.user.profile)%> <%= t('lessons.single.created-by-second') %> <%= @lesson.format_date(@lesson.created_at)%></h3>
     <% if @lesson.verified.present?%>
       <div class="lesson--single-verification-badge">
         <div class="badge-box">
@@ -250,7 +250,6 @@
         </div>  
       </div>  
     <% end %>
-
   </div>
   <div class="lesson--single-title-img" style="background-image: url(<%= @lesson.feature_image.url(:medium) %>)">
   </div>
@@ -258,25 +257,25 @@
 <div id="sticky-nav-target"></div>
 <div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper" id="lesson--nav-bar">
   <nav class="lesson--nav">
-    <p>Jump to:</p>
+    <p><%= t('lessons.single.jump-to') %></p>
     <ul>
-      <li><a href="#introduction" class="custom-color-text">Introduction</a></li>
-      <li><a href="#prep-work" class="custom-color-text">Prep Work</a></li>
-      <li><a href="#the-lesson" class="custom-color-text">The Lesson</a></li>
-      <li><a href="#assessment" class="custom-color-text">Assessment</a></li>
-      <li><a href="#extensions" class="custom-color-text">Extensions</a></li>
-      <li><a href="#suggested-lessons" class="custom-color-text">Suggested Lessons</a></li>
+      <li><a href="#introduction" class="custom-color-text"><%= t('lessons.single.intro') %></a></li>
+      <li><a href="#prep-work" class="custom-color-text"><%= t('lessons.prep') %></a></li>
+      <li><a href="#the-lesson" class="custom-color-text"><%= t('lessons.the-lesson') %></a></li>
+      <li><a href="#extensions" class="custom-color-text"><%= t('lessons.extenstions') %></a></li>
+      <li><a href="#answers" class="custom-color-text"><%= t('lessons.assessment') %></a></li>
+      <li><a href="#suggested-lessons" class="custom-color-text"><%= t('lessons.suggested-lesson') %></a></li>
     </ul>
   </nav>
   <nav class="lesson--single-share">
     <div>
-      <p>Share this lesson!</p>
+      <p><%= t('lessons.single.share-lesson') %></p>
       <div class="wrapper--flex">
         <a class="twitter-share-button"
           href="https://twitter.com/intent/tweet?text=Hello%20world">
-        Tweet</a>
-        <a href="" class="share-email"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a>
-        <div class="fb-share-button" data-href="<%=request.url%>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>">Share</a></div>
+        <%= t('lessons.single.tweet') %></a>
+        <a href="" class="share-email"><i class="fa fa-envelope" aria-hidden="true"></i> <%= t('lessons.single.email') %></a>
+        <div class="fb-share-button" data-href="<%=request.url%>" data-layout="button" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=<%=request.url%>"><%= t('lessons.single.share') %></a></div>
       </div>
     </div>
   </nav>
@@ -284,20 +283,38 @@
 <div class="wrapper wrapper--flex wrapper--flex-wrap as--lesson-wrapper">
   <div class="lesson--single-text">
     <section>
-      <h3 class="lesson--section-title" id="introduction">Introduction</h3>
+      <h3 class="lesson--section-title" id="introduction"><%= t('lessons.single.intro') %></h3>
       <div class="text-edit">
         <%= @lesson.description.html_safe%>
       </div>
     </section>
     <% if @lesson.prep.present? %>
       <section>
-        <h3 class="lesson--section-title" id="prep-work">Prep Work</h3>
+        <h3 class="lesson--section-title" id="prep-work"><%= t('lessons.prep') %></h3>
         <div class="text-edit">
           <%= @lesson.prep.html_safe %>
         </div>
       </section>
     <% end %>
     <section> 
+<<<<<<< HEAD
+      <h3 class="lesson--section-title" id="the-lesson"><%= t('lessons.the-lesson') %></h3>
+      <div class="text-edit">
+        <%= @lesson.content.html_safe %>
+      </div>
+    </section>
+    <% if @lesson.extensions.present? %>
+      <section>
+        <h3 class="lesson--section-title" id="extensions"><%= t('lessons.extenstions') %></h3>
+        <div class="text-edit">
+          <%= @lesson.extensions.html_safe %>
+        </div>
+      </section>
+    <% end %>
+    <% if @lesson.answers.present? %>
+      <section> 
+        <h3 class="lesson--section-title" id="answers"><%= t('lessons.assessments') %></h3>
+=======
       <h3 class="lesson--section-title active" id="the-lesson">The Lesson</h3>
       <div class="text-edit active">
         <%= @lesson.content.html_safe %>
@@ -306,6 +323,7 @@
     <% if @lesson.answers.present? %>
       <section> 
         <h3 class="lesson--section-title" id="assessment">Assessment</h3>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
         <div class="text-edit">
           <%= @lesson.answers.html_safe %>
         </div>
@@ -330,7 +348,7 @@
     
     <% if @lesson.suggested_lessons.present? %>
       <section>
-        <h3 class="lesson--section-title" id="suggested-lessons">Suggested Lessons</h3>
+        <h3 class="lesson--section-title" id="suggested-lessons"><%= t('lessons.suggested-lesson') %></h3>
         <div class="text-edit">
           <ul> 
             <% @lesson.suggested_lessons.each do |sug_lesson|%>
@@ -358,13 +376,13 @@
       <h3>Intended Province:</h3>
       <p><%= @lesson.province%> <% if @lesson.verified%><span class="lesson--single-verified-check custom-color-text"><i class="fa fa-check-circle" aria-hidden="true"></i> verified</span><% end %></p>
       <ul class="list--tags">
-        <li class="title">Subjects:</li>
+        <li class="title"><%= t('dictionary.subjects') %>:</li>
         <% @lesson.subject_list.each do |subject| %>
           <li class="custom-color-bg"><%= subject %></li>
         <% end %>
       </ul>
       <ul class="list--tags">
-        <li class="title">Programming Concepts:</li>
+        <li class="title"><%= t('dictionary.coding-concepts') %>:</li>
         <% @lesson.code_concept_list.each do |code_concept| %>
           <li class="custom-color-bg"><%= code_concept %></li>
         <% end %>
@@ -384,6 +402,12 @@
       <% end %>
 
       
+<<<<<<< HEAD
+      <% if @lesson.references.present? %>
+        <h3><%= t('dictionary.references') %></h3>
+        <div class="text-edit">
+          <%= @lesson.references.html_safe %>
+=======
       <% if @lesson.lesson_references.present? %>
         <h3>References</h3>
         <div class="lesson--single-refs"> 
@@ -391,6 +415,7 @@
             <p><%= ref.title %></p>
             <%= link_to ref.url, ref.url, target: '_blank'%>
           <% end %>
+>>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
         </div>
       <% end %>
     </div>

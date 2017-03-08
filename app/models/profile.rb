@@ -1,18 +1,25 @@
 class Profile < ActiveRecord::Base
-  ROLE = %w[admin teacher]
+  EN_ROLE = %w[admin teacher]
+  FR_ROLE = %w[admin enseignant]
 
-  PROVINCES = ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
+  # using the provinces from level - to reduce how many places we store it
+  # PROVINCES = ['British Columbia', 'Alberta', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon']
 
-  CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
+  EN_CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
+  FR_CSV_OPTIONS = ['email', 'first_name', 'last_name', 'school', 'province', 'gender', 'years_of_experience', 'teaching_role', 'grade', 'number_of_students', 'mailing_list']
 
-  YEARS_OF_EXPERIENCE = ['Less than 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
+  EN_YEARS_OF_EXPERIENCE = ['Less than 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
+  FR_YEARS_OF_EXPERIENCE = ['Moins de 5', '5 - 10', '10 - 15', '15 - 20', '20+' ]
   
-  GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
+  # using the provinces from level - to reduce how many places we store it
+  # GRADE = ['K', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']
 
-  TEACHING_ROLE = ['A teacher in a public school','A teacher in a private school','A teacher in an alternative school or home-school','A daycare or preschool teacher','A non-traditional educator part of a community group','Other']
+  EN_TEACHING_ROLE = ['A teacher in a public school','A teacher in a private school','A teacher in an alternative school or home-school','A daycare or preschool teacher','A non-traditional educator part of a community group','Other']
+  FR_TEACHING_ROLE = ['Enseignant dans une école publique','Enseignant dans une école privée','Enseignant dans une école alternative ou à la maison','Éducateur en garderie ou enseignant en prématernelle','Enseignant autre dans un groupe communautaire','Autre']
 
-  NUMBER_OF_STUDENTS = ['Less than 10','10 - 15','15 - 20',
-  '20 - 25','25+']
+  EN_NUMBER_OF_STUDENTS = ['Less than 10','10 - 15','15 - 20', '20 - 25','25+']
+  FR_NUMBER_OF_STUDENTS = ['Moins de 10','10 - 15','15 - 20', '20 - 25','25+']
+
   has_many :lessons
   belongs_to :user
   validates :user, presence: true

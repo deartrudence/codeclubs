@@ -3,7 +3,7 @@
   <% @lessons.each do |lesson| %>
     <div class="lesson col--two lesson--level-<%= lesson.level %>">
       <div class="lesson--bar">
-        <span>Grade: <%= lesson.grade%></span>
+        <span><%= t('dictionary.grade') %>: <%= lesson.grade%></span>
         <span class="lesson--likes">
           <span class="ribbon">
            
@@ -14,8 +14,8 @@
       </div>
       <div class="lesson--title" style="background-image: linear-gradient(to right, rgba(31, 72, 123, 0.4) 0%, rgba(31, 72, 123, 0.5) 59%, rgba(31, 72, 123, 0.65) 100%), url(<%= lesson.feature_image.url %>)">
         <span>
-          <p>Time: <%= lesson.duration_in_minutes %></p>
-          <p>Author: <%= lesson.author%></p>
+          <p><%= t('dictionary.time') %>: <%= lesson.duration_in_minutes %></p>
+          <p><%= t('dictionary.author') %>: <%= lesson.author%></p>
         </span>
         <h2><%= lesson.title %></h2>
       </div>
@@ -24,7 +24,7 @@
         <p><%= lesson.short_description %></p>
         <div class="lesson--more">
           
-          <%= link_to 'Learn More', lesson, class: 'button button--black' %>
+          <%= link_to t('dictionary.learn-more'), lesson, class: 'button button--black' %>
           <% if lesson.verified %>
             <svg id="Artwork" xmlns="http://www.w3.org/2000/svg" width="125.3" height="27.7" viewBox="0 0 125.3 27.7">
               <defs>
