@@ -147,9 +147,6 @@
         <% end %>
         <%= link_to t('lessons.new.delete-lesson'), lesson_path(@lesson),
     data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: 'link--underlined delete-lesson'%>
-      <% elsif !@lesson.submitted%>
-        <%= hidden_field_tag submitted: true %>  
-        <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %>
       <% end %>
     </div>
     <!-- BEGINING OF SIDEBAR -->
