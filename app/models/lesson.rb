@@ -101,7 +101,7 @@ class Lesson < ActiveRecord::Base
   end
 
   def format_date(date)
-    date.strftime("%-d/%-m/%C")
+    date.strftime("%-d/%-m/%y")
   end
 
   def self.all_tags_for_type(lessons, tag_type)
