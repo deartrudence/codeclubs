@@ -95,11 +95,7 @@
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
         <div>  
-<<<<<<< HEAD
-         <%= f.label t('dictionary.grade-level') %>
-=======
-         <%= f.label :grade, class: 'required' %>
->>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
+         <%= f.label t('dictionary.grade-level'), class: 'required' %>
         <div class="select"> 
           <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
         </div>
