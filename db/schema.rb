@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170307152047) do
+ActiveRecord::Schema.define(version: 20170309153112) do
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
@@ -147,6 +147,7 @@ ActiveRecord::Schema.define(version: 20170307152047) do
     t.string   "gender"
     t.string   "years_of_experience"
     t.string   "teaching_role"
+    t.integer  "pdf_download_count",  default: 0
   end
 
   add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true

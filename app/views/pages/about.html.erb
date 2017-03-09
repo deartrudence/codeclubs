@@ -16,7 +16,11 @@
     <h2><%= t('dictionary.download-guide')%></h2>
     <div>  
       <%= image_tag 'tlc-howtoguide-mockup.png'%>
-      <a href="#" class="button button--primary" data-open="pdf_download"><%= t('dictionary.download') %></a>
+      <% if current_user.present?%>
+        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary', id: 'pdf', :data => {:user => current_user} %>
+      <% else %>  
+        <a href="#" class="button button--tertiary" data-open="pdf_download"><%= t('dictionary.download') %></a>
+      <% end %>
       <p><%= t('about-us.guide-description') %></p>
       <%= link_to t('dictionary.download-guide'), 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
     </div>
@@ -79,7 +83,17 @@
 
 
 <script>
-
+  $('#pdf').on('click', function(){
+    console.log($(this).data('user')['id'])
+    $.ajax({
+      url: '',
+      method: 'GET', 
+      dataType: 'json', 
+      data: {
+        current_user_id: $(this).data('user')['id']
+      }
+    })
+  })
   $('[data-open]').on('click', function(e){
     e.preventDefault()
     var modal = $(this).data('open')

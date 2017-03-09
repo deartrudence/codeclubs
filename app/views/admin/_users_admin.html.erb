@@ -6,6 +6,7 @@
      	<span><%= user.email%></span>
      	<span><%= user.profile.teaching_role if user.profile.present?%></span>
 			<span><%= user.profile.mailing_list if user.profile.present?%></span>
+			<span><%= user.profile.pdf_download_count if user.profile.present?%></span>
     </li>
   <% end %>
 </ul>

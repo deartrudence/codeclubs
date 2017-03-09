@@ -271,6 +271,7 @@
     <div>
       <p><%= t('lessons.single.share-lesson') %></p>
       <div class="wrapper--flex">
+        <a href="#" class="share-print"><i class="fa fa-print" aria-hidden="true"></i> Print</a>
         <a class="twitter-share-button"
           href="https://twitter.com/intent/tweet?text=Hello%20world">
         <%= t('lessons.single.tweet') %></a>
@@ -364,7 +365,11 @@
       <ul class="list--tags">
         <li class="title"><%= t('dictionary.coding-concepts') %>:</li>
         <% @lesson.code_concept_list.each do |code_concept| %>
-          <li class="custom-color-bg"><%= code_concept %></li>
+          <li class="custom-color-bg">
+            <%= link_to glossaries_path(anchor: code_concept) do%>
+              <%= code_concept %>
+            <% end %> 
+          </li>
         <% end %>
       </ul>
       <% if @lesson.curriculum_concepts.present? %>
@@ -491,6 +496,10 @@
     })
   }
   $(document).ready(function(){
+    $('.share-print').on('click', function(e){
+      e.preventDefault()
+      window.print()
+    });
     $('.likes').on('click', function(e){
       e.preventDefault()
 
