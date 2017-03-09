@@ -1,7 +1,7 @@
 <div class="wrapper--flex lessons-listing">
 <% if @lessons.present? %>
   <% @lessons.each do |lesson| %>
-    <div class="lesson col--two lesson--level-<%= lesson.level %>">
+    <%= link_to lesson, class: 'lesson col--two' do%>
       <div class="lesson--bar">
         <span><%= t('dictionary.grade') %>: <%= lesson.grade%></span>
         <span class="lesson--likes">
@@ -23,8 +23,7 @@
       <div class="lesson--short-description">
         <p><%= lesson.short_description %></p>
         <div class="lesson--more">
-          
-          <%= link_to t('dictionary.learn-more'), lesson, class: 'button button--black' %>
+          <span class="button button--black"><%= t('dictionary.learn-more')%></span>
           <% if lesson.verified %>
             <svg id="Artwork" xmlns="http://www.w3.org/2000/svg" width="125.3" height="27.7" viewBox="0 0 125.3 27.7">
               <defs>
@@ -51,12 +50,10 @@
                 </g>
               </g>
             </svg>
-
           <% end %>
         </div>
       </div>
-    </div>
-
+    <% end %>
   <% end %>
 <% else %>
   <p>No lessons match this search parameter.</p>

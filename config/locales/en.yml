@@ -43,7 +43,7 @@ en:
     language: 'French / English'
     greeting: 'Hi,'
     userdashboard: 'My Lesson Dashboard'
-    logout: 'Log Out'
+    logout: 'Sign Out'
     admindashboard: 'Admin Dashboard'
   footer:
     contact-us: 'Contact Us'

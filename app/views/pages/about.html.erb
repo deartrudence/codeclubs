@@ -19,7 +19,7 @@
       <% if current_user.present?%>
         <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary', id: 'pdf', :data => {:user => current_user} %>
       <% else %>  
-        <a href="#" class="button button--tertiary" data-open="pdf_download"><%= t('dictionary.download') %></a>
+        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary' %>
       <% end %>
       <p><%= t('about-us.guide-description') %></p>
       <%= link_to t('dictionary.download-guide'), 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
