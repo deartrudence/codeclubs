@@ -1,25 +1,26 @@
 <div class="wrapper--small">
 	<h2><%= t(".sign_up") %></h2>
-
 	<div class="as--profile-wrapper form--profile">
+		<p><%= t('profile.accounts-free')%></p>
+  	<%=devise_error_messages!%>
+		
 		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 		  <%= f.error_notification %>
+	  	<%= f.label :email, class: 'required'%>
+	    <%= f.input_field :email, required: true, autofocus: true %>
+	    <%= f.label :password, class: 'required'%><span class="internal font-quicksand"><%= t('dictionary.min-8') %></span>
+	    <%= f.input_field :password, required: true %>
+	    <%= f.label :password_confirmation, class: 'required'%>
+	    <%= f.input_field :password_confirmation, required: true %>
 
-		  <div class="form-inputs">
-		  	<%= f.label :email, class: 'required'%>
-		    <%= f.input_field :email, required: true, autofocus: true %>
-		    <%= f.label :password, class: 'required'%><span class="internal font-quicksand"><%= t('dictionary.min-8') %></span>
-		    <%= f.input_field :password, required: true %>
-		    <%= f.label :password_confirmation, class: 'required'%>
-		    <%= f.input_field :password_confirmation, required: true %>
-		  </div>
 
 		  <div class="form-actions">
-		    <%= f.button :submit, t(".sign_up") %>
+		    <%= f.button :submit, t("devise.common.sign_up"), class: 'button button--primary' %>
+		   <%- if controller_name != 'sessions' %>
+		     <%= link_to t("devise.common.sign_in"), new_session_path(resource_name), class: 'button button--secondary' %>
+		   <% end -%>
 		  </div>
 		<% end %>
-		<p class="internal right"><span class="required"></span> =<%= t('dictionary.required-field')%></p>
-		<%= render "devise/shared/links" %>
-		
+		<p class="internal right"><span class="required"></span> =<%= t('dictionary.required-field')%></p>		
 	</div>
 </div>

@@ -77,7 +77,7 @@ fr:
       forgot_your_password?: "Mot de passe oublié ?"
       hello: "Bonjour"
       sign_in: "Se connecter"
-      sign_up: "S'enregistrer"
+      sign_up: "S'enregistrer!"
     shared:
       links:    
         didnt_receive_confirmation_instructions?: "Vous n'avez pas reçu de courriel de confirmation ?"
@@ -160,6 +160,7 @@ fr:
     email: 'Courriel'
     required-field: 'Champ requis'
     min-8: '(minimum de 8 caractères)'
+    sign_in: "Se connecter"
   top-nav: 
     faq: 'FAQ'
     resources: 'Ressources'
@@ -298,6 +299,7 @@ fr:
       status: 'Statut'
       remove: 'Effacer'
   profile:
+    accounts-free: 'FR Accounts are completely free and will provide you full access to lessons and other learning material.'
     my-profile: 'Mon profil'
     name: 'Nom'
     school: 'École'

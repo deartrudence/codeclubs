@@ -1,5 +1,12 @@
 en:
   hello: "Hello world"
+  devise:
+    common:
+      sign_up: "Sign up!"
+      sign_in: "Log in"
+    registrations:
+      edit:
+        update: "Update Settings"
   dictionary: 
     author: 'Author'
     browse-lessons: 'Browse Lessons'
@@ -35,6 +42,7 @@ en:
     email: 'Email'
     required-field: 'Required Field'
     min-8: '(8 characters maximum)'
+    sign_in: "Log in"
   top-nav: 
     faq: 'F.A.Q.'
     resources: 'More Resources'
@@ -173,6 +181,7 @@ en:
       status: 'Status'
       remove: 'Remove'
   profile:
+    accounts-free: 'Accounts are completely free and will provide you full access to lessons and other learning material.'
     my-profile: 'My Profile'
     name: 'Name'
     school: 'School'
