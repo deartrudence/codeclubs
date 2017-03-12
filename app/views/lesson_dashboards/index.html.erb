@@ -76,7 +76,7 @@
       <%= render 'lesson_bookmarked', locals: {lessons: @lesson_bookmarked}%>
     </div>
   <% else %>
-    <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
+    <p><%= t('lessons.dashboard.no-favourites')%> <%= link_to t('lessons.dashboard.here'), lessons_path %></p>
   <% end %>
   </div>
 </div>

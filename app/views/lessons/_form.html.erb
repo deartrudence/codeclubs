@@ -40,7 +40,7 @@
              <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
              <label for="slideThree<%= @lesson.id %>"></label>
            </div>
-          <%= f.submit "Save Lesson", class: "button button--primary save-as-draft" %>
+          <%= f.submit t('lessons.new.save-lesson'), class: "button button--primary save-as-draft" %>
         <% end %>
         <% if !@lesson.submitted%>
           <%= f.submit t('lessons.new.save-draft'), class: "button button--secondary save-as-draft" %>
@@ -80,7 +80,7 @@
         <span class="label-direction"><%= t('lessons.admin.max-30') %></span>
         <div class="wrapper--flex">
           <span class="message-for"><%= t('lessons.admin.verified-for') %></span>
-          <%= f.text_field :verification_message, placeholder: 'The Provincial Curriculum' %>
+          <%= f.text_field :verification_message, placeholder: t('lessons.new.provincial-curriculum') %>
         </div>
       </div>
     </div>
@@ -118,7 +118,7 @@
       <div class="textarea-content">
         <h3 class="title--tertiary required custom-color-title"><%= t('lessons.the-lesson') %></h3>
         <p class="small"><%= t('lessons.new.lesson-description') %></p>
-        <%= f.bootsy_area :content, editor_options: { html: true} ,placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
+        <%= f.bootsy_area :content, editor_options: { html: true} ,placeholder: t('lessons.new.write-lesson'), required: true %>
       </div>
       <div>
         <h3 class="title--tertiary custom-color-title"><%= t('lessons.assessment') %></h3>
@@ -195,7 +195,7 @@
       </div>
       <div>
         <h3><%= t('lessons.suggested-lesson')%></h3>
-        <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
+        <p class="small"><%= t('lessons.suggested-lesson-description')%></p>
         <div class="select">
           <%= f.collection_select :suggested_lessons, Lesson.where.not(id: @lesson.id).is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
         </div>

@@ -43,6 +43,8 @@ en:
     required-field: 'Required Field'
     min-8: '(8 characters maximum)'
     sign_in: "Log in"
+    internal-use: 'for internal use only'
+    slack-notice: 'Thank you! You will receive an invite to our Slack group shortly.'
   top-nav: 
     faq: 'F.A.Q.'
     resources: 'More Resources'
@@ -53,6 +55,7 @@ en:
     userdashboard: 'My Lesson Dashboard'
     logout: 'Sign Out'
     admindashboard: 'Admin Dashboard'
+    create-profile: 'Create Profile'
   footer:
     contact-us: 'Contact Us'
     twitter: 'twitter.com/learningcode'
@@ -99,10 +102,13 @@ en:
     assessment: 'Assessment'
     extenstions: 'Extensions'
     suggested-lesson: 'Suggested Lessons'
+    suggested-lesson-description: 'Lessons that would nicely complement this one or provide a good extension.'
     intended-province: 'Intended Province'
+    lessons-paragraph: "Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop."
     new:
       save-draft: 'Save as Draft'
       submit-lesson: 'Submit Lesson'
+      save-lesson: 'Save Lesson'
       lesson-info: 'Lesson Info'
       title: 'Title'
       enter-lesson-title: 'Enter the lesson title here'
@@ -115,6 +121,7 @@ en:
       prep-description: 'All the behind the scenes work to get the lesson ready.'
       prep-required: 'Indicate any prep work required for this lesson, including any materials etc.'
       lesson-description: 'The actual meat of the lesson! This could take form of a step-by-step guide or maybe a series of little exercises, completely up to you!'
+      write-lesson: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here. '
       assessment-description: 'Either then answers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.'
       provide-answer: 'Provide answers here.'
       extensions-description: 'Additional questions and challenges that build on content reviewed in the lesson.'
@@ -141,6 +148,7 @@ en:
       url: 'URL'
       reference-link: 'Link to reference material'
       more: '+more'
+      provincial-curriculum: 'The Provincial Curriculum'
     single:
       verified-for: 'This lesson is verified for :'
       duration: 'minutes'
@@ -159,6 +167,8 @@ en:
       fork-lesson: 'Fork This Lesson'
       langs: 'Languages:'
       subject-takeaways: 'Curriculum Takeaways'
+      key-curriculum-concepts: 'Key Curriculum Concepts'
+      key-coding-concepts: 'Key Coding Concepts'
     admin:
       update-status: 'Update Status:'
       pending-public: 'Pending / Public'
@@ -180,9 +190,15 @@ en:
       add-to-collection: 'Add to Collection'
       status: 'Status'
       remove: 'Remove'
+      no-favourites: "You haven't added any favourites yet.  Add one"
+      here: 'here'
   profile:
     accounts-free: 'Accounts are completely free and will provide you full access to lessons and other learning material.'
+    enter-password: 'Enter your password'
+    enter-password-again: 'Enter your password again'
+    enter-email: 'Enter your mail address.'
     my-profile: 'My Profile'
+    create-your-profile: 'Create Your Profile'
     name: 'Name'
     school: 'School'
     edit-profile: 'Edit My Profile'

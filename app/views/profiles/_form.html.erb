@@ -43,7 +43,7 @@
     <%= f.text_field :gender %>
 
     <%= f.label t('profile.years-experience') %>
-    <span class="internal font-quicksand">(for internal use only)</span>
+    <span class="internal font-quicksand">(<%= t('dictionary.internal-use') %>)</span>
     <div class="select">
       <%= select('profile', 'years_of_experience', (lang == 'fr' ? Profile::FR_YEARS_OF_EXPERIENCE : Profile::EN_YEARS_OF_EXPERIENCE), {prompt: 'Choose...'})%>
     </div>

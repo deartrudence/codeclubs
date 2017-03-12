@@ -347,15 +347,15 @@
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
     <div class="lesson--single-sidebar--text word-wrap">
       <%= link_to like_lesson_path(@lesson), "data-liked" => @lesson.liked_by_user(current_user), class: "likes button--action custom-color-text", remote: true,  method: :get, data: { type: :json } do %>
-        Bookmark This Lesson
+        <%= t('lessons.single.bookmark-lesson')%>
         <span class="lesson--likes">
           <span class="ribbon">
               <span class="likes-count"><%= @lesson.get_upvotes.size %></span>
           </span>
         </span>  
       <% end %>
-      <h3>Intended Province:</h3>
-      <p><%= @lesson.province%> <% if @lesson.verified%><span class="lesson--single-verified-check custom-color-text"><i class="fa fa-check-circle" aria-hidden="true"></i> verified</span><% end %></p>
+      <h3><%= t('lessons.intended-province')%>:</h3>
+      <p><%= @lesson.province%> <% if @lesson.verified%><span class="lesson--single-verified-check custom-color-text"><i class="fa fa-check-circle" aria-hidden="true"></i> <%= t('dictionary.verified')%></span><% end %></p>
       <ul class="list--tags">
         <li class="title"><%= t('dictionary.subjects') %>:</li>
         <% @lesson.subject_list.each do |subject| %>
@@ -373,14 +373,14 @@
         <% end %>
       </ul>
       <% if @lesson.curriculum_concepts.present? %>
-        <h3>Key Curriculum Concepts</h3>
+        <h3><%= t('lessons.single.key-curriculum-concepts')%></h3>
         <div class="text-edit">
           <%= @lesson.curriculum_concepts.html_safe %>
         </div>
       <% end %>
 
       <% if @lesson.programming_concepts.present? %>
-        <h3>Key Coding Concepts</h3>
+        <h3><%= t('lessons.single.key-coding-concepts')%></h3>
         <div class="text-edit">
           <%= @lesson.programming_concepts.html_safe %>
         </div>

@@ -7,11 +7,11 @@
 		<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 		  <%= f.error_notification %>
 	  	<%= f.label :email, class: 'required'%>
-	    <%= f.input_field :email, required: true, autofocus: true %>
+	    <%= f.input_field :email, required: true, autofocus: true , placeholder: t('profile.enter-email')%>
 	    <%= f.label :password, class: 'required'%><span class="internal font-quicksand"><%= t('dictionary.min-8') %></span>
-	    <%= f.input_field :password, required: true %>
+	    <%= f.input_field :password, required: true, placeholder: t('profile.enter-password') %>
 	    <%= f.label :password_confirmation, class: 'required'%>
-	    <%= f.input_field :password_confirmation, required: true %>
+	    <%= f.input_field :password_confirmation, required: true, placeholder: t('profile.enter-password-again') %>
 
 
 		  <div class="form-actions">

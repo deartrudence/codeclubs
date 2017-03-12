@@ -67,7 +67,7 @@
     </form>
   </div>
   <div class="modal modal--about" id="thank-you">
-    <p class="center">Thank you! You will receive an invite to our Slack group shortly.</p>
+    <p class="center"><%= t('dictionary.slack-notice')%></p>
   </div>
   <div class="modal modal--about" id="pdf_download">
       <%= simple_form_for(@download_list, remote: true, :authenticity_token => true) do |f| %>
