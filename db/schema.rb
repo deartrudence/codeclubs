@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20170309153112) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "bootsy_image_galleries", force: :cascade do |t|
     t.integer  "bootsy_resource_id"
     t.string   "bootsy_resource_type"
@@ -43,10 +46,10 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "created_at"
   end
 
-  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
-  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
-  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
-  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
+  add_index "friendly_id_slugs", ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true, using: :btree
+  add_index "friendly_id_slugs", ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id", using: :btree
+  add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type", using: :btree
 
   create_table "glossaries", force: :cascade do |t|
     t.string   "term"
@@ -64,7 +67,7 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "lesson_references", ["lesson_id"], name: "index_lesson_references_on_lesson_id"
+  add_index "lesson_references", ["lesson_id"], name: "index_lesson_references_on_lesson_id", using: :btree
 
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
@@ -108,15 +111,15 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.string   "language",                   default: "en"
   end
 
-  add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down"
-  add_index "lessons", ["cached_votes_score"], name: "index_lessons_on_cached_votes_score"
-  add_index "lessons", ["cached_votes_total"], name: "index_lessons_on_cached_votes_total"
-  add_index "lessons", ["cached_votes_up"], name: "index_lessons_on_cached_votes_up"
-  add_index "lessons", ["cached_weighted_average"], name: "index_lessons_on_cached_weighted_average"
-  add_index "lessons", ["cached_weighted_score"], name: "index_lessons_on_cached_weighted_score"
-  add_index "lessons", ["cached_weighted_total"], name: "index_lessons_on_cached_weighted_total"
-  add_index "lessons", ["profile_id"], name: "index_lessons_on_profile_id"
-  add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
+  add_index "lessons", ["cached_votes_down"], name: "index_lessons_on_cached_votes_down", using: :btree
+  add_index "lessons", ["cached_votes_score"], name: "index_lessons_on_cached_votes_score", using: :btree
+  add_index "lessons", ["cached_votes_total"], name: "index_lessons_on_cached_votes_total", using: :btree
+  add_index "lessons", ["cached_votes_up"], name: "index_lessons_on_cached_votes_up", using: :btree
+  add_index "lessons", ["cached_weighted_average"], name: "index_lessons_on_cached_weighted_average", using: :btree
+  add_index "lessons", ["cached_weighted_score"], name: "index_lessons_on_cached_weighted_score", using: :btree
+  add_index "lessons", ["cached_weighted_total"], name: "index_lessons_on_cached_weighted_total", using: :btree
+  add_index "lessons", ["profile_id"], name: "index_lessons_on_profile_id", using: :btree
+  add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true, using: :btree
 
   create_table "mailing_lists", force: :cascade do |t|
     t.string   "name"
@@ -150,8 +153,8 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.integer  "pdf_download_count",  default: 0
   end
 
-  add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["slug"], name: "index_profiles_on_slug", unique: true, using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "suggested_lessons", force: :cascade do |t|
     t.integer  "lesson_id"
@@ -160,7 +163,7 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "suggested_lessons", ["lesson_id"], name: "index_suggested_lessons_on_lesson_id"
+  add_index "suggested_lessons", ["lesson_id"], name: "index_suggested_lessons_on_lesson_id", using: :btree
 
   create_table "taggings", force: :cascade do |t|
     t.integer  "tag_id"
@@ -172,15 +175,15 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -197,8 +200,8 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
@@ -212,8 +215,8 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "updated_at"
   end
 
-  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
-  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
   create_table "workshops", force: :cascade do |t|
     t.string   "title"
@@ -222,4 +225,8 @@ ActiveRecord::Schema.define(version: 20170309153112) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "lesson_references", "lessons"
+  add_foreign_key "lessons", "profiles"
+  add_foreign_key "profiles", "users"
+  add_foreign_key "suggested_lessons", "lessons"
 end
