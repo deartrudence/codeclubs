@@ -146,6 +146,7 @@ fr:
     non-verified: 'Non vérifiée'
     verified-for: 'Cette leçon est vérifiée pour…'
     verified?: 'Leçon vérifiée?'
+    lesson-verified: 'LEÇON VÉRIFIÉE'
     workshops: 'Ateliers'
     about: 'À propos'
     howto: 'Guide pratique'

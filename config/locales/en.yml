@@ -27,6 +27,7 @@ en:
     non-verified: 'Not Verified'
     verified-for: 'Cette leçon est vérifiée pour…'
     verified?: 'Lesson Verified?'
+    lesson-verified: 'Lesson Verified'
     workshops: 'workshops'
     province: 'Province'
     about: 'About'
