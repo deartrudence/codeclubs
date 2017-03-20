@@ -1,5 +1,5 @@
 <% @glossaries.each do |glossary|%>
-  <li id="<%= glossary.term %>">
+  <li id="<%= glossary.term.parameterize %>">
     <div><p><%= glossary.term %></p></div>
     <div><p><%= glossary.definition %></p></div>
   </li>

@@ -204,7 +204,7 @@ fr:
     find-lessons: 'Explorer et créer des leçons'
     join-workshop: 'S’inscrire à un atelier pour les enseignants'
   about-us:
-    about-us-1_html: 'Fondé par <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a> et parrainé par <a href="http://www.scotiabank.com/ca" target="_blank">la Banque Scotia</a>, le programme Teachers Learning Code a été conçu pour donner des ressources aux enseignants souhaitant inspirer les enfants à ne pas seulement consommer la technologie, mais aussi à la construire à l’aide d’activités et d’exercices de programmation.'
+    about-us-1_html: 'Fondé par <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a>, le programme Teachers Learning Code a été conçu pour donner des ressources aux enseignants souhaitant inspirer les enfants à ne pas seulement consommer la technologie, mais aussi à la construire à l’aide d’activités et d’exercices de programmation.'
     about-us-2: 'Il s’agit d’une initiative visant à changer le monde en utilisant la technologie grâce au travail d’équipe, à la créativité, et, bien sûr, au code.'
     about-us-3: 'Que vous voyez un enseignant dans une classe, un coordonnateur de programme dans un centre communautaire, un parent faisant l’école à la maison ou un animateur scout, notre guide pratique et nos ressources de planification complètes sont conçues pour vous aider à enseigner aux enfants à programmer.'
     about-us-4: 'Ce guide est le fruit de notre expérience en enseignement de la programmation à des milliers de jeunes de partout au pays. Il comprend des conseils pour bien commencer, des ressources pour vous initier au code et une tonne d’activités de programmation faciles à comprendre et à faire toutes élaborées afin d’outiller la prochaine génération de technologues du Canada.'
@@ -224,7 +224,7 @@ fr:
     suggested-lesson: 'Leçons recommandées'
     suggested-lesson-description: 'Des leçons qui compléteraient bien celle-ci ou qui pourraient servir de prolongement.'
     intended-province: 'Conçu pour la province'
-    lessons-paragraph: 'Teachers Learning Code a été conçu pour les enseignants du niveau primaire ayant peu ou aucune expérience en programmation et souhaitant enseigner les rudiments du code à leurs élèves. Nous accompagnons les enseignants en leur fournissant un guide pratique et un outil de planification qui les aideront à bien enseigner la programmation aux enfants. Faites une demande pour une formation aux enseignants gratuite. '
+    lessons-paragraph: 'Teachers Learning Code a été conçu pour les enseignants du niveau primaire ayant peu ou aucune expérience en programmation et souhaitant enseigner les rudiments du code à leurs élèves. Nous accompagnons les enseignants en leur fournissant un guide pratique et un outil de planification qui les aideront à bien enseigner la programmation aux enfants.'
     new:
       save-draft: 'Enregistrer comme brouillon'
       submit-lesson: 'Envoyer la leçon'

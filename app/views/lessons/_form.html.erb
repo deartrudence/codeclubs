@@ -171,7 +171,7 @@
         <%= f.select :subject_list, options_for_select((lang == 'fr' ?Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS) , @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
-        <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts, class: 'required'%>
+        <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts%>
         <p class="small"><%= t('lessons.new.curriculum-takeaways-description') %></p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: t('lessons.new.add-curriculum-takeaway') %>
       </div>

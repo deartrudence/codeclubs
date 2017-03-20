@@ -33,7 +33,7 @@ en:
     about: 'About'
     howto: 'How-To Guide'
     glossary: 'Glossary'
-    glossary-description: 'Un glossaire définissant les termes fréquemment employés pour enseigner des concepts de programmation et de pensée informatique.'
+    glossary-description: 'A collection of definitions and terminology commonly used when teaching coding concepts and computational thinking.'
     terminology: 'Terminology'
     definition: 'Definition'
     clear-filter: 'Clear all filters'
@@ -69,7 +69,7 @@ en:
     donate: 'Donate Now'
     get-involved: 'Get Involved'
     job-board: 'Job Board'
-    press: 'Presse'
+    press: 'Press'
     mailing-list-join: 'Join Our Mailing List'
     signup-form: 'Sign up now to stay in the loop'
     enter-email: 'Enter email here'
@@ -80,12 +80,12 @@ en:
     parternship-with: 'In partnership with'
   pages:
     intro-1: "Introduce coding in your classroom. Start a coding club. Use technology to inspire kids. Change the world."
-    intro-2: "Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop."
+    intro-2: "Teachers Learning Code has been designed for primary and middle school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code."
     get-started: "Get started with our guide for beginners"
     find-lessons: "Find and create your own lessons"
     join-workshop: "Join a Workshop for Educators"
   about-us:
-    about-us-1_html: 'Teachers Learning Code is designed by <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a> and proudly supported by <a href="http://www.scotiabank.com/ca" target="_blank">Scotiabank</a> for educators focused on inspiring kids to be builders – not just consumers - of technology through coding activities and challenges.'
+    about-us-1_html: 'Teachers Learning Code is designed by <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a> for educators focused on inspiring kids to be builders – not just consumers - of technology through coding activities and challenges.'
     about-us-2: 'It’s all about using technology and changing the world through teamwork, creativity, and, of course, code.'
     about-us-3: 'Whether you’re a teacher in a classroom, a program coordinator at a community centre, a home-schooling parent or a Girl Guide troop leader - we’ve put together a comprehensive how-to guide and lesson planning tool to help you teach kids to code.'
     about-us-4: 'We’ve combined our experiences teaching thousands of youth across the country to code, our tips and tricks to get started, resources to familiarize yourself with code, plus lots of easy to follow and even easier to implement coding activities to empower and teach the future generation of technologists across Canada.'
@@ -100,12 +100,12 @@ en:
   lessons:
     prep: 'Prep Work'
     lesson: 'The Lesson'
-    assessment: 'Assessment'
+    assessment: 'Assessments'
     extenstions: 'Extensions'
     suggested-lesson: 'Suggested Lessons'
     suggested-lesson-description: 'Lessons that would nicely complement this one or provide a good extension.'
     intended-province: 'Intended Province'
-    lessons-paragraph: "Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop."
+    lessons-paragraph: "Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code."
     new:
       save-draft: 'Save as Draft'
       submit-lesson: 'Submit Lesson'
@@ -115,7 +115,7 @@ en:
       enter-lesson-title: 'Enter the lesson title here'
       choose: 'choose'
       custom-lesson-color: 'Custom Lesson Colour:'
-      estimated-duration: 'Estimate Duration (in minutes)'
+      estimated-duration: 'Estimated Duration (in minutes)'
       short-summary: 'Short Summary'
       write-short-summary: 'Write a brief summary to introduce your lesson and provide context. This will appear on the main lesson dashboard as well at the top of your lesson page.'
       write-short-summary-here: 'Write a short summary here'
@@ -153,7 +153,7 @@ en:
     single:
       verified-for: 'This lesson is verified for :'
       duration: 'minutes'
-      created-by: 'Create by'
+      created-by: 'Created by'
       created-by-second: 'on'
       jump-to: 'Jump to:'
       intro: 'Introduction'

@@ -312,7 +312,7 @@
         </div>
       </section>
     <% end %>
-    <% if @lesson.extensions.present? %>
+    <% if @lesson.extensions.present? || @lesson.video_link.present? || @lesson.file_upload.file? %>
       <section>
         <h3 class="lesson--section-title" id="extensions"><%= t('lessons.extenstions') %></h3>
         <div class="text-edit">
@@ -327,7 +327,7 @@
       </section>
     <% end %>
     
-    <% if @lesson.suggested_lessons.present? %>
+    <% if @lesson.suggested_lessons.present?%>
       <section>
         <h3 class="lesson--section-title" id="suggested-lessons"><%= t('lessons.suggested-lesson') %></h3>
         <div class="text-edit">
@@ -346,7 +346,7 @@
   <div class="lesson--single-sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
     <div class="lesson--single-sidebar--text word-wrap">
-      <%= link_to like_lesson_path(@lesson), "data-liked" => @lesson.liked_by_user(current_user), class: "likes button--action custom-color-text", remote: true,  method: :get, data: { type: :json } do %>
+      <%= link_to like_lesson_path(@lesson), "data-liked" => @lesson.liked_by_user(current_user), class: "likes button--action custom-color-text as--bookmark-button", remote: true,  method: :get, data: { type: :json } do %>
         <%= t('lessons.single.bookmark-lesson')%>
         <span class="lesson--likes">
           <span class="ribbon">
@@ -366,7 +366,7 @@
         <li class="title"><%= t('dictionary.coding-concepts') %>:</li>
         <% @lesson.code_concept_list.each do |code_concept| %>
           <li class="custom-color-bg">
-            <%= link_to glossaries_path(anchor: code_concept) do%>
+            <%= link_to glossaries_path(anchor: code_concept.parameterize) do%>
               <%= code_concept %>
             <% end %> 
           </li>

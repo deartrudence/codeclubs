@@ -62,11 +62,11 @@ class LessonsController < ApplicationController
       # end
       @tags = tags
       if @tags.length > 0 && params[:verified].present?
-        @lessons = Lesson.is_approved.is_verified?.tagged_with(@tags).order(:cached_votes_up => :desc)
+        @lessons = Lesson.by_language(lang).is_approved.is_verified?.tagged_with(@tags).order(:cached_votes_up => :desc)
       elsif @tags.length > 0
-        @lessons = Lesson.is_approved.tagged_with(@tags).order(:cached_votes_up => :desc)
+        @lessons = Lesson.by_language(lang).is_approved.tagged_with(@tags).order(:cached_votes_up => :desc)
       elsif params[:verified].present?
-        @lessons = Lesson.is_approved.is_verified?.order(:cached_votes_up => :desc)
+        @lessons = Lesson.by_language(lang).is_approved.is_verified?.order(:cached_votes_up => :desc)
       else  
         @lessons = @lessons
       end
