@@ -11,22 +11,42 @@
   <title>Teachers Learning Code</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <% if session[:locale].to_s == 'en'%>
+    <!-- Facebook OG ENGLISH-->
+    <meta property="og:title" content="Teachers Learning Code" />
+    <meta property="og:site_name" content="Teachers Learning Code"/>
+    <meta property="og:url" content="http://teacherslearningcode.com" />
+    <meta property="og:description" content="Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code."/>
+    <meta property="og:image" content="http://ladieslearningcode.com/downloads/banners/tlc-fb-card.jpg" />
+    <meta property="og:type" content="website" />
 
-  <!-- Facebook OG -->
-  <meta property="og:title" content="Teachers Learning Code" />
-  <meta property="og:site_name" content="Teachers Learning Code"/>
-  <meta property="og:url" content="http://teacherslearningcode.com" />
-  <meta property="og:description" content="Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code."/>
-  <meta property="og:image" content="http://ladieslearningcode.com/downloads/banners/tlc-fb-card.jpg" />
-  <meta property="og:type" content="website" />
+    <!-- Twitter Card ENGLISH-->
+    <meta name="twitter:title" content="Teachers Learning Code">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@learningcode">
+    <meta name="twitter:creator" content="@learningcode">
+    <meta name="twitter:description" content="Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code.">
+    <meta name="twitter:image" content="http://ladieslearningcode.com/downloads/banners/tlc-twitter-card.jpg">
+  <% elsif session[:locale].to_s == 'fr'%>  
 
-  <!-- Twitter Card -->
-  <meta name="twitter:title" content="Teachers Learning Code">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@learningcode">
-  <meta name="twitter:creator" content="@learningcode">
-  <meta name="twitter:description" content="Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code.">
-  <meta name="twitter:image" content="http://ladieslearningcode.com/downloads/banners/tlc-twitter-card.jpg">
+    <!-- Facebook OG FRENCH -->
+    <meta property="og:title" content="Teachers Learning Code" />
+    <meta property="og:site_name" content="Teachers Learning Code"/>
+    <meta property="og:url" content="http://teacherslearningcode.com/fr" />
+    <meta property="og:description" content="Le programme Teachers Learning Code est conçu pour les enseignants du primaire et du secondaire ayant peu ou aucune expérience en programmation et souhaitant initier leurs élèves à la pensée informatique."/>
+    <meta property="og:image" content="http://ladieslearningcode.com/downloads/banners/tlc-fb-card.jpg" />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card FRENCH -->
+    <meta name="twitter:title" content="Teachers Learning Code">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@learningcode">
+    <meta name="twitter:creator" content="@learningcode">
+    <meta name="twitter:description" content="Le programme Teachers Learning Code est conçu pour les enseignants du primaire et du secondaire ayant peu ou aucune expérience en programmation et souhaitant initier leurs élèves à la pensée informatique.">
+    <meta name="twitter:image" content="http://ladieslearningcode.com/downloads/banners/tlc-twitter-card.jpg">
+  <% end %>
+
+
   <%= stylesheet_link_tag    'application', media: 'all'%>
   <link href='https://fonts.googleapis.com/css?family=Quicksand:400,700|Montserrat:400,700' rel='stylesheet' type='text/css'>
   <script src="https://use.fontawesome.com/43bdd233ba.js"></script>
