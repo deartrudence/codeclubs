@@ -76,7 +76,11 @@ class LessonsController < ApplicationController
       end   
 
       if params[:grade] != ''
-        @lessons = @lessons.select {|lesson| lesson.grade == params[:grade]}
+        if params[:grade] == "All Grades" || params[:grade] ==  "Tous"
+          @lessons = @lessons
+        else
+          @lessons = @lessons.select {|lesson| lesson.grade == params[:grade]}
+        end
       end
 
       if params[:browse].present? && params[:browse] == 'list'  
