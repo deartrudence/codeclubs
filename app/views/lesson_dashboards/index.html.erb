@@ -69,14 +69,14 @@
       <div><%= t('dictionary.author') %></div>
       <div><%= t('dictionary.grade-level') %></div>
         <div><%= t('dictionary.subjects') %></div> 
-      <div>Updated</div>
+      <div><%= t('lessons.dashboard.updated') %></div>
       <div><%= t('lessons.dashboard.remove') %>?</div> 
     </div>
     <div id="bookmarked-tab-content">
       <%= render 'lesson_bookmarked', locals: {lessons: @lesson_bookmarked}%>
     </div>
   <% else %>
-    <p>You haven't added any favourites yet.  Add one <%= link_to 'here', lessons_path %></p>
+    <p><%= t('lessons.dashboard.no-favourites')%> <%= link_to t('lessons.dashboard.here'), lessons_path %></p>
   <% end %>
   </div>
 </div>

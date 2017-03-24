@@ -40,7 +40,7 @@
              <%= f.check_box :approved, data: @lesson.id, class: "lesson_approved_check", id: "slideThree#{@lesson.id}" %>
              <label for="slideThree<%= @lesson.id %>"></label>
            </div>
-          <%= f.submit "Save Lesson", class: "button button--primary save-as-draft" %>
+          <%= f.submit t('lessons.new.save-lesson'), class: "button button--primary save-as-draft" %>
         <% end %>
         <% if !@lesson.submitted%>
           <%= f.submit t('lessons.new.save-draft'), class: "button button--secondary save-as-draft" %>
@@ -50,9 +50,6 @@
           <%= link_to edit_lesson_path(@lesson, submitted: true), remote: true,  method: :get, class: 'button button--primary submit-button' do %>
            <%= t('lessons.new.submit-lesson') %>
           <% end %>
-        <% elsif !@lesson.submitted%>
-          <%= f.hidden_field :submitted, value: true %>  
-          <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %> 
         <% end %>
       </div>
     </div>
@@ -83,7 +80,7 @@
         <span class="label-direction"><%= t('lessons.admin.max-30') %></span>
         <div class="wrapper--flex">
           <span class="message-for"><%= t('lessons.admin.verified-for') %></span>
-          <%= f.text_field :verification_message, placeholder: 'The Provincial Curriculum' %>
+          <%= f.text_field :verification_message, placeholder: t('lessons.new.provincial-curriculum') %>
         </div>
       </div>
     </div>
@@ -95,11 +92,7 @@
       <%= f.text_field :title %>
       <div class="wrapper--flex flex-even">
         <div>  
-<<<<<<< HEAD
-         <%= f.label t('dictionary.grade-level') %>
-=======
-         <%= f.label :grade, class: 'required' %>
->>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
+         <%= f.label t('dictionary.grade-level'), class: 'required' %>
         <div class="select"> 
           <%= f.select :grade, options_for_select((lang == 'fr' ? Lesson::FR_GRADE : Lesson::EN_GRADE), @lesson.grade), {:include_blank => (lang == 'fr' ? 'Sélectionner' : 'Choose')}%>
         </div>
@@ -125,7 +118,7 @@
       <div class="textarea-content">
         <h3 class="title--tertiary required custom-color-title"><%= t('lessons.the-lesson') %></h3>
         <p class="small"><%= t('lessons.new.lesson-description') %></p>
-        <%= f.bootsy_area :content, editor_options: { html: true} ,placeholder: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here.', required: true %>
+        <%= f.bootsy_area :content, editor_options: { html: true} ,placeholder: t('lessons.new.write-lesson'), required: true %>
       </div>
       <div>
         <h3 class="title--tertiary custom-color-title"><%= t('lessons.assessment') %></h3>
@@ -154,9 +147,6 @@
         <% end %>
         <%= link_to t('lessons.new.delete-lesson'), lesson_path(@lesson),
     data: { confirm: 'Are you sure you want to delete this lesson?' }, method: :delete, class: 'link--underlined delete-lesson'%>
-      <% elsif !@lesson.submitted%>
-        <%= hidden_field_tag submitted: true %>  
-        <%= f.submit t('lessons.new.submit-lesson'), class: "button button--primary" %>
       <% end %>
     </div>
     <!-- BEGINING OF SIDEBAR -->
@@ -181,15 +171,9 @@
         <%= f.select :subject_list, options_for_select((lang == 'fr' ?Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS) , @lesson.subject_list), {}, {multiple: true, class: 'curriculum_subjects_dropdown'}  %>
       </div>
       <div>
-<<<<<<< HEAD
-        <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts, class: 'required'%>
+        <%= f.label t('lessons.new.curriculum-takeaways'), :curriculum_concepts%>
         <p class="small"><%= t('lessons.new.curriculum-takeaways-description') %></p>
         <%= f.bootsy_area :curriculum_concepts, placeholder: t('lessons.new.add-curriculum-takeaway') %>
-=======
-        <%= f.label 'Curriculum Takeaways', :curriculum_concepts%>
-        <p class="small">An optional text field should you want to expand upon the curriculum subjects covered in the lesson.</p>
-        <%= f.bootsy_area :curriculum_concepts, placeholder: 'Add any curriculum takeaways here.' %>
->>>>>>> ba92e65c52d56a4144aabc873bfff9bca033180f
       </div>
       <%= f.label t('dictionary.coding-concepts'), :code_concept_list, class: 'required' %>
       <div class="select">
@@ -211,7 +195,7 @@
       </div>
       <div>
         <h3><%= t('lessons.suggested-lesson')%></h3>
-        <p class="small">Lessons that would nicely complement this one or provide a good extension.</p>
+        <p class="small"><%= t('lessons.suggested-lesson-description')%></p>
         <div class="select">
           <%= f.collection_select :suggested_lessons, Lesson.where.not(id: @lesson.id).is_approved, :id, :title, {:include_blank => false}, {multiple: true, class: 'suggested_lessons_dropdown'}  %>
         </div>

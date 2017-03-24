@@ -1,5 +1,12 @@
 en:
   hello: "Hello world"
+  devise:
+    common:
+      sign_up: "Sign up!"
+      sign_in: "Log in"
+    registrations:
+      edit:
+        update: "Update Settings"
   dictionary: 
     author: 'Author'
     browse-lessons: 'Browse Lessons'
@@ -20,12 +27,13 @@ en:
     non-verified: 'Not Verified'
     verified-for: 'Cette leçon est vérifiée pour…'
     verified?: 'Lesson Verified?'
+    lesson-verified: 'Lesson Verified'
     workshops: 'workshops'
     province: 'Province'
     about: 'About'
     howto: 'How-To Guide'
     glossary: 'Glossary'
-    glossary-description: 'Un glossaire définissant les termes fréquemment employés pour enseigner des concepts de programmation et de pensée informatique.'
+    glossary-description: 'A collection of definitions and terminology commonly used when teaching coding concepts and computational thinking.'
     terminology: 'Terminology'
     definition: 'Definition'
     clear-filter: 'Clear all filters'
@@ -35,6 +43,9 @@ en:
     email: 'Email'
     required-field: 'Required Field'
     min-8: '(8 characters maximum)'
+    sign_in: "Log in"
+    internal-use: 'for internal use only'
+    slack-notice: 'Thank you! You will receive an invite to our Slack group shortly.'
   top-nav: 
     faq: 'F.A.Q.'
     resources: 'More Resources'
@@ -43,8 +54,9 @@ en:
     language: 'French / English'
     greeting: 'Hi,'
     userdashboard: 'My Lesson Dashboard'
-    logout: 'Log Out'
+    logout: 'Sign Out'
     admindashboard: 'Admin Dashboard'
+    create-profile: 'Create Profile'
   footer:
     contact-us: 'Contact Us'
     twitter: 'twitter.com/learningcode'
@@ -57,7 +69,7 @@ en:
     donate: 'Donate Now'
     get-involved: 'Get Involved'
     job-board: 'Job Board'
-    press: 'Presse'
+    press: 'Press'
     mailing-list-join: 'Join Our Mailing List'
     signup-form: 'Sign up now to stay in the loop'
     enter-email: 'Enter email here'
@@ -68,12 +80,12 @@ en:
     parternship-with: 'In partnership with'
   pages:
     intro-1: "Introduce coding in your classroom. Start a coding club. Use technology to inspire kids. Change the world."
-    intro-2: "Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code. Request a free teacher workshop."
+    intro-2: "Teachers Learning Code has been designed for primary and middle school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code."
     get-started: "Get started with our guide for beginners"
     find-lessons: "Find and create your own lessons"
     join-workshop: "Join a Workshop for Educators"
   about-us:
-    about-us-1_html: 'Teachers Learning Code is designed by <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a> and proudly supported by <a href="http://www.scotiabank.com/ca" target="_blank">Scotiabank</a> for educators focused on inspiring kids to be builders – not just consumers - of technology through coding activities and challenges.'
+    about-us-1_html: 'Teachers Learning Code is designed by <a href="http://ladieslearningcode.com/" target="_blank">Ladies Learning Code</a> for educators focused on inspiring kids to be builders – not just consumers - of technology through coding activities and challenges.'
     about-us-2: 'It’s all about using technology and changing the world through teamwork, creativity, and, of course, code.'
     about-us-3: 'Whether you’re a teacher in a classroom, a program coordinator at a community centre, a home-schooling parent or a Girl Guide troop leader - we’ve put together a comprehensive how-to guide and lesson planning tool to help you teach kids to code.'
     about-us-4: 'We’ve combined our experiences teaching thousands of youth across the country to code, our tips and tricks to get started, resources to familiarize yourself with code, plus lots of easy to follow and even easier to implement coding activities to empower and teach the future generation of technologists across Canada.'
@@ -88,25 +100,29 @@ en:
   lessons:
     prep: 'Prep Work'
     lesson: 'The Lesson'
-    assessment: 'Assessment'
+    assessment: 'Assessments'
     extenstions: 'Extensions'
     suggested-lesson: 'Suggested Lessons'
+    suggested-lesson-description: 'Lessons that would nicely complement this one or provide a good extension.'
     intended-province: 'Intended Province'
+    lessons-paragraph: "Teachers Learning Code has been designed for primary school teachers with little to no coding experience to be able to teach coding fundamentals to their students. We'll walk teachers through a how-to guide and lesson planning tool to help them teach kids to code."
     new:
       save-draft: 'Save as Draft'
       submit-lesson: 'Submit Lesson'
+      save-lesson: 'Save Lesson'
       lesson-info: 'Lesson Info'
       title: 'Title'
       enter-lesson-title: 'Enter the lesson title here'
       choose: 'choose'
       custom-lesson-color: 'Custom Lesson Colour:'
-      estimated-duration: 'Estimate Duration (in minutes)'
+      estimated-duration: 'Estimated Duration (in minutes)'
       short-summary: 'Short Summary'
       write-short-summary: 'Write a brief summary to introduce your lesson and provide context. This will appear on the main lesson dashboard as well at the top of your lesson page.'
       write-short-summary-here: 'Write a short summary here'
       prep-description: 'All the behind the scenes work to get the lesson ready.'
       prep-required: 'Indicate any prep work required for this lesson, including any materials etc.'
       lesson-description: 'The actual meat of the lesson! This could take form of a step-by-step guide or maybe a series of little exercises, completely up to you!'
+      write-lesson: 'Write the content of your lesson, including all lecture notes and hands-on activity instructions here. '
       assessment-description: 'Either then answers to problems that are asked in the lesson or a guideline for some potential results of lesson completion.'
       provide-answer: 'Provide answers here.'
       extensions-description: 'Additional questions and challenges that build on content reviewed in the lesson.'
@@ -133,10 +149,11 @@ en:
       url: 'URL'
       reference-link: 'Link to reference material'
       more: '+more'
+      provincial-curriculum: 'The Provincial Curriculum'
     single:
       verified-for: 'This lesson is verified for :'
       duration: 'minutes'
-      created-by: 'Create by'
+      created-by: 'Created by'
       created-by-second: 'on'
       jump-to: 'Jump to:'
       intro: 'Introduction'
@@ -151,6 +168,8 @@ en:
       fork-lesson: 'Fork This Lesson'
       langs: 'Languages:'
       subject-takeaways: 'Curriculum Takeaways'
+      key-curriculum-concepts: 'Key Curriculum Concepts'
+      key-coding-concepts: 'Key Coding Concepts'
     admin:
       update-status: 'Update Status:'
       pending-public: 'Pending / Public'
@@ -172,8 +191,15 @@ en:
       add-to-collection: 'Add to Collection'
       status: 'Status'
       remove: 'Remove'
+      no-favourites: "You haven't added any favourites yet.  Add one"
+      here: 'here'
   profile:
+    accounts-free: 'Accounts are completely free and will provide you full access to lessons and other learning material.'
+    enter-password: 'Enter your password'
+    enter-password-again: 'Enter your password again'
+    enter-email: 'Enter your mail address.'
     my-profile: 'My Profile'
+    create-your-profile: 'Create Your Profile'
     name: 'Name'
     school: 'School'
     edit-profile: 'Edit My Profile'

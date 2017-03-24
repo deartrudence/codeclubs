@@ -16,7 +16,15 @@
     <h2><%= t('dictionary.download-guide')%></h2>
     <div>  
       <%= image_tag 'tlc-howtoguide-mockup.png'%>
-      <a href="#" class="button button--primary" data-open="pdf_download"><%= t('dictionary.download') %></a>
+      <% if current_user.present?%>
+      
+
+
+
+        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary', id: 'pdf', :data => {:user => current_user} %>
+      <% else %>  
+        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary' %>
+      <% end %>
       <p><%= t('about-us.guide-description') %></p>
       <%= link_to t('dictionary.download-guide'), 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
     </div>
@@ -29,13 +37,13 @@
       <h3><%= t('about-us.read-glossary') %></h3>
       <div class="button button--primary"><%= t('dictionary.glossary') %></div>
     <% end %>  
-    <a href="#">
+    <div>
       <h3><%= t('about-us.review-list') %></h3>
-      <div class="button button--primary"><%= t('about-us.more-resources')%></div>
-    </a>
-    <a href="mailto:carolyn@ladieslearningcode.com" target="_blank">
-      <h3><%= t('about-us.more-resources') %></h3>
-      <div class="button button--primary"><%= t('about-us.email-us') %></div>
+      <%= link_to t('about-us.more-resources'), "#{request.base_url}/assets/tlc-list-of-resources-english.pdf", :target => '_blank', class: 'button button--primary', id: 'pdf', :data => {:user => current_user} %>
+    </div>
+    <a href="mailto:info@teacherslearningcode.com" target="_blank">
+      <h3 class="title-break"><%= t('about-us.more-resources') %></h3>
+      <div class="button button--primary"><%= t('about-us.send-us-message') %></div>
     </a>
   </div>
 </section>
@@ -63,7 +71,7 @@
     </form>
   </div>
   <div class="modal modal--about" id="thank-you">
-    <p class="center">Thank you! You will receive an invite to our Slack group shortly.</p>
+    <p class="center"><%= t('dictionary.slack-notice')%></p>
   </div>
   <div class="modal modal--about" id="pdf_download">
       <%= simple_form_for(@download_list, remote: true, :authenticity_token => true) do |f| %>
@@ -79,7 +87,17 @@
 
 
 <script>
-
+  $('#pdf').on('click', function(){
+    console.log($(this).data('user')['id'])
+    $.ajax({
+      url: '',
+      method: 'GET', 
+      dataType: 'json', 
+      data: {
+        current_user_id: $(this).data('user')['id']
+      }
+    })
+  })
   $('[data-open]').on('click', function(e){
     e.preventDefault()
     var modal = $(this).data('open')

@@ -62,11 +62,11 @@ class LessonsController < ApplicationController
       # end
       @tags = tags
       if @tags.length > 0 && params[:verified].present?
-        @lessons = Lesson.is_approved.is_verified?.tagged_with(@tags).order(:cached_votes_up => :desc)
+        @lessons = Lesson.by_language(lang).is_approved.is_verified?.tagged_with(@tags).order(:cached_votes_up => :desc)
       elsif @tags.length > 0
-        @lessons = Lesson.is_approved.tagged_with(@tags).order(:cached_votes_up => :desc)
+        @lessons = Lesson.by_language(lang).is_approved.tagged_with(@tags).order(:cached_votes_up => :desc)
       elsif params[:verified].present?
-        @lessons = Lesson.is_approved.is_verified?.order(:cached_votes_up => :desc)
+        @lessons = Lesson.by_language(lang).is_approved.is_verified?.order(:cached_votes_up => :desc)
       else  
         @lessons = @lessons
       end
@@ -76,7 +76,11 @@ class LessonsController < ApplicationController
       end   
 
       if params[:grade] != ''
-        @lessons = @lessons.select {|lesson| lesson.grade == params[:grade]}
+        if params[:grade] == "All Grades" || params[:grade] ==  "Tous"
+          @lessons = @lessons
+        else
+          @lessons = @lessons.select {|lesson| lesson.grade == params[:grade]}
+        end
       end
 
       if params[:browse].present? && params[:browse] == 'list'  
@@ -100,6 +104,7 @@ class LessonsController < ApplicationController
   # GET /lessons/new
   def new
     @lesson = Lesson.new
+    @lesson.lesson_references.new
   end
 
   # GET /lessons/1/edit

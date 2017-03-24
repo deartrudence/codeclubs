@@ -24,5 +24,17 @@ Things you may want to cover:
 * ...
 
 
+### To set up data for new app (March 2017)
+* Update all lessons to be currently submitted `Lesson.update_all(submitted: true)`
+* Add grade to all lessons 
+
+* Add duration in minutes to all lessons
+
+* create all glossary terms
+
+* Add province to all lessons
+
+* Get teachers to add their province
+
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.

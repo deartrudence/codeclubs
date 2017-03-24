@@ -5,50 +5,50 @@
   $.fn.wysihtml5.locale['fr'] = {
     font_styles: {
       normal: 'Texte normal',
-      h1: 'Titre 1',
-      h2: 'Titre 2',
-      h3: 'Titre 3'
+      h1: 'En-tête 1',
+      h2: 'En-tête 2',
+      h3: 'En-tête 3'
     },
     emphasis: {
-      bold: 'Audacieux',
+      bold: 'Gras',
       italic: 'Italic',
-      underline: 'Souligner',
-      small: 'Petite'
+      underline: 'Souligné',
+      small: 'Petit'
     },
     lists: {
       unordered: 'Liste non ordonnée',
       ordered: 'Liste ordonnée',
-      outdent: 'Outdent',
-      indent: 'Indent'
+      outdent: 'Diminuer le retrait',
+      indent: 'Augmenter le retrait'
     },
     link: {
-      insert: 'FR Insert link',
-      cancel: 'FR Cancel',
-      target: 'FR Open link in new window'
+      insert: 'Insérer un lien',
+      cancel: 'Annuler',
+      target: 'Ouvrir le lien dans une nouvelle fenêtre'
     },
     image: {
-      insert: 'FR Insert image',
-      cancel: 'FR Cancel'
+      insert: 'Insérer une image',
+      cancel: 'Annuler'
     },
     html: {
-      edit: 'Edit HTML'
+      edit: 'Modifier le HTML'
     },
     colours: {
       black: 'Noir',
       silver: 'Argent',
       gray: 'Gris',
-      maroon: 'Bordeaux',
+      maroon: 'Brun',
       red: 'Rouge',
       purple: 'Violet',
       green: 'Vert',
       olive: 'Olive',
-      navy: 'Bleu Marin',
+      navy: 'Bleu Marine',
       blue: 'Bleu',
       orange: 'Orange'
     },
     bootsy: {
-      alertUnsaved: 'FR You have unsaved changes.',
-      error: 'FR Something went wrong. Please try again later.'
+      alertUnsaved: 'Vous avez apporté des modifications non sauvegardées.',
+      error: 'Il y a eu un problème. Veuillez réessayer plus tard.'
     }
   };
 }(jQuery));

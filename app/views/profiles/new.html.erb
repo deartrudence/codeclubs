@@ -3,7 +3,7 @@
 	<!-- set the user's language	 -->
 	<% lang = session[:locale].to_s %>
 	
-  <h2>Create Your Profile</h2>
+  <h2><%= t('profile.create-your-profile')%></h2>
 
   <%= render 'form', lang: lang %>
 </div>
