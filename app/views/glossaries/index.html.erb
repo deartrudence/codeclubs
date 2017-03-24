@@ -24,7 +24,9 @@
 <ul class="list--glossary wrapper" id="glossary-list">
   <%= render 'glossary_list'%>
 </ul>
-<%= will_paginate @glossaries%>
+<div class="wrapper center">
+  <%= will_paginate @glossaries%>
+</div>
 
 <script>
     function ajaxSubmit(form) {
