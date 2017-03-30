@@ -72,7 +72,11 @@ class LessonsController < ApplicationController
       end
 
       if params[:province] != ''
+        if params[:province] == "All" || params[:province] ==  "Tous"
+          @lessons = @lessons
+        else
         @lessons = @lessons.select {|lesson| lesson.province == params[:province]}
+        end
       end   
 
       if params[:grade] != ''
