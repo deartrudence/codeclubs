@@ -38,11 +38,11 @@
           </div>
 
           <div class="select">
-            <%= select_tag 'subject', options_for_select(@subject_tags), {:include_blank => t('dictionary.subjects')}%>
+            <%= select_tag 'subject', options_for_select(lang == 'fr' ? Lesson::FR_CURRICULUM_SUBJECTS : Lesson::EN_CURRICULUM_SUBJECTS), {:include_blank => t('dictionary.subjects')}%>
           </div>
          
           <div class="select">
-            <%= select_tag 'code_concept', options_for_select(@concept_tags), {:include_blank => t('dictionary.coding-concept')}%>
+            <%= select_tag 'code_concept', options_for_select(lang == 'fr' ? Lesson::FR_CODING_CONCEPTS : Lesson::EN_CODING_CONCEPTS), {:include_blank => t('dictionary.coding-concept')}%>
           </div>
          
         </div>
