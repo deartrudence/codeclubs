@@ -193,10 +193,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="email-form">
       <h3><%= t('footer.mailing-list-join') %></h3>
       <p class="small"><%= t('footer.signup-form') %></p>
-      <%= form_for(@mailing_list) do |f| %>
-      <%= f.text_field :email,type: 'email', placeholder: t('footer.enter-email') %>
-      <%= f.submit t('footer.subscribe') , class: 'button button--primary' %>
-      <% end %>
+      
+      <!-- Begin MailChimp Signup Form -->
+      <div id="mc_embed_signup">
+      <form action="//ladieslearningcode.us2.list-manage.com/subscribe/post?u=ffce8cb0bd8c24faff9817f63&amp;id=f27950abc4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+          <div id="mc_embed_signup_scroll">
+        
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+          <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+          <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_ffce8cb0bd8c24faff9817f63_f27950abc4" tabindex="-1" value=""></div>
+          <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button button--primary"></div>
+          </div>
+      </form>
+      </div>
+
+      <!--End mc_embed_signup-->
+
+
     </div>
   </div>
 </footer>
