@@ -442,7 +442,7 @@
       <li><a href="#prep-work" class="custom-color-text"><%= t('lessons.prep') %></a></li>
       <li><a href="#the-lesson" class="custom-color-text"><%= t('lessons.the-lesson') %></a></li>
       <li><a href="#extensions" class="custom-color-text"><%= t('lessons.extenstions') %></a></li>
-      <li><a href="#answers" class="custom-color-text"><%= t('lessons.assessment') %></a></li>
+      <li><a href="#assessments" class="custom-color-text"><%= t('lessons.assessment') %></a></li>
       <li><a href="#suggested-lessons" class="custom-color-text"><%= t('lessons.suggested-lesson') %></a></li>
     </ul>
   </nav>
@@ -485,7 +485,7 @@
 
     <% if @lesson.answers.present? %>
       <section> 
-        <h3 class="lesson--section-title" id="assessments"><%= t('lessons.assessments') %></h3>
+        <h3 class="lesson--section-title" id="assessments"><%= t('lessons.assessment') %></h3>
         <div class="text-edit">
           <%= @lesson.answers.html_safe %>
         </div>
