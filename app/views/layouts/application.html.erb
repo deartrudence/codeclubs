@@ -115,7 +115,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <li><%= link_to t('top-nav.create-new-lesson'), new_lesson_path%></li>
         </ul>
       </li>
-      <li><a href="#"><%= t('dictionary.workshops')%></a></li>
+      <li><a href="http://ladieslearningcode.com/educator-workshops"><%= t('dictionary.workshops')%></a></li>
       <li><% if session[:locale].to_s == "en" %>
             <%= link_to "Français", { locale: :fr } %>
           <% else %>
