@@ -1,6 +1,6 @@
 class GlossariesController < ApplicationController
   before_action :set_glossary, only: [:show, :edit, :update, :destroy]
-
+  skip_before_action :authenticate_user!, only: [:index]
   # GET /glossaries
   # GET /glossaries.json
   def index

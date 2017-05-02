@@ -17,16 +17,12 @@
     <div>  
       <%= image_tag 'tlc-howtoguide-mockup.png'%>
       <% if current_user.present?%>
-      
-
-
-
-        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary', id: 'pdf', :data => {:user => current_user} %>
+        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/#{t('about-us.pdf-guide')}.pdf", :target => '_blank', class: 'button button--tertiary', id: 'pdf', :data => {:user => current_user} %>
       <% else %>  
-        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/TLC-gettingstartedguide.pdf", :target => '_blank', class: 'button button--tertiary' %>
+        <%= link_to t('dictionary.download-guide'), "#{request.base_url}/assets/#{t('about-us.pdf-guide')}.pdf", :target => '_blank', class: 'button button--tertiary' %>
       <% end %>
       <p><%= t('about-us.guide-description') %></p>
-      <%= link_to t('dictionary.download-guide'), 'assets/TLC-gettingstartedguide.pdf', :target => '_blank', class: 'display-none', id: 'pdf'%>
+      <%= link_to t('about-us.download-guide'), "assets/#{t('dictionary.pdf-guide')}.pdf", :target => '_blank', class: 'display-none', id: 'pdf'%>
     </div>
   </aside>
 </section>
