@@ -41,7 +41,7 @@ class Lesson < ActiveRecord::Base
   FR_GRADE = ['Tous','Maternelle' , '1ere', '2e', '3e', '4e', '5e', '6e', '7e (Sec 1)', '8e (Sec 2)', '9e (Sec 3)', '10e (Sec 4)', '11e (Sec 5)', '12e']
 
   EN_PROVINCES = ['All','Alberta', 'British Columbia', 'Saskatchewan', 'Manitoba', 'Ontario', 'Quebec', 'Nova Scotia','Newfoundland and Labrador', 'Prince Edward Island', 'North West Territories', 'Nunavut', 'Yukon', 'New Brunswick']
-  FR_PROVINCES = ['Tous','Alberta', 'Colombie-Britannique', 'Manitoba', 'Nouveau-Brunswick', 'Terre-Neuve et Labrador', 'Territoires du Nord-Ouest', 'Nouvelle-Écosse', 'Nunavut', 'Ontario', 'Île-du-Prince-Édouard', 'Québec', 'Saskatchewan', 'Yukon', 'Nouveau-Brunswick']
+  FR_PROVINCES = ['Tous','Alberta', 'Colombie-Britannique', 'Manitoba', 'Terre-Neuve et Labrador', 'Territoires du Nord-Ouest', 'Nouvelle-Écosse', 'Nunavut', 'Ontario', 'Île-du-Prince-Édouard', 'Québec', 'Saskatchewan', 'Yukon', 'Nouveau-Brunswick']
 
   EN_CURRICULUM_SUBJECTS = ['The Arts','French As a Second Language', 'English Language Arts','Health and Physical Education','Mathematics','Native Languages','Science','Technology Education','Social Studies','Career Education'] 
   FR_CURRICULUM_SUBJECTS = ['Arts', 'Français langue maternelle', 'English Language Arts', 'Éducation physique et santé', 'Mathématiques', 'Langues autochtones', 'Sciences', 'Technologies', 'Univers social', 'Éducation au choix de carrière']
