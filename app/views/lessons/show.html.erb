@@ -525,14 +525,16 @@
   <div class="lesson--single-sidebar">
     <!-- <%= image_tag @lesson.feature_image.url(:medium) %> -->
     <div class="lesson--single-sidebar--text word-wrap">
-      <%= link_to like_lesson_path(@lesson), "data-liked" => @lesson.liked_by_user(current_user), class: "likes button--action custom-color-text as--bookmark-button", remote: true,  method: :get, data: { type: :json } do %>
-        <%= t('lessons.single.bookmark-lesson')%>
-        <span class="lesson--likes">
-          <span class="ribbon">
-              <span class="likes-count"><%= @lesson.get_upvotes.size %></span>
-          </span>
-        </span>  
-      <% end %>
+      <% if current_user.present? %>
+        <%= link_to like_lesson_path(@lesson), "data-liked" => @lesson.liked_by_user(current_user), class: "likes button--action custom-color-text as--bookmark-button", remote: true,  method: :get, data: { type: :json } do %>
+          <%= t('lessons.single.bookmark-lesson')%>
+          <span class="lesson--likes">
+            <span class="ribbon">
+                <span class="likes-count"><%= @lesson.get_upvotes.size %></span>
+            </span>
+          </span>  
+        <% end %>
+      <% end %>  
       <h3><%= t('lessons.intended-province')%>:</h3>
       <p><%= @lesson.province%> <% if @lesson.verified%><span class="lesson--single-verified-check custom-color-text"><i class="fa fa-check-circle" aria-hidden="true"></i> <%= t('dictionary.verified')%></span><% end %></p>
       <ul class="list--tags">
