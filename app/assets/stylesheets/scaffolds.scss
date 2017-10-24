@@ -17,3 +17,22 @@
   hyphens: auto;
 
 }
+
+
+
+
+@font-face{
+  font-family: 'Maax Bold';
+  src: url(font-path('maax-bold.eot'));
+  src: url(font-path('maax-bold.eot')) format('embedded-opentype'), url(font-path('maax-bold.woff')) format('woff');
+}
+
+@font-face{
+  font-family: 'Maax';
+  src: url(font-path('maax-regular.eot'));
+  src: url(font-path('maax-regular.eot')) format('embedded-opentype'), url(font-path('maax-regular.woff')) format('woff');
+}
+
+
+
+
